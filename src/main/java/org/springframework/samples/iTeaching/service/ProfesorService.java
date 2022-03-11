@@ -39,4 +39,8 @@ public class ProfesorService {
 		return profesorRepository.findByUsername(username);
 	}
 
+	public void delete(Profesor profesor) {
+		this.profesorRepository.delete(profesor);
+	}
+
 }

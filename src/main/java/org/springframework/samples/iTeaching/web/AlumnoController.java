@@ -23,7 +23,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -141,5 +144,19 @@ public class AlumnoController {
 		mav.addObject("alumno",alumno);
 		return mav;
 	}
-
+	@GetMapping("/alumnos/{alumnoId}")
+	public String deleteAlumno(@PathVariable("alumnoId") int alumnoId) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Alumno usuario = alumnoService.findAlumnoByUsername(username);
+		Alumno alumno = alumnoService.findAlumnoById(alumnoId);
+		if (usuario.equals(alumno)) {
+		this.alumnoService.delete(alumno);
+		return "welcome";
+	}
+		else {
+			return "welccome";
+		}
+	}
 }
