@@ -43,7 +43,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AlumnoController {
 
-	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "alumnos/createOrOwnerAlumnoForm";
+	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "alumnos/createOrUpdateAlumnoForm";
 
 	@Autowired
 	private AlumnoService alumnoService;
@@ -129,11 +129,7 @@ public class AlumnoController {
 		}
 	}
 
-	/**
-	 * Custom handler for displaying an alumno.
-	 * @param alumnoId the ID of the alumno to display
-	 * @return a ModelMap with the model attributes for the view
-	 */
+
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
 		ModelAndView mav = new ModelAndView("alumnos/alumnoDetails");

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Controller
@@ -110,6 +111,27 @@ public class AnuncioController {
 			return "redirect:/anuncio/{anuncioId}";
 		}
 	}
-
-
+	@GetMapping(value = "/anuncio/{anuncioId}/delete")
+	public String deleteAnuncio(@PathVariable("anuncioId") int anuncioId, Model model) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Profesor usuario = profesorService.findProfesorByUsername(username);
+		Anuncio anuncio = this.anuncioService.findById(anuncioId);
+		if (usuario.equals(anuncio.getProfesor())) {
+		this.anuncioService.delete(anuncio);
+		return "redirect:/misAnuncios";
+	}
+		else {
+			return "welcome";
+		}
+	}
+	
+	@GetMapping("/anuncio/{anuncioId}")
+	public ModelAndView viewAnuncio(@PathVariable("anuncioId")int anuncioId) {
+		ModelAndView mav = new ModelAndView("anuncios/anuncioDetails");
+		Anuncio anuncio=this.anuncioService.findById(anuncioId);
+		mav.addObject("anuncio", anuncio);
+		return mav;
+	}
 }

@@ -29,4 +29,9 @@ public class AnuncioService {
 	public void saveAnuncio(Anuncio anuncio) {
 		anuncioRepository.save(anuncio);
 	}
+
+	public void delete(Anuncio anuncio) {
+		// TODO Auto-generated method stub
+		anuncioRepository.delete(anuncio);
+	}
 	}
