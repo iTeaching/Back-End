@@ -59,6 +59,8 @@ public class AnuncioController {
 		}
 		
 		}
+	
+	
 
 	@GetMapping(value = "/ofertas/find")
 	public String initFindForm(Map<String, Object> model) {
