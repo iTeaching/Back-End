@@ -15,8 +15,6 @@
  */
 package org.springframework.samples.iTeaching.repository;
 
-import java.util.Collection;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -25,12 +23,7 @@ import org.springframework.samples.iTeaching.model.BaseEntity;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.repository.AlumnoRepository;
 
-/**
- * Spring Data JPA OwnerRepository interface
- *
- * @author Michael Isvy
- * @since 15.1.2013
- */
+
 public interface AlumnoRepository extends Repository<Alumno, Integer> {
 
 	/**

@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<!DOCTYPE>
 <html lang="es">
 
 <head>
@@ -18,7 +18,7 @@
 <body>
     <header>
         <nav>
-            <a href="user/new">¡Aprende ya!</a>
+            <a href="/login">¡Aprende ya!</a>
             <a href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
             <h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
         </nav>
