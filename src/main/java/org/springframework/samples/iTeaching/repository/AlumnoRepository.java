@@ -15,8 +15,6 @@
  */
 package org.springframework.samples.iTeaching.repository;
 
-import java.util.Collection;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -25,7 +23,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.samples.iTeaching.model.BaseEntity;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.repository.AlumnoRepository;
-
 /**
  * Spring Data JPA OwnerRepository interface
  *
@@ -33,6 +30,7 @@ import org.springframework.samples.iTeaching.repository.AlumnoRepository;
  * @since 15.1.2013
  */
 public interface AlumnoRepository extends CrudRepository<Alumno, Integer> {
+
 
 //	@Query("SELECT DISTINCT owner FROM Alumno alumno left join fetch owner.pets WHERE owner.lastName LIKE :lastName%")
 //	public Collection<Alumno> findByLastName(@Param("lastName") String lastName);

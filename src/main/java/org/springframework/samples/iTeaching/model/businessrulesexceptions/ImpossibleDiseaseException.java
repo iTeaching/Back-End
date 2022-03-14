@@ -1,6 +1,5 @@
 package org.springframework.samples.iTeaching.model.businessrulesexceptions;
 
-import lombok.Data;
 import lombok.Getter;
 
 @Getter
