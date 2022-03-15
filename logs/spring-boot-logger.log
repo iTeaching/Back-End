@@ -177,6 +177,7 @@ org.springframework.samples.iTeaching.web.ProfesorController#deleteProfesor(int)
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:171)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
+
 	... 21 common frames omitted
 2022-03-15 12:32:43,394 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 14252 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
 2022-03-15 12:32:43,401 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
