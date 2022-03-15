@@ -58,6 +58,6 @@ public class UserController {
 			this.alumnoService.saveAlumno(alumno);
 			return "redirect:/";
 		}
+	
 	}
-
 }
