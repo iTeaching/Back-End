@@ -84,7 +84,7 @@ public class ProfesorController {
 		return mav;
 	}
 	
-	@GetMapping("/profesores/{profesorId}")
+	@PostMapping("/profesores/{profesorId}")
 	public String deleteProfesor(@PathVariable("profesorId") int profesorId) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();

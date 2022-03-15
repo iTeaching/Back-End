@@ -144,7 +144,7 @@ public class AlumnoController {
 		mav.addObject("alumno",alumno);
 		return mav;
 	}
-	@GetMapping("/alumnos/{alumnoId}")
+	@PostMapping("/alumnos/{alumnoId}")
 	public String deleteAlumno(@PathVariable("alumnoId") int alumnoId) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
