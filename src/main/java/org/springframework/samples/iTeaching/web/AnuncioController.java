@@ -75,14 +75,14 @@ public class AnuncioController {
 	public String findAnuncios(Map<String, Object> model) {
 		List<Anuncio> anuncios = this.anuncioService.findAll();
 		model.put("anuncios", anuncios);
-		return "anuncios/list";
+		return "anuncios/anuncioList";
 	}
 	
 	@GetMapping(value="/ofertas/find/{asignatura}")
 	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
 		List<Anuncio> anuncios = (List<Anuncio>) this.anuncioService.findByAsignatura(asignatura);
 		model.put("anuncios", anuncios);
-		return "anuncios/list";
+		return "anuncios/anuncioList";
 	}
 	
 	@GetMapping(value = "/ofertas/{anuncioId}/edit")
@@ -97,7 +97,7 @@ public class AnuncioController {
 		return VIEWS_ANUNCIO_CREATE_FORM;
 	}
 		else {
-			return "welccome";
+			return "welcome";
 		}
 	}
 
