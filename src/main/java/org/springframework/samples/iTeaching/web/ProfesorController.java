@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProfesorController {
-	private static final String VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM = "profesores/createOrOwnerProfesorForm";
+	private static final String VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM = "profesores/createOrUpdateProfesorForm";
 
 	@Autowired
 	private ProfesorService profesorService;

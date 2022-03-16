@@ -53,7 +53,6 @@ public class AnuncioController {
 		else {
 			//creating profesor, user and authorities
 			this.anuncioService.saveAnuncio(anuncio);
-			
 			return "redirect:/usuarios/" + anuncio.getId();
 		}
 		

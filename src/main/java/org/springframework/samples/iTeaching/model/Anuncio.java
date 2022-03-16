@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +32,7 @@ public class Anuncio extends BaseEntity {
 	String asignatura;
 	
 	@Column(name="precio")
-	@NotEmpty
+	@NotNull
 	Double precio;
 	
 	@ManyToOne
