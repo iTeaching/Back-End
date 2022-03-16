@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -36,6 +37,13 @@ public class SalaController {
 	private ProfesorService profesorService;
 	private static final String VIEWS_SALA_CREATE_FORM = "salas/createSalaForm";
 
+	@Autowired
+	public SalaController(SalaService salaService, ProfesorService profesorService,UserService userService) {
+		this.salaService=salaService;
+		this.profesorService=profesorService;
+		this.userService=userService;
+	}
+	
 	@GetMapping(value = "/salas/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Sala sala = new Sala();
@@ -72,4 +80,18 @@ public class SalaController {
 		return "salas/list";
 	}
 	
+	@GetMapping (value ="/salas")
+	public String mySalas(Map<String, Object> model) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Profesor usuario = profesorService.findProfesorByUsername(username);
+		List<Sala> salas= (List<Sala>) this.salaService.findByUsuario(usuario.getId());
+		model.put("salas",salas);
+		for (int i=0;i<salas.size();i++) {
+			List<Alumno> alumnos = salas.get(i).getAlumnos();
+			model.put("alumnos",alumnos);
+		}
+		return "salas/list";
+	}
 }
