@@ -1,18 +1,19 @@
+<%@ tag pageEncoding='UTF-8' %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+	uri="http://www.springframework.org/security/tags"%>	
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
-
-<meta charset="UTF-8">    
+<!DOCTYPE>
+<html lang="es">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iTeaching</title>
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-	<link href="../resources/images/estilos.css" rel="stylesheet" type="text/css">
+	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
 <nav>
 <ul class="nav navbar-nav">
 
@@ -35,7 +36,7 @@
 				</iteaching:menuItem>
 			</ul>
         </nav>
-        <img src="resources/images/logo.png" class="logo">
+        <img src="../resources/images/logo.png" class="logo">
 
         
 		<%-- <div class="navbar-collapse collapse" id="main-navbar">

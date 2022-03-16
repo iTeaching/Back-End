@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags --%>
 
-    <spring:url value="/resources/images/favicon.png" var="favicon"/>
+    <spring:url value="../resources/images/logo.ico" var="favicon"/>
     <link rel="shortcut icon" type="image/x-icon" href="${favicon}">
 
     <title>iTeaching</title>
 
     <%-- CSS generated from LESS --%>
-    <spring:url value="../resources/images/estilos.css" var="iteachingCss"/>
+    <spring:url value="../resources/style/estilos.css" var="iteachingCss"/>
     <link href="${iteachingCss}" rel="stylesheet"/>
 
 
