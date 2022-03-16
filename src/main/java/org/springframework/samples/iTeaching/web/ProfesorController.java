@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProfesorController {
-	private static final String VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM = "profesores/createOrOwnerProfesorForm";
+	private static final String VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM = "profesores/createOrUpdateProfesorForm";
 
 	@Autowired
 	private ProfesorService profesorService;
