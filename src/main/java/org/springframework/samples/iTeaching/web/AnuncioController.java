@@ -90,7 +90,7 @@ public class AnuncioController {
 		return VIEWS_ANUNCIO_CREATE_FORM;
 	}
 		else {
-			return "welccome";
+			return "welcome";
 		}
 	}
 

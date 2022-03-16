@@ -16,10 +16,17 @@ INSERT INTO authorities(id,version,username,authority) VALUES (4,1,'profesor1','
 INSERT INTO profesor VALUES (1, 1, 'jorgedfez@gmail.com', 'Jorge', 'Fernandez', '6085551023', 'profesor1');
 
 -- ANUNCIOS
-INSERT INTO anuncio VALUES (1, 1, 'Fisica', 'Imparto clases de fisica',13.5, 'Fisica',  1);
+--INSERT INTO anuncio VALUES (1, 1, 'Fisica', 'Imparto clases de fisica',13.5, 'Fisica',  1);
+
+INSERT INTO anuncio VALUES (1,1,'Matematicas', 'Imparto clases de matematicas de un nivel',10.50, 'Matematicas',  1);
+
+INSERT INTO anuncio VALUES (2,1,'Fisica', 'Imparto clases de fisica de un nivel',13.50, 'Fisica',  1);
 
 --INSERT INTO anuncio(titulo,descripcion,asignatura,precio,profesor_id) VALUES ('Matematicas', 'Imparto clases de matematicas de un nivel', 'Matematicas', 10.5,  1);
---INSERT INTO anuncio VALUES (3, 1, 'Tecnología', 'Imparto clases de tecnología',10.5, 'Tecnología',  1);
+
+--INSERT INTO anuncio(id,titulo,descripcion,asignatura,precio,profesor_id) VALUES (2,'Fisica', 'Imparto clases de fisica de un nivel', 'Fisica', 12.5,  2);
+
+--INSERT INTO anuncio(titulo,descripcion,asignatura,precio,profesor_id) VALUES ('Matematiqwefqecas', 'Imparto clases de matemqwedqweaticas de un nivel', 'Matematwqedqicas', 10.5,  1);
 
 
 
