@@ -12,6 +12,6 @@ public interface ProfesorRepository extends CrudRepository<Profesor, Integer>{
 	public Profesor findById(@Param("id") int id);
 
 	@Query("SELECT profesor FROM Profesor profesor WHERE profesor.user.username =:username")
-	Profesor findByUsername(String username);
+	public Profesor findByUsername(String username);
 
 }
