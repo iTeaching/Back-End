@@ -6,7 +6,15 @@
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
 
-<nav class="navbar navbar-default" role="navigation">
+<meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iTeaching</title>
+    <link rel="shortcut icon" href="resources/images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+	<link href="../resources/images/estilos.css" rel="stylesheet" type="text/css">
+	
+<%-- <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand"
@@ -89,4 +97,4 @@
 
 
 	</div>
-</nav>
+</nav> --%>

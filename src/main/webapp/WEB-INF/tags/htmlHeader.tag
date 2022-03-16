@@ -16,7 +16,7 @@
 
     <%-- CSS generated from LESS --%>
     <spring:url value="../resources/images/estilos.css" var="iteachingCss"/>
-    <link href="${petclinicCss}" rel="stylesheet"/>
+    <link href="${iteachingCss}" rel="stylesheet"/>
 
 
     <%-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --%>
