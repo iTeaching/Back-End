@@ -5,7 +5,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Profesor;
-import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -108,11 +107,6 @@ public class AlumnoController {
 		}
 	}
 
-	/**
-	 * Custom handler for displaying an alumno.
-	 * @param alumnoId the ID of the alumno to display
-	 * @return a ModelMap with the model attributes for the view
-	 */
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
 		ModelAndView mav = new ModelAndView("alumnos/alumnoDetails");
