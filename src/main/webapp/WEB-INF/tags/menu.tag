@@ -1,13 +1,20 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
 
-<nav class="navbar navbar-default" role="navigation">
+<meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iTeaching</title>
+    <link rel="shortcut icon" href="resources/images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+	<link href="../resources/images/estilos.css" rel="stylesheet" type="text/css">
+	
+<%-- <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand"
@@ -24,11 +31,11 @@
 			<ul class="nav navbar-nav">
 
 
-				<petclinic:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
 					title="veterinarians">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
-				</petclinic:menuItem>
+				</iteaching:menuItem>
 			</ul>
 
 
@@ -90,4 +97,4 @@
 
 
 	</div>
-</nav>
+</nav> --%>

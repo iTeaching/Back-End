@@ -1,36 +1,49 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
-<petclinic:layout pageName="profesor nuevo">
-    <h2>
-        <c:if test="${profesor['new']}">New </c:if> Profesor
-    </h2>
-    <form:form modelAttribute="profesor" class="form-horizontal" id="add-owner-form">
-        <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Telephone" name="telephone"/>
-            <petclinic:inputField label="Email" name="email"/>
-            <petclinic:inputField label="Username" name="user.username"/>
-            <petclinic:inputField label="Password" name="user.password"/>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <c:choose>
-                    <c:when test="${profesor ['new']}">
-                        <button class="btn btn-default" type="submit">¡Únete a nuestro plantel!</button>
-                    </c:when>
-                    <c:otherwise>
-                        <button class="btn btn-default" type="submit">Actualiza tu perfil</button>
-                    </c:otherwise>
-                </c:choose>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
+<iteaching:layout pageName="profesor nuevo">
+<!DOCTYPE>
+<html lang="es">
+<body>
+    <header>
+        <nav>
+            <a href="/login">¡Aprende ya!</a>
+            <a href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
+            <h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
+        </nav>
+        <img src="resources/images/logo.png" class="logo">
+
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                    style="stroke: none; fill: #fff;"></path>
+            </svg></div>
+    </header>
+    <main>
+        <section class="contenedor sobre-nosotros">
+            <form:form modelAttribute="profesor" class="form-signin" >
+                <iteaching:inputField label="First Name" name="firstName"/>
+                <iteaching:inputField label="Last Name" name="lastName"/>
+                <iteaching:inputField label="Telephone" name="telephone"/>
+                <iteaching:inputField label="Email" name="email"/>
+                <iteaching:inputField label="Username" name="user.username"/>
+                <iteaching:inputPassword  label="Password" name="user.password"/>
+                <h1><button type="submit">Iniciar</button></h1>
+            </form:form>
+        </section>
+    </main>
+    <footer>
+        <div class="contenedor-footer">
+            <div class="footer-contact--email">
+                <img src="resources/images/gmail.svg" class="footer_img">
             </div>
         </div>
-    </form:form>
-</petclinic:layout>
+        <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
+    </footer>
+</body>
+</iteaching:layout>
