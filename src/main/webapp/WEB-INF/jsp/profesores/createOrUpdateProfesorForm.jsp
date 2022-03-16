@@ -17,24 +17,29 @@
     <title>iTeaching</title>
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-	<link href="../resources/images/estilos.css" rel="stylesheet" type="text/css">
+	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
+	<style>
+body {
+    font-family: 'open sans';
+}
+
+.contenedor {
+    padding: 60px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.registros {
+  background-image: url(../images/img1.jpg);
+  background-size: cover;
+ }
+
+ </style>
 </head>
 
-<body>
-    <header>
-        <nav>
-            <a href="/login">¡Aprende ya!</a>
-            <a href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
-            <h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
-        </nav>
-        <img src="../resources/images/logo.png" class="logo">
-
-        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
-                style="height: 100%; width: 100%;">
-                <path d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-                    style="stroke: none; fill: #fff;"></path>
-            </svg></div>
-    </header>
+<body class="registros" background="../images/img1.jpg">
     <main>
         <section class="contenedor sobre-nosotros">
             <form:form modelAttribute="profesor" class="form-signin" >

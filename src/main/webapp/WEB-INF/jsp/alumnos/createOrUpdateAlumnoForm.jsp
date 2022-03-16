@@ -23,26 +23,13 @@
 	type="text/css">
 </head>
 
-<body>
-	<header>
-		<nav>
-			<a href="/login">¡Aprende ya!</a> <a
-				href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
-			<h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
-		</nav>
+<body class="registros">
+<!-- 	<header>
 		<img src="../resources/images/logo.png" class="logo">
-
-		<div class="wave" style="height: 150px; overflow: hidden;">
-			<svg viewBox="0 0 500 150" preserveAspectRatio="none"
-				style="height: 100%; width: 100%;">
-                <path
-					d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-					style="stroke: none; fill: #fff;"></path>
-            </svg>
-		</div>
-	</header>
+	</header> -->
 	<main>
 		<section class="contenedor sobre-nosotros">
+		<div align="center">
 			<form:form modelAttribute="alumno" class="form-signin">
 				<iteaching:inputField label="First Name" name="firstName" />
 				<iteaching:inputField label="Last Name" name="lastName" />
@@ -54,6 +41,7 @@
 					<button type="submit">Iniciar</button>
 				</h1>
 			</form:form>
+			</div>
 		</section>
 	</main>
 
