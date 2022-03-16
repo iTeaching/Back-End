@@ -1,6 +1,7 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +39,14 @@ public class AnuncioController {
 		dataBinder.setDisallowedFields("id");
 	}
 	
-	@GetMapping(value = "/oferta/new")
+	@GetMapping(value = "/ofertas/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Anuncio anuncio = new Anuncio();
 		model.put("anuncio", anuncio);
 		return VIEWS_ANUNCIO_CREATE_FORM;
 	}
 	
-	@PostMapping(value = "/oferta/new")
+	@PostMapping(value = "/ofertas/new")
 	public String processCreationForm(@Valid Anuncio anuncio, BindingResult result) {
 		if (result.hasErrors()) {
 			return VIEWS_ANUNCIO_CREATE_FORM;
@@ -59,15 +60,7 @@ public class AnuncioController {
 		
 		}
 	
-	
-
-	@GetMapping(value = "/ofertas/find")
-	public String initFindForm(Map<String, Object> model) {
-		model.put("anuncio", new Anuncio());
-		return "ofertas/findOfertas";
-	}
-	
-	@GetMapping(value="/misAnuncios")
+	@GetMapping(value="/ofertas/misOfertas")
 	public String findMisAnuncios(Map<String, Object> model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -78,7 +71,21 @@ public class AnuncioController {
 		return "anuncios/misAnuncios";
 	}
 	
-	@GetMapping(value = "/anuncio/{anuncioId}/edit")
+	@GetMapping(value="/ofertas/find")
+	public String findAnuncios(Map<String, Object> model) {
+		List<Anuncio> anuncios = this.anuncioService.findAll();
+		model.put("anuncios", anuncios);
+		return "anuncios/list";
+	}
+	
+	@GetMapping(value="/ofertas/find/{asignatura}")
+	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
+		List<Anuncio> anuncios = (List<Anuncio>) this.anuncioService.findByAsignatura(asignatura);
+		model.put("anuncios", anuncios);
+		return "anuncios/list";
+	}
+	
+	@GetMapping(value = "/ofertas/{anuncioId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("anuncioId") int anuncioId, Model model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -94,7 +101,7 @@ public class AnuncioController {
 		}
 	}
 
-	@PostMapping(value = "/anuncio/{anuncioId}/edit")
+	@PostMapping(value = "/ofertas/{anuncioId}/edit")
 	public String processUpdateOwnerForm(@Valid Anuncio anuncio, BindingResult result,
 			@PathVariable("anuncioId") int anuncioId) {
 		if (result.hasErrors()) {
