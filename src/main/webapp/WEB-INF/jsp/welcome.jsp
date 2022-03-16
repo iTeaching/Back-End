@@ -107,12 +107,4 @@
         </div>
         <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
     </footer>
-    
-    <button type="button" class="v-btn v-btn--bottom v-btn--contained v-btn--fab v-btn--fixed v-btn--left v-btn--round theme--dark v-size--small primary" aria-label="Volver arriba" style="left: 65px; transform-origin: center center;">
-    ::before
-    <span class="v-btn__content">
-    <i aria-hidden="true" class="v-icon notranslate mdi mdi-arrow-up theme--dark">
-    ::before
-    ::after
-    </i></span></button>
 </body>
