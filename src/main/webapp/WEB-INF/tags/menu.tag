@@ -1,9 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
 
@@ -24,11 +23,11 @@
 			<ul class="nav navbar-nav">
 
 
-				<petclinic:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
 					title="veterinarians">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
-				</petclinic:menuItem>
+				</iteaching:menuItem>
 			</ul>
 
 

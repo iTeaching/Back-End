@@ -12,10 +12,10 @@
     <spring:url value="/resources/images/favicon.png" var="favicon"/>
     <link rel="shortcut icon" type="image/x-icon" href="${favicon}">
 
-    <title>PetClinic :: a Spring Framework demonstration</title>
+    <title>iTeaching</title>
 
     <%-- CSS generated from LESS --%>
-    <spring:url value="/resources/css/petclinic.css" var="petclinicCss"/>
+    <spring:url value="../resources/images/estilos.css" var="iteachingCss"/>
     <link href="${petclinicCss}" rel="stylesheet"/>
 
 

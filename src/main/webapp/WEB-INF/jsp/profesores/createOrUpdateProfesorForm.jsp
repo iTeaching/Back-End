@@ -4,21 +4,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<petclinic:layout pageName="profesor nuevo">
+<iteaching:layout pageName="profesor nuevo">
     <h2>
         <c:if test="${profesor['new']}">New </c:if> Profesor
     </h2>
     <form:form modelAttribute="profesor" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Telephone" name="telephone"/>
-            <petclinic:inputField label="Email" name="email"/>
-            <petclinic:inputField label="Username" name="user.username"/>
-            <petclinic:inputField label="Password" name="user.password"/>
+            <iteaching:inputField label="First Name" name="firstName"/>
+            <iteaching:inputField label="Last Name" name="lastName"/>
+            <iteaching:inputField label="Telephone" name="telephone"/>
+            <iteaching:inputField label="Email" name="email"/>
+            <iteaching:inputField label="Username" name="user.username"/>
+            <iteaching:inputField label="Password" name="user.password"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -33,4 +33,4 @@
             </div>
         </div>
     </form:form>
-</petclinic:layout>
+</iteaching:layout>
