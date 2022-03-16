@@ -27,7 +27,7 @@
             <a href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
             <h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
         </nav>
-        <img src="resources/images/logo.png" class="logo">
+        <img src="../resources/images/logo.png" class="logo">
 
         <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
@@ -48,13 +48,6 @@
             </form:form>
         </section>
     </main>
-    <footer>
-        <div class="contenedor-footer">
-            <div class="footer-contact--email">
-                <img src="resources/images/gmail.svg" class="footer_img">
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
-    </footer>
+
 </body>
 </iteaching:layout>
