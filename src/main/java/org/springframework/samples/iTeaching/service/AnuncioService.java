@@ -27,4 +27,8 @@ public class AnuncioService {
 	public void saveAnuncio(Anuncio anuncio) {
 		anuncioRepository.save(anuncio);
 	}
+	
+	public Collection<Anuncio> findByAsignatura(String asignatura){
+		return anuncioRepository.findByAsignatura(asignatura);
+	}
 	}

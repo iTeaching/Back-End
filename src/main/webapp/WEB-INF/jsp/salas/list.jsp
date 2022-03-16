@@ -7,6 +7,10 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <iteaching:layout pageName="salas">
+	<header>
+	<nav>
+    </nav>
+    </header>
     <h2>Mis Salas</h2>
 
     <table id="salasTable" class="table table-striped">

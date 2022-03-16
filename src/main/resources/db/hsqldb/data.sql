@@ -4,6 +4,10 @@ INSERT INTO authorities(id,version,username,authority) VALUES (1,1,'admin1','adm
 -- One owner user, named owner1 with passwor 0wn3r
 INSERT INTO users(username,password,enabled) VALUES ('alumno','alumno1',TRUE);
 INSERT INTO authorities(id,version,username,authority) VALUES (2,1,'alumno','alumno');
+
+-- One owner user, named owner1 with passwor 0wn3r
+INSERT INTO users(username,password,enabled) VALUES ('alumno2','alumno2',TRUE);
+INSERT INTO authorities(id,version,username,authority) VALUES (4,1,'alumno2','alumno');
 -- One vet user, named vet1 with passwor v3t
 INSERT INTO users(username,password,enabled) VALUES ('prof','prof1',TRUE);
 INSERT INTO authorities(id,version,username,authority) VALUES (3,1,'prof','profesor');
@@ -13,3 +17,4 @@ INSERT INTO alumno VALUES (1,1,'alumnomolon@gmail.com','alumno', 'molon','666111
 
 INSERT INTO salas VALUES (1,1,'sala1',1);
 
+INSERT INTO anuncio VALUES (1,1,'Física', 'Clases muy baratas','15','Clases de fisica', 1)

@@ -17,12 +17,29 @@
 <nav>
 <ul class="nav navbar-nav">
 
-				<sec:authorize access="hasAnyRole('profesor')">
+				<sec:authorize access="hasAnyAuthority('profesor')">
 				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
 				</iteaching:menuItem>
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/salas/new">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<span>Crear Sala</span>
+				</iteaching:menuItem>
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/salas">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<span>Mis Salas</span>
+				</iteaching:menuItem>
 				</sec:authorize>
+				
+				<sec:authorize access="hasAnyAuthority('alumno')">
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="">
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<span>Ver ofertas</span>
+				</iteaching:menuItem>
+				
+				</sec:authorize>
+				
 				<sec:authorize access="!isAuthenticated()">
 				<iteaching:menuItem active="${name eq 'anuncios'}" url="/login">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
@@ -33,7 +50,11 @@
 					title="veterinarians">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Contáctanos</span>
+				
 				</iteaching:menuItem>
+				
+				
+				
 			</ul>
         </nav>
         <img src="../resources/images/logo.png" class="logo">
