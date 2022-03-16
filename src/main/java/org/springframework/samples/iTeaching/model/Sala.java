@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -25,7 +26,7 @@ public class Sala extends BaseEntity{
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
-	private Set<Alumno> alumnos;
+	private List<Alumno> alumnos;
 	
 	@ManyToOne
 	@JoinColumn(name = "profesor")
