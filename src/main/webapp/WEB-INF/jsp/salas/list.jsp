@@ -32,7 +32,7 @@
                     <spring:url value="/salas/details" var="salaUrl">
                         <spring:param name="salaId" value="${sala.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(salaUrl)}"><c:out value="${sala.nombre}"/></a>
+                   <c:out value="${sala.nombre}"/>
                 </td>
                 <sec:authorize access="hasAuthority('alumno')">
                 <td>
