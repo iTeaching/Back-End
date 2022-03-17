@@ -19,8 +19,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap"
 	rel="stylesheet">
-<link href="../resources/images/estilos.css" rel="stylesheet"
-	type="text/css">
+<link href="../resources/images/estilos.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="registros">

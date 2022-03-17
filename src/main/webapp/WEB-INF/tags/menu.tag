@@ -6,14 +6,7 @@
 	uri="http://www.springframework.org/security/tags"%>	
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
-<!DOCTYPE>
-<html lang="es">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>iTeaching</title>
-    <link rel="shortcut icon" href="resources/images/logo.ico">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
+
 <nav>
 <ul class="nav navbar-nav">
 
@@ -46,13 +39,14 @@
 					<span>Login</span>
 				</iteaching:menuItem>
 				</sec:authorize>
+				
+				<sec:authorize access="!isAuthenticated()">
 				<iteaching:menuItem active="${name eq 'anuncios'}" url="mailto:iteaching.sa@gmail.com​"
-					title="veterinarians">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Contáctanos</span>
-				
+					title="Contacto">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					<span>Contacto</span>
 				</iteaching:menuItem>
-				
+				</sec:authorize>
 				
 				
 			</ul>
