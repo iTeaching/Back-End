@@ -5,7 +5,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -71,7 +70,8 @@ public class ProfesorController {
 		else {
 			profesor.setId(profesorId);
 			this.profesorService.saveProfesor(profesor);
-			return "redirect:/profesores/{profesorId}";
+//			System.out.println(profesorId);
+			return "redirect:/profesores/{profesorId}/perfil";
 		}
 	}
 
@@ -92,11 +92,35 @@ public class ProfesorController {
 		Profesor usuario = profesorService.findProfesorByUsername(username);
 		Profesor profesor = profesorService.findProfesorById(profesorId);
 		if (usuario.equals(profesor)) {
-		this.profesorService.delete(profesor);
-		return "welcome";
-	}
+			this.profesorService.delete(profesor);
+			return "welcome";
+		}
 		else {
-			return "welccome";
+			return "welcome";
 		}
 	}
+	
+	
+	@GetMapping(value = "/profesores/{profesorId}/perfil")
+	public String miPerfil(@PathVariable("profesorId") int profesorId, Model model) {		
+		
+		try {	// si está logueado
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String username= clienteDetails.getUsername();
+			System.out.println(username);
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			Profesor profesor = profesorService.findProfesorById(profesorId);
+			if (usuario.equals(profesor)) {
+				model.addAttribute("profesor", profesor);
+				return "profesores/miPerfil";
+			}
+			else {
+				return "redirect:/";
+			}
+		}catch(Exception e) {	// si no está logueado
+			return "redirect:/";
+		}
+		
+	}
+	
 }

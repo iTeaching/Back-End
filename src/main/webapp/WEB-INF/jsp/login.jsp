@@ -12,7 +12,25 @@
     <title>iTeaching</title>
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-	<link href="../resources/images/estilos.css" rel="stylesheet" type="text/css">
+	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+	.button {
+  background-color: #dab305;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 14px 40px;
+  align-self:center;
+}
+
+	</style>
 </head>
 
 <body>
@@ -29,15 +47,19 @@
     </header>
     <main>
         <section class="contenedor sobre-nosotros">
+        <div align="center">
             <h1>Login</h1>
 	<form action="${path}/login" method="post" class="form-signin">
-		<p style="color:red;">${error}</p>
+	
 		<p style="color:green;">${message}</p>
 		<p>Usuario : <input type="text" name="username" placeholder="Usuario"/></p>
 		<p>Contrasena : <input type="password" name="password" placeholder="Contrasena"/></p>
+		<p style="color:red;">${error}</p>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<h1><button type="submit">Iniciar</button></h1>
-	</form>
+		<button class="button">Iniciar sesión</button> 
+			</form>
+		</div>
+
         </section>
     </main>
     <footer>

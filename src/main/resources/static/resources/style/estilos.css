@@ -16,13 +16,14 @@ body {
     overflow: hidden;
 }
 
+
 /* Header */
 
 header {
     width: 100%;
     height: 600px;
-    background: url(../img/cabecera.jpg);
-    background: linear-gradient url(../img/cabecera.jpg);
+    background: url(../images/cabecera.jpg);
+    background: linear-gradient url(../images/cabecera.jpg);
     background-size: cover;
     background-attachment: fixed;
     position: relative;

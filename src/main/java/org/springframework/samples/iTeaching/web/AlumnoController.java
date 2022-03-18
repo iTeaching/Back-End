@@ -4,7 +4,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -107,11 +107,6 @@ public class AlumnoController {
 		}
 	}
 
-	/**
-	 * Custom handler for displaying an alumno.
-	 * @param alumnoId the ID of the alumno to display
-	 * @return a ModelMap with the model attributes for the view
-	 */
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
 		ModelAndView mav = new ModelAndView("alumnos/alumnoDetails");
@@ -131,7 +126,31 @@ public class AlumnoController {
 		return "welcome";
 	}
 		else {
-			return "welccome";
+			return "welcome";
 		}
 	}
+	
+	
+	@GetMapping(value = "/alumnos/{alumnoId}/perfil")
+	public String miPerfil(@PathVariable("alumnoId") int alumnoId, Model model) {		
+		
+		try {	// si está logueado
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String username= clienteDetails.getUsername();
+			System.out.println(username);
+			Alumno usuario = alumnoService.findAlumnoByUsername(username);
+			Alumno alumno = alumnoService.findAlumnoById(alumnoId);
+			if (usuario.equals(alumno)) {
+				model.addAttribute("alumno", alumno);
+				return "alumnos/miPerfil";
+			}
+			else {
+				return "redirect:/";
+			}
+		}catch(Exception e) {	// si no está logueado
+			return "redirect:/";
+		}
+		
+	}
+	
 }
