@@ -16,6 +16,11 @@ body {
     overflow: hidden;
 }
 
+.registros {
+  background-image: url(img1.jpg);
+  background-size: cover;
+ }
+
 /* Header */
 
 header {

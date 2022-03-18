@@ -32,4 +32,9 @@ public class AnuncioService {
 		// TODO Auto-generated method stub
 		anuncioRepository.delete(anuncio);
 	}
+	
+	public Collection<Anuncio> findByAsignatura(String asignatura){
+		return anuncioRepository.findByAsignatura(asignatura);
+
+	}
 	}

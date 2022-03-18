@@ -8,7 +8,7 @@ import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.util.StopWatch;
 
-@ManagedResource("petclinic:type=CallMonitor")
+@ManagedResource("iteaching:type=CallMonitor")
 @Aspect
 public class CallMonitoringAspect {
 
