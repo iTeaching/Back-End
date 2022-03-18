@@ -2,12 +2,8 @@ package org.springframework.samples.iTeaching.model.audit;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import org.hibernate.envers.DefaultRevisionEntity;
 import org.hibernate.envers.RevisionEntity;
-
-import lombok.Data;
-
 
 @Entity
 @RevisionEntity(UserRevisionListener.class)

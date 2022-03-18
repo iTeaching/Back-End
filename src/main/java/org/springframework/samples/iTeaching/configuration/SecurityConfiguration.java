@@ -42,14 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/vets/**").authenticated()
 				.antMatchers("/payments/**").authenticated()
 				.antMatchers("/bills/**").authenticated()
-				.anyRequest().denyAll()
+				.antMatchers("oferta/new").hasAnyAuthority("profesor")
 				.and()
 				 	.formLogin()
-				 	/*.loginPage("/login")*/
-				 	.failureUrl("/login-error")
-				.and()
-					.logout()
-						.logoutSuccessUrl("/"); 
+				 	.loginPage("/login")
+				 	.defaultSuccessUrl("/alumnos/new")
+					.permitAll()
+					.and()
+					.logout().permitAll(); 
                 // Configuración para que funcione la consola de administración 
                 // de la BD H2 (deshabilitar las cabeceras de protección contra
                 // ataques de tipo csrf y habilitar los framesets si su contenido

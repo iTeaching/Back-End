@@ -1,13 +1,9 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AnuncioService;
@@ -58,7 +54,6 @@ public class AnuncioController {
 		else {
 			//creating profesor, user and authorities
 			this.anuncioService.saveAnuncio(anuncio);
-			
 			return "redirect:/usuarios/" + anuncio.getId();
 		}
 		
