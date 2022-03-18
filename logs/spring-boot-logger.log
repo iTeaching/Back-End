@@ -1375,3 +1375,590 @@ insert into alumno (id, version, email, first_name, last_name, telephone, profes
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
 2022-03-16 21:04:59,373 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(68)-127.0.0.1] HikariPool-11 - Shutdown initiated...
 2022-03-16 21:04:59,377 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(68)-127.0.0.1] HikariPool-11 - Shutdown completed.
+2022-03-18 13:03:55,508 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 13:03:55,512 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 13:03:55,612 INFO org.springframework.boot.logging.DeferredLog [restartedMain] The Class-Path manifest attribute in C:\Users\Francisco\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2022-03-18 13:03:55,613 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-18 13:03:55,614 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-18 13:03:58,138 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 13:03:58,362 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 204ms. Found 6 JPA repository interfaces.
+2022-03-18 13:04:00,545 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 13:04:02,788 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-03-18 13:04:02,836 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-03-18 13:04:02,838 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 13:04:02,839 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 13:04:03,759 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 13:04:03,821 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 13:04:03,823 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 8208 ms
+2022-03-18 13:04:04,326 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-03-18 13:04:04,891 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-03-18 13:04:04,907 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 13:04:05,725 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 13:04:06,029 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate Core {5.4.10.Final}
+2022-03-18 13:04:06,493 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-03-18 13:04:06,943 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 13:04:07,091 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 13:04:09,199 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 13:04:09,222 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 13:04:09,254 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 13:04:09,505 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 13:04:11,474 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e6ca7bd, org.springframework.security.web.context.SecurityContextPersistenceFilter@5e4295c, org.springframework.security.web.header.HeaderWriterFilter@17fa0b31, org.springframework.security.web.csrf.CsrfFilter@6388f98c, org.springframework.security.web.authentication.logout.LogoutFilter@6bb9e3eb, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@57a4fce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@63620793, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2b5f69f0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ff8f196, org.springframework.security.web.session.SessionManagementFilter@183a7c2b, org.springframework.security.web.access.ExceptionTranslationFilter@799e155b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7009928e]
+2022-03-18 13:04:11,795 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 13:04:14,349 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 13:04:14,471 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-03-18 13:04:14,689 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-18 13:04:14,709 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 20.067 seconds (JVM running for 21.464)
+2022-03-18 13:04:14,978 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 13:05:49,437 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-18 13:05:49,438 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-03-18 13:05:49,464 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 25 ms
+2022-03-18 13:06:32,558 WARN org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-7] Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [525] milliseconds.
+2022-03-18 13:59:24,761 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-5] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlacklistedUrls(StrictHttpFirewall.java:369)
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:194)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2022-03-18 13:59:52,032 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-7] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlacklistedUrls(StrictHttpFirewall.java:369)
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:194)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1598)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2022-03-18 14:11:48,746 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-4] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:11:48,753 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-4] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:11:48,758 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-4] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 14:11:49,194 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-4] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 14:11:49,197 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-4] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 14:11:49,441 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-4] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 14:11:49,444 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2022-03-18 14:11:49,452 INFO com.zaxxer.hikari.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
+2022-03-18 14:11:51,190 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:11:51,197 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:11:53,521 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:11:53,570 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
+java.lang.NoClassDefFoundError: org/springframework/samples/iTeaching/model/BaseEntity
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1016)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
+	at java.base/java.net.URLClassLoader.defineClass(URLClassLoader.java:550)
+	at java.base/java.net.URLClassLoader$1.run(URLClassLoader.java:458)
+	at java.base/java.net.URLClassLoader$1.run(URLClassLoader.java:452)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:451)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.findClass(RestartClassLoader.java:159)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:141)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.visitor.Reifier.reifyTypeArguments(Reifier.java:68)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:138)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.repository.ClassRepository.computeSuperInterfaces(ClassRepository.java:117)
+	at java.base/sun.reflect.generics.repository.ClassRepository.getSuperInterfaces(ClassRepository.java:95)
+	at java.base/java.lang.Class.getGenericInterfaces(Class.java:1138)
+	at org.springframework.core.ResolvableType.getInterfaces(ResolvableType.java:492)
+	at org.springframework.core.GenericTypeResolver.buildTypeVariableMap(GenericTypeResolver.java:270)
+	at org.springframework.core.GenericTypeResolver.getTypeVariableMap(GenericTypeResolver.java:247)
+	at org.springframework.data.util.ClassTypeInformation.getTypeVariableMap(ClassTypeInformation.java:115)
+	at org.springframework.data.util.ClassTypeInformation.getTypeVariableMap(ClassTypeInformation.java:104)
+	at org.springframework.data.util.ClassTypeInformation.<init>(ClassTypeInformation.java:93)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.util.ClassTypeInformation.from(ClassTypeInformation.java:71)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.<init>(AbstractRepositoryMetadata.java:58)
+	at org.springframework.data.repository.core.support.DefaultRepositoryMetadata.<init>(DefaultRepositoryMetadata.java:52)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.getMetadata(AbstractRepositoryMetadata.java:73)
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.getRepositoryConfigurations(RepositoryConfigurationExtensionSupport.java:102)
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:148)
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:385)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:384)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:331)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:236)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:275)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:95)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:706)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:532)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at org.springframework.samples.iTeaching.ITeachingApplication.main(ITeachingApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.ClassNotFoundException: org.springframework.samples.iTeaching.model.BaseEntity
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 59 common frames omitted
+2022-03-18 14:12:00,541 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-18 14:12:00,553 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-18 14:12:00,590 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:12:00,592 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:12:02,379 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:12:02,583 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 201ms. Found 6 JPA repository interfaces.
+2022-03-18 14:12:03,011 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 14:12:03,280 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-03-18 14:12:03,282 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-03-18 14:12:03,283 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 14:12:03,284 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 14:12:03,915 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 14:12:03,921 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 14:12:03,922 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 3315 ms
+2022-03-18 14:12:04,096 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2022-03-18 14:12:04,100 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2022-03-18 14:12:04,101 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 14:12:04,707 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 14:12:04,881 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 14:12:04,957 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 14:12:05,822 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 14:12:05,823 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:12:05,857 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 14:12:06,035 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 14:12:06,990 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@176460ab, org.springframework.security.web.context.SecurityContextPersistenceFilter@447b5dd0, org.springframework.security.web.header.HeaderWriterFilter@422db916, org.springframework.security.web.csrf.CsrfFilter@130960cb, org.springframework.security.web.authentication.logout.LogoutFilter@7f7f0224, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48e54066, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f4631d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@308cce2f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2eaa151f, org.springframework.security.web.session.SessionManagementFilter@1c2c79a6, org.springframework.security.web.access.ExceptionTranslationFilter@4eb2ba95, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1242bba]
+2022-03-18 14:12:07,194 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:12:08,619 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 14:12:08,663 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-03-18 14:12:08,672 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-18 14:12:08,674 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 8.284 seconds (JVM running for 4095.429)
+2022-03-18 14:12:08,678 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-03-18 14:12:08,679 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 14:12:15,481 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-9] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:12:15,495 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-9] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:12:15,498 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-9] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 14:12:15,535 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-9] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 14:12:15,553 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-9] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 14:12:15,756 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-9] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 14:12:15,757 INFO com.zaxxer.hikari.HikariDataSource [Thread-9] HikariPool-2 - Shutdown initiated...
+2022-03-18 14:12:15,763 INFO com.zaxxer.hikari.HikariDataSource [Thread-9] HikariPool-2 - Shutdown completed.
+2022-03-18 14:12:17,070 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:12:17,071 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:12:19,091 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:12:19,187 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 94ms. Found 6 JPA repository interfaces.
+2022-03-18 14:12:19,364 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 14:12:19,527 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-03-18 14:12:19,529 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-03-18 14:12:19,530 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 14:12:19,531 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 14:12:19,783 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 14:12:19,793 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 14:12:19,794 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2712 ms
+2022-03-18 14:12:19,865 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2022-03-18 14:12:19,874 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2022-03-18 14:12:19,879 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 14:12:20,105 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 14:12:20,136 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 14:12:20,150 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 14:12:20,475 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 14:12:20,476 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:12:20,485 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 14:12:20,562 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 14:12:20,836 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d296bcc, org.springframework.security.web.context.SecurityContextPersistenceFilter@1902562f, org.springframework.security.web.header.HeaderWriterFilter@132fae4e, org.springframework.security.web.csrf.CsrfFilter@3c84c45e, org.springframework.security.web.authentication.logout.LogoutFilter@3a9e0d53, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@51674908, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a7f53d6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44ccc509, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fb84ba8, org.springframework.security.web.session.SessionManagementFilter@33ed422, org.springframework.security.web.access.ExceptionTranslationFilter@41ce4011, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@dcd3568]
+2022-03-18 14:12:20,899 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:12:21,519 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 14:12:21,542 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-03-18 14:12:21,564 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-18 14:12:21,565 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 4.594 seconds (JVM running for 4108.321)
+2022-03-18 14:12:21,567 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-03-18 14:12:21,568 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 14:12:21,613 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-18 14:12:21,614 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-03-18 14:12:21,618 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 3 ms
+2022-03-18 14:25:18,329 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-18] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:25:18,333 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-18] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:25:18,334 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-18] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 14:25:18,340 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-18] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 14:25:18,345 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-18] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 14:25:18,553 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-18] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 14:25:18,554 INFO com.zaxxer.hikari.HikariDataSource [Thread-18] HikariPool-3 - Shutdown initiated...
+2022-03-18 14:25:18,563 INFO com.zaxxer.hikari.HikariDataSource [Thread-18] HikariPool-3 - Shutdown completed.
+2022-03-18 14:25:19,432 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:25:19,433 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:25:20,122 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:25:20,254 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 131ms. Found 6 JPA repository interfaces.
+2022-03-18 14:25:20,432 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 14:25:20,540 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-03-18 14:25:20,542 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-03-18 14:25:20,543 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 14:25:20,544 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 14:25:20,791 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 14:25:20,806 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 14:25:20,807 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1371 ms
+2022-03-18 14:25:20,857 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-4 - Starting...
+2022-03-18 14:25:20,862 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
+2022-03-18 14:25:20,863 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 14:25:21,086 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 14:25:21,121 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 14:25:21,141 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 14:25:21,689 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 14:25:21,690 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:25:21,696 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 14:25:21,761 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 14:25:22,075 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29a92f0a, org.springframework.security.web.context.SecurityContextPersistenceFilter@54303dfe, org.springframework.security.web.header.HeaderWriterFilter@3041f3fc, org.springframework.security.web.csrf.CsrfFilter@645c6734, org.springframework.security.web.authentication.logout.LogoutFilter@42cb5fab, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1ea5f3cd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f9e41b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@507f81a5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1778a6d0, org.springframework.security.web.session.SessionManagementFilter@53528567, org.springframework.security.web.access.ExceptionTranslationFilter@7c08e3b2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@65748d34]
+2022-03-18 14:25:22,148 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:25:22,870 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 14:25:22,894 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-03-18 14:25:22,902 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-18 14:25:22,903 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 3.531 seconds (JVM running for 4889.659)
+2022-03-18 14:25:22,907 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-03-18 14:25:22,908 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 14:40:12,497 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-23] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:40:12,499 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-23] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:40:12,500 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-23] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 14:40:12,510 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-23] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 14:40:12,511 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-23] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 14:40:12,747 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-23] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 14:40:12,748 INFO com.zaxxer.hikari.HikariDataSource [Thread-23] HikariPool-4 - Shutdown initiated...
+2022-03-18 14:40:12,751 INFO com.zaxxer.hikari.HikariDataSource [Thread-23] HikariPool-4 - Shutdown completed.
+2022-03-18 14:40:14,202 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:40:14,203 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:40:14,936 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:40:14,987 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 49ms. Found 6 JPA repository interfaces.
+2022-03-18 14:40:15,113 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 14:40:15,244 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9090 (http)
+2022-03-18 14:40:15,245 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9090"]
+2022-03-18 14:40:15,247 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 14:40:15,247 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 14:40:15,683 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 14:40:15,697 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 14:40:15,698 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1491 ms
+2022-03-18 14:40:15,760 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2022-03-18 14:40:15,765 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2022-03-18 14:40:15,766 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 14:40:15,893 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 14:40:15,912 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 14:40:15,925 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 14:40:16,171 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 14:40:16,172 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:40:16,180 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 14:40:16,288 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 14:40:16,582 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e818565, org.springframework.security.web.context.SecurityContextPersistenceFilter@685044f7, org.springframework.security.web.header.HeaderWriterFilter@2425ae73, org.springframework.security.web.csrf.CsrfFilter@56883105, org.springframework.security.web.authentication.logout.LogoutFilter@49e14f61, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6594e2c8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f312c32, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66ee5191, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45431b, org.springframework.security.web.session.SessionManagementFilter@7f475203, org.springframework.security.web.access.ExceptionTranslationFilter@60fce34c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6298bfa1]
+2022-03-18 14:40:16,663 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:40:17,313 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 14:40:17,332 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9090"]
+2022-03-18 14:40:17,337 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9090 (http) with context path ''
+2022-03-18 14:40:17,338 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 3.401 seconds (JVM running for 5784.093)
+2022-03-18 14:40:17,340 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-03-18 14:40:17,340 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 14:40:26,051 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-28] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:40:26,054 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-28] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:40:26,054 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-28] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 14:40:26,060 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-28] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 14:40:26,064 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-28] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 14:40:26,266 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-28] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 14:40:26,267 INFO com.zaxxer.hikari.HikariDataSource [Thread-28] HikariPool-5 - Shutdown initiated...
+2022-03-18 14:40:26,269 INFO com.zaxxer.hikari.HikariDataSource [Thread-28] HikariPool-5 - Shutdown completed.
+2022-03-18 14:40:27,281 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:40:27,282 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:40:27,983 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:40:28,027 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 42ms. Found 6 JPA repository interfaces.
+2022-03-18 14:40:28,140 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 14:40:28,235 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9090 (http)
+2022-03-18 14:40:28,236 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9090"]
+2022-03-18 14:40:28,237 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 14:40:28,238 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 14:40:28,514 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 14:40:28,522 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 14:40:28,523 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1230 ms
+2022-03-18 14:40:28,644 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-6 - Starting...
+2022-03-18 14:40:28,648 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
+2022-03-18 14:40:28,649 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 14:40:28,848 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 14:40:28,874 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 14:40:28,895 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 14:40:29,281 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 14:40:29,282 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:40:29,297 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 14:40:29,371 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 14:40:29,665 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3fe89e8f, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f233d72, org.springframework.security.web.header.HeaderWriterFilter@5f716787, org.springframework.security.web.csrf.CsrfFilter@6bf21db4, org.springframework.security.web.authentication.logout.LogoutFilter@57feb5cd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@272fd3cf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d695187, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9f048f2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d44d364, org.springframework.security.web.session.SessionManagementFilter@24479bf3, org.springframework.security.web.access.ExceptionTranslationFilter@cb1df3e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f76395a]
+2022-03-18 14:40:29,737 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:40:30,619 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 14:40:30,663 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9090"]
+2022-03-18 14:40:30,672 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9090 (http) with context path ''
+2022-03-18 14:40:30,673 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 3.469 seconds (JVM running for 5797.429)
+2022-03-18 14:40:30,677 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-03-18 14:40:30,677 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 14:41:07,431 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-33] Shutting down ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:41:07,433 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-33] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:41:07,434 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-33] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 14:41:07,465 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-33] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 14:41:07,469 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [Thread-33] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 14:41:07,680 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [Thread-33] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 14:41:07,681 INFO com.zaxxer.hikari.HikariDataSource [Thread-33] HikariPool-6 - Shutdown initiated...
+2022-03-18 14:41:07,683 INFO com.zaxxer.hikari.HikariDataSource [Thread-33] HikariPool-6 - Shutdown completed.
+2022-03-18 14:41:08,336 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 5724 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 14:41:08,336 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 14:41:08,742 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 14:41:08,782 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 38ms. Found 6 JPA repository interfaces.
+2022-03-18 14:41:08,855 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 14:41:08,920 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9090 (http)
+2022-03-18 14:41:08,921 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9090"]
+2022-03-18 14:41:08,921 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 14:41:08,921 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 14:41:09,104 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 14:41:09,109 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 14:41:09,110 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 772 ms
+2022-03-18 14:41:09,162 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-7 - Starting...
+2022-03-18 14:41:09,165 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-7 - Start completed.
+2022-03-18 14:41:09,166 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 14:41:09,305 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 14:41:09,319 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 14:41:09,329 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 14:41:09,522 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 14:41:09,522 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 14:41:09,528 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 14:41:09,569 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 14:41:09,951 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bf62a61, org.springframework.security.web.context.SecurityContextPersistenceFilter@1838aba0, org.springframework.security.web.header.HeaderWriterFilter@3585036e, org.springframework.security.web.csrf.CsrfFilter@3359b255, org.springframework.security.web.authentication.logout.LogoutFilter@555fb5e2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7f6e0b4f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18553ee0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d6c0f7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4abc97c0, org.springframework.security.web.session.SessionManagementFilter@668d763e, org.springframework.security.web.access.ExceptionTranslationFilter@24349b3c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3fa457b4]
+2022-03-18 14:41:10,034 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 14:41:10,589 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 14:41:10,602 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9090"]
+2022-03-18 14:41:10,607 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9090 (http) with context path ''
+2022-03-18 14:41:10,608 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 2.305 seconds (JVM running for 5837.364)
+2022-03-18 14:41:10,610 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-03-18 14:41:10,610 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 16:17:27,712 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 25508 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 16:17:27,818 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 16:17:29,355 INFO org.springframework.boot.logging.DeferredLog [restartedMain] The Class-Path manifest attribute in C:\Users\Francisco\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2022-03-18 16:17:29,356 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-18 16:17:29,357 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-18 16:17:44,944 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 16:17:45,690 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 698ms. Found 6 JPA repository interfaces.
+2022-03-18 16:17:49,276 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 16:17:55,237 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9090 (http)
+2022-03-18 16:17:55,494 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9090"]
+2022-03-18 16:17:55,495 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 16:17:55,496 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 16:17:57,293 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 16:17:57,349 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 16:17:57,350 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 27993 ms
+2022-03-18 16:17:58,411 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-03-18 16:17:59,163 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-03-18 16:17:59,177 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 16:18:00,762 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 16:18:01,252 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate Core {5.4.10.Final}
+2022-03-18 16:18:01,810 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-03-18 16:18:02,290 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 16:18:02,470 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 16:18:04,401 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 16:18:04,569 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 16:18:04,636 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 16:18:04,921 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 16:18:07,953 WARN org.springframework.context.support.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'paypalService': Unsatisfied dependency expressed through field 'apiContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paypalConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'paypal.client.secret' in value "${paypal.client.secret}"
+2022-03-18 16:18:07,955 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 16:18:07,956 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [restartedMain] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-03-18 16:18:07,993 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [restartedMain] HHH000478: Unsuccessful: 
+    drop table profesor if exists
+2022-03-18 16:18:08,047 ERROR org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [restartedMain] HHH000478: Unsuccessful: 
+    drop table users if exists
+2022-03-18 16:18:08,274 WARN org.springframework.beans.factory.support.DisposableBeanAdapter [restartedMain] Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-03-18 16:18:08,275 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown initiated...
+2022-03-18 16:18:08,284 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown completed.
+2022-03-18 16:18:08,301 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2022-03-18 16:18:08,439 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-03-18 16:18:08,459 ERROR org.springframework.boot.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'paypalService': Unsatisfied dependency expressed through field 'apiContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paypalConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'paypal.client.secret' in value "${paypal.client.secret}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:116)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
+	at org.springframework.samples.iTeaching.ITeachingApplication.main(ITeachingApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'paypalConfig': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'paypal.client.secret' in value "${paypal.client.secret}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'paypal.client.secret' in value "${paypal.client.secret}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:178)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:236)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:908)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:116)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 44 common frames omitted
+2022-03-18 16:19:17,819 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on LAPTOP-QLM6LFEK with PID 30120 (C:\Users\Francisco\git\Back-End\target\classes started by Francisco in C:\Users\Francisco\git\Back-End)
+2022-03-18 16:19:17,826 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-18 16:19:17,948 INFO org.springframework.boot.logging.DeferredLog [restartedMain] The Class-Path manifest attribute in C:\Users\Francisco\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/Francisco/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2022-03-18 16:19:17,949 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-03-18 16:19:17,950 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-03-18 16:19:20,975 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-18 16:19:21,320 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 325ms. Found 6 JPA repository interfaces.
+2022-03-18 16:19:22,488 INFO org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-18 16:19:23,910 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-03-18 16:19:23,928 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2022-03-18 16:19:23,929 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-03-18 16:19:23,930 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.30]
+2022-03-18 16:19:24,627 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022-03-18 16:19:24,669 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-03-18 16:19:24,670 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 6720 ms
+2022-03-18 16:19:24,951 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-03-18 16:19:25,371 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-03-18 16:19:25,384 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [restartedMain] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-03-18 16:19:26,079 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-18 16:19:26,292 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate Core {5.4.10.Final}
+2022-03-18 16:19:26,602 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-03-18 16:19:26,847 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-18 16:19:27,003 INFO org.hibernate.envers.boot.internal.EnversServiceImpl [restartedMain] Envers integration enabled? : true
+2022-03-18 16:19:29,318 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-18 16:19:29,325 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-18 16:19:29,351 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-03-18 16:19:29,649 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-18 16:19:35,711 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ca08539, org.springframework.security.web.context.SecurityContextPersistenceFilter@a75c16b, org.springframework.security.web.header.HeaderWriterFilter@639df4cf, org.springframework.security.web.csrf.CsrfFilter@10aa8c47, org.springframework.security.web.authentication.logout.LogoutFilter@58f4c68, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@42165f33, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@795f86e5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5672d042, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b99b4c3, org.springframework.security.web.session.SessionManagementFilter@5bc32f63, org.springframework.security.web.access.ExceptionTranslationFilter@10441d9a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@78db411a]
+2022-03-18 16:19:36,189 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2022-03-18 16:19:40,991 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 13 endpoint(s) beneath base path '/actuator'
+2022-03-18 16:19:41,224 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2022-03-18 16:19:41,687 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-18 16:19:41,715 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 24.973 seconds (JVM running for 26.351)
+2022-03-18 16:19:42,132 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+2022-03-18 16:19:48,067 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-10] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-18 16:19:48,068 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-10] Initializing Servlet 'dispatcherServlet'
+2022-03-18 16:19:48,130 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-10] Completed initialization in 60 ms
+2022-03-18 16:20:03,305 WARN org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-9] Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [559] milliseconds.

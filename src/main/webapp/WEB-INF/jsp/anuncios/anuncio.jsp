@@ -6,8 +6,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <iteaching:layout pageName="anuncios">
-    <h2>Anuncios</h2>
-
+   <h2>Anuncio de <c:out value="${anuncio.titulo}"/></h2> 
+  
+  
+ 
     <table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>

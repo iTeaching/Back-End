@@ -98,6 +98,7 @@
                 </div>
             </div>
         </section>
+        <a href="/pagar">Pagar</a>
     </main>
     <footer>
         <div class="contenedor-footer">

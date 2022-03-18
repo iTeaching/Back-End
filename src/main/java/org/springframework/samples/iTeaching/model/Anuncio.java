@@ -24,7 +24,7 @@ public class Anuncio extends BaseEntity {
 	String titulo;
 	
 	@Column(name="descripcion")
-	@NotEmpty
+	@NotEmpty 
 	String descripcion;
 	
 	@Column(name="asignatura")

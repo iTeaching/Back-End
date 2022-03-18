@@ -35,6 +35,5 @@ public class AnuncioService {
 	
 	public Collection<Anuncio> findByAsignatura(String asignatura){
 		return anuncioRepository.findByAsignatura(asignatura);
-
 	}
 	}

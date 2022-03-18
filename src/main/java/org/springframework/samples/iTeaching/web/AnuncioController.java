@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AnuncioService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,12 +29,15 @@ public class AnuncioController {
 	
 	@Autowired
 	private ProfesorService profesorService;
+	@Autowired
+	private AlumnoService alumnoService;
 	private static final String VIEWS_ANUNCIO_CREATE_FORM = "anuncios/createAnuncioForm";
 
 	@Autowired
-	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService) {
+	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService,AlumnoService alumnoService) {
 		this.anuncioService=anuncioService;
 		this.profesorService=profesorService;
+		this.alumnoService=alumnoService;
 	}
 	
 	@InitBinder
@@ -131,9 +136,19 @@ public class AnuncioController {
 	
 	@GetMapping("/anuncio/{anuncioId}")
 	public ModelAndView viewAnuncio(@PathVariable("anuncioId")int anuncioId) {
-		ModelAndView mav = new ModelAndView("anuncios/anuncioDetails");
+		ModelAndView mav = new ModelAndView("anuncios/anuncio");
 		Anuncio anuncio=this.anuncioService.findById(anuncioId);
 		mav.addObject("anuncio", anuncio);
 		return mav;
+	}
+	
+	@GetMapping("/anuncio/{anuncioId}/apply")
+	public String anuncioApply(@PathVariable("anuncioId")int anuncioId) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
+		
+		return "kk";
 	}
 }
