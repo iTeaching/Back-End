@@ -1,6 +1,8 @@
 <%@ page session="false" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>	
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html lang="es">
@@ -11,6 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>iTeaching</title>
 <link rel="shortcut icon" href="resources/images/logo.ico">
+
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap"
 	rel="stylesheet">
@@ -38,47 +41,112 @@
             </svg>
 		</div>
 	</header>
+
 	<main>
-	<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
-  	<div class="col">
-		<div class="card text-white bg-warning mb-3" style="width: 18rem;">
-		<a href="/salas" class="btn btn-outline-link">
-			<img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/157/157897.png" alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title text-primary">Mis salas</h5>
-				<p class="card-text text-dark">Visualiza las salas creadas por ti</p>
-				
+		<sec:authorize access="hasAnyAuthority('profesor')">
+			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
+				<div class="col">
+					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+						<a href="/salas" class="btn btn-outline-link"> <img
+							class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Mis salas</h5>
+								<p class="card-text text-dark">Visualiza las salas creadas
+									por ti</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+						<a href="/salas" class="btn btn-outline-link"> <img
+							class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/181/181621.png"
+							alt="Card image cap">
+
+							<div class="card-body">
+								<h5 class="card-title text-primary">Mis anuncios</h5>
+								<p class="card-text text-dark">Visualiza las salas creadas
+									por ti</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+						<a href="/profesores/${profesor.id}/perfil"
+							class="btn btn-outline-link"> <img class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Mi perfil</h5>
+								<p class="card-text text-dark">Visualiza el perfil del
+									usuario</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
 			</div>
-			</a>
-		</div>
-		</div>
-		<div class="col">
-		<div class="card text-white bg-warning mb-3" style="width: 18rem;">
-			<a href="/salas" class="btn btn-outline-link">
-			<img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/181/181621.png" alt="Card image cap">
-			
-			<div class="card-body">
-				<h5 class="card-title text-primary">Mis anuncios</h5>
-				<p class="card-text text-dark">Visualiza las salas creadas por ti</p>
-			
+		</sec:authorize>
+
+		<sec:authorize access="hasAnyAuthority('alumno')">
+			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
+				<div class="col">
+					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+						<a href="/salas" class="btn btn-outline-link"> <img
+							class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Salas</h5>
+								<p class="card-text text-dark">Visualiza las salas disponibles</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+						<a href="/ofertas/find" class="btn btn-outline-link"> <img
+							class="card-img-top"
+							src="http://assets.stickpng.com/thumbs/59cfc4d2d3b1936210a5ddc7.png"
+							alt="Card image cap">
+
+							<div class="card-body">
+								<h5 class="card-title text-primary">Buscar ofertas</h5>
+								<p class="card-text text-dark">Visualiza las ofertas
+									disponibles</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+						<a href="/alumnos/${alumno.id}/perfil"
+							class="btn btn-outline-link"> <img class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Mi perfil</h5>
+								<p class="card-text text-dark">Visualiza el perfil del
+									usuario</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
 			</div>
-			</a>
-		</div>
-		</div>
-		<div class="col">
-		<div class="card text-white bg-warning mb-3" style="width: 18rem;">
-		<a href="/profesores/${profesor.id}/perfil" class="btn btn-outline-link">
-			<img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png" alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title text-primary">Mi perfil</h5>
-				<p class="card-text text-dark">Visualiza el perfil del usuario</p>
-				
-			</div>
-			</a>
-		</div>
-		</div>
-	</div>
+
+		</sec:authorize>
 	</main>
+
+
 	<footer>
 		<div class="contenedor-footer">
 			<div class="footer-contact--email">
