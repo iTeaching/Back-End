@@ -46,8 +46,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/vets/**").authenticated()
 				.antMatchers("/payments/**").authenticated()
 				.antMatchers("/bills/**").authenticated()
-				.antMatchers("/profesores/**").authenticated()
-				.antMatchers("/alumnos/**").authenticated()
 				.and()
 				 	.formLogin()
 				 	.loginPage("/login")

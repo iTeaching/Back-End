@@ -27,6 +27,11 @@ public class AnuncioService {
 	public void saveAnuncio(Anuncio anuncio) {
 		anuncioRepository.save(anuncio);
 	}
+
+	public void delete(Anuncio anuncio) {
+		// TODO Auto-generated method stub
+		anuncioRepository.delete(anuncio);
+	}
 	
 	public Collection<Anuncio> findByAsignatura(String asignatura){
 		return anuncioRepository.findByAsignatura(asignatura);
