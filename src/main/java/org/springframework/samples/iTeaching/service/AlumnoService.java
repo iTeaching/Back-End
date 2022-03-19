@@ -61,4 +61,8 @@ public class AlumnoService {
 		return alumnoRepository.findByUsername(username);
 	}
 
+	public void delete(Alumno alumno) {
+		this.alumnoRepository.delete(alumno);
+	}
+
 }

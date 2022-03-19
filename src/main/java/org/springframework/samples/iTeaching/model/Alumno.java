@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.iTeaching.model;
 
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,12 +22,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-
 import org.springframework.core.style.ToStringCreator;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,7 +35,7 @@ public class Alumno extends Person {
 
 	
 	@ManyToOne
-	private Set<Profesor> profesores;
+	private Profesor profesores;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)

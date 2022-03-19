@@ -1,23 +1,24 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-<petclinic:layout pageName="iTeaching">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iTeaching</title>
     <link rel="shortcut icon" href="resources/images/logo.ico">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="user/new">¡Aprende ya!</a>
+            <a href="/login">¡Aprende ya!</a>
             <a href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
             <h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
         </nav>
@@ -97,7 +98,7 @@
                 </div>
             </div>
         </section>
-    </main>
+        <a href="/pagar">Pagar</a>
     <footer>
         <div class="contenedor-footer">
             <div class="footer-contact--email">
@@ -107,4 +108,3 @@
         <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
     </footer>
 </body>
-</petclinic:layout>

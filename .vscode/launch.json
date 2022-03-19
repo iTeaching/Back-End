@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ITeachingApplication",
+            "request": "launch",
+            "mainClass": "org.springframework.samples.iTeaching.ITeachingApplication",
+            "projectName": "spring-iTeaching"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch)-PetClinicApplication<spring-petclinic>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

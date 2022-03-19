@@ -4,11 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +24,7 @@ public class Anuncio extends BaseEntity {
 	String titulo;
 	
 	@Column(name="descripcion")
-	@NotEmpty
+	@NotEmpty 
 	String descripcion;
 	
 	@Column(name="asignatura")
@@ -34,7 +32,7 @@ public class Anuncio extends BaseEntity {
 	String asignatura;
 	
 	@Column(name="precio")
-	@NotEmpty
+	@NotNull
 	Double precio;
 	
 	@ManyToOne
