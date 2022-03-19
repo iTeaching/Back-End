@@ -36,6 +36,7 @@
 }
 
 	</style>
+	
 </head>
 
 <body>
@@ -67,8 +68,17 @@
 </div>
 		<p style="color:red;">${error}</p>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<button class="button">Iniciar sesión</button> 
+		<div class="d-grid gap-2">
+		<button class="button">Iniciar sesión</button>
+		</div>
+		
 			</form>
+		<form method="get" action="/users/new">
+		<div class="d-grid gap-2">
+    <button class="button">Nuevo usuario</button>
+    </div> 
+</form>
+		
 		</div>
 
         </section>
