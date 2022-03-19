@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,12 +22,12 @@ import lombok.Setter;
 public class Profesor extends Person{
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-	private Set<Anuncio> anuncios;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor")
+	private List<Anuncio> anuncios;
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
-	private Set<Alumno> alumnos;
+	private List<Alumno> alumnos;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)

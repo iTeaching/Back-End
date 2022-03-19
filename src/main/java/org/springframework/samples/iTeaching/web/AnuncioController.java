@@ -12,6 +12,7 @@ import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,21 +42,27 @@ public class AnuncioController {
 	}
 	
 	@GetMapping(value = "/ofertas/new")
-	public String initCreationForm(Map<String, Object> model) {
+	public String initCreationForm(ModelMap model) {
 		Anuncio anuncio = new Anuncio();
 		model.put("anuncio", anuncio);
 		return VIEWS_ANUNCIO_CREATE_FORM;
 	}
 	
 	@PostMapping(value = "/ofertas/new")
-	public String processCreationForm(@Valid Anuncio anuncio, BindingResult result) {
+	public String processCreationForm(@Valid Anuncio anuncio, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
+			model.put("anuncio", anuncio);
 			return VIEWS_ANUNCIO_CREATE_FORM;
 		}
 		else {
 			//creating profesor, user and authorities
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor usuario = this.profesorService.findProfesorByUsername(username);
+			anuncio.setProfesor(usuario);
 			this.anuncioService.saveAnuncio(anuncio);
-			return "redirect:/usuarios/" + anuncio.getId();
+			return "redirect:/ofertas/misOfertas";
 		}
 		
 		}
@@ -68,7 +75,7 @@ public class AnuncioController {
 		Profesor usuario = profesorService.findProfesorByUsername(username);
 		Collection<Anuncio> anuncios= anuncioService.findByUsuario(usuario.getId());
 		model.put("anuncios", anuncios);
-		return "anuncios/misAnuncios";
+		return "anuncios/anuncioList";
 	}
 	
 	@GetMapping(value="/ofertas/find")

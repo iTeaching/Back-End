@@ -11,7 +11,7 @@
 <ul class="nav navbar-nav">
 
 				<sec:authorize access="hasAnyAuthority('profesor')">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios">
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/ofertas/misOfertas">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
 				</iteaching:menuItem>

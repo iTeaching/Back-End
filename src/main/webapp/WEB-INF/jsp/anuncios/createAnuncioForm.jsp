@@ -11,7 +11,7 @@
     <h2>
         <c:if test="${anuncio['new']}">Nuevo </c:if> Anuncio
     </h2>
-    <form:form modelAttribute="anuncio" class="form-horizontal" id="add-owner-form">
+    <form:form modelAttribute="anuncio" class="form-horizontal" id="add-anuncio-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Titulo" name="titulo"/>
             <petclinic:inputField label="Descripcion" name="descripcion"/>
@@ -21,7 +21,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${anuncio ['new']}">
+                    <c:when test="${anuncio['new']}">
                         <button class="btn btn-default" type="submit">¡Publicar!</button>
                     </c:when>
                 </c:choose>

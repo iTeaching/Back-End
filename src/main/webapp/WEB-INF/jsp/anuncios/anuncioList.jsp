@@ -39,4 +39,6 @@
         </c:forEach>
         </tbody>
     </table>
+    <a class="btn btn-default"
+			href='<spring:url value="/ofertas/new" htmlEscape="true"/>'>Añadir</a>
 </petclinic:layout>
