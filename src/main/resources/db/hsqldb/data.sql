@@ -18,7 +18,7 @@ INSERT INTO authorities(id,version,username,authority) VALUES (5,1,'profes','pro
 INSERT INTO profesor VALUES (1,1,'profesormolon@gmail.com','profesor', 'molon','666111333', 'prof');
 INSERT INTO alumno VALUES (1,1,'alumnomolon@gmail.com','alumno', 'molon','666111334', 1, 'alumno');
 --INSERTAR SALAS
-INSERT INTO salas VALUES (1,1,'sala1',1);
+INSERT INTO salas VALUES (1,1,'sala1','https://acme.whereby.com/a05d837d-2aaf-47a2-abf2-21dc8121f1c7',1);
 --INSERTAR ANUNCIOS
 INSERT INTO anuncio VALUES (1,1,'Lengua', 'Clases muy baratas','15','Clases de lengua', 1);
 

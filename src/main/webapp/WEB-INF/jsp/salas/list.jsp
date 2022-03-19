@@ -32,7 +32,10 @@
                     <spring:url value="/salas/details" var="salaUrl">
                         <spring:param name="salaId" value="${sala.id}"/>
                     </spring:url>
-                   <c:out value="${sala.nombre}"/>
+                    <c:out value="${sala.nombre}"/>
+                    <iframe src="${sala.url}" 
+                    width="1000" height="1000" allow="camera; microphone; fullscreen; speaker; display-capture" ></iframe>
+                    <a href=${sala.url}>Sala</a>
                 </td>
                 <sec:authorize access="hasAuthority('alumno')">
                 <td>
@@ -44,6 +47,7 @@
                 <c:forEach items="${alumnos}" var="alumno">
                      <c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/> 
                 </c:forEach>
+
                 </td>  
                 </sec:authorize>           
         </c:forEach>
