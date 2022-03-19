@@ -28,12 +28,15 @@ public class Sala extends BaseEntity{
 	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
 	private List<Alumno> alumnos;
 	
-	@ManyToOne
-	@JoinColumn(name = "profesor")
-	private Profesor profesor;
-	
 	@Column(name="nombre")
 	@NotEmpty
 	String nombre;
 
+	@Column(name="url")
+	@NotEmpty
+	String url;
+
+	@ManyToOne
+	@JoinColumn(name = "profesor")
+	private Profesor profesor;
 }
