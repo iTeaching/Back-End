@@ -1,15 +1,24 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Orden;
+import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.AnuncioService;
 import org.springframework.samples.iTeaching.service.PaypalService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
@@ -19,7 +28,13 @@ public class PaypalController {
 
 	@Autowired
 	PaypalService paypalService;
-
+	
+	@Autowired
+	AlumnoService alumnoService;
+	
+	@Autowired
+	AnuncioService anuncioService;
+	
 	public static final String SUCCESS_URL = "/pay/success";
 	public static final String CANCEL_URL = "/pay/cancel";
 
@@ -70,4 +85,19 @@ public class PaypalController {
 	    	return "/pay/pay";
 	    	
 	    }
+	    @GetMapping(value="/pagarMisClases")
+	    public String pagarMisClases(@ModelAttribute("order") Orden order,Map<String, Object> model) {
+	    	UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			List<Anuncio> anunciosAplicados=anuncioService.anunciosAlumno(username);
+			Float f = (float) anunciosAplicados.stream().map(x->x.getPrecio()).mapToDouble(Double::doubleValue).sum();
+			model.put("total",f);
+			model.put("anuncio", anunciosAplicados);
+			order.setPrice(f);
+	    	model.put("order",order);
+	    	return "/pay/pay";
+	    	
+	    }
+
 }

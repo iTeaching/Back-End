@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.iTeaching.model.Anuncio;
+import org.springframework.samples.iTeaching.model.Sala;
 
 public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
 
@@ -20,5 +21,4 @@ public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
 	public Collection<Anuncio> findByAsignatura(@Param("asignatura") String asignatura);
 	
 	List<Anuncio> findAll();
-
 }
