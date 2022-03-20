@@ -36,6 +36,7 @@
 }
 
 	</style>
+	
 </head>
 
 <body>
@@ -67,8 +68,18 @@
 </div>
 		<p style="color:red;">${error}</p>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<button class="button">Iniciar sesión</button> 
+		<div class="d-grid gap-2">
+		<button class="button">Iniciar sesión</button>
+		</div>
+		
 			</form>
+		<div class="d-grid gap-2">
+   <a class="button" href="/alumnos/new">Registrarse como alumno</a>
+    </div> 
+		<div class="d-grid gap-2">
+    <a class="button" href="/profesores/new">Registrarse como profesor</a>
+    </div> 
+		
 		</div>
 
         </section>
