@@ -1,5 +1,7 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,4 +22,5 @@ public class LoggingController {
  
         return "Howdy! Check out the Logs to see the output...";
 	}
+
 }

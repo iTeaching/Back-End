@@ -10,9 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iTeaching</title>
+    <style type="text/css">
+    <%@include file="bootstrap/css/bootstrap.min.css" %>
+</style>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
+
 	<style type="text/css">
 	.button {
   background-color: #dab305;
@@ -31,6 +36,7 @@
 }
 
 	</style>
+	
 </head>
 
 <body>
@@ -52,15 +58,35 @@
 	<form action="${path}/login" method="post" class="form-signin">
 	
 		<p style="color:green;">${message}</p>
-		<p>Usuario : <input type="text" name="username" placeholder="Usuario"/></p>
-		<p>Contrasena : <input type="password" name="password" placeholder="Contrasena"/></p>
+		<div class="form-floating mb-3">
+  <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario">
+  <label for="floatingInput">Usuario</label>
+</div>
+<div class="form-floating">
+ <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+  <label for="floatingPassword">Contrase&ntildea</label>
+</div>
 		<p style="color:red;">${error}</p>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<button class="button">Iniciar sesión</button> 
+		<div class="d-grid gap-2">
+		<button class="button">Iniciar sesión</button>
+		</div>
+		
 			</form>
+		<div class="d-grid gap-2">
+   <a class="button" href="/alumnos/new">Registrarse como alumno</a>
+    </div> 
+		<div class="d-grid gap-2">
+    <a class="button" href="/profesores/new">Registrarse como profesor</a>
+    </div> 
+		
 		</div>
 
         </section>
+        
+        
+        
+    
     </main>
     <footer>
         <div class="contenedor-footer">
