@@ -20,8 +20,8 @@ public class SalaService {
 		return salaRepository.findById(salaId);
 	}
 	
-	public Collection<Sala> findByUsuario(int usuarioID){
-		return salaRepository.findByUsuarioId(usuarioID);
+	public Collection<Sala> findByProfesor(int usuarioID){
+		return salaRepository.findByProfesorId(usuarioID);
 	}
 	public List<Sala> findAll(){
 		return salaRepository.findAll();
