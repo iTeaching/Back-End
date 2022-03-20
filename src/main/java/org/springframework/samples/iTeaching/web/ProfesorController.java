@@ -50,7 +50,7 @@ public class ProfesorController {
 			//creating profesor, user and authorities
 			this.profesorService.saveProfesor(profesor);
 			
-			return "redirect:/profesores/" + profesor.getId();
+			return "redirect:/login";
 		}
 	}
 

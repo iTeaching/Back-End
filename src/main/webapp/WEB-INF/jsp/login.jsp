@@ -73,11 +73,12 @@
 		</div>
 		
 			</form>
-		<form method="get" action="/users/new">
 		<div class="d-grid gap-2">
-    <button class="button">Nuevo usuario</button>
+   <a class="button" href="/alumnos/new">Registrarse como alumno</a>
     </div> 
-</form>
+		<div class="d-grid gap-2">
+    <a class="button" href="/profesores/new">Registrarse como profesor</a>
+    </div> 
 		
 		</div>
 

@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,13 +22,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="salas")
+@Table(name="sala")
 public class Sala extends BaseEntity{
 	
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
-	private List<Alumno> alumnos;
+//	@JsonIgnore
+//	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
+//	private List<Alumno> alumnos;
+	
+	@ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "sala_alumno",
+            joinColumns = @JoinColumn(name = "sala_id"),
+            inverseJoinColumns = @JoinColumn(name = "alumno_id")
+    )
+	List<Alumno> alumnos;
 	
 	@Column(name="nombre")
 	@NotEmpty

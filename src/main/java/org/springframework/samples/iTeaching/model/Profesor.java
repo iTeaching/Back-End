@@ -24,12 +24,12 @@ public class Profesor extends Person{
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Anuncio> anuncios;
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
-	private Set<Alumno> alumnos;
+//	@JsonIgnore
+//	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
+//	private Set<Alumno> alumnos;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user", referencedColumnName = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username")
 	private User user;
 }

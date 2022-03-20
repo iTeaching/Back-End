@@ -16,7 +16,7 @@ public interface SalaRepository extends CrudRepository<Sala, Integer>{
 	public Sala findById(@Param("id") int id);
 	
 	@Query("SELECT sala FROM Sala sala WHERE sala.profesor.id =:id")
-	public Collection<Sala> findByUsuarioId(@Param("id") int id);
+	public Collection<Sala> findByProfesorId(@Param("id") int id);
 	
 	List<Sala> findAll();
 

@@ -44,9 +44,9 @@
 
 	<main>
 		<sec:authorize access="hasAnyAuthority('profesor')">
-			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
+			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3 ">
 				<div class="col">
-					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
 						<a href="/salas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
@@ -61,23 +61,22 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
-						<a href="/salas" class="btn btn-outline-link"> <img
+					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+						<a href="/ofertas/misOfertas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/181/181621.png"
 							alt="Card image cap">
 
 							<div class="card-body">
 								<h5 class="card-title text-primary">Mis anuncios</h5>
-								<p class="card-text text-dark">Visualiza las salas creadas
-									por ti</p>
+								<p class="card-text text-dark">Visualiza los anuncios creados por ti</p>
 
 							</div>
 						</a>
 					</div>
 				</div>
 				<div class="col">
-					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
 						<a href="/profesores/${profesor.id}/perfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
@@ -97,7 +96,7 @@
 		<sec:authorize access="hasAnyAuthority('alumno')">
 			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
 				<div class="col">
-					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
 						<a href="/salas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
@@ -111,7 +110,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
 						<a href="/ofertas/find" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="http://assets.stickpng.com/thumbs/59cfc4d2d3b1936210a5ddc7.png"
@@ -127,7 +126,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card text-white bg-warning mb-3" style="width: 18rem;">
+					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
 						<a href="/alumnos/${alumno.id}/perfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
@@ -147,12 +146,7 @@
 	</main>
 
 
-	<footer>
-		<div class="contenedor-footer">
-			<div class="footer-contact--email">
-				<img src="resources/images/gmail.svg" class="footer_img">
-			</div>
-		</div>
+	<footer style="padding-top: 15px;">
 		<h2 class="titulo-final">&copy; 2022,iTeaching</h2>
 	</footer>
 </body>

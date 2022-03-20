@@ -3,6 +3,7 @@ package org.springframework.samples.iTeaching.web;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -85,13 +86,78 @@ public class SalaController {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
-		Profesor usuario = profesorService.findProfesorByUsername(username);
-		List<Sala> salas= (List<Sala>) this.salaService.findByUsuario(usuario.getId());
-		model.put("salas",salas);
-		for (int i=0;i<salas.size();i++) {
-			List<Alumno> alumnos = salas.get(i).getAlumnos();
-			model.put("alumnos",alumnos);
+		
+		try {
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			List<Sala> salas= (List<Sala>) this.salaService.findByProfesor(usuario.getId());
+			model.put("salas",salas);
+			return "salas/list";
+		} catch(Exception e) {
+			
 		}
-		return "salas/list";
+		
+		try {
+			Alumno usuario = alumnoService.findAlumnoByUsername(username);
+			List<Sala> salas= (List<Sala>) this.alumnoService.findAlumnoById(usuario.getId()).getSalas();
+			model.put("salas",salas);
+			return "salas/list";
+		} catch(Exception e) {
+			
+		}
+		
+//		if(userService.findUser(username).isPresent()) {
+//			User usuario = userService.findUser(username).get();
+//			Predicate<String> profPred = a -> a.equals("profesor");
+//			if(usuario.getAuthorities().stream().map(a->a.getAuthority()).anyMatch(profPred)) {
+//				Profesor prof = profesorService.findProfesorByUsername(username);
+//				List<Sala> salas= (List<Sala>) this.salaService.findByProfesor(prof.getId());
+//				model.put("salas",salas);
+//				return "salas/listProf";
+//			}else {
+//				Alumno alum = alumnoService.findAlumnoByUsername(username);
+//				List<Sala> salas= (List<Sala>) this.alumnoService.findAlumnoById(alum.getId()).getSalas();
+//				model.put("salas",salas);
+//				return "salas/listAlum";
+//			}
+//		}else {
+//			return "redirect:/";
+//		}
+		
+		return "redirect:/";
+		
 	}
+	
+	@GetMapping(value = "/salas/{salaId}")
+	public String getSala(@PathVariable("salaId") int id, Map<String, Object> model) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+				
+		Sala sala = this.salaService.findById(id);
+		model.put("sala", sala);
+		
+		Profesor profConPermiso = sala.getProfesor();
+		List<Alumno> alumsConPermiso = sala.getAlumnos();
+		
+		try {
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			if(usuario.equals(profConPermiso)) {
+				return "salas/view";
+			}
+		} catch(Exception e) {
+			
+		}
+		
+		try {
+			Alumno usuario = alumnoService.findAlumnoByUsername(username);
+			if(alumsConPermiso.contains(usuario)) {
+				return "salas/view";
+			}
+		} catch(Exception e) {
+			
+		}
+		
+		return "redirect:/";
+	}
+	
 }
