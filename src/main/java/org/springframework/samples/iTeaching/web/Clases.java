@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.var;
+
     public class Clases  {
 
     public static void main(String[] args) throws IOException, InterruptedException {

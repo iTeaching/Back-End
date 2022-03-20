@@ -50,7 +50,7 @@ public class AlumnoController {
 			//creating alumno, user and authorities
 			this.alumnoService.saveAlumno(alumno);
 			
-			return "redirect:/alumnos/" + alumno.getId();
+			return "redirect:/login";
 		}
 	}
 
