@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AnuncioService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Controller
@@ -26,12 +29,15 @@ public class AnuncioController {
 	
 	@Autowired
 	private ProfesorService profesorService;
+	@Autowired
+	private AlumnoService alumnoService;
 	private static final String VIEWS_ANUNCIO_CREATE_FORM = "anuncios/createAnuncioForm";
 
 	@Autowired
-	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService) {
+	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService,AlumnoService alumnoService) {
 		this.anuncioService=anuncioService;
 		this.profesorService=profesorService;
+		this.alumnoService=alumnoService;
 	}
 	
 	@InitBinder
@@ -54,7 +60,6 @@ public class AnuncioController {
 		else {
 			//creating profesor, user and authorities
 			this.anuncioService.saveAnuncio(anuncio);
-			
 			return "redirect:/usuarios/" + anuncio.getId();
 		}
 		
@@ -113,6 +118,37 @@ public class AnuncioController {
 			return "redirect:/anuncio/{anuncioId}";
 		}
 	}
-
-
+	@GetMapping(value = "/anuncio/{anuncioId}/delete")
+	public String deleteAnuncio(@PathVariable("anuncioId") int anuncioId, Model model) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Profesor usuario = profesorService.findProfesorByUsername(username);
+		Anuncio anuncio = this.anuncioService.findById(anuncioId);
+		if (usuario.equals(anuncio.getProfesor())) {
+		this.anuncioService.delete(anuncio);
+		return "redirect:/misAnuncios";
+	}
+		else {
+			return "welcome";
+		}
+	}
+	
+	@GetMapping("/anuncio/{anuncioId}")
+	public ModelAndView viewAnuncio(@PathVariable("anuncioId")int anuncioId) {
+		ModelAndView mav = new ModelAndView("anuncios/anuncio");
+		Anuncio anuncio=this.anuncioService.findById(anuncioId);
+		mav.addObject("anuncio", anuncio);
+		return mav;
+	}
+	
+	@GetMapping("/anuncio/{anuncioId}/apply")
+	public String anuncioApply(@PathVariable("anuncioId")int anuncioId) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
+		
+		return "kk";
+	}
 }

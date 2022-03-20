@@ -7,11 +7,25 @@
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
 
+
+<link href="../resources/style/estilos.css" rel="stylesheet"
+	type="text/css">
+	
+<script src="../jsp/bootstrap/js/bootstrap.min.js"></script>	
+
+<style type="text/css">
+    <%@include file="../jsp/bootstrap/css/bootstrap.min.css" %>
+</style>
+
+
+
+
+<%--
 <nav>
 <ul class="nav navbar-nav">
 
 				<sec:authorize access="hasAnyAuthority('profesor')">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios">
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/ofertas/misOfertas">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
 				</iteaching:menuItem>
@@ -52,6 +66,65 @@
 			</ul>
         </nav>
         <img src="../resources/images/logo.png" class="logo">
+        
+        --%>
+        
+        
+        
+        
+
+
+		<nav class="navbar navbar-light" style="background-color: #dab305;">
+  		<a class="navbar-brand" href="#">iTeaching</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+   		 <span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="navbarNav">
+   		<ul class="navbar-nav">
+    
+    	<sec:authorize access="hasAnyAuthority('profesor')">
+    
+				<li class="nav-item active">
+					<a class="nav-link" href="/ofertas/misOfertas">Mis Anuncios</a>
+				</li>
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/salas/new">Crear Sala</a>
+				</li>
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/salas">Mis Salas</a>
+				</li>
+		</sec:authorize>
+    
+    			
+    	<sec:authorize access="hasAnyAuthority('alumno')">
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="">Ver ofertas</a>
+				</li>
+				
+		</sec:authorize>
+    
+    
+    	<sec:authorize access="!isAuthenticated()">
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="mailto:iteaching.sa@gmail.com">Contacto</a>
+				</li>
+				
+		</sec:authorize>
+    
+    </ul>
+  </div>
+</nav>
+		
+<img src="../resources/images/logo.png" class="logo">
+
+
+
+
+
 
         
 		<%-- <div class="navbar-collapse collapse" id="main-navbar">

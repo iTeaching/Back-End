@@ -107,6 +107,7 @@ public class AlumnoController {
 		}
 	}
 
+
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
 		ModelAndView mav = new ModelAndView("alumnos/alumnoDetails");

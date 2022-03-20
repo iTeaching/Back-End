@@ -16,36 +16,20 @@
     <table id="salasTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Nombre</th>
-			<sec:authorize access="hasAuthority('alumno')">
-            <th style="width: 120px">Profesor</th>
-            </sec:authorize>
-            <sec:authorize access="hasAuthority('profesor')">
-            <th style="width: 120px">Alumnos</th>
-            </sec:authorize>
+            <th style="width: 150px;">Nombre de la sala</th>
+            <th style="width: 120px">Acción</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${salas}" var="sala">
             <tr>
                 <td>
-                    <spring:url value="/salas/details" var="salaUrl">
-                        <spring:param name="salaId" value="${sala.id}"/>
-                    </spring:url>
-                   <c:out value="${sala.nombre}"/>
+                    <c:out value="${sala.nombre}"/>
                 </td>
-                <sec:authorize access="hasAuthority('alumno')">
-                <td>
-                    <c:out value="${sala.profesor.firstName}"/><c:out value=" "/> <c:out value="${sala.profesor.lastName}"/>    
+                 <td>
+					<a href="/salas/${sala.id }">Ir a la sala</a>
                 </td>
-                </sec:authorize>
-                <sec:authorize access="hasAuthority('profesor')">
-                 <td>                    
-                <c:forEach items="${alumnos}" var="alumno">
-                     <c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/> 
-                </c:forEach>
-                </td>  
-                </sec:authorize>           
+            </tr>
         </c:forEach>
         </tbody>
     </table>
