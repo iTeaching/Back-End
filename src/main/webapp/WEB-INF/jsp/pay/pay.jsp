@@ -1,3 +1,12 @@
+<%@ page session="false" trimDirectiveWhitespaces="true" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -114,8 +123,9 @@ span.price {
 <div class="row">
     <div class="col-75">
         <div class="container">
-            <form method="post"  action="/pay">
+            <form method="post"  action="/pagar">
                 <div class="col-50">
+                <form:form modelAttribute="order" class="form-signin">
                     <h3>Payment</h3>
                     <label>Accepted Cards</label>
                     <div class="icon-container">
@@ -125,19 +135,18 @@ span.price {
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
                     <label for="price">Total</label>
-                    <input type="text" id="price" name="price" value="10" readonly="readonly">
-                    <label for="currency">Currency</label>
-                    <input type="text" id="currency" name="currency" placeholder="Enter Currency">
-                    <label for="method">Metodo de pago</label>
-                    <input type="text" id="method" name="method" placeholder="Payment Method">
+					<iteaching:inputField label="r" name="price"/>                    
+					<label for="currency">Currency</label>
+					<iteaching:inputField label="r" name="currency"/>
+					<label for="method">Metodo de pago</label>
+                    <iteaching:inputField label="r" name="method"/>
                     <label for="intent">Intent</label>
-                    <input type="text" id="intent" name="intent" value="sale">
+                    <iteaching:inputField label="r" name="intent"/>
                     <label for="description">Descripcion del pago</label>
-                    <input type="text" id="description" name="description" placeholder="Payment Description">
-
+                    <iteaching:inputField label="r" name="description"/>
+                    <button type="submit" class="btn">Pagar</button>
+				</form:form>
                 </div>
-
-                <input type="submit" value="Continue to checkout" class="btn">
             </form>
         </div>
     </div>

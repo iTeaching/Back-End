@@ -1,5 +1,7 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Orden;
 import org.springframework.samples.iTeaching.service.PaypalService;
@@ -23,12 +25,13 @@ public class PaypalController {
 
 
 
-	@PostMapping("/pay")
+	@PostMapping("/pagar")
 	public String payment(@ModelAttribute("order") Orden order) {
+		System.out.println(order.toString());
 		try {
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-					"http://localhost:8080/" + SUCCESS_URL);
+					order.getIntent(), order.getDescription(), "http://localhost:8080" + CANCEL_URL,
+					"http://localhost:8080" + SUCCESS_URL);
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					return "redirect:"+link.getHref();
@@ -62,8 +65,8 @@ public class PaypalController {
 	    }
 	    
 	    @GetMapping(value="/pagar")
-	    public String pagar() {
-	    	
+	    public String pagar(@ModelAttribute("order") Orden order,Map<String, Object> model) {
+	    	model.put("order",order);
 	    	return "/pay/pay";
 	    	
 	    }
