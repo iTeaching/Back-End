@@ -21,9 +21,12 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${anuncio ['new']}">
+                    <c:when test="${anuncio['new']}">
                         <button class="btn btn-default" type="submit">¡Publicar!</button>
                     </c:when>
+                    <c:otherwise>
+                        <button class="btn btn-default" type="submit">Actualizar</button>
+                    </c:otherwise>
                 </c:choose>
             </div>
         </div>

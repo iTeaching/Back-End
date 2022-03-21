@@ -14,6 +14,7 @@ import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -97,31 +98,39 @@ public class AnuncioController {
 	}
 	
 	@GetMapping(value = "/ofertas/{anuncioId}/edit")
-	public String initUpdateOwnerForm(@PathVariable("anuncioId") int anuncioId, Model model) {
+	public String initUpdateAnuncioForm(@PathVariable("anuncioId") int anuncioId, Model model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
 		Anuncio anuncio = this.anuncioService.findById(anuncioId);
 		if (usuario.equals(anuncio.getProfesor())) {
-		model.addAttribute(anuncio);
-		return VIEWS_ANUNCIO_CREATE_FORM;
-	}
+			
+			model.addAttribute(anuncio);
+			anuncio.setId(anuncioId);
+			return VIEWS_ANUNCIO_CREATE_FORM;
+		}
 		else {
 			return "welcome";
 		}
 	}
 
 	@PostMapping(value = "/ofertas/{anuncioId}/edit")
-	public String processUpdateOwnerForm(@Valid Anuncio anuncio, BindingResult result,
+	public String processUpdateAnuncioForm(@Valid Anuncio anuncio, BindingResult result,
 			@PathVariable("anuncioId") int anuncioId) {
 		if (result.hasErrors()) {
 			return VIEWS_ANUNCIO_CREATE_FORM;
 		}
 		else {
 			anuncio.setId(anuncioId);
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			anuncio.setProfesor(usuario);
+			
 			this.anuncioService.saveAnuncio(anuncio);
-			return "redirect:/anuncio/{anuncioId}";
+			return "redirect:/ofertas/misOfertas";
 		}
 	}
 	@GetMapping(value = "/anuncio/{anuncioId}/delete")
@@ -133,7 +142,7 @@ public class AnuncioController {
 		Anuncio anuncio = this.anuncioService.findById(anuncioId);
 		if (usuario.equals(anuncio.getProfesor())) {
 		this.anuncioService.delete(anuncio);
-		return "redirect:/misAnuncios";
+		return "redirect:/ofertas/misOfertas";
 	}
 		else {
 			return "welcome";
