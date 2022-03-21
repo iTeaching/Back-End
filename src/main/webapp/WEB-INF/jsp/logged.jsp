@@ -77,7 +77,7 @@
 				</div>
 				<div class="col">
 					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
-						<a href="/profesores/${profesor.id}/perfil"
+						<a href="/profesores/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
 							alt="Card image cap">
@@ -127,7 +127,7 @@
 				</div>
 				<div class="col">
 					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
-						<a href="/alumnos/${alumno.id}/perfil"
+						<a href="/alumnos/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
 							alt="Card image cap">
