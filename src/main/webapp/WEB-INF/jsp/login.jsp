@@ -67,11 +67,11 @@
   <label for="floatingPassword">Contrase&ntildea</label>
 </div>
 		<p style="color:red;">${error}</p>
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		
 		<div class="d-grid gap-2">
 		<button class="button">Iniciar sesión</button>
 		</div>
-		
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			</form>
 		<div class="d-grid gap-2">
    <a class="button" href="/alumnos/new">Registrarse como alumno</a>
@@ -88,6 +88,7 @@
         
     
     </main>
+    </body>
     <footer>
         <div class="contenedor-footer">
             <div class="footer-contact--email">
@@ -96,4 +97,3 @@
         </div>
         <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
     </footer>
-</body>

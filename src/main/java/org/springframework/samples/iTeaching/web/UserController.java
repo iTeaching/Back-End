@@ -5,6 +5,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,6 +38,8 @@ public class UserController {
 		}
 		if(logout!=null){
 			model.addAttribute("message", "Has entrado correctamente");
+		}else {
+			SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
 		}
 		return "login";
 		

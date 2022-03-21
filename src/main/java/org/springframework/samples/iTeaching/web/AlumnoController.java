@@ -132,22 +132,18 @@ public class AlumnoController {
 	}
 	
 	
-	@GetMapping(value = "/alumnos/{alumnoId}/perfil")
-	public String miPerfil(@PathVariable("alumnoId") int alumnoId, Model model) {		
+	@GetMapping(value = "/alumnos/miPerfil")
+	public String miPerfil(Model model) {		
 		
 		try {	// si está logueado
 			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username= clienteDetails.getUsername();
 			System.out.println(username);
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			Alumno alumno = alumnoService.findAlumnoById(alumnoId);
-			if (usuario.equals(alumno)) {
-				model.addAttribute("alumno", alumno);
-				return "alumnos/miPerfil";
-			}
-			else {
-				return "redirect:/";
-			}
+			
+			model.addAttribute("alumno", usuario);
+			return "alumnos/miPerfil";
+			
 		}catch(Exception e) {	// si no está logueado
 			return "redirect:/";
 		}

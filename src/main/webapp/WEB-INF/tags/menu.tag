@@ -7,11 +7,29 @@
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+
+
+<style type="text/css">
+    <%@include file="../jsp/bootstrap/css/bootstrap.min.css" %>
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.dropdown-toggle').dropdown()
+});
+</script> 
+
+
+
+<%--
 <nav>
 <ul class="nav navbar-nav">
 
 				<sec:authorize access="hasAnyAuthority('profesor')">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios">
+				<iteaching:menuItem active="${name eq 'anuncios'}" url="/ofertas/misOfertas">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
 				</iteaching:menuItem>
@@ -52,141 +70,144 @@
 			</ul>
         </nav>
         <img src="../resources/images/logo.png" class="logo">
-
         
-		<%-- <div class="navbar-collapse collapse" id="main-navbar">
-			<ul class="nav navbar-nav">
+        --%>
+        
+        
+        
+        
+<%--
 
-
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
-					title="veterinarians">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Mis Anuncios</span>
-				</iteaching:menuItem>
-			</ul>
-
-
-
-
-			<ul class="nav navbar-nav navbar-right">
-				<sec:authorize access="!isAuthenticated()">
-					<li><a href="<c:url value="/login" />">Login</a></li>
-					<li><a href="<c:url value="/users/new" />">Register</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
-							<strong><sec:authentication property="name" /></strong> <span
-							class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li>
-								<div class="navbar-login">
-									<div class="row">
-										<div class="col-lg-4">
-											<p class="text-center">
-												<span class="glyphicon glyphicon-user icon-size"></span>
-											</p>
-										</div>
-										<div class="col-lg-8">
-											<p class="text-left">
-												<strong><sec:authentication property="name" /></strong>
-											</p>
-											<p class="text-left">
-												<a href="<c:url value="/logout" />"
-													class="btn btn-primary btn-block btn-sm">Logout</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="divider"></li>
-						</ul></li>
-				</sec:authorize>
-			</ul>
-		</div> --%>
-	
-<%-- <nav class="navbar navbar-default" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand"
-				href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
+		<nav class="navbar navbar-light" style="background-color: #dab305;">
+  		<a class="navbar-brand" href="#">iTeaching</a>
+  		
+  		
+   		<ul class="navbar-nav">
+    
+    	<sec:authorize access="hasAnyAuthority('profesor')">
+    
+				<li class="nav-item active">
+					<a class="nav-link" href="/ofertas/misOfertas">Mis Anuncios</a>
+				</li>
 				
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#main-navbar">
-				<span class="sr-only"><os-p>Toggle navigation</os-p></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-		</div>
-		<div class="navbar-collapse collapse" id="main-navbar">
-			<ul class="nav navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="/salas/new">Crear Sala</a>
+				</li>
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/salas">Mis Salas</a>
+				</li>
+		</sec:authorize>
+    
+    			
+    	<sec:authorize access="hasAnyAuthority('alumno')">
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="">Ver ofertas</a>
+				</li>
+				
+		</sec:authorize>
+    
+    
+    	<sec:authorize access="!isAuthenticated()">
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="mailto:iteaching.sa@gmail.com">Contacto</a>
+				</li>
+				
+		</sec:authorize>
+    
+    </ul>
+ 
+</nav>
+		
+<img src="../resources/images/logo.png" class="logo">
+  --%>
+        
 
 
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
-					title="veterinarians">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Mis Anuncios</span>
-				</iteaching:menuItem>
-			</ul>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #dab305;"> 
+  <a class="navbar-brand" href="/logged"><img src="../resources/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">iTeaching</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <sec:authorize access="hasAnyAuthority('profesor')">
+    
+				<li class="nav-item dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salas</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #dab305;">
+          		<a class="dropdown-item" href="/salas/new">Crear Salas</a>
+          		<a class="dropdown-item" href="/salas">Mis salas</a>
+         		
+       			 </div>
+      			</li>
+      			
+      			
+      			<li class="nav-item dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="background-color: #dab305;">
+          		<a class="dropdown-item" href="/ofertas/new">Crear Anuncios</a>
+          		<a class="dropdown-item" href="/ofertas/misOfertas">Mis ofertas</a>
+         		
+       			 </div>
+      			</li>
+      			
+      			<li class="nav-item active">
+					<a class="nav-link" href="/profesores/miPerfil">Mi perfil</a>
+				</li>
+      			
+				<li class="nav-item active">
+					<a name="logout" value="logout" class="nav-link" href="/login">Cerrar sesión</a>
+				</li>
+				
+		</sec:authorize>
+    
+    			
+    	<sec:authorize access="hasAnyAuthority('alumno')">
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/salas">Ver salas</a>
+				</li>
+				
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/ofertas/find">Ver ofertas</a>
+				</li>
+				
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/alumnos/miPerfil">Mi perfil</a>
+				</li>
+      			
+				<li class="nav-item active">
+					<a name="logout" value="logout" class="nav-link" href="/login">Cerrar sesión</a>
+				</li>
+				
+				
+				
+				
+		</sec:authorize>
+    
+    
+    	<sec:authorize access="!isAuthenticated()">
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="mailto:iteaching.sa@gmail.com">Contacto</a>
+				</li>
+				
+		</sec:authorize>
+    </ul>
+  </div>
+</nav>
 
 
 
 
-			<ul class="nav navbar-nav navbar-right">
-				<sec:authorize access="!isAuthenticated()">
-					<li><a href="<c:url value="/login" />">Login</a></li>
-					<li><a href="<c:url value="/users/new" />">Register</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
-							<strong><sec:authentication property="name" /></strong> <span
-							class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li>
-								<div class="navbar-login">
-									<div class="row">
-										<div class="col-lg-4">
-											<p class="text-center">
-												<span class="glyphicon glyphicon-user icon-size"></span>
-											</p>
-										</div>
-										<div class="col-lg-8">
-											<p class="text-left">
-												<strong><sec:authentication property="name" /></strong>
-											</p>
-											<p class="text-left">
-												<a href="<c:url value="/logout" />"
-													class="btn btn-primary btn-block btn-sm">Logout</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="divider"></li>
-<!-- 							
-                            <li> 
-								<div class="navbar-login navbar-login-session">
-									<div class="row">
-										<div class="col-lg-12">
-											<p>
-												<a href="#" class="btn btn-primary btn-block">My Profile</a>
-												<a href="#" class="btn btn-danger btn-block">Change
-													Password</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
--->
-						</ul></li>
-				</sec:authorize>
-			</ul>
-		</div>
 
 
 
-	</div>
-</nav> --%>
+
+
+  
