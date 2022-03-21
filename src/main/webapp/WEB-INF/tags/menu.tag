@@ -148,18 +148,18 @@ $(document).ready(function() {
       			<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="background-color: #dab305;">
-          		<a class="dropdown-item" href="#">Crear Anuncios</a>
+          		<a class="dropdown-item" href="/ofertas/new">Crear Anuncios</a>
           		<a class="dropdown-item" href="/ofertas/misOfertas">Mis ofertas</a>
          		
        			 </div>
       			</li>
       			
       			<li class="nav-item active">
-					<a class="nav-link" href="#">Mi perfil</a>
+					<a class="nav-link" href="/profesores/miPerfil">Mi perfil</a>
 				</li>
       			
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Cerrar sesión</a>
+					<a name="logout" value="logout" class="nav-link" href="/login">Cerrar sesión</a>
 				</li>
 				
 		</sec:authorize>
@@ -168,21 +168,21 @@ $(document).ready(function() {
     	<sec:authorize access="hasAnyAuthority('alumno')">
 				
 				<li class="nav-item active">
-					<a class="nav-link" href="">Ver salas</a>
+					<a class="nav-link" href="/salas">Ver salas</a>
 				</li>
 				
 				
 				<li class="nav-item active">
-					<a class="nav-link" href="">Ver ofertas</a>
+					<a class="nav-link" href="/ofertas/find">Ver ofertas</a>
 				</li>
 				
 				
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Mi perfil</a>
+					<a class="nav-link" href="/alumnos/miPerfil">Mi perfil</a>
 				</li>
       			
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Cerrar sesión</a>
+					<a name="logout" value="logout" class="nav-link" href="/login">Cerrar sesión</a>
 				</li>
 				
 				

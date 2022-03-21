@@ -59,8 +59,14 @@ public class AnuncioController {
 		}
 		else {
 			//creating profesor, user and authorities
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			anuncio.setProfesor(usuario);
+			
 			this.anuncioService.saveAnuncio(anuncio);
-			return "redirect:/usuarios/" + anuncio.getId();
+			return "redirect:/ofertas/misOfertas";
 		}
 		
 		}

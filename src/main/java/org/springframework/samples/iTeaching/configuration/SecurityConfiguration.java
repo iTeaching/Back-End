@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,13 +48,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/vets/**").authenticated()
 				.antMatchers("/payments/**").authenticated()
 				.antMatchers("/bills/**").authenticated()
+				.antMatchers("/logged").authenticated()
 				.and()
 				 	.formLogin()
 				 	.loginPage("/login")
 				 	.defaultSuccessUrl("/logged")
 					.permitAll()
 					.and()
-					.logout().permitAll();
+					.logout().permitAll()
+					.and().csrf().csrfTokenRepository(new HttpSessionCsrfTokenRepository());
                 // Configuración para que funcione la consola de administración
                 // de la BD H2 (deshabilitar las cabeceras de protección contra
                 // ataques de tipo csrf y habilitar los framesets si su contenido
