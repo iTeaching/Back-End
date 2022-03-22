@@ -174,15 +174,28 @@
 
     <build>
         <plugins>
-           <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-            <configuration>
-            <source>11</source>  <!-- same as <java.version> -->
-            <target>11</target>    <!-- same as <java.version> -->
-        </configuration>
-        </plugin>
+            <version>3.8.0</version>
+                <executions>
+                    <execution>
+                        <!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
+                        file is present -->
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                        <configuration>
+                            <additionalProperties>
+                                <encoding.source>${project.build.sourceEncoding}</encoding.source>
+                                <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+                                <java.source>${maven.compiler.source}</java.source>
+                                <java.target>${maven.compiler.target}</java.target>
+                            </additionalProperties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
