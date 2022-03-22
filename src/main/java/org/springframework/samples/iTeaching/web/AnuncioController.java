@@ -155,6 +155,6 @@ public class AnuncioController {
 		String username= clienteDetails.getUsername();
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		this.anuncioService.aplyAnuncio(alumno, anuncioId);
-		return "welcome";
+		return "redirect:/logged";
 	}
 }
