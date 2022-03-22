@@ -1,65 +1,66 @@
 package org.springframework.samples.iTeaching.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.service.ProfesorService;
+import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-public class AlumnoValidator implements Validator {
+public class ProfesorValidator implements Validator {
 
-	private AlumnoService aluSer;
+private ProfesorService profSer;
 	
 	@Autowired
-	public AlumnoValidator(AlumnoService aS) {
-		this.aluSer = aS;
+	public ProfesorValidator(ProfesorService pS) {
+		this.profSer = pS;
 	}
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return Alumno.class.isAssignableFrom(clazz);
+		return Profesor.class.isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object obj, Errors errors) {
 
-		Alumno alumno = (Alumno) obj;
-		Alumno alumnoRegistered = this.aluSer.findAlumnoByUsername(alumno.getUser().getUsername());
-		if (alumno.getFirstName().isBlank()) {
+		Profesor profesor = (Profesor) obj;
+		Profesor profesorRegistered = this.profSer.findProfesorByUsername(profesor.getUser().getUsername());
+		if (profesor.getFirstName().isBlank()) {
 			errors.rejectValue("firstName", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
 		}
-		if (alumno.getFirstName().length() < 3) {
+		if (profesor.getFirstName().length() < 3) {
 			errors.rejectValue("firstName", "El nombre debe ser de mayor a 3 caracteres",
 					"El nombre debe ser mayor a 3 caracteres");
 		}
-		if (alumno.getLastName().isBlank()) {
+		if (profesor.getLastName().isBlank()) {
 			errors.rejectValue("lastName", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
 		}
-		if (alumno.getLastName().length() < 3) {
+		if (profesor.getLastName().length() < 3) {
 			errors.rejectValue("lastName", "El apellido debe ser mayor a 3 caracteres",
 					"El apellido debe ser mayor a 3 caracteres");
 		}
-		if (alumno.getEmail().isBlank()) {
+		if (profesor.getEmail().isBlank()) {
 			errors.rejectValue("email", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
 		}
-		if (alumnoRegistered != null) {
+		if (profesorRegistered != null) {
 			errors.rejectValue("user.username", "Este username ya esta en uso", "Este username ya esta en uso");
 
 		}
-		if (alumno.getUser().getUsername().isBlank()) {
+		if (profesor.getUser().getUsername().isBlank()) {
 			errors.rejectValue("user.username", "No puede dejar este campo vacío", "No puede dejar este campo vacío");
 		}
-		if (alumno.getUser().getUsername().length() < 6) {
+		if (profesor.getUser().getUsername().length() < 6) {
 			errors.rejectValue("user.username", "El nombre de usuario debe tener al menos 6 caracteres",
 					"El nombre de usuario debe tener al menos 6 caracteres");
 		}
-		if (alumno.getUser().getPassword().isBlank()) {
+		if (profesor.getUser().getPassword().isBlank()) {
 			errors.rejectValue("user.password", " No puede dejar este campo vacío", "No puede dejar este campo vacío");
 		}
-		if (!isValid(alumno.getUser().getPassword())) {
+		if (!isValid(profesor.getUser().getPassword())) {
 			errors.rejectValue("user.password",
 					" La contraseña debe contener dos caracteres en minúscula, dos en mayúscula, dos números y dos caracteres especiales",
 					"La contraseña debe contener dos caracteres en minúscula, dos en mayúscula, dos números y dos caracteres especiales");
