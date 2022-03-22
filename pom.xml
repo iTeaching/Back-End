@@ -174,22 +174,15 @@
 
     <build>
         <plugins>
-        <plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <properties>
-                    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-                    <maven.compiler.release>11</maven.compiler.release>
-                </properties>
+                <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
                 <executions>
                     <execution>
                         <!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
                         file is present -->
-                        <goals>
-                            <goal>build-info</goal>
-                        </goals>
+    
                         <configuration>
                             <additionalProperties>
                                 <encoding.source>${project.build.sourceEncoding}</encoding.source>
@@ -318,7 +311,7 @@
         									wro4j-maven-plugin
         								</artifactId>
         								<versionRange>
-        									[1.8.0,)
+        									[11,)
         								</versionRange>
         								<goals>
         									<goal>run</goal>
