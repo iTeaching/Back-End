@@ -175,7 +175,7 @@
 	</main>
 
 
-	<footer style="padding-top: 15px;">
-		<h2 class="titulo-final">&copy; 2022,iTeaching</h2>
+	<footer style="padding-top: 15px; margin-top:60px; height: 20px; background: #F9DA5C;">
+		<h2 class="titulo-final" style="margin-right:10px; margin-top:-2px; font-size:18px; text-align:right;">&copy; 2022,iTeaching</h2>
 	</footer>
 </body>
