@@ -46,13 +46,13 @@
 		<sec:authorize access="hasAnyAuthority('profesor')">
 			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3 ">
 				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a href="/salas" class="btn btn-outline-link"> <img
-							class="card-img-top"
+							class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title text-primary">Mis salas</h5>
+								<h5 class="card-title text-primary" style= "color:#fff;" >Mis salas</h5>
 								<p class="card-text text-dark">Visualiza las salas creadas
 									por ti</p>
 
@@ -61,9 +61,9 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a href="/ofertas/misOfertas" class="btn btn-outline-link"> <img
-							class="card-img-top"
+							class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/181/181621.png"
 							alt="Card image cap">
 
@@ -76,11 +76,11 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a href="/profesores/miPerfil"
-							class="btn btn-outline-link"> <img class="card-img-top"
+							class="btn btn-outline-link" > <img class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
-							alt="Card image cap">
+							alt="Card image cap" >
 							<div class="card-body">
 								<h5 class="card-title text-primary">Mi perfil</h5>
 								<p class="card-text text-dark">Visualiza el perfil del
@@ -91,9 +91,9 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a name="logout" value="logout" href="/login"
-							class="btn btn-outline-link"> <img class="card-img-top"
+							class="btn btn-outline-link"> <img class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"
 							alt="Card image cap">
 							<div class="card-body">
@@ -110,7 +110,7 @@
 		<sec:authorize access="hasAnyAuthority('alumno')">
 			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
 				<div class="col">
-					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
+					<div class="card h-100" style="width: 18rem;background-color:#F9DA5C;">
 						<a href="/salas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
@@ -124,7 +124,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+					<div class="card h-100" style="width: 18rem; background-color:#F9DA5C;">
 						<a href="/ofertas/find" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="http://assets.stickpng.com/thumbs/59cfc4d2d3b1936210a5ddc7.png"
@@ -140,7 +140,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
+					<div class="card h-100" style="width: 18rem;background-color:#F9DA5C;">
 						<a href="/alumnos/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
@@ -156,7 +156,7 @@
 				</div>
 			
 			<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+					<div class="card h-100" style="width: 18rem; background-color:#F9DA5C;">
 						<a name="logout" value="logout" href="/login"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"

@@ -62,6 +62,22 @@ nav > a{
 main .sobre-nosotros{
     padding: 30px 0 60px 0;
 }
+
+.card {
+    position: relative;
+    display: block;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    width: 217px;
+    margin-left: 55;
+}
+
+
 .contenedor-sobre-nosotros{
     display: flex;
     justify-content: space-evenly;
@@ -216,7 +232,9 @@ main .sobre-nosotros{
     font-size: 20px;
     text-align: center;
 }
-
+.btn btn-outline-link{
+    width: 50%;
+}
 /* footer */
 
 footer{
@@ -298,6 +316,11 @@ footer{
     .textos-header h2{
         font-size: 20px;
     }
+     .textos-header h5{
+        font-size: 20px;
+        color:#9E5D43;
+    }
+    
 
     /* Nuestro objetivo */
 
