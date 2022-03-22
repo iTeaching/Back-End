@@ -182,9 +182,7 @@
                     <execution>
                         <!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
                         file is present -->
-                        <goals>
-                            <goal>build-info</goal>
-                        </goals>
+    
                         <configuration>
                             <additionalProperties>
                                 <encoding.source>${project.build.sourceEncoding}</encoding.source>
