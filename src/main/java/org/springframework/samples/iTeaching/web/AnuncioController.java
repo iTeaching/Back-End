@@ -3,24 +3,21 @@ package org.springframework.samples.iTeaching.web;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
-import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AnuncioService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Controller
@@ -29,15 +26,12 @@ public class AnuncioController {
 	
 	@Autowired
 	private ProfesorService profesorService;
-	@Autowired
-	private AlumnoService alumnoService;
 	private static final String VIEWS_ANUNCIO_CREATE_FORM = "anuncios/createAnuncioForm";
 
 	@Autowired
-	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService,AlumnoService alumnoService) {
+	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService) {
 		this.anuncioService=anuncioService;
 		this.profesorService=profesorService;
-		this.alumnoService=alumnoService;
 	}
 	
 	@InitBinder
@@ -45,14 +39,14 @@ public class AnuncioController {
 		dataBinder.setDisallowedFields("id");
 	}
 	
-	@GetMapping(value = "/ofertas/new")
+	@GetMapping(value = "/oferta/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Anuncio anuncio = new Anuncio();
 		model.put("anuncio", anuncio);
 		return VIEWS_ANUNCIO_CREATE_FORM;
 	}
 	
-	@PostMapping(value = "/ofertas/new")
+	@PostMapping(value = "/oferta/new")
 	public String processCreationForm(@Valid Anuncio anuncio, BindingResult result) {
 		if (result.hasErrors()) {
 			return VIEWS_ANUNCIO_CREATE_FORM;
@@ -60,12 +54,19 @@ public class AnuncioController {
 		else {
 			//creating profesor, user and authorities
 			this.anuncioService.saveAnuncio(anuncio);
+			
 			return "redirect:/usuarios/" + anuncio.getId();
 		}
 		
 		}
+
+	@GetMapping(value = "/ofertas/find")
+	public String initFindForm(Map<String, Object> model) {
+		model.put("anuncio", new Anuncio());
+		return "ofertas/findOfertas";
+	}
 	
-	@GetMapping(value="/ofertas/misOfertas")
+	@GetMapping(value="/misAnuncios")
 	public String findMisAnuncios(Map<String, Object> model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -75,80 +76,5 @@ public class AnuncioController {
 		model.put("anuncios", anuncios);
 		return "anuncios/misAnuncios";
 	}
-	
-	@GetMapping(value="/ofertas/find")
-	public String findAnuncios(Map<String, Object> model) {
-		List<Anuncio> anuncios = this.anuncioService.findAll();
-		model.put("anuncios", anuncios);
-		return "anuncios/anuncioList";
-	}
-	
-	@GetMapping(value="/ofertas/find/{asignatura}")
-	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
-		List<Anuncio> anuncios = (List<Anuncio>) this.anuncioService.findByAsignatura(asignatura);
-		model.put("anuncios", anuncios);
-		return "anuncios/anuncioList";
-	}
-	
-	@GetMapping(value = "/ofertas/{anuncioId}/edit")
-	public String initUpdateOwnerForm(@PathVariable("anuncioId") int anuncioId, Model model) {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Anuncio anuncio = this.anuncioService.findById(anuncioId);
-		if (usuario.equals(anuncio.getProfesor())) {
-		model.addAttribute(anuncio);
-		return VIEWS_ANUNCIO_CREATE_FORM;
-	}
-		else {
-			return "welcome";
-		}
-	}
 
-	@PostMapping(value = "/ofertas/{anuncioId}/edit")
-	public String processUpdateOwnerForm(@Valid Anuncio anuncio, BindingResult result,
-			@PathVariable("anuncioId") int anuncioId) {
-		if (result.hasErrors()) {
-			return VIEWS_ANUNCIO_CREATE_FORM;
-		}
-		else {
-			anuncio.setId(anuncioId);
-			this.anuncioService.saveAnuncio(anuncio);
-			return "redirect:/anuncio/{anuncioId}";
-		}
-	}
-	@GetMapping(value = "/anuncio/{anuncioId}/delete")
-	public String deleteAnuncio(@PathVariable("anuncioId") int anuncioId, Model model) {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Anuncio anuncio = this.anuncioService.findById(anuncioId);
-		if (usuario.equals(anuncio.getProfesor())) {
-		this.anuncioService.delete(anuncio);
-		return "redirect:/misAnuncios";
-	}
-		else {
-			return "welcome";
-		}
-	}
-	
-	@GetMapping("/anuncio/{anuncioId}")
-	public ModelAndView viewAnuncio(@PathVariable("anuncioId")int anuncioId) {
-		ModelAndView mav = new ModelAndView("anuncios/anuncio");
-		Anuncio anuncio=this.anuncioService.findById(anuncioId);
-		mav.addObject("anuncio", anuncio);
-		return mav;
-	}
-	
-	@GetMapping("/anuncio/{anuncioId}/apply")
-	public String anuncioApply(@PathVariable("anuncioId")int anuncioId) {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
-		
-		return "kk";
-	}
 }

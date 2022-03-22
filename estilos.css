@@ -16,18 +16,13 @@ body {
     overflow: hidden;
 }
 
-.registros {
-  background-image: url(img1.jpg);
-  background-size: cover;
- }
-
 /* Header */
 
 header {
     width: 100%;
     height: 600px;
-    background: url(cabecera.jpg);
-    background: linear-gradient url(cabecera.jpg);
+    background: url(../img/cabecera.jpg);
+    background: linear-gradient url(../img/cabecera.jpg);
     background-size: cover;
     background-attachment: fixed;
     position: relative;

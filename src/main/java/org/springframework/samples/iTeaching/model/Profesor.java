@@ -26,10 +26,10 @@ public class Profesor extends Person{
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
-	private Set<Alumno> alumnos;
+	private Set<Anuncio> alumnos;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user", referencedColumnName = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username")
 	private User user;
 }

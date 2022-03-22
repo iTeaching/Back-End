@@ -15,28 +15,48 @@
  */
 package org.springframework.samples.iTeaching.repository;
 
+import java.util.Collection;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.iTeaching.model.BaseEntity;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.repository.AlumnoRepository;
+
 /**
  * Spring Data JPA OwnerRepository interface
  *
  * @author Michael Isvy
  * @since 15.1.2013
  */
-public interface AlumnoRepository extends CrudRepository<Alumno, Integer> {
+public interface AlumnoRepository extends Repository<Alumno, Integer> {
 
+	/**
+	 * Save an <code>Owner</code> to the data store, either inserting or updating it.
+	 * @param owner the <code>Owner</code> to save
+	 * @see BaseEntity#isNew
+	 */
+	void save(Alumno owner) throws DataAccessException;
 
+	/**
+	 * Retrieve <code>Owner</code>s from the data store by last name, returning all owners
+	 * whose last name <i>starts</i> with the given name.
+	 * @param lastName Value to search for
+	 * @return a <code>Collection</code> of matching <code>Owner</code>s (or an empty
+	 * <code>Collection</code> if none found)
+	 */	
 //	@Query("SELECT DISTINCT owner FROM Alumno alumno left join fetch owner.pets WHERE owner.lastName LIKE :lastName%")
 //	public Collection<Alumno> findByLastName(@Param("lastName") String lastName);
 
 
-
+	/**
+	 * Retrieve an <code>Owner</code> from the data store by id.
+	 * @param id the id to search for
+	 * @return the <code>Owner</code> if found
+	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
+	 */	
 	@Query("SELECT alumno FROM Alumno alumno WHERE alumno.id =:id")
 	public Alumno findById(@Param("id") int id);
 
