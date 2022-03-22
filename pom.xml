@@ -20,6 +20,9 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>11</maven.compiler.release>
+    
 
         <!-- Web dependencies -->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
@@ -178,11 +181,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <properties>
-                    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-                    <maven.compiler.release>11</maven.compiler.release>
-                </properties>
                 <executions>
                     <execution>
                         <!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
