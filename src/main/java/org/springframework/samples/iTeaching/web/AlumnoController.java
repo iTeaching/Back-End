@@ -26,8 +26,10 @@ public class AlumnoController {
 	@Autowired
 	private AlumnoService alumnoService;
 
-	
-	
+	@InitBinder("alumno")
+	public void initVehiculoBinder(WebDataBinder dataBinder) {
+		dataBinder.setValidator(new AlumnoValidator(alumnoService));
+	}
 
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
