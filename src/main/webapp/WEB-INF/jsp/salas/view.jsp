@@ -11,7 +11,7 @@
 	<nav>
     </nav>
     </header>
-    <h2>${sala.nombre }</h2>
+    <h2>${sala.nombre}</h2>
 
     <table id="salasTable" class="table table-striped">
         <thead>
@@ -46,6 +46,7 @@
              	
             <c:forEach items="${sala.alumnos}" var="alumno">
                  <li><c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/></li>
+                 <br>
             </c:forEach>
              	
              </ul>
