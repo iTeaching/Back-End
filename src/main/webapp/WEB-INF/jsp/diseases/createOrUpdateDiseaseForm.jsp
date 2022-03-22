@@ -8,25 +8,27 @@
 
 <petclinic:layout pageName="owners">
     <h2>
-        <c:if test="${owner['new']}">New </c:if> Usuario
+        <c:if test="${disease['new']}">New </c:if> Disease
     </h2>
-    <form:form modelAttribute="owner" class="form-horizontal" id="add-owner-form">
+    <form:form modelAttribute="disease" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Telephone" name="telephone"/>
-            <petclinic:inputField label="Email" name="email"/>
-            <petclinic:inputField label="Username" name="user.username"/>
-            <petclinic:inputField label="Password" name="user.password"/>
+            <petclinic:inputField label="Name" name="name"/>
+            <petclinic:richTextArea id="description" label="Description" name="description"/>
+            <div class="formGroup">            
+            	<div class="col-sm-10">
+            	<label>Pet types with known prevalence:</label>
+            		<form:checkboxes items="${petTypes}" path="petTypeswithPrevalence" delimiter="&nbsp;&nbsp;&nbsp;"/>
+            	</div>
+            </div>         
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${owner['new']}">
-                        <button class="btn btn-default" type="submit">Add Usuario</button>
+                    <c:when test="${disease['new']}">
+                        <button class="btn btn-default" type="submit">Add Disease</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Usuario</button>
+                        <button class="btn btn-default" type="submit">Update Disease</button>
                     </c:otherwise>
                 </c:choose>
             </div>

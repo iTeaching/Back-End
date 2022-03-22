@@ -36,23 +36,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/resources/**","/webjars/**","/h2-console/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/","/oups").permitAll()
 				.antMatchers("/users/new").permitAll()
-				.antMatchers("/salas/new").hasAnyAuthority("profesor")
-				.antMatchers("/salas").hasAnyAuthority("profesor")
-				.antMatchers("/ofertas/find/**").hasAnyAuthority("alumno")
-				.antMatchers("/alumnos/new").permitAll()
 				.antMatchers("/logging", "/actuator/**").permitAll()
 				.antMatchers("/admin/**").hasAnyAuthority("admin")
 				.antMatchers("/owners/**").hasAnyAuthority("alumno","admin")				
 				.antMatchers("/vets/**").authenticated()
 				.antMatchers("/payments/**").authenticated()
 				.antMatchers("/bills/**").authenticated()
+				.anyRequest().denyAll()
 				.and()
 				 	.formLogin()
-				 	.loginPage("/login")
-				 	.defaultSuccessUrl("/salas")
-					.permitAll()
-					.and()
-					.logout().permitAll(); 
+				 	/*.loginPage("/login")*/
+				 	.failureUrl("/login-error")
+				.and()
+					.logout()
+						.logoutSuccessUrl("/"); 
                 // Configuración para que funcione la consola de administración 
                 // de la BD H2 (deshabilitar las cabeceras de protección contra
                 // ataques de tipo csrf y habilitar los framesets si su contenido

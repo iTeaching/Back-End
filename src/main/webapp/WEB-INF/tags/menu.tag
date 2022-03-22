@@ -1,112 +1,13 @@
-<%@ tag pageEncoding='UTF-8' %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>	
+	uri="http://www.springframework.org/security/tags"%>
+<!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 <%@ attribute name="name" required="true" rtexprvalue="true"
 	description="Name of the active menu: home, owners, vets or error"%>
 
-<nav>
-<ul class="nav navbar-nav">
-
-				<sec:authorize access="hasAnyAuthority('profesor')">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Mis Anuncios</span>
-				</iteaching:menuItem>
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/salas/new">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Crear Sala</span>
-				</iteaching:menuItem>
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/salas">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Mis Salas</span>
-				</iteaching:menuItem>
-				</sec:authorize>
-				
-				<sec:authorize access="hasAnyAuthority('alumno')">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Ver ofertas</span>
-				</iteaching:menuItem>
-				
-				</sec:authorize>
-				
-				<sec:authorize access="!isAuthenticated()">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/login">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Login</span>
-				</iteaching:menuItem>
-				</sec:authorize>
-				
-				<sec:authorize access="!isAuthenticated()">
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="mailto:iteaching.sa@gmail.com​"
-					title="Contacto">
-					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-					<span>Contacto</span>
-				</iteaching:menuItem>
-				</sec:authorize>
-				
-				
-			</ul>
-        </nav>
-        <img src="../resources/images/logo.png" class="logo">
-
-        
-		<%-- <div class="navbar-collapse collapse" id="main-navbar">
-			<ul class="nav navbar-nav">
-
-
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
-					title="veterinarians">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Mis Anuncios</span>
-				</iteaching:menuItem>
-			</ul>
-
-
-
-
-			<ul class="nav navbar-nav navbar-right">
-				<sec:authorize access="!isAuthenticated()">
-					<li><a href="<c:url value="/login" />">Login</a></li>
-					<li><a href="<c:url value="/users/new" />">Register</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
-							<strong><sec:authentication property="name" /></strong> <span
-							class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li>
-								<div class="navbar-login">
-									<div class="row">
-										<div class="col-lg-4">
-											<p class="text-center">
-												<span class="glyphicon glyphicon-user icon-size"></span>
-											</p>
-										</div>
-										<div class="col-lg-8">
-											<p class="text-left">
-												<strong><sec:authentication property="name" /></strong>
-											</p>
-											<p class="text-left">
-												<a href="<c:url value="/logout" />"
-													class="btn btn-primary btn-block btn-sm">Logout</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="divider"></li>
-						</ul></li>
-				</sec:authorize>
-			</ul>
-		</div> --%>
-	
-<%-- <nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand"
@@ -123,11 +24,11 @@
 			<ul class="nav navbar-nav">
 
 
-				<iteaching:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
+				<petclinic:menuItem active="${name eq 'anuncios'}" url="/misAnuncios"
 					title="veterinarians">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Mis Anuncios</span>
-				</iteaching:menuItem>
+				</petclinic:menuItem>
 			</ul>
 
 
@@ -140,7 +41,7 @@
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>�
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>
@@ -189,4 +90,4 @@
 
 
 	</div>
-</nav> --%>
+</nav>
