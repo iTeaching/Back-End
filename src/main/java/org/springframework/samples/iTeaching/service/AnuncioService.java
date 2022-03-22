@@ -52,6 +52,11 @@ public class AnuncioService {
 		anuncioAplied.getAlumnos().add(alumno);
 		saveAnuncio(anuncioAplied);
 	}
+	public List<Anuncio> appliedAnuncio(Alumno alumno){
+		return anuncioRepository.findAll().stream().filter(a->a.getAlumnos().contains(alumno)).collect(Collectors.toList());
+		
+		
+	}
 
 	}
 

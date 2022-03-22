@@ -68,9 +68,11 @@ $(document).ready(function() {
 				</li>
 				
 				
-				<li class="nav-item active">
-					<a class="nav-link" href="/ofertas/find">Ver ofertas</a>
-				</li>
+			<li class="nav-item dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="background-color: #dab305;">
+          		<a class="dropdown-item" href="/ofertas/find">Ver Ofertas</a>
+          		<a class="dropdown-item" href="/ofertas/anunciosAplicados">Anuncios aplicados</a>
 				
 				
 				<li class="nav-item active">

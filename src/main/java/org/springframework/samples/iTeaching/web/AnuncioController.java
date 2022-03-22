@@ -157,4 +157,15 @@ public class AnuncioController {
 		this.anuncioService.aplyAnuncio(alumno, anuncioId);
 		return "redirect:/logged";
 	}
+
+	@GetMapping("/anuncio/anunciosAplicados")
+	public String anunciosAplied(Map<String, Object> model){
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
+		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno)
+		model.put("anuncios", lista);
+		return "anuncios/list";
+	}
 }
