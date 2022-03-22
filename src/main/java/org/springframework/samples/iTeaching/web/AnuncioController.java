@@ -85,8 +85,8 @@ public class AnuncioController {
 	
 	@GetMapping(value="/ofertas/find")
 	public String findAnuncios(Map<String, Object> model) {
-		List<Anuncio> anuncios = this.anuncioService.findAll();
-		model.put("anuncios", anuncios);
+//		List<Anuncio> anuncios = this.anuncioService.findAll();
+		model.put("anuncios", new Anuncio());
 		return "anuncios/anuncioList";
 	}
 	
@@ -98,16 +98,16 @@ public class AnuncioController {
 	}
 	
 	@GetMapping(value = "/ofertas/{anuncioId}/edit")
-	public String initUpdateAnuncioForm(@PathVariable("anuncioId") int anuncioId, Model model) {
+	public String initUpdateAnuncioForm(@PathVariable("anuncioId") int anuncioId, ModelMap model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Anuncio anuncio = this.anuncioService.findById(anuncioId);
+		Anuncio anuncio = this.anuncioService.findAnuncioById(anuncioId);
 		if (usuario.equals(anuncio.getProfesor())) {
-			
-			model.addAttribute(anuncio);
 			anuncio.setId(anuncioId);
+			model.put("anuncio",anuncio);
+			
 			return VIEWS_ANUNCIO_CREATE_FORM;
 		}
 		else {
@@ -116,9 +116,13 @@ public class AnuncioController {
 	}
 
 	@PostMapping(value = "/ofertas/{anuncioId}/edit")
-	public String processUpdateAnuncioForm(@Valid Anuncio anuncio, BindingResult result,
+	public String processUpdateAnuncioForm(@Valid Anuncio anuncio, BindingResult result, ModelMap model,
 			@PathVariable("anuncioId") int anuncioId) {
+		anuncio.setId(anuncioId);
+		Collection<Profesor> profesores = profesorService.findProfesores();
+		model.put("profesor", profesores);
 		if (result.hasErrors()) {
+			model.put("anuncio",anuncio);
 			return VIEWS_ANUNCIO_CREATE_FORM;
 		}
 		else {
@@ -139,7 +143,7 @@ public class AnuncioController {
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Anuncio anuncio = this.anuncioService.findById(anuncioId);
+		Anuncio anuncio = this.anuncioService.findAnuncioById(anuncioId);
 		if (usuario.equals(anuncio.getProfesor())) {
 		this.anuncioService.delete(anuncio);
 		return "redirect:/ofertas/misOfertas";
@@ -152,7 +156,7 @@ public class AnuncioController {
 	@GetMapping("/anuncio/{anuncioId}")
 	public ModelAndView viewAnuncio(@PathVariable("anuncioId")int anuncioId) {
 		ModelAndView mav = new ModelAndView("anuncios/anuncio");
-		Anuncio anuncio=this.anuncioService.findById(anuncioId);
+		Anuncio anuncio=this.anuncioService.findAnuncioById(anuncioId);
 		mav.addObject("anuncio", anuncio);
 		return mav;
 	}
