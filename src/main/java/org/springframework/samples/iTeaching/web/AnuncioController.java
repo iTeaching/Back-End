@@ -154,7 +154,7 @@ public class AnuncioController {
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
-		
-		return "kk";
+		this.anuncioService.aplyAnuncio(alumno, anuncioId);
+		return "welcome";
 	}
 }
