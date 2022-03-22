@@ -125,7 +125,7 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery-ui</artifactId>
-            <version>${webjars-jquery-ui.version}</version>
+            <version>1.11.4</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
