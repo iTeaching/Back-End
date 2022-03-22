@@ -27,7 +27,8 @@
                     <c:out value="${sala.nombre}"/>
                 </td>
                  <td>
-					<a href="/salas/${sala.id }">Ir a la sala</a>
+                     
+					<a href="/salas/${sala.id }"><img src="resources/images/video.svg"></a>
                 </td>
             </tr>
         </c:forEach>
