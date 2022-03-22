@@ -20,9 +20,6 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-    
 
         <!-- Web dependencies -->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
@@ -177,10 +174,19 @@
 
     <build>
         <plugins>
-        <plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                 <version>3.8.0</version>
+                 </plugin>
+                <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                <release>11</release>
+                </configuration>
+</plugin>
                 <executions>
                     <execution>
                         <!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
@@ -316,7 +322,7 @@
         									wro4j-maven-plugin
         								</artifactId>
         								<versionRange>
-        									[11,)
+        									[1.8.0,)
         								</versionRange>
         								<goals>
         									<goal>run</goal>
