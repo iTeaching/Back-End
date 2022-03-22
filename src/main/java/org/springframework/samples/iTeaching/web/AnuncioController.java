@@ -164,7 +164,7 @@ public class AnuncioController {
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
-		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno)
+		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno);
 		model.put("anuncios", lista);
 		return "anuncios/list";
 	}
