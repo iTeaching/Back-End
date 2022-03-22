@@ -23,9 +23,9 @@ INSERT INTO alumno(id, version, email, first_name, last_name, telephone, usernam
 INSERT INTO alumno(id, version, email, first_name, last_name, telephone, username) VALUES (2,1,'alumnomolon2@gmail.com','alumno2','molon2','666111335','alumno2');
 
 --INSERTAR SALAS
-INSERT INTO sala(id, version, nombre, url, profesor) VALUES (1,1,'sala1','https://acme.whereby.com/a05d837d-2aaf-47a2-abf2-21dc8121f1c7',1);
-INSERT INTO sala(id, version, nombre, url, profesor) VALUES (2,1,'sala2','https://acme.whereby.com/a72ef6b4-3422-4074-8cc9-ff49c7709e05',1);
-INSERT INTO sala(id, version, nombre, url, profesor) VALUES (3,1,'sala3','https://acme.whereby.com/06dd586a-c314-4ff2-bfaf-e9eced4ff8c0',2);
+INSERT INTO sala(id, version, nombre, url, profesor) VALUES (1,1,'Sala1','https://acme.whereby.com/663e69ba-9374-44b8-92e1-2d8ba28dab21',1);
+INSERT INTO sala(id, version, nombre, url, profesor) VALUES (2,1,'Sala2','https://acme.whereby.com/5fe20d98-e1c1-43b8-98d1-c914c7424572',1);
+INSERT INTO sala(id, version, nombre, url, profesor) VALUES (3,1,'Sala3','https://acme.whereby.com/5ae44241-f173-4d66-bc96-cf058e0ca07a',2);
 
 --INSERTAR ALUMNOS A SALAS
 INSERT INTO sala_alumno(sala_id, alumno_id) VALUES (1,1);
