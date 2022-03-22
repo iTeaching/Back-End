@@ -33,7 +33,6 @@
     </properties>
 
     <dependencies>
-
         <!-- Spring and Spring Boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -171,15 +170,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
                 <executions>
                     <execution>
                         <!-- Spring Boot Actuator displays build-related information if a META-INF/build-info.properties 
                         file is present -->
-                        <goals>
-                            <goal>build-info</goal>
-                        </goals>
+    
                         <configuration>
                             <additionalProperties>
                                 <encoding.source>${project.build.sourceEncoding}</encoding.source>
@@ -308,7 +306,7 @@
         									wro4j-maven-plugin
         								</artifactId>
         								<versionRange>
-        									[1.8.0,)
+        									[11,)
         								</versionRange>
         								<goals>
         									<goal>run</goal>
@@ -333,7 +331,5 @@
             <url>https://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
-
-
 
 </project>
