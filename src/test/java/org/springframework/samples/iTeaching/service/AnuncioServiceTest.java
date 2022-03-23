@@ -30,12 +30,14 @@ public class AnuncioServiceTest {
 		assertThat(a.getAsignatura().equals("Lengua"));
 	}
 	
+	@Test
 	public void testFindAll() {
 		List<Anuncio> anuncios = this.anuncioService.findAll();
 		
 		assertThat(anuncios.size()==2);
 	}
 	
+	@Test
 	public void testInsertAnuncio() {
 		Anuncio a = new Anuncio();
 		Profesor p = this.profesorService.findProfesorById(1); 
