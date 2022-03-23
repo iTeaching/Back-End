@@ -30,7 +30,6 @@ jobs:
       uses: codacy/codacy-coverage-reporter-action@v1.1.0
       with:
           project-token: ${{secrets.CODACY_PROJECT_TOKEN}}
-          coverage-reports: decide/coverage.xml
           
   deploy:
     runs-on: ubuntu-latest
