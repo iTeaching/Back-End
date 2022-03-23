@@ -4,10 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 <iteaching:layout pageName="anuncios">
     <h2>Anuncios</h2>
-
+    <head>
+        <meta charset="UTF-8">
+      </head>
     <table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
@@ -45,7 +48,7 @@
                     <spring:url value="/anuncio/{anuncioId}/apply" var="anuncioId">
                     <spring:param name="anuncioId" value="${anuncio.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(anuncioId)}">Test</span>
+                    <a href="${fn:escapeXml(anuncioId)}"><img src="resources/images/video.svg"></span>
                     </a>                       
                     </td>
             </tr>

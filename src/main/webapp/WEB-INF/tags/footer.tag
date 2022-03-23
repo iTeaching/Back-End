@@ -13,7 +13,9 @@
 <spring:url value="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"
 	var="bootstrapJs" />
 <script src="${bootstrapJs}"></script>
-
+<head>
+  <meta charset="UTF-8">
+</head>
 
 <footer>
 	<div class="contenedor-footer">

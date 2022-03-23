@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
 
 <head>
     <meta charset="UTF-8">    
@@ -54,7 +56,6 @@
             </c:when>
             </c:choose>
             <iteaching:inputPassword label="Password" name="user.password"/>
-
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
