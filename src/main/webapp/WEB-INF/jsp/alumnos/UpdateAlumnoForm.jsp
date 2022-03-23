@@ -5,8 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+
 <head>
     <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,31 +40,20 @@
 
 <iteaching:layout pageName="alumnos">
     <h2>
-        <c:if test="${profesor['new']}">Nuevo </c:if> Profesor
+    Editar Alumno
     </h2>
-    <form:form modelAttribute="profesor" class="form-horizontal" id="add-profesor-form">
+    <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">
         
             <iteaching:inputField label="First Name" name="firstName"/>
             <iteaching:inputField label="Last Name" name="lastName"/>
             <iteaching:inputField label="Telephone" name="telephone"/>
             <iteaching:inputField label="Email" name="email"/>
-            <c:choose>
-            <c:when test="${profesor ['new']}">
-            <iteaching:inputField label="Username" name="user.username"/>
-            </c:when>
-            </c:choose>            <iteaching:inputPassword label="Password" name="user.password"/>
+            <iteaching:inputPassword label="Password" name="user.password"/>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <c:choose>
-                    <c:when test="${profesor ['new']}">
-                        <button class="button" type="submit">Registrarse</button>
-                    </c:when>
-                    <c:otherwise>
+            <div class="col-sm-offset-2 col-sm-10">       
                         <button class="button" type="submit">Actualizar Usuario</button>
-                    </c:otherwise>
-                </c:choose>
             </div>
         </div>
     </form:form>

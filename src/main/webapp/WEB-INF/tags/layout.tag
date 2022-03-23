@@ -8,7 +8,9 @@
 <!doctype html>
 <html>
 <iteaching:htmlHeader/>
-
+<head>
+  <meta charset="UTF-8">
+</head>
 <body>
 <iteaching:bodyHeader menuName="${pageName}"/>
 
