@@ -54,7 +54,8 @@
             <c:when test="${profesor ['new']}">
             <iteaching:inputField label="Username" name="user.username"/>
             </c:when>
-            </c:choose>            <iteaching:inputPassword label="Password" name="user.password"/>
+            </c:choose>
+            <iteaching:inputPassword label="Password" name="user.password"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

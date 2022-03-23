@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<petclinic:layout pageName="anuncios">
+<iteaching:layout pageName="anuncios">
     <h2>Anuncios</h2>
 
     <table id="ownersTable" class="table table-striped">
@@ -17,6 +17,8 @@
             <th style="width: 200px;">Descripcion</th>
             <th style="width: 120px">Asignatura</th>
             <th style="width: 120px">Precio</th>
+            <th style="width: 120px">Editar</th>
+            <th style="width: 120px">Eliminar</th>
             
         </tr>
         </thead>
@@ -38,10 +40,21 @@
                 <td>
                     <c:out value="${anuncios.precio}"/>
                 </td>
-                
+               
+				<td>
+					<spring:url value="/ofertas/{anuncioId}/edit" var="anuncioUrl">
+						<spring:param name="anuncioId" value="${anuncios.id}" />
+					</spring:url> <a href="${fn:escapeXml(anuncioUrl)}">Editar</a>
+				</td>
+				
+				<td>
+					<spring:url value="/anuncio/{anuncioId}/delete" var="anuncioUrl">
+						<spring:param name="anuncioId" value="${anuncios.id}" />
+					</spring:url> <a href="${fn:escapeXml(anuncioUrl)}">Eliminar</a>
+				</td>
    
             </tr>
         </c:forEach>
         </tbody>
     </table>
-</petclinic:layout>
+</iteaching:layout>

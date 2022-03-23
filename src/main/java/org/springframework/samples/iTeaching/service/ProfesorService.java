@@ -1,5 +1,7 @@
 package org.springframework.samples.iTeaching.service;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Profesor;
@@ -20,7 +22,12 @@ public class ProfesorService {
 	@Autowired
 	public ProfesorService(ProfesorRepository profesorRepository) {
 		this.profesorRepository = profesorRepository;
-	}	
+	}
+	
+	@Transactional(readOnly = true)
+	public Collection<Profesor> findProfesores() throws DataAccessException {
+		return (Collection<Profesor>) profesorRepository.findAll();
+	}
 
 	@Transactional(readOnly = true)
 	public Profesor findProfesorById(int id) throws DataAccessException {

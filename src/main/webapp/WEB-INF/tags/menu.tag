@@ -74,9 +74,12 @@ $(document).ready(function() {
           		<a class="dropdown-item" href="/ofertas/find">Ver Ofertas</a>
           		<a class="dropdown-item" href="/anuncios/anunciosAplicados">Anuncios aplicados</a>
 				
-				
 				<li class="nav-item active">
 					<a class="nav-link" href="/alumnos/miPerfil">Mi perfil</a>
+				</li>
+				
+				<li class="nav-item active">
+					<a class="nav-link" href="/pagar">Pagar</a>
 				</li>
       			
 				<li class="nav-item active">

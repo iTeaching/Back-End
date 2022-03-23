@@ -108,7 +108,7 @@
 		</sec:authorize>
 
 		<sec:authorize access="hasAnyAuthority('alumno')">
-			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
+			<div class="row justify-content-center row-cols-1 row-cols-md-5 g-3">
 				<div class="col">
 					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
 						<a href="/salas" class="btn btn-outline-link"> <img
@@ -149,6 +149,21 @@
 								<h5 class="card-title text-primary">Mi perfil</h5>
 								<p class="card-text text-dark">Visualiza el perfil del
 									usuario</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<div class="col">
+					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
+						<a href="/pagar"
+							class="btn btn-outline-link"> <img class="card-img-top"
+							src="https://i.pinimg.com/originals/4c/be/11/4cbe116c2ba74636d40d14490d306903.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Pagar</h5>
+								<p class="card-text text-dark">Abonar mis clases</p>
 
 							</div>
 						</a>

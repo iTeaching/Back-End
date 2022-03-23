@@ -98,7 +98,6 @@
                 </div>
             </div>
         </section>
-        <a href="/pagar">Pagar</a>
     <footer>
         <div class="contenedor-footer">
             <div class="footer-contact--email">
