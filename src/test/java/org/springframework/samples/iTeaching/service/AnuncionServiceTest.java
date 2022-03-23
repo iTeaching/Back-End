@@ -32,27 +32,27 @@ public class AnuncionServiceTest {
 
 
 
-	@Test
-	public void testInsertAnuncio() {
+	//@Test
+	//public void testInsertAnuncio() {
 		
 
-		Profesor p = new Profesor();
-		p.setFirstName("Juan Manuel");
-		p.setLastName("Gump Romero");
-		p.setTelephone("612623789");
-		p.setEmail("juanmagump@mail.com");
+		//Profesor p = new Profesor();
+//		p.setFirstName("Juan Manuel");
+	//	p.setLastName("Gump Romero");
+		//p.setTelephone("612623789");
+	//	p.setEmail("juanmagump@mail.com");
 		
 		
 		
-		Anuncio a = new Anuncio();
-		a.setTitulo("Clases de mates");
-		a.setAsignatura("Mates");
-		a.setDescripcion("Clases muy baratas");
-		a.setPrecio(20.);
-		a.setId(3);
-		a.setProfesor(p);
+	//	Anuncio a = new Anuncio();
+	//	a.setTitulo("Clases de mates");
+	//	a.setAsignatura("Mates");
+	//	a.setDescripcion("Clases muy baratas");
+		//a.setPrecio(20.);
+	//	a.setId(3);
+	//	a.setProsor(p);
 	
 		
-		assertThat(anuncioService.findAnuncioById(3).getProfesor().equals(p));
-	}
+	//	assertThat(anuncioService.findAnuncioById(3).getProfesor().equals(p));
+	//}
 }
