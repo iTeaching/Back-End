@@ -14,6 +14,7 @@ import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,7 +85,7 @@ public class AnuncioController {
 	
 	@GetMapping(value="/ofertas/find")
 	public String findAnuncios(Map<String, Object> model) {
-		List<Anuncio> anuncios = this.anuncioService.findAll();
+		List<Anuncio> anuncios = (List<Anuncio>) this.anuncioService.findAll();
 		model.put("anuncios", anuncios);
 		return "anuncios/anuncioList";
 	}
@@ -97,31 +98,43 @@ public class AnuncioController {
 	}
 	
 	@GetMapping(value = "/ofertas/{anuncioId}/edit")
-	public String initUpdateOwnerForm(@PathVariable("anuncioId") int anuncioId, Model model) {
+	public String initUpdateAnuncioForm(@PathVariable("anuncioId") int anuncioId, ModelMap model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Anuncio anuncio = this.anuncioService.findById(anuncioId);
+		Anuncio anuncio = this.anuncioService.findAnuncioById(anuncioId);
 		if (usuario.equals(anuncio.getProfesor())) {
-		model.addAttribute(anuncio);
-		return VIEWS_ANUNCIO_CREATE_FORM;
-	}
+			anuncio.setId(anuncioId);
+			model.put("anuncio",anuncio);
+			
+			return VIEWS_ANUNCIO_CREATE_FORM;
+		}
 		else {
 			return "welcome";
 		}
 	}
 
 	@PostMapping(value = "/ofertas/{anuncioId}/edit")
-	public String processUpdateOwnerForm(@Valid Anuncio anuncio, BindingResult result,
+	public String processUpdateAnuncioForm(@Valid Anuncio anuncio, BindingResult result, ModelMap model,
 			@PathVariable("anuncioId") int anuncioId) {
+		anuncio.setId(anuncioId);
+		Collection<Profesor> profesores = profesorService.findProfesores();
+		model.put("profesor", profesores);
 		if (result.hasErrors()) {
+			model.put("anuncio",anuncio);
 			return VIEWS_ANUNCIO_CREATE_FORM;
 		}
 		else {
 			anuncio.setId(anuncioId);
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			anuncio.setProfesor(usuario);
+			
 			this.anuncioService.saveAnuncio(anuncio);
-			return "redirect:/anuncio/{anuncioId}";
+			return "redirect:/ofertas/misOfertas";
 		}
 	}
 	@GetMapping(value = "/anuncio/{anuncioId}/delete")
@@ -130,10 +143,10 @@ public class AnuncioController {
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Anuncio anuncio = this.anuncioService.findById(anuncioId);
+		Anuncio anuncio = this.anuncioService.findAnuncioById(anuncioId);
 		if (usuario.equals(anuncio.getProfesor())) {
 		this.anuncioService.delete(anuncio);
-		return "redirect:/misAnuncios";
+		return "redirect:/ofertas/misOfertas";
 	}
 		else {
 			return "welcome";
@@ -143,7 +156,7 @@ public class AnuncioController {
 	@GetMapping("/anuncio/{anuncioId}")
 	public ModelAndView viewAnuncio(@PathVariable("anuncioId")int anuncioId) {
 		ModelAndView mav = new ModelAndView("anuncios/anuncio");
-		Anuncio anuncio=this.anuncioService.findById(anuncioId);
+		Anuncio anuncio=this.anuncioService.findAnuncioById(anuncioId);
 		mav.addObject("anuncio", anuncio);
 		return mav;
 	}
@@ -158,7 +171,7 @@ public class AnuncioController {
 		return "redirect:/logged";
 	}
 
-	@GetMapping("/anuncio/anunciosAplicados")
+	@GetMapping("/ofertas/anunciosAplicados")
 	public String anunciosAplied(Map<String, Object> model){
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -166,6 +179,6 @@ public class AnuncioController {
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno);
 		model.put("anuncios", lista);
-		return "anuncios/list";
+		return "anuncios/anuncioList";
 	}
 }

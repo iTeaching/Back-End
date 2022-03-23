@@ -16,6 +16,8 @@
             <th style="width: 200px;">Descripcion</th>
             <th style="width: 120px">Asignatura</th>
             <th style="width: 120px">Precio</th>
+            <th style="width: 120px">Editar</th>
+            <th style="width: 120px">Eliminar</th>
             
         </tr>
         </thead>
@@ -37,7 +39,18 @@
                 <td>
                     <c:out value="${anuncios.precio}"/>
                 </td>
-                
+               
+				<td>
+					<spring:url value="/ofertas/{anuncioId}/edit" var="anuncioUrl">
+						<spring:param name="anuncioId" value="${anuncios.id}" />
+					</spring:url> <a href="${fn:escapeXml(anuncioUrl)}">Editar</a>
+				</td>
+				
+				<td>
+					<spring:url value="/anuncio/{anuncioId}/delete" var="anuncioUrl">
+						<spring:param name="anuncioId" value="${anuncios.id}" />
+					</spring:url> <a href="${fn:escapeXml(anuncioUrl)}">Eliminar</a>
+				</td>
    
             </tr>
         </c:forEach>
