@@ -72,7 +72,7 @@ $(document).ready(function() {
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="background-color: #dab305;">
           		<a class="dropdown-item" href="/ofertas/find">Ver Ofertas</a>
-          		<a class="dropdown-item" href="/ofertas/anunciosAplicados">Anuncios aplicados</a>
+          		<a class="dropdown-item" href="/anuncios/anunciosAplicados">Anuncios aplicados</a>
 				
 				<li class="nav-item active">
 					<a class="nav-link" href="/alumnos/miPerfil">Mi perfil</a>
