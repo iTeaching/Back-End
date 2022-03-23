@@ -187,6 +187,6 @@ public class AnuncioController {
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno);
 		model.put("anuncios", lista);
-		return "anuncios/anuncioList";
+		return "anuncios/anunciosAplicados";
 	}
 }

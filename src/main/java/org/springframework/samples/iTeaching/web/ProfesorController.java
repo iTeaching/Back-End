@@ -87,21 +87,6 @@ public class ProfesorController {
 		return mav;
 	}
 	
-	@PostMapping("/profesores/{profesorId}")
-	public String deleteProfesor(@PathVariable("profesorId") int profesorId) {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Profesor usuario = profesorService.findProfesorByUsername(username);
-		Profesor profesor = profesorService.findProfesorById(profesorId);
-		if (usuario.equals(profesor)) {
-			this.profesorService.delete(profesor);
-			return "welcome";
-		}
-		else {
-			return "welcome";
-		}
-	}
 	
 	
 	@GetMapping(value = "/profesores/miPerfil")
