@@ -20,9 +20,9 @@
 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #F9DA5C;
   border: none;
-  color: white;
+  color: #994E33;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -33,6 +33,12 @@
   border-radius: 12px;
   padding: 14px 40px;
   align-self:center;
+  width: 300px;
+}
+	footer{
+    background: #F9DA5C;
+    padding: 60px 0 30px 0;
+    overflow: hidden;
 }
 
 	</style>
@@ -58,25 +64,25 @@
 	<form action="${path}/login" method="post" class="form-signin">
 	
 		<p style="color:green;">${message}</p>
-		<div class="form-floating mb-3">
+		<div class="form-floating mb-3" style="width:500px;">
   <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Usuario">
   <label for="floatingInput">Usuario</label>
 </div>
-<div class="form-floating">
+<div class="form-floating"style="width:500px;">
  <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
   <label for="floatingPassword">Contrase&ntildea</label>
 </div>
 		<p style="color:red;">${error}</p>
 		
-		<div class="d-grid gap-2">
+		<div class="center" >
 		<button class="button">Iniciar sesión</button>
 		</div>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			</form>
-		<div class="d-grid gap-2">
+		<div class="center">
    <a class="button" href="/alumnos/new">Registrarse como alumno</a>
     </div> 
-		<div class="d-grid gap-2">
+		<div class="center">
     <a class="button" href="/profesores/new">Registrarse como profesor</a>
     </div> 
 		
@@ -89,11 +95,13 @@
     
     </main>
     </body>
-    <footer>
-        <div class="contenedor-footer">
-            <div class="footer-contact--email">
-                <img src="resources/images/gmail.svg" class="footer_img">
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
-    </footer>
+    <footer style=" background: #F9DA5C; height:25px;">
+	<div class="contenedor-footer"style=" margin-top:-50px;">
+		<div style=" font-size:26px;">
+			<img src="../resources/images/gmail.svg" class="footer_img"style=" margin-left:-600px;">iteaching.sa@gmail.com
+		</div>
+	
+		<h2 class="titulo-final" style="margin-right:-600px; margin-top:50px; font-size:18px;">&copy; 2022,iTeaching</h2>
+	</div>
+	
+</footer>

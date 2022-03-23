@@ -247,7 +247,6 @@ footer{
     display: flex;
     width: 90%;
     justify-content: space-evenly;
-    margin: auto;
     padding-bottom: 50px;
     border-bottom: 1px solid #ccc;
 }

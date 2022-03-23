@@ -92,7 +92,7 @@ $(document).ready(function() {
     	<sec:authorize access="!isAuthenticated()">
 				
 				<li class="nav-item active">
-					<a class="nav-link" href="mailto:iteaching.sa@gmail.com">Contacto</a>
+					<a class="nav-link" href="mailto:iteaching.sa@gmail.com" style="font-weight: 500;">Contacto</a>
 				</li>
 				
 		</sec:authorize>
