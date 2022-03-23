@@ -44,7 +44,6 @@
     </h2>
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">
-        
             <petclinic:inputField label="First Name" name="firstName"/>
             <petclinic:inputField label="Last Name" name="lastName"/>
             <petclinic:inputField label="Telephone" name="telephone"/>
@@ -58,9 +57,9 @@
                     <c:when test="${alumno ['new']}">
                         <button class="button" type="submit">Registrarse</button>
                     </c:when>
-                    <c:otherwise>
+                <c:otherwise>
                         <button class="button" type="submit">Actualizar Usuario</button>
-                    </c:otherwise>
+                </c:otherwise>
                 </c:choose>
             </div>
         </div>
