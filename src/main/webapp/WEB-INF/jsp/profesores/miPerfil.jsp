@@ -6,7 +6,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<style type="text/css">
+	p {
+ 
+  font-size: 16px;
+  font-weight: 600;
+}
+	
 
+</style>
 <petclinic:layout pageName="Mi perfil">
     <div>
     	<p>Nombre: ${profesor.firstName} ${profesor.lastName }</p>

@@ -11,37 +11,37 @@
     <table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
-            <th>Titulo</th>
-            <th>Descripcion</th>
-            <th>Asignatura</th>
-            <th>Precio/Hora</th>
-            <th>Profesor</th>
-            <th>Apuntarme</th>
+            <th style="width: 120px;">Titulo</th>
+            <th style="width: 150px; text-align:center;">Descripcion</th>
+            <th style="width: 150px; text-align:center;">Asignatura</th>
+            <th style="width: 150px; text-align:center;">Precio/Hora</th>
+            <th style="width: 150px; text-align:center;">Profesor</th>
+            <th style="width: 150px; text-align:center;">Apuntarme</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${anuncios}" var="anuncio">
             <tr>
               
-                <td>
+                <td >
                 <spring:url value="/anuncio/{anuncioUrl}/" var="anuncioUrl">
                 <spring:param name="anuncioUrl" value="${anuncio.id}"/>
                 </spring:url>
                 <a href="${fn:escapeXml(anuncioUrl)}"> <c:out value="${anuncio.titulo}"/></a>                       
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.descripcion}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.asignatura}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.precio}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
                 </td>
-                <td>
+                <td align="center">
                     <spring:url value="/anuncio/{anuncioId}/apply" var="anuncioId">
                     <spring:param name="anuncioId" value="${anuncio.id}"/>
                     </spring:url>

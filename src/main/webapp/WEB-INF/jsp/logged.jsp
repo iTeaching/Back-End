@@ -110,9 +110,9 @@
 		<sec:authorize access="hasAnyAuthority('alumno')">
 			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3">
 				<div class="col">
-					<div class="card h-100" style="width: 18rem;background-color:#F9DA5C;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a href="/salas" class="btn btn-outline-link"> <img
-							class="card-img-top"
+							class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
@@ -124,9 +124,9 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#F9DA5C;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a href="/ofertas/find" class="btn btn-outline-link"> <img
-							class="card-img-top"
+							class="card-img-top" style="width: 50%;"
 							src="http://assets.stickpng.com/thumbs/59cfc4d2d3b1936210a5ddc7.png"
 							alt="Card image cap">
 
@@ -140,9 +140,9 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card h-100" style="width: 18rem;background-color:#F9DA5C;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a href="/alumnos/miPerfil"
-							class="btn btn-outline-link"> <img class="card-img-top"
+							class="btn btn-outline-link"> <img class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
 							alt="Card image cap">
 							<div class="card-body">
@@ -156,9 +156,9 @@
 				</div>
 			
 			<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#F9DA5C;">
+					<div class="card h-100" style="width: 217px; background-color:#F9DA5C;">
 						<a name="logout" value="logout" href="/login"
-							class="btn btn-outline-link"> <img class="card-img-top"
+							class="btn btn-outline-link"> <img class="card-img-top" style="width: 50%;"
 							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"
 							alt="Card image cap">
 							<div class="card-body">

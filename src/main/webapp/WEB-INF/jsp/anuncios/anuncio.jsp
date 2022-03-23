@@ -13,11 +13,11 @@
     <table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
-            <th>Titulo</th>
-            <th>Descripcion</th>
-            <th>Asignatura</th>
-            <th>Precio/Hora</th>
-            <th>Profesor</th>
+            <th style="width: 120px;">Titulo</th>
+            <th style="width: 150px; text-align:center;">Descripcion</th>
+            <th style="width: 150px; text-align:center;">Asignatura</th>
+            <th style="width: 150px; text-align:center;">Precio/Hora</th>
+            <th style="width: 150px; text-align:center;">Profesor</th>
         </tr>
         </thead>
         <tbody>
@@ -30,16 +30,16 @@
                 </spring:url>
                 <a href="${fn:escapeXml(anuncioUrl)}"> <c:out value="${anuncio.titulo}"/></a>                       
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.descripcion}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.asignatura}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.precio}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
                 </td>
             </tr>

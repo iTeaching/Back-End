@@ -14,7 +14,31 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
 </head>
+<style type="text/css">
+	.button {
+  background-color: #F9DA5C;
+  border: none;
+  color: #994E33;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 14px 40px;
+  align-self:center;
+  width: 300px;
+}
+	.div_pago{
+        
+        display: flex;        
+        justify-content: center;
+        align-items: flex-end;
+    }
 
+	</style>
 <body>
     <header>
         <nav>
@@ -98,13 +122,18 @@
                 </div>
             </div>
         </section>
-        <a href="/pagar">Pagar</a>
-    <footer>
-        <div class="contenedor-footer">
-            <div class="footer-contact--email">
-                <img src="resources/images/gmail.svg" class="footer_img">
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
-    </footer>
+    <div class="div_pago">
+       	<a class="button" href="/pagar" >Pagar</a>
+    </div>
+    <footer  style=" background: #F9DA5C;  height:25px; ">
+	<div class="contenedor-footer"style=" margin-top:-50px;">
+		<div style=" font-size:26px;">
+			<img src="../resources/images/gmail.svg" class="footer_img"style=" margin-left:-600px;">iteaching.sa@gmail.com
+		</div>
+	
+		<h2 class="titulo-final" style="margin-right:-600px; margin-top:50px; font-size:18px;">&copy; 2022,iTeaching</h2>
+	</div>
+	
+</footer>
+
 </body>

@@ -7,19 +7,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <iteaching:layout pageName="salas">
-	<header>
-	<nav>
-    </nav>
-    </header>
+
     <h2>${sala.nombre }</h2>
 
     <table id="salasTable" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;"></th>
-			<sec:authorize access="hasAuthority('alumno')">
-            <th style="width: 120px">Profesor</th>
-            </sec:authorize>
+		
             
         </tr>
         </thead>
@@ -34,9 +29,7 @@
                 <!-- <a href=${sala.url} >Ver fuera de la app</a> -->
             </td>
             <sec:authorize access="hasAuthority('alumno')">
-            <td>
-                <c:out value="${sala.profesor.firstName}"/><c:out value=" "/> <c:out value="${sala.profesor.lastName}"/>    
-            </td>
+            
             </sec:authorize>
             <sec:authorize access="hasAuthority('profesor')">
              

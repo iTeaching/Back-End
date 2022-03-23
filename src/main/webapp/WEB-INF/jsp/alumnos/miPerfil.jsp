@@ -8,7 +8,6 @@
 <style type="text/css">
 	p {
  
-  text-align: center;
   font-size: 16px;
   font-weight: 600;
 }
@@ -17,9 +16,9 @@
 </style>
 
 <petclinic:layout pageName="Mi perfil">
-    <div style="font-weight:600;">
+    <div>
 
-    	<p style="font-weight:600;">Nombre: ${alumno.firstName} ${alumno.lastName }</p>
+    	<p>Nombre: ${alumno.firstName} ${alumno.lastName }</p>
     	<p>Teléfono: ${alumno.telephone}</p>
     	<p>Correo: ${alumno.email}</p>
     	<p><a href="/alumnos/${alumno.id}/edit">Editar perfil</a></p>
