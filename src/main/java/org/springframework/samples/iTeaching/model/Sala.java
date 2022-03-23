@@ -45,7 +45,6 @@ public class Sala extends BaseEntity{
 	String nombre;
 
 	@Column(name="url")
-	@NotEmpty
 	String url;
 
 	@ManyToOne

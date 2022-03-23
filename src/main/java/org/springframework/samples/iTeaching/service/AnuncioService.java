@@ -60,7 +60,7 @@ public class AnuncioService {
 		return entrada.stream().filter(x->x.getAlumnos().contains(alumno)).collect(Collectors.toList());
 	}
 	public void aplyAnuncio(Alumno alumno, int id){
-		Anuncio anuncioAplied = anuncioRepository.findById(id);
+		Anuncio anuncioAplied = anuncioRepository.findById(id).get();
 		anuncioAplied.getAlumnos().add(alumno);
 		saveAnuncio(anuncioAplied);
 	}
