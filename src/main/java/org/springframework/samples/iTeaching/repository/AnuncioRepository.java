@@ -10,8 +10,8 @@ import org.springframework.samples.iTeaching.model.Anuncio;
 
 public interface AnuncioRepository extends CrudRepository<Anuncio, Integer> {
 
-	@Query("SELECT anuncio FROM Anuncio anuncio WHERE anuncio.id =:id")
-	public Anuncio findById(@Param("id") int id);
+//	@Query("SELECT anuncio FROM Anuncio anuncio WHERE anuncio.id =:id")
+//	public Anuncio findById(@Param("id") int id);
 	
 	@Query("SELECT anuncio FROM Anuncio anuncio WHERE anuncio.profesor.id =:id")
 	public Collection<Anuncio> findByUsuarioId(@Param("id") int id);

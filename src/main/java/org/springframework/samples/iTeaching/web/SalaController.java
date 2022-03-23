@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -53,7 +54,7 @@ public class SalaController {
 	}
 	
 	@PostMapping(value = "/salas/new")
-	public String processCreationForm(@Valid Sala sala, BindingResult result) {
+	public String processCreationForm(@Valid Sala sala, BindingResult result) throws IOException, InterruptedException {
 		if (result.hasErrors()) {
 			return VIEWS_SALA_CREATE_FORM;
 		}
@@ -63,8 +64,9 @@ public class SalaController {
             User user = this.userService.findUser(userDetails.getUsername()).get();
             Profesor profesor = this.profesorService.findProfesorByUsername(user.getUsername());
             sala.setProfesor(profesor);
+            sala.setUrl(Clases.url());
 			this.salaService.saveSala(sala);
-			return "redirect:/welcome";
+			return "redirect:/salas";
 		}
 		
 		}

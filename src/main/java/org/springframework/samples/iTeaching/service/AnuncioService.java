@@ -5,32 +5,44 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.repository.AnuncioRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AnuncioService {
 
 	@Autowired
-	AnuncioRepository anuncioRepository;
+	AlumnoService alumnoService;
+  
+	private AnuncioRepository anuncioRepository;
 	
 	@Autowired
-	AlumnoService alumnoService;
-	
-	public Anuncio findById(int anuncioId){
-		return anuncioRepository.findById(anuncioId);
+	public AnuncioService(AnuncioRepository anuncioRepository) {
+		this.anuncioRepository = anuncioRepository;
+	}
+
+	@Transactional(readOnly = true)
+	public Anuncio findAnuncioById(int anuncioId) throws DataAccessException {
+		return anuncioRepository.findById(anuncioId).get();
+
+
 	}
 	
-	public Collection<Anuncio> findByUsuario(int usuarioID){
+	@Transactional(readOnly = true)
+	public Collection<Anuncio> findByUsuario(int usuarioID) throws DataAccessException{
 		return anuncioRepository.findByUsuarioId(usuarioID);
 	}
-	public List<Anuncio> findAll(){
-		return anuncioRepository.findAll();
+	
+	@Transactional(readOnly = true)
+	public Collection<Anuncio> findAll() throws DataAccessException {
+		return (Collection<Anuncio>) anuncioRepository.findAll();
 	}
 	
-	public void saveAnuncio(Anuncio anuncio) {
+	public void saveAnuncio(Anuncio anuncio) throws DataAccessException{
 		anuncioRepository.save(anuncio);
 	}
 
@@ -38,7 +50,7 @@ public class AnuncioService {
 		anuncioRepository.delete(anuncio);
 	}
 	
-	public Collection<Anuncio> findByAsignatura(String asignatura){
+	public Collection<Anuncio> findByAsignatura(String asignatura) throws DataAccessException {
 		return anuncioRepository.findByAsignatura(asignatura);
 	}
 
@@ -48,7 +60,7 @@ public class AnuncioService {
 		return entrada.stream().filter(x->x.getAlumnos().contains(alumno)).collect(Collectors.toList());
 	}
 	public void aplyAnuncio(Alumno alumno, int id){
-		Anuncio anuncioAplied = anuncioRepository.findById(id);
+		Anuncio anuncioAplied = anuncioRepository.findById(id).get();
 		anuncioAplied.getAlumnos().add(alumno);
 		saveAnuncio(anuncioAplied);
 	}

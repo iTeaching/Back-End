@@ -44,24 +44,4 @@ public class UserController {
 		return "login";
 		
 	}
-
-	@GetMapping(value = "/users/new")
-	public String initCreationForm(Map<String, Object> model) {
-		Alumno alumno = new Alumno();
-		model.put("usuario", alumno);
-		return VIEWS_OWNER_CREATE_FORM;
-	}
-
-	@PostMapping(value = "/users/new")
-	public String processCreationForm(@Valid Alumno alumno, BindingResult result) {
-		if (result.hasErrors()) {
-			return VIEWS_OWNER_CREATE_FORM;
-		}
-		else {
-			//creating alumno, user, and authority
-			this.alumnoService.saveAlumno(alumno);
-			return "redirect:/";
-		}
-	
-	}
 }

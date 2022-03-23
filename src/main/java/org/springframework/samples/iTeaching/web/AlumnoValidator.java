@@ -1,5 +1,8 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.service.AlumnoService;
@@ -63,135 +66,19 @@ public class AlumnoValidator implements Validator {
 		}
 		if (!isValid(alumno.getUser().getPassword())) {
 			errors.rejectValue("user.password",
-					" La contraseña debe contener dos caracteres en minúscula, dos en mayúscula, dos números y dos caracteres especiales",
-					"La contraseña debe contener dos caracteres en minúscula, dos en mayúscula, dos números y dos caracteres especiales");
+					" La contraseña debe contener una minúscula, una mayúscula, un número y un caracter especial como mínimo. También tiene que tener una longitud de 8 a 20 caracteres",
+					"La contraseña debe contener una minúscula, una mayúscula, un número y un caracter especial como mínimo. También tiene que tener una longitud de 8 a 20 caracteres");
 		}
 
 	}
+	
+	private static final String pass_pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+
+	private static final Pattern pattern = Pattern.compile(pass_pattern);
 
 	public static boolean isValid(String password) {
-		boolean ev = true;
-		// for checking if password length
-		// is between 8 and 15
-		if (!((password.length() >= 8) && (password.length() <= 15))) {
-			ev = false;
-			return ev;
-		}
-
-		// to check space
-		if (password.contains(" ")) {
-			ev = false;
-			return ev;
-		}
-		if (ev) {
-			int count = 0;
-
-			// check digits from 0 to 9
-			for (int i = 0; i <= 9; i++) {
-
-				// to convert int to string
-				String str1 = Integer.toString(i);
-
-				if (password.contains(str1)) {
-					count++;
-				}
-			}
-			// Must have 2 digits
-			if (count < 2) {
-				ev = false;
-				return ev;
-			}
-		}
-		int special = 0;
-		// for special characters
-
-		if (password.contains("@")) {
-			special++;
-		}
-		if (password.contains("#")) {
-			special++;
-		}
-		if (password.contains("!")) {
-			special++;
-		}
-		if (password.contains("~")) {
-			special++;
-		}
-		if (password.contains("$")) {
-			special++;
-		}
-		if (password.contains("%")) {
-			special++;
-		}
-		if (password.contains("^")) {
-			special++;
-		}
-		if (password.contains("&")) {
-			special++;
-		}
-		if (password.contains("*")) {
-			special++;
-		}
-		if (password.contains("(")) {
-			special++;
-		}
-		if (password.contains(")")) {
-			special++;
-		}
-		if (password.contains("-")) {
-			special++;
-		}
-		if (password.contains("/")) {
-			special++;
-		}
-		if (password.contains("+")) {
-			special++;
-		}
-		if (password.contains(":")) {
-			special++;
-		}
-		if (password.contains(".")) {
-			special++;
-		}
-		if (password.contains(",")) {
-			special++;
-		}
-		if (password.contains("<")) {
-			special++;
-		}
-		if (password.contains(">")) {
-			special++;
-		}
-		if (password.contains("?")) {
-			special++;
-		}
-		if (password.contains("|")) {
-			special++;
-		}
-		if (special < 2) {
-			ev = false;
-			return ev;
-		}
-
-		if (ev) {
-			int upper = 0;
-			int lower = 0;
-			for (int i = 0; i < password.length(); i++) {
-				if (Character.isUpperCase(password.charAt(i))) {
-					upper++;
-				} else if (Character.isLowerCase(password.charAt(i))) {
-					lower++;
-				}
-
-				// if all conditions fails
-
-			}
-			if (upper < 2 || lower < 2) {
-				ev = false;
-				return ev;
-			}
-		}
-		return ev;
+		Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
 	}
 
 }
