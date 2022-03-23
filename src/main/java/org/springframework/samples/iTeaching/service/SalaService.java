@@ -4,9 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Sala;
-import org.springframework.samples.iTeaching.repository.AnuncioRepository;
 import org.springframework.samples.iTeaching.repository.SalaRepository;
 import org.springframework.stereotype.Service;
 
