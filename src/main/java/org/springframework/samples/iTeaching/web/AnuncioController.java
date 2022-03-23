@@ -85,8 +85,8 @@ public class AnuncioController {
 	
 	@GetMapping(value="/ofertas/find")
 	public String findAnuncios(Map<String, Object> model) {
-//		List<Anuncio> anuncios = this.anuncioService.findAll();
-		model.put("anuncios", new Anuncio());
+		List<Anuncio> anuncios = (List<Anuncio>) this.anuncioService.findAll();
+		model.put("anuncios", anuncios);
 		return "anuncios/anuncioList";
 	}
 	
@@ -171,7 +171,7 @@ public class AnuncioController {
 		return "redirect:/logged";
 	}
 
-	@GetMapping("/anuncio/anunciosAplicados")
+	@GetMapping("/ofertas/anunciosAplicados")
 	public String anunciosAplied(Map<String, Object> model){
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -179,6 +179,6 @@ public class AnuncioController {
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno);
 		model.put("anuncios", lista);
-		return "anuncios/list";
+		return "anuncios/anuncioList";
 	}
 }
