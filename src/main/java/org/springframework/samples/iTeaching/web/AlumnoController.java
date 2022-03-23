@@ -92,6 +92,7 @@ public class AlumnoController {
 	@GetMapping(value = "/alumnos/{alumnoId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("alumnoId") int alumnoId, Model model) {
 		Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
+		alumno.setId(alumnoId);
 		model.addAttribute(alumno);
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
@@ -99,11 +100,11 @@ public class AlumnoController {
 	@PostMapping(value = "/alumnos/{alumnoId}/edit")
 	public String processUpdateOwnerForm(@Valid Alumno alumno, BindingResult result,
 			@PathVariable("alumnoId") int alumnoId) {
+				alumno.setId(alumnoId);
 		if (result.hasErrors()) {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 		}
 		else {
-			alumno.setId(alumnoId);
 			this.alumnoService.saveAlumno(alumno);
 			return "redirect:/alumnos/{alumnoId}";
 		}

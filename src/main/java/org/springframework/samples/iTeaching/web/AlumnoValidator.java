@@ -25,7 +25,6 @@ public class AlumnoValidator implements Validator {
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-
 		Alumno alumno = (Alumno) obj;
 		Alumno alumnoRegistered = this.aluSer.findAlumnoByUsername(alumno.getUser().getUsername());
 		if (alumno.getFirstName().isBlank()) {
@@ -48,7 +47,7 @@ public class AlumnoValidator implements Validator {
 			errors.rejectValue("email", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
 		}
-		if (alumnoRegistered != null) {
+		if (alumnoRegistered!=null) {
 			errors.rejectValue("user.username", "Este username ya esta en uso", "Este username ya esta en uso");
 
 		}
