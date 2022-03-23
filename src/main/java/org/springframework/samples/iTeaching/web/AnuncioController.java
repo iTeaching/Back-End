@@ -108,7 +108,7 @@ public class AnuncioController {
 			anuncio.setId(anuncioId);
 			model.put("anuncio",anuncio);
 			
-			return VIEWS_ANUNCIO_CREATE_FORM;
+			return "anuncios/createAnuncioForm";
 		}
 		else {
 			return "welcome";
@@ -123,7 +123,7 @@ public class AnuncioController {
 		model.put("profesor", profesores);
 		if (result.hasErrors()) {
 			model.put("anuncio",anuncio);
-			return VIEWS_ANUNCIO_CREATE_FORM;
+			return "anuncios/createAnuncioForm";
 		}
 		else {
 			anuncio.setId(anuncioId);
