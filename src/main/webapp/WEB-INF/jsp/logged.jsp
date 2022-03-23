@@ -77,7 +77,7 @@
 				</div>
 				<div class="col">
 					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
-						<a href="/profesores/${profesor.id}/perfil"
+						<a href="/profesores/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
 							alt="Card image cap">
@@ -85,6 +85,20 @@
 								<h5 class="card-title text-primary">Mi perfil</h5>
 								<p class="card-text text-dark">Visualiza el perfil del
 									usuario</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+						<a name="logout" value="logout" href="/login"
+							class="btn btn-outline-link"> <img class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Cerrar sesión</h5>
+								<p class="card-text text-dark">Cierra la sesión del usuario</p>
 
 							</div>
 						</a>
@@ -127,7 +141,7 @@
 				</div>
 				<div class="col">
 					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
-						<a href="/alumnos/${alumno.id}/perfil"
+						<a href="/alumnos/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
 							alt="Card image cap">
@@ -140,7 +154,22 @@
 						</a>
 					</div>
 				</div>
-			</div>
+			
+			<div class="col">
+					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
+						<a name="logout" value="logout" href="/login"
+							class="btn btn-outline-link"> <img class="card-img-top"
+							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Cerrar sesión</h5>
+								<p class="card-text text-dark">Cierra la sesión del usuario</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
+				</div>
 
 		</sec:authorize>
 	</main>

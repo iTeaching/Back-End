@@ -16,6 +16,7 @@
             <th>Asignatura</th>
             <th>Precio/Hora</th>
             <th>Profesor</th>
+            <th>Apuntarme</th>
         </tr>
         </thead>
         <tbody>
@@ -40,6 +41,13 @@
                 <td>
                     <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
                 </td>
+                <td>
+                    <spring:url value="/anuncio/{anuncioId}/apply" var="anuncioId">
+                    <spring:param name="anuncioId" value="${anuncio.id}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(anuncioId)}">Test</span>
+                    </a>                       
+                    </td>
             </tr>
         </c:forEach>
         </tbody>

@@ -23,9 +23,11 @@ INSERT INTO alumno(id, email, first_name, last_name, telephone, username) VALUES
 INSERT INTO alumno(id, email, first_name, last_name, telephone, username) VALUES (2,'alumnomolon2@gmail.com','alumno2','molon2','666111335','alumno2');
 
 --INSERTAR SALAS
+
 INSERT INTO sala(id, nombre, url, profesor) VALUES (1,'sala1','https://acme.whereby.com/a05d837d-2aaf-47a2-abf2-21dc8121f1c7',1);
 INSERT INTO sala(id, nombre, url, profesor) VALUES (2,'sala2','https://acme.whereby.com/a72ef6b4-3422-4074-8cc9-ff49c7709e05',1);
 INSERT INTO sala(id, nombre, url, profesor) VALUES (3,'sala3','https://acme.whereby.com/06dd586a-c314-4ff2-bfaf-e9eced4ff8c0',2);
+
 
 --INSERTAR ALUMNOS A SALAS
 INSERT INTO sala_alumno(sala_id, alumno_id) VALUES (1,1);

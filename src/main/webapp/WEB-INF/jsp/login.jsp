@@ -3,6 +3,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<!DOCTYPE>
 <html lang="es">
 
 <head>

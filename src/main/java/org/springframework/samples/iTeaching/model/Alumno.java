@@ -27,6 +27,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.springframework.core.style.ToStringCreator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -60,5 +61,6 @@ public class Alumno extends Person {
 				.append("firstName", this.getFirstName())
 				.toString();
 	}
+
 
 }

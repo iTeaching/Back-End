@@ -2,8 +2,11 @@ package org.springframework.samples.iTeaching.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.repository.AnuncioRepository;
 import org.springframework.stereotype.Service;
@@ -12,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AnuncioService {
 
-	
+	@Autowired
+	AlumnoService alumnoService;
+  
 	private AnuncioRepository anuncioRepository;
 	
 	@Autowired
@@ -23,6 +28,8 @@ public class AnuncioService {
 	@Transactional(readOnly = true)
 	public Anuncio findAnuncioById(int anuncioId) throws DataAccessException {
 		return anuncioRepository.findById(anuncioId).get();
+
+
 	}
 	
 	@Transactional(readOnly = true)
@@ -40,11 +47,28 @@ public class AnuncioService {
 	}
 
 	public void delete(Anuncio anuncio) {
-		// TODO Auto-generated method stub
 		anuncioRepository.delete(anuncio);
 	}
 	
 	public Collection<Anuncio> findByAsignatura(String asignatura) throws DataAccessException {
 		return anuncioRepository.findByAsignatura(asignatura);
 	}
+
+	public List<Anuncio> anunciosAlumno(String username){
+		Alumno alumno = alumnoService.findAlumnoByUsername(username);
+		List<Anuncio> entrada = (List<Anuncio>) anuncioRepository.findAll();
+		return entrada.stream().filter(x->x.getAlumnos().contains(alumno)).collect(Collectors.toList());
 	}
+	public void aplyAnuncio(Alumno alumno, int id){
+		Anuncio anuncioAplied = anuncioRepository.findById(id);
+		anuncioAplied.getAlumnos().add(alumno);
+		saveAnuncio(anuncioAplied);
+	}
+	public List<Anuncio> appliedAnuncio(Alumno alumno){
+		return anuncioRepository.findAll().stream().filter(a->a.getAlumnos().contains(alumno)).collect(Collectors.toList());
+		
+		
+	}
+
+	}
+
