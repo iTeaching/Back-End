@@ -22,9 +22,11 @@ public class AlumnoValidator implements Validator {
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-
 		Alumno alumno = (Alumno) obj;
-		Alumno alumnoRegistered = this.aluSer.findAlumnoByUsername(alumno.getUser().getUsername());
+		Alumno alumnoRegistered =null;
+		if (alumno.getUser().getUsername()!=null){
+		alumnoRegistered = this.aluSer.findAlumnoByUsername(alumno.getUser().getUsername());
+		}
 		if (alumno.getFirstName().isBlank()) {
 			errors.rejectValue("firstName", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
@@ -45,14 +47,14 @@ public class AlumnoValidator implements Validator {
 			errors.rejectValue("email", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
 		}
-		if (alumnoRegistered != null) {
+		if (alumnoRegistered!=null) {
 			errors.rejectValue("user.username", "Este username ya esta en uso", "Este username ya esta en uso");
 
 		}
-		if (alumno.getUser().getUsername().isBlank()) {
+		if (alumno.getUser().getUsername()!=null&&alumno.getUser().getUsername().isBlank()) {
 			errors.rejectValue("user.username", "No puede dejar este campo vacío", "No puede dejar este campo vacío");
 		}
-		if (alumno.getUser().getUsername().length() < 6) {
+		if (alumno.getUser().getUsername()!=null&&alumno.getUser().getUsername().length() < 6) {
 			errors.rejectValue("user.username", "El nombre de usuario debe tener al menos 6 caracteres",
 					"El nombre de usuario debe tener al menos 6 caracteres");
 		}
