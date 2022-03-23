@@ -15,21 +15,22 @@ public class AnuncioService {
 
 	@Autowired
 	AnuncioRepository anuncioRepository;
-	
+
 	@Autowired
 	AlumnoService alumnoService;
-	
-	public Anuncio findById(int anuncioId){
+
+	public Anuncio findById(int anuncioId) {
 		return anuncioRepository.findById(anuncioId);
 	}
-	
-	public Collection<Anuncio> findByUsuario(int usuarioID){
+
+	public Collection<Anuncio> findByUsuario(int usuarioID) {
 		return anuncioRepository.findByUsuarioId(usuarioID);
 	}
-	public List<Anuncio> findAll(){
+
+	public List<Anuncio> findAll() {
 		return anuncioRepository.findAll();
 	}
-	
+
 	public void saveAnuncio(Anuncio anuncio) {
 		anuncioRepository.save(anuncio);
 	}
@@ -37,26 +38,27 @@ public class AnuncioService {
 	public void delete(Anuncio anuncio) {
 		anuncioRepository.delete(anuncio);
 	}
-	
-	public Collection<Anuncio> findByAsignatura(String asignatura){
+
+	public Collection<Anuncio> findByAsignatura(String asignatura) {
 		return anuncioRepository.findByAsignatura(asignatura);
 	}
 
-	public List<Anuncio> anunciosAlumno(String username){
+	public List<Anuncio> anunciosAlumno(String username) {
 		Alumno alumno = alumnoService.findAlumnoByUsername(username);
 		List<Anuncio> entrada = (List<Anuncio>) anuncioRepository.findAll();
-		return entrada.stream().filter(x->x.getAlumnos().contains(alumno)).collect(Collectors.toList());
+		return entrada.stream().filter(x -> x.getAlumnos().contains(alumno)).collect(Collectors.toList());
 	}
-	public void aplyAnuncio(Alumno alumno, int id){
+
+	public void aplyAnuncio(Alumno alumno, int id) {
 		Anuncio anuncioAplied = anuncioRepository.findById(id);
 		anuncioAplied.getAlumnos().add(alumno);
 		saveAnuncio(anuncioAplied);
 	}
-	public List<Anuncio> appliedAnuncio(Alumno alumno){
-		return anuncioRepository.findAll().stream().filter(a->a.getAlumnos().contains(alumno)).collect(Collectors.toList());
-		
-		
-	}
+
+	public List<Anuncio> appliedAnuncio(Alumno alumno) {
+		return anuncioRepository.findAll().stream().filter(a -> a.getAlumnos().contains(alumno))
+				.collect(Collectors.toList());
 
 	}
 
+}
