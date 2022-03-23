@@ -27,10 +27,7 @@
             <tr>
               
                 <td>
-                <spring:url value="/anuncio/{anuncioUrl}/" var="anuncioUrl">
-                <spring:param name="anuncioUrl" value="${anuncio.id}"/>
-                </spring:url>
-                <a href="${fn:escapeXml(anuncioUrl)}"> <c:out value="${anuncio.titulo}"/></a>                       
+                <c:out value="${anuncio.titulo}"/>                  
                 </td>
                 <td>
                     <c:out value="${anuncio.descripcion}"/>
@@ -48,7 +45,7 @@
                     <spring:url value="/anuncio/{anuncioId}/apply" var="anuncioId">
                     <spring:param name="anuncioId" value="${anuncio.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(anuncioId)}"><img src="resources/images/video.svg"></span>
+                    <a href="${fn:escapeXml(anuncioId)}"><img src="..\resources\images\icons8-añadir-30.png"></span>
                     </a>                       
                     </td>
             </tr>

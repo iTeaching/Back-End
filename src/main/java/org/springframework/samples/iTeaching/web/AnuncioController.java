@@ -84,7 +84,13 @@ public class AnuncioController {
 	
 	@GetMapping(value="/ofertas/find")
 	public String findAnuncios(Map<String, Object> model) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
+		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno);
 		List<Anuncio> anuncios = this.anuncioService.findAll();
+		anuncios.removeAll(lista);
 		model.put("anuncios", anuncios);
 		return "anuncios/anuncioList";
 	}
@@ -158,7 +164,7 @@ public class AnuncioController {
 		return "redirect:/logged";
 	}
 
-	@GetMapping("/anuncio/anunciosAplicados")
+	@GetMapping("/anuncios/anunciosAplicados")
 	public String anunciosAplied(Map<String, Object> model){
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -166,6 +172,6 @@ public class AnuncioController {
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		List<Anuncio> lista=this.anuncioService.appliedAnuncio(alumno);
 		model.put("anuncios", lista);
-		return "anuncios/list";
+		return "anuncios/anuncioList";
 	}
 }
