@@ -22,7 +22,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${salas ['new']}">
-                        <button class="btn btn-default" type="submit">Crear Sala</button>
+                        <button class="btn btn-default" type="submit"style="background-color:#F9DA5C; margin-top:5px">Crear Sala</button>
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-default" type="submit">Actualiza tu perfil</button>
