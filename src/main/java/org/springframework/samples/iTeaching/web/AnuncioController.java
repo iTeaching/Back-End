@@ -41,6 +41,11 @@ public class AnuncioController {
 		this.alumnoService=alumnoService;
 	}
 	
+	@InitBinder("anuncio")
+	public void initAnuncioBinder(WebDataBinder dataBinder) {
+		dataBinder.setValidator(new AnuncioValidator(anuncioService));
+	}
+	
 	@InitBinder
 	public void setAllowedFields(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
