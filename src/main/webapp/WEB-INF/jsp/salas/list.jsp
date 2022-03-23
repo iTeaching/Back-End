@@ -17,7 +17,8 @@
         <thead>
         <tr>
             <th style="width: 150px;">Nombre de la sala</th>
-            <th style="width: 120px">Acción</th>
+            <th style="width: 120px">Alumnos en la sala</th>
+             <th style="width: 120px"></th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,9 @@
             <tr>
                 <td>
                     <c:out value="${sala.nombre}"/>
+                </td>
+                <td>
+					 <c:out value="${fn:length(sala.alumnos)}"/>
                 </td>
                  <td>
 					<a href="/salas/${sala.id }">Ir a la sala</a>

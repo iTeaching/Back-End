@@ -14,12 +14,13 @@
 	var="bootstrapJs" />
 <script src="${bootstrapJs}"></script>
 
-
-<footer>
-	<div class="contenedor-footer">
-		<div class="footer-contact--email">
-			<img src="../resources/images/gmail.svg" class="footer_img">
+<footer style=" background: #F9DA5C; height:25px;">
+	<div class="contenedor-footer"style=" margin-top:-50px;">
+		<div style=" font-size:26px;">
+			<img src="../resources/images/gmail.svg" class="footer_img"style=" margin-left:-600px;">iteaching.sa@gmail.com
 		</div>
+	
+		<h2 class="titulo-final" style="margin-right:-600px; margin-top:50px; font-size:18px;">&copy; 2022,iTeaching</h2>
 	</div>
-	<h2 class="titulo-final">&copy; 2022,iTeaching</h2>
+	
 </footer>
