@@ -20,9 +20,7 @@
 			<sec:authorize access="hasAuthority('alumno')">
             <th style="width: 120px">Profesor</th>
             </sec:authorize>
-            <sec:authorize access="hasAuthority('profesor')">
-            <th style="width: 120px">Alumnos</th>
-            </sec:authorize>
+            
         </tr>
         </thead>
         <tbody>
@@ -32,7 +30,7 @@
                     <spring:param name="salaId" value="${sala.id}"/>
                 </spring:url>
                 <iframe src="${sala.url}" 
-                width="1000" height="1000" allow="camera; microphone; fullscreen; speaker; display-capture" ></iframe>
+                width="1100" height="1100" allow="camera; microphone; fullscreen; speaker; display-capture" ></iframe>
                 <!-- <a href=${sala.url} >Ver fuera de la app</a> -->
             </td>
             <sec:authorize access="hasAuthority('alumno')">
@@ -41,16 +39,8 @@
             </td>
             </sec:authorize>
             <sec:authorize access="hasAuthority('profesor')">
-             <td>
-             <ul>
-             	
-            <c:forEach items="${sala.alumnos}" var="alumno">
-                 <li><c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/></li>
-            </c:forEach>
-             	
-             </ul>
-
-            </td>  
+             
+ 
             </sec:authorize>
         </tr>
         </tbody>

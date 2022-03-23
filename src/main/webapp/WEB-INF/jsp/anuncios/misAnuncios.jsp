@@ -11,30 +11,30 @@
     <table id="ownersTable" class="table table-striped">
         <thead>
         <tr>
-        	<th style="width: 120px">Profesor</th>
-            <th style="width: 150px;">Titulo</th>
-            <th style="width: 200px;">Descripcion</th>
-            <th style="width: 120px">Asignatura</th>
-            <th style="width: 120px">Precio</th>
+        	<th style="width: 120px;">Profesor</th>
+            <th style="width: 150px; text-align:center;">Titulo</th>
+            <th style="width: 200px; text-align:center;">Descripcion</th>
+            <th style="width: 120px; text-align:center;">Asignatura</th>
+            <th style="width: 120px; text-align:center;">Precio</th>
             
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${anuncios}" var="anuncios">
             <tr>
-            	<td>
+            	<td >
                     <c:out value="${anuncios.profesor.firstName}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncios.titulo}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncios.descripcion}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncios.asignatura}"/>
                 </td>
-                <td>
+                <td align="center">
                     <c:out value="${anuncios.precio}"/>
                 </td>
                 

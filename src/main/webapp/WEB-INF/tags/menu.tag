@@ -23,7 +23,7 @@ $(document).ready(function() {
 </script> 
 
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #F9DA5C;"> 
-  <a class="navbar-brand" href="/logged"><img src="../resources/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">iTeaching</a>
+  <a class="navbar-brand" href="/logged"><img src="../resources/images/logo.png" width="35" height="35" class="d-inline-block align-top" >iTeaching</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -92,7 +92,7 @@ $(document).ready(function() {
     	<sec:authorize access="!isAuthenticated()">
 				
 				<li class="nav-item active">
-					<a class="nav-link" href="mailto:iteaching.sa@gmail.com" style="font-weight: 500;">Contacto</a>
+					<a class="nav-link" href="mailto:iteaching.sa@gmail.com" style="font-weight: 500; font-size:16px;">Contacto</a>
 				</li>
 				
 		</sec:authorize>

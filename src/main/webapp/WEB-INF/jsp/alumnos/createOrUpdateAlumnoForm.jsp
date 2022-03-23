@@ -20,9 +20,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #F9DA5C;
   border: none;
-  color: white;
+  color: #994E33;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -43,9 +43,9 @@
         <c:if test="${alumno['new']}">Nuevo </c:if> Alumno
     </h2>
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
-        <div class="form-group has-feedback">
+        <div class="form-group has-feedback"style="font-size:13px;">
         
-            <petclinic:inputField label="First Name" name="firstName"/>
+            <petclinic:inputField label="First Name" name="firstName" />
             <petclinic:inputField label="Last Name" name="lastName"/>
             <petclinic:inputField label="Telephone" name="telephone"/>
             <petclinic:inputField label="Email" name="email"/>
@@ -56,10 +56,10 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${alumno ['new']}">
-                        <button class="button" type="submit">Registrarse</button>
+                        <button class="btn btn-default" type="submit" style="background-color:#F9DA5C; margin-top:5px">Registrarse</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="button" type="submit">Actualizar Usuario</button>
+                        <button class="btn btn-default" type="submit"style="background-color:#F9DA5C; margin-top:5px">Actualizar Usuario</button>
                     </c:otherwise>
                 </c:choose>
             </div>
