@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Authorities;
 import org.springframework.samples.iTeaching.model.User;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +28,7 @@ public class AlumnoSeviceTest {
 
 	@Test
 	public void testFindAlumnoByUsername() {
-		Alumno a = this.alumnoService.findAlumnoByUsername("alumno");
+		Alumno a = this.alumnoService.findAlumnoByUsername("alumno1");
 		
 		assertThat(a.getId().equals(1));
 	}
@@ -47,7 +46,10 @@ public class AlumnoSeviceTest {
 		a.setEmail("pejim@mail.com");
 		a.setTelephone("666777999");
 		a.setUser(u);
+		a.setId(3);
 		
-		assertThat(alumnoService.findAlumnoByUsername("pedjimbas").getFirstName().equals("Pedro"));
+		this.alumnoService.saveAlumno(a);
+		
+		assertThat(alumnoService.findAlumnoById(3).getFirstName().equals("Pedro"));
 	}
 }
