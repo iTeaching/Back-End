@@ -17,7 +17,7 @@
         <thead>
         <tr>
             <th style="width: 150px;">Nombre de la sala</th>
-            <th style="width: 120px">Alumnos en la sala</th>
+            <th style="width: 120px; text-align:center">Alumnos en la sala</th>
              <th style="width: 120px"></th>
         </tr>
         </thead>
@@ -27,11 +27,11 @@
                 <td>
                     <c:out value="${sala.nombre}"/>
                 </td>
-                <td>
+                <td style="text-align:center">
 					 <c:out value="${fn:length(sala.alumnos)}"/>
                 </td>
-                 <td>
-					<a href="/salas/${sala.id }">Ir a la sala</a>
+                 <td >
+					<a href="/salas/${sala.id }"><img src="../resources/images/entrar.png" width="30" height="27" align="right" class="d-inline-block align-top" ></a>
                 </td>
             </tr>
         </c:forEach>
