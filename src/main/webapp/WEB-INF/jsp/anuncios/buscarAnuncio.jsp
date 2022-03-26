@@ -7,35 +7,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<iteaching:layout pageName="anuncios">
-    <h2>Anuncios</h2>
+
+<iteaching:layout pageName="buscarAnuncios">
+    <h2>Anuncios encontrados</h2>
     <head>
         <meta charset="UTF-8">
       </head>
-      
-
-    
-     <form th:object="${anuncio}" th:action="@{/ofertas}" method="get"
-    class="form-horizontal" id="search-owner-form">
-    <div class="form-group">
-      <div class="control-group" id="lastNameGroup">
-        <label class="col-sm-2 control-label">Asignatura </label>
-        <div class="col-sm-10">
-          <input class="form-control" th:field="*{asignatura}" size="30"
-            maxlength="80" /> <span class="help-inline"></span>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Find
-          Asignatura</button>
-      </div>
-    </div>
-     </form>
-
-   
-    <table id="anunciosTable" class="table table-striped">
+<body>
+<table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
             <th>Titulo</th>
@@ -47,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${anuncios}" var="anuncio">
+        <c:forEach items="${selections}" var="anuncio">
             <tr>
               
                 <td>
@@ -76,5 +55,6 @@
         </c:forEach>
         </tbody>
     </table>
-    
 </iteaching:layout>
+</body>
+</html>

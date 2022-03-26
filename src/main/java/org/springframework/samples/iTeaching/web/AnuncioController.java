@@ -1,13 +1,18 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.repository.AnuncioRepository;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AnuncioService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
@@ -21,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,6 +39,8 @@ public class AnuncioController {
 	@Autowired
 	private AlumnoService alumnoService;
 	private static final String VIEWS_ANUNCIO_CREATE_FORM = "anuncios/createAnuncioForm";
+	private  AnuncioRepository anuncioRepository;
+
 
 	@Autowired
 	public  AnuncioController(AnuncioService anuncioService, ProfesorService profesorService,AlumnoService alumnoService) {
@@ -101,6 +109,37 @@ public class AnuncioController {
 		model.put("anuncios", anuncios);
 		return "anuncios/anuncioList";
 	}
+	
+	
+	@GetMapping("/ofertas")
+	public String processFindForm(@RequestParam(defaultValue = "1") int page, Anuncio anuncio, BindingResult result,
+			Map<String,Object> model) {
+
+		// allow parameterless GET request for /ofertas to return all records
+		if (anuncio.getAsignatura() == null) {
+			anuncio.setAsignatura(""); // empty string signifies broadest possible search
+		}
+
+		// find anuncios by asignatura
+		String asignatura = anuncio.getAsignatura();
+		Collection<Anuncio> ofertasResults = anuncioRepository.findByAsignatura(asignatura);
+		if (ofertasResults.isEmpty()) {
+			// no anuncios found
+			result.rejectValue("asignatura", "notFound", "not found");
+			return "anuncio/anuncioList";
+		}
+		else if (ofertasResults.size() == 1) {
+			// 1 anuncio found
+			anuncio = ofertasResults.iterator().next();
+			return "redirect:/ofertas/" + anuncio.getId();
+		}
+		else {
+			// multiple anuncios found
+			model.put("selections",ofertasResults);
+			return "anuncio/buscarAnuncio";
+		}
+	}
+
 	
 	@GetMapping(value="/ofertas/find/{asignatura}")
 	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
