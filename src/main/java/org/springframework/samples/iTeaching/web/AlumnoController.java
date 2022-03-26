@@ -118,7 +118,7 @@ public class AlumnoController {
 		mav.addObject("alumno",alumno);
 		return mav;
 	}
-	@PostMapping("/alumnos/{alumnoId}")
+	@PostMapping("/alumnos/{alumnoId}/delete")
 	public String deleteAlumno(@PathVariable("alumnoId") int alumnoId) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
@@ -126,9 +126,9 @@ public class AlumnoController {
 		Alumno usuario = alumnoService.findAlumnoByUsername(username);
 		Alumno alumno = alumnoService.findAlumnoById(alumnoId);
 		if (usuario.equals(alumno)) {
-		this.alumnoService.delete(alumno);
-		return "welcome";
-	}
+			this.alumnoService.delete(alumno);
+			return "welcome";
+		}
 		else {
 			return "welcome";
 		}
