@@ -20,6 +20,8 @@
             <th>Asignatura</th>
             <th>Precio/Hora</th>
             <th>Profesor</th>
+            <th>Puntuación del profesor</th>
+            <th>Valorar</th>
         </tr>
         </thead>
         <tbody>
@@ -42,7 +44,14 @@
                     <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
                 </td>
                  
-				
+				<td>
+                    <c:if test="${anuncio.profesor.division==0}">
+                	<c:out value="Sin evaluar"/>
+                	</c:if>
+                	<c:if test="${anuncio.profesor.division!=0}">
+                	<c:out value="${(anuncio.profesor.puntuacion/anuncio.profesor.division)*2}"/>
+                	</c:if>
+                </td>
 				
 				<td>
 				
@@ -51,7 +60,7 @@
 							<spring:param name="anuncioId" value="${anuncio.id}" />
 
 						</spring:url> <a href="${fn:escapeXml(editUrl)}"
-						class="btn btn-default">Valorar</a>
+						class="btn btn-outline-warning">Valorar</a>
 					</td>
             </tr>
         </c:forEach>

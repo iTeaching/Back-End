@@ -1,6 +1,7 @@
 package org.springframework.samples.iTeaching.service;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
+import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.repository.AnuncioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,9 @@ public class AnuncioService {
 
 	@Autowired
 	AlumnoService alumnoService;
+	
+	@Autowired
+	ValoracionService valoracionService;
   
 	private AnuncioRepository anuncioRepository;
 	
@@ -47,6 +52,12 @@ public class AnuncioService {
 	}
 
 	public void delete(Anuncio anuncio) {
+		List<Valoracion> valoracion= (List<Valoracion>) valoracionService.findValoracionByAnuncio(anuncio);
+		
+		for (int i = 0; i<valoracion.size();i++) {
+			valoracionService.delete(valoracion.get(i));
+		}
+		
 		anuncioRepository.delete(anuncio);
 	}
 	

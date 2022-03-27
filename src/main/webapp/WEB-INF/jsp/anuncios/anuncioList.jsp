@@ -19,6 +19,7 @@
             <th>Asignatura</th>
             <th>Precio/Hora</th>
             <th>Profesor</th>
+            <th>Puntuación del profesor</th>
             <th>Apuntarme</th>
         </tr>
         </thead>
@@ -40,6 +41,16 @@
                 </td>
                 <td>
                     <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
+                </td>
+                
+                <td>
+                	<c:if test="${anuncio.profesor.division==0}">
+                	<c:out value="Sin evaluar"/>
+                	</c:if>
+                	<c:if test="${anuncio.profesor.division!=0}">
+                	<c:out value="${(anuncio.profesor.puntuacion/anuncio.profesor.division)*2}"/>
+                	</c:if>
+                    
                 </td>
                 <td>
                     <spring:url value="/anuncio/{anuncioId}/apply" var="anuncioId">

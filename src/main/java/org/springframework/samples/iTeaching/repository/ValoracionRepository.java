@@ -15,12 +15,13 @@
  */
 package org.springframework.samples.iTeaching.repository;
 
-import org.springframework.dao.DataAccessException;
+import java.util.Collection;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.samples.iTeaching.model.BaseEntity;
+import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Anuncio;
 import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.repository.ValoracionRepository;
 /**
@@ -30,5 +31,12 @@ import org.springframework.samples.iTeaching.repository.ValoracionRepository;
  * @since 15.1.2013
  */
 public interface ValoracionRepository extends CrudRepository<Valoracion, Integer> {
+	
+	@Query("SELECT valoracion FROM Valoracion valoracion WHERE valoracion.alumno =:alumno AND valoracion.anuncio =:anuncio")
+	public Optional<Valoracion> findByAlumnoAnuncio(@Param("alumno") Alumno alumno, 
+			@Param("anuncio") Anuncio anuncio);
+	
+	@Query("SELECT valoracion FROM Valoracion valoracion WHERE valoracion.anuncio =:anuncio")
+	public Collection<Valoracion> findByAnuncio(@Param("anuncio") Anuncio anuncio);
 
 }

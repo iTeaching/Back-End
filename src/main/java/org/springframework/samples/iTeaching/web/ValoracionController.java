@@ -62,9 +62,18 @@ public class ValoracionController {
             Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
             Anuncio anuncio= this.anuncioService.findAnuncioById(anuncioId);
             Profesor profesor=anuncio.getProfesor();
+            if(this.valoracionService.findValoracionByAlumnoAnuncio(alumno, anuncio).isPresent()){
+            	Valoracion valoracionPrevia= this.valoracionService.
+            			findValoracionByAlumnoAnuncio(alumno, anuncio).get();
+            	valoracionService.delete(valoracionPrevia);
+            			profesor.setPuntuacion(profesor.getPuntuacion()-valoracionPrevia.getPuntuacion());
+            			profesor.setDivision(profesor.getDivision()-1);
+            }
             valoracion.setAnuncio(anuncio);
             valoracion.setAlumno(alumno);
             valoracion.setProfesor(profesor);
+            profesor.setPuntuacion(valoracion.getPuntuacion()+profesor.getPuntuacion());
+            profesor.setDivision(profesor.getDivision()+1);
             valoracionService.saveValoracion(valoracion);
 			return "redirect:/ofertas/find";
 		}

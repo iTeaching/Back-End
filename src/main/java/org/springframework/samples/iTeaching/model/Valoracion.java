@@ -8,6 +8,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +25,7 @@ public class Valoracion extends BaseEntity {
 	Double puntuacion;
 	
 	@Column(name="comentario")
-	@NotBlank
+	@Value("")
 	String comentario;
 	
 	@ManyToOne
