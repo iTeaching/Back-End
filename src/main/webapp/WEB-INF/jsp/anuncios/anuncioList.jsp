@@ -12,30 +12,20 @@
     <head>
         <meta charset="UTF-8">
       </head>
-      
 
-    
-     <form th:object="${anuncio}" th:action="@{/ofertas}" method="get"
-    class="form-horizontal" id="search-owner-form">
-    <div class="form-group">
-      <div class="control-group" id="lastNameGroup">
-        <label class="col-sm-2 control-label">Asignatura </label>
-        <div class="col-sm-10">
-          <input class="form-control" th:field="*{asignatura}" size="30"
-            maxlength="80" /> <span class="help-inline"></span>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Find
-          Asignatura</button>
-      </div>
-    </div>
-     </form>
 
-   
-    <table id="anunciosTable" class="table table-striped">
+
+	<form  action="/ofertas/findAsignatura/" method="get">
+		<div class="form-group">
+			<label>Buscar por asignatura</label> <input
+				type="text" class="form-control" id="asignaturaBuscar" name="asignaturaBuscar"
+				placeholder="Introduce la asignatura">
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+
+	<table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
             <th>Titulo</th>

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -109,43 +110,13 @@ public class AnuncioController {
 		model.put("anuncios", anuncios);
 		return "anuncios/anuncioList";
 	}
-	
-	
-	@GetMapping("/ofertas")
-	public String processFindForm(@RequestParam(defaultValue = "1") int page, Anuncio anuncio, BindingResult result,
-			Map<String,Object> model) {
-
-		// allow parameterless GET request for /ofertas to return all records
-		if (anuncio.getAsignatura() == null) {
-			anuncio.setAsignatura(""); // empty string signifies broadest possible search
-		}
-
-		// find anuncios by asignatura
-		String asignatura = anuncio.getAsignatura();
-		Collection<Anuncio> ofertasResults = anuncioRepository.findByAsignatura(asignatura);
-		if (ofertasResults.isEmpty()) {
-			// no anuncios found
-			result.rejectValue("asignatura", "notFound", "not found");
-			return "anuncio/anuncioList";
-		}
-		else if (ofertasResults.size() == 1) {
-			// 1 anuncio found
-			anuncio = ofertasResults.iterator().next();
-			return "redirect:/ofertas/" + anuncio.getId();
-		}
-		else {
-			// multiple anuncios found
-			model.put("selections",ofertasResults);
-			return "anuncio/buscarAnuncio";
-		}
-	}
 
 	
-	@GetMapping(value="/ofertas/find/{asignatura}")
-	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
+	@RequestMapping(value="/ofertas/findAsignatura")
+	public String findAnunciosByAsignatura(@RequestParam("asignaturaBuscar") String asignatura, Map<String, Object> model) {
 		List<Anuncio> anuncios = (List<Anuncio>) this.anuncioService.findByAsignatura(asignatura);
 		model.put("anuncios", anuncios);
-		return "anuncios/anuncioList";
+		return "anuncios/buscarAnuncio";
 	}
 	
 	@GetMapping(value = "/ofertas/{anuncioId}/edit")

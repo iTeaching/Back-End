@@ -13,7 +13,7 @@
     <head>
         <meta charset="UTF-8">
       </head>
-<body>
+
 <table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
@@ -26,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${selections}" var="anuncio">
+        <c:forEach items="${anuncios}" var="anuncio">
             <tr>
               
                 <td>
@@ -56,5 +56,3 @@
         </tbody>
     </table>
 </iteaching:layout>
-</body>
-</html>
