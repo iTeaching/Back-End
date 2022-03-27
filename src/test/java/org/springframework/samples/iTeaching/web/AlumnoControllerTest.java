@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -54,7 +54,7 @@ public class AlumnoControllerTest {
 		aut.add(authorities);
 		user.setAuthorities(aut);
 		user.setEnabled(true);
-		user.setPassword("password");
+		user.setPassword("Pa$$w0rd1");
 		alumno.setUser(user);
 		alumno.setEmail("test@gmail.com");
 		alumno.setFirstName("Test");
@@ -75,41 +75,71 @@ public class AlumnoControllerTest {
 	@Test
 	void processCreationFormSuccess() throws Exception {
 		mockMvc.perform(post("/alumnos/new").with(csrf())
-				.param("First Name", "test")
-				.param("Last Name", "prueba")
-				.param("Telephone", "612345678")
-				.param("Email", "test@gmail.com")
-				.param("Username", "alumnoTest")
-				.param("Password", "password"))
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest1")
+				.param("user.password", "Pa$$w0rd1"))
 				.andExpect(status().is3xxRedirection())
 				.andExpect(view().name("redirect:/login"));
 	}
 	
 	@WithMockUser(value = "spring")
 	@Test
-	void processCreationFormFailTelephone() throws Exception {
+	void processCreationFormFailFirstName() throws Exception {
 		mockMvc.perform(post("/alumnos/new").with(csrf())
-				.param("First Name", "test")
-				.param("Last Name", "prueba")
-				.param("Telephone", "612345678123457897654578")
-				.param("Email", "test@gmail.com")
-				.param("Username", "alumnoTest")
-				.param("Password", "password"))
-				.andExpect(status().is4xxClientError())
+				.param("firstName", "")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678123457897654578")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(status().is2xxSuccessful())
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
 	}
 	
 	@WithMockUser(value = "spring")
 	@Test
+	void processCreationFormFailLastName() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "")
+				.param("telephone", "612345678123457897654578")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+
+	
+	@WithMockUser(value = "spring")
+	@Test
 	void processCreationFormFailEmail() throws Exception {
 		mockMvc.perform(post("/alumnos/new").with(csrf())
-				.param("First Name", "test")
-				.param("Last Name", "prueba")
-				.param("Telephone", "612345678")
-				.param("Email", "testatgmail.com")
-				.param("Username", "alumnoTest")
-				.param("Password", "password"))
-				.andExpect(status().is4xxClientError())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void processCreationFormFailPassword() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmailcom")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "contraseñamala"))
+				.andExpect(status().is2xxSuccessful())
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
 	}
 	
@@ -122,76 +152,87 @@ public class AlumnoControllerTest {
 	@WithMockUser(value = "alumnoTest")
 	@Test
 	void initUpdateOwnerForm() throws Exception {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Alumno alumno = alumnoService.findAlumnoByUsername(username);
-		mockMvc.perform(get("/alumnos/{alumnoId}/edit").queryParam("alumnoId", alumno.getId().toString())).andExpect(status().isOk());
+
+		mockMvc.perform(get("/alumnos/24/edit")).andExpect(status().isOk());
 	}
 	
 	@WithMockUser(value = "alumnoTest")
 	@Test
 	void processUpdateOwnerFormSuccess() throws Exception {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Alumno alumno = alumnoService.findAlumnoByUsername(username);
-		mockMvc.perform(post("/alumnos/{alumnoId}/edit").queryParam("alumnoId", alumno.getId().toString()).with(csrf())
-				.param("First Name", alumno.getFirstName())
-				.param("Last Name", alumno.getLastName())
-				.param("Telephone", alumno.getTelephone())
-				.param("Email", alumno.getEmail())
-				.param("Username", username)
-				.param("Password", "nuevaPassword"))
+		mockMvc.perform(post("/alumnos/24/edit").with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "Prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "nuevaPa$$w0rd1"))
 				.andExpect(status().is3xxRedirection())
 				.andExpect(view().name("redirect:/alumnos/{alumnoId}"));
 	}
 	
-	@WithMockUser(value = "alumnoTest")
-	@Test
-	void processUpdateOwnerFormFailTelephone() throws Exception {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Alumno alumno = alumnoService.findAlumnoByUsername(username);
-		mockMvc.perform(post("/alumnos/{alumnoId}/edit").queryParam("alumnoId", alumno.getId().toString()).with(csrf())
-				.param("First Name", alumno.getFirstName())
-				.param("Last Name", alumno.getLastName())
-				.param("Telephone", "612345678123457897654578")
-				.param("Email", alumno.getEmail())
-				.param("Username", username)
-				.param("Password", "nuevaPassword"))
-				.andExpect(status().is4xxClientError())
-				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
-	}
+
 	
 	@WithMockUser(value = "alumnoTest")
 	@Test
 	void processUpdateOwnerFormFailEmail() throws Exception {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Alumno alumno = alumnoService.findAlumnoByUsername(username);
-		mockMvc.perform(post("/alumnos/{alumnoId}/edit").queryParam("alumnoId", alumno.getId().toString()).with(csrf())
-				.param("First Name", alumno.getFirstName())
-				.param("Last Name", alumno.getLastName())
-				.param("Telephone", alumno.getTelephone())
-				.param("Email", "testatgmail.com")
-				.param("Username", username)
-				.param("Password", "nuevaPassword"))
-				.andExpect(status().is4xxClientError())
+		mockMvc.perform(post("/alumnos/24/edit").with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "Prueba")
+				.param("telephone", "612345678")
+				.param("email", "")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "nuevaPa$$w0rd1"))
+				.andExpect(status().is2xxSuccessful())
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
 	}
 	
 	@WithMockUser(value = "alumnoTest")
 	@Test
+	void processUpdateOwnerFormFailPassword() throws Exception {
+		mockMvc.perform(post("/alumnos/24/edit").with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "Prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "contraseñamala"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void processUpdateOwnerFormFailFirstName() throws Exception {
+		mockMvc.perform(post("/alumnos/24/edit").with(csrf())
+				.param("firstName", "")
+				.param("lastName", "Prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "contraseñamala"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void processUpdateOwnerFormFailLastName() throws Exception {
+		mockMvc.perform(post("/alumnos/24/edit").with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "contraseñamala"))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "alumno1")
+	@Test
 	void deleteAlumnoSuccess() throws Exception {
-		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
-		String username= clienteDetails.getUsername();
-		Alumno alumno = alumnoService.findAlumnoByUsername(username);
-		mockMvc.perform(post("/alumnos/{alumnoId}/delete").queryParam("alumnoId", alumno.getId().toString()).with(csrf()))
-				.andExpect(status().is3xxRedirection())
+		mockMvc.perform(post("/alumnos/2/delete").with(csrf()))
+				.andExpect(status().is2xxSuccessful())
 				.andExpect(view().name("welcome"));
 	}
 	
@@ -199,8 +240,8 @@ public class AlumnoControllerTest {
 	@Test
 	void deleteAlumnoFail() throws Exception {
 		mockMvc.perform(post("/alumnos/1/delete").with(csrf()))
-				.andExpect(status().is3xxRedirection())
-				.andExpect(view().name("welcome"));
+			.andExpect(status().is2xxSuccessful())
+			.andExpect(view().name("exception"));
 	}
 	
 	@WithMockUser(value = "alumnoTest")
@@ -209,11 +250,4 @@ public class AlumnoControllerTest {
 		mockMvc.perform(get("/alumnos/miPerfil")).andExpect(status().isOk());
 	}
 	
-	@WithMockUser(value = "prof1")
-	@Test
-	void miPerfilFail() throws Exception {
-		mockMvc.perform(get("/alumnos/miPerfil")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/"));
-	}
-
-
 }
