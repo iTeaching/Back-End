@@ -21,8 +21,8 @@ import lombok.Setter;
 public class Profesor extends Person{
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Anuncio> anuncios;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor")
+	private Set<Asignatura> asignaturas;
 	
 //	@JsonIgnore
 //	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")

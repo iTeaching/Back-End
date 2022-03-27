@@ -6,12 +6,12 @@
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<iteaching:layout pageName="salas">
+<iteaching:layout pageName="asignaturas">
 	<header>
 	<nav>
     </nav>
     </header>
-    <h2>${sala.nombre}</h2>
+    <h2>${asignatura.nombre}</h2>
 
     <table id="salasTable" class="table table-striped">
         <thead>
@@ -29,22 +29,22 @@
         <tr>
             <td>
                 <spring:url value="/salas/details" var="salaUrl">
-                    <spring:param name="salaId" value="${sala.id}"/>
+                    <spring:param name="salaId" value="${asignatura.id}"/>
                 </spring:url>
-                <iframe src="${sala.url}" 
+                <iframe src="${asignatura.url}" 
                 width="1000" height="1000" allow="camera; microphone; fullscreen; speaker; display-capture" ></iframe>
                 <!-- <a href=${sala.url} >Ver fuera de la app</a> -->
             </td>
             <sec:authorize access="hasAuthority('alumno')">
             <td>
-                <c:out value="${sala.profesor.firstName}"/><c:out value=" "/> <c:out value="${sala.profesor.lastName}"/>    
+                <c:out value="${asignatura.profesor.firstName}"/><c:out value=" "/> <c:out value="${asignatura.profesor.lastName}"/>    
             </td>
             </sec:authorize>
             <sec:authorize access="hasAuthority('profesor')">
              <td>
              <ul>
              	
-            <c:forEach items="${sala.alumnos}" var="alumno">
+            <c:forEach items="${asignatura.alumnos}" var="alumno">
                  <li><c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/></li>
                  <br>
             </c:forEach>

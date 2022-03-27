@@ -18,6 +18,7 @@ package org.springframework.samples.iTeaching.model;
 
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -49,7 +50,7 @@ public class Alumno extends Person {
 	
 	
 	@ManyToMany(mappedBy = "alumnos")
-	List<Sala> salas;
+	Set<Asignatura> salas;
 	
 	
 

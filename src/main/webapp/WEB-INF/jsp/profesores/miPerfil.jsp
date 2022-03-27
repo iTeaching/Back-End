@@ -14,8 +14,8 @@
     	<p>Correo: ${profesor.email}</p>
     	<span>Asignaturas
     		<ul>
-    		<c:forEach var="anuncio" items="${profesor.anuncios}">
-    			<li>${anuncio.asignatura}</li>
+    		<c:forEach var="asignatura" items="${profesor.asignaturas}">
+    			<li>${asignatura.nombre}</li>
 			</c:forEach>
     		</ul>
     	</span>
