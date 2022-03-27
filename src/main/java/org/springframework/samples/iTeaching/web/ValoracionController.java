@@ -41,11 +41,12 @@ public class ValoracionController {
 	
 	private static final String VIEWS_VALORACION_CREATE_FORM = "valoraciones/createValoracionForm";
 	
-	@GetMapping(value = "/valoraciones/new")
-	public String initCreationForm(Map<String, Object> model) {
+	@GetMapping(value = "/anuncio/{anuncioId}/valoraciones/new")
+	public String initCreationForm(Map<String, Object> model,@PathVariable("anuncioId") int anuncioId) {
 		Valoracion valoracion = new Valoracion();
-		
-		model.put("valoracion", valoracion);
+		Anuncio anuncio= this.anuncioService.findAnuncioById(anuncioId);
+		valoracion.setAnuncio(anuncio);
+		model.put("valoracion", valoracion); 
 		
 		return VIEWS_VALORACION_CREATE_FORM;
 	}
@@ -61,8 +62,8 @@ public class ValoracionController {
             Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
             Anuncio anuncio= this.anuncioService.findAnuncioById(anuncioId);
             Profesor profesor=anuncio.getProfesor();
-            valoracion.setAlumno(alumno);
             valoracion.setAnuncio(anuncio);
+            valoracion.setAlumno(alumno);
             valoracion.setProfesor(profesor);
             valoracionService.saveValoracion(valoracion);
 			return "redirect:/ofertas/find";
