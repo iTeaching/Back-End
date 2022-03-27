@@ -19,7 +19,7 @@ public class Clases {
 	
 	public static String url() throws IOException, InterruptedException {
 		var apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmFwcGVhci5pbiIsImF1ZCI6Imh0dHBzOi8vYXBpLmFwcGVhci5pbi92MSIsImV4cCI6OTAwNzE5OTI1NDc0MDk5MSwiaWF0IjoxNjQ3NjM2MjcwLCJvcmdhbml6YXRpb25JZCI6MTU1OTMxLCJqdGkiOiJkOTNmMDdlOC1hMGMxLTQ4NGYtYWYxMy02ODQ2NjZjMjNmNTYifQ.zicx46XqkxkJvZC0zqcrWf7WjzG58-OX7RXy1dZ0HwE";
-		var data = Map.of("endDate", "2022-03-27T11:57:00.000Z", "fields", Collections.singletonList("hostRoomUrl"));
+		var data = Map.of("endDate", "2022-10-28T11:57:00.000Z", "fields", Collections.singletonList("hostRoomUrl"));
 
 		var request = HttpRequest.newBuilder(URI.create("https://api.whereby.dev/v1/meetings"))
 				.header("Authorization", "Bearer " + apiKey).header("Content-Type", "application/json")

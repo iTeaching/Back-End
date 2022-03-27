@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,23 +23,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="sala")
-public class Sala extends BaseEntity{
-	
-	
-//	@JsonIgnore
-//	@OneToMany(cascade = CascadeType.DETACH, mappedBy = "id")
-//	private List<Alumno> alumnos;
-	
-	@ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "sala_alumno",
-            joinColumns = @JoinColumn(name = "sala_id"),
-            inverseJoinColumns = @JoinColumn(name = "alumno_id")
-    )
-	List<Alumno> alumnos;
+@Table(name="asignatura")
+public class Asignatura extends BaseEntity{
 	
 	@Column(name="nombre")
 	@NotEmpty
@@ -46,6 +32,29 @@ public class Sala extends BaseEntity{
 
 	@Column(name="url")
 	String url;
+	
+	@Column(name="titulo_anuncio")
+	@NotEmpty
+	String titulo_anuncio;
+	
+	@Column(name="descripcion")
+	@NotEmpty 
+	String descripcion;
+	
+	@Column(name="precio")
+	@NotNull
+	Double precio;
+	
+	@ManyToMany(cascade = {
+            CascadeType.ALL
+//            CascadeType.PERSIST,
+//            CascadeType.MERGE
+    })
+    @JoinTable(name = "asignatura_alumno",
+            joinColumns = @JoinColumn(name = "sala_id"),
+            inverseJoinColumns = @JoinColumn(name = "alumno_id")
+    )
+	Set<Alumno> alumnos;
 
 	@ManyToOne
 	@JoinColumn(name = "profesor")
