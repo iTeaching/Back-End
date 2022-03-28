@@ -18,6 +18,10 @@
         <tr>
             <th style="width: 150px;">Nombre de la asignatura</th>
             <th style="width: 120px">Acción</th>
+            <sec:authorize access="hasAnyAuthority('alumno')">
+            <th style="width: 120px">Puntuación del profesor</th>
+            <th style="width: 120px">Valorar</th>
+            </sec:authorize>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +34,25 @@
                      
 					<a href="/asignaturas/${asignatura.id }"><img src="resources/images/video.svg"></a>
                 </td>
+                <sec:authorize access="hasAnyAuthority('alumno')">
+                <td>
+                    <c:if test="${asignatura.profesor.division==0}">
+                	<c:out value="Sin evaluar"/>
+                	</c:if>
+                	<c:if test="${asignatura.profesor.division!=0}">
+                	<c:out value="${(asignatura.profesor.puntuacion/asignatura.profesor.division)*2}"/>
+                	</c:if>
+                </td>
+                <td>
+				
+				<spring:url value="/asignatura/{asignaturaId}/valoraciones/new"
+							var="editUrl">
+							<spring:param name="asignaturaId" value="${asignatura.id}" />
+
+						</spring:url> <a href="${fn:escapeXml(editUrl)}"
+						class="btn btn-outline-warning">Valorar</a>
+					</td>
+				</sec:authorize>
             </tr>
         </c:forEach>
         </tbody>

@@ -59,4 +59,8 @@ public class Asignatura extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "profesor")
 	private Profesor profesor;
+	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<Valoracion> valoraciones;
 }

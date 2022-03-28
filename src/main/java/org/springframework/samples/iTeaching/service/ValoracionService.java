@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Anuncio;
+import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.repository.ValoracionRepository;
 import org.springframework.stereotype.Service;
@@ -23,13 +23,13 @@ public class ValoracionService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Optional<Valoracion> findValoracionByAlumnoAnuncio(Alumno alumno, Anuncio anuncio) throws DataAccessException {
-		return valoracionRepository.findByAlumnoAnuncio(alumno, anuncio);
+	public Optional<Valoracion> findValoracionByAlumnoAsignatura(Alumno alumno, Asignatura asignatura) throws DataAccessException {
+		return valoracionRepository.findByAlumnoAsignatura(alumno, asignatura);
 	}
 	
 	@Transactional(readOnly = true)
-	public Collection<Valoracion> findValoracionByAnuncio(Anuncio anuncio) throws DataAccessException {
-		return valoracionRepository.findByAnuncio(anuncio);
+	public Collection<Valoracion> findValoracionByAsignatura(Asignatura asignatura) throws DataAccessException {
+		return valoracionRepository.findByAsignatura(asignatura);
 	}
 
 	public void delete(Valoracion valoracion) {
