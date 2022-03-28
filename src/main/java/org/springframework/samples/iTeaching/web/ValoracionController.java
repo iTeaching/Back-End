@@ -8,13 +8,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Anuncio;
+import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.Profesor;
-import org.springframework.samples.iTeaching.model.Sala;
 import org.springframework.samples.iTeaching.model.User;
 import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.service.AlumnoService;
-import org.springframework.samples.iTeaching.service.AnuncioService;
-import org.springframework.samples.iTeaching.service.SalaService;
+import org.springframework.samples.iTeaching.service.AsignaturaService;
+
 import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.samples.iTeaching.service.ValoracionService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,7 +34,7 @@ public class ValoracionController {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private AnuncioService anuncioService;
+	private AsignaturaService anuncioService;
 	
 	@Autowired
 	private AlumnoService alumnoService;
@@ -44,8 +44,8 @@ public class ValoracionController {
 	@GetMapping(value = "/anuncio/{anuncioId}/valoraciones/new")
 	public String initCreationForm(Map<String, Object> model,@PathVariable("anuncioId") int anuncioId) {
 		Valoracion valoracion = new Valoracion();
-		Anuncio anuncio= this.anuncioService.findAnuncioById(anuncioId);
-		valoracion.setAnuncio(anuncio);
+		Asignatura asignatura= this.anuncioService.findById(anuncioId);
+		valoracion.setAsignatura(asignatura);
 		model.put("valoracion", valoracion); 
 		
 		return VIEWS_VALORACION_CREATE_FORM;
@@ -60,16 +60,16 @@ public class ValoracionController {
 			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User user = this.userService.findUser(userDetails.getUsername()).get();
             Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
-            Anuncio anuncio= this.anuncioService.findAnuncioById(anuncioId);
-            Profesor profesor=anuncio.getProfesor();
-            if(this.valoracionService.findValoracionByAlumnoAnuncio(alumno, anuncio).isPresent()){
+			Asignatura asignatura= this.anuncioService.findById(anuncioId);
+            Profesor profesor=asignatura.getProfesor();
+            if(this.valoracionService.findValoracionByAlumnoAnuncio(alumno, asignatura).isPresent()){
             	Valoracion valoracionPrevia= this.valoracionService.
-            			findValoracionByAlumnoAnuncio(alumno, anuncio).get();
+            			findValoracionByAlumnoAnuncio(alumno, asignatura).get();
             	valoracionService.delete(valoracionPrevia);
             			profesor.setPuntuacion(profesor.getPuntuacion()-valoracionPrevia.getPuntuacion());
             			profesor.setDivision(profesor.getDivision()-1);
             }
-            valoracion.setAnuncio(anuncio);
+            valoracion.setAsignatura(asignatura);
             valoracion.setAlumno(alumno);
             valoracion.setProfesor(profesor);
             profesor.setPuntuacion(valoracion.getPuntuacion()+profesor.getPuntuacion());

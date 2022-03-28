@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.ProfesorService;
-import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 

@@ -11,7 +11,7 @@
 <petclinic:layout pageName="Mi perfil">
     <div>
     	<p>Nombre: ${alumno.firstName} ${alumno.lastName }</p>
-    	<p>Tel�fono: ${alumno.telephone}</p>
+    	<p>Telefono: ${alumno.telephone}</p>
     	<p>Correo: ${alumno.email}</p>
     	<p><a href="/alumnos/${alumno.id}/edit">Editar perfil</a></p>
     </div>
