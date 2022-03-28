@@ -4,7 +4,6 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

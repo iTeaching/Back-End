@@ -6,8 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<iteaching:layout pageName="anuncios">
-    <h2>Anuncios</h2>
+<iteaching:layout pageName="findOfertas">
+    <h2>Encontrar asignaturas</h2>
     <head>
         <meta charset="UTF-8">
       </head>
@@ -19,49 +19,36 @@
             <th>Asignatura</th>
             <th>Precio/Hora</th>
             <th>Profesor</th>
-            <th>Puntuación del profesor</th>
             <th>Apuntarme</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${anuncios}" var="anuncio">
+        <c:forEach items="${asignaturas}" var="asignatura">
             <tr>
               
                 <td>
-                <c:out value="${anuncio.titulo}"/>                  
+                <c:out value="${asignatura.titulo_anuncio}"/>                  
                 </td>
                 <td>
-                    <c:out value="${anuncio.descripcion}"/>
+                    <c:out value="${asignatura.descripcion}"/>
                 </td>
                 <td>
-                    <c:out value="${anuncio.asignatura}"/>
+                    <c:out value="${asignatura.nombre}"/>
                 </td>
                 <td>
-                    <c:out value="${anuncio.precio}"/>
+                    <c:out value="${asignatura.precio}"/>
                 </td>
                 <td>
-                    <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
-                </td>
-                
-                <td>
-                	<c:if test="${anuncio.profesor.division==0}">
-                	<c:out value="Sin evaluar"/>
-                	</c:if>
-                	<c:if test="${anuncio.profesor.division!=0}">
-                	<c:out value="${(anuncio.profesor.puntuacion/anuncio.profesor.division)*2}"/>
-                	</c:if>
-                    
+                    <c:out value="${asignatura.profesor.firstName} ${asignatura.profesor.lastName}"/>
                 </td>
                 <td>
-                    <spring:url value="/anuncio/{anuncioId}/apply" var="anuncioId">
-                    <spring:param name="anuncioId" value="${anuncio.id}"/>
+                    <spring:url value="/asignaturas/{asignaturaId}/apply" var="asignaturaId">
+                    <spring:param name="asignaturaId" value="${asignatura.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(anuncioId)}"><img src="..\resources\images\icons8-añadir-30.png"></span>
-                    </a>                       
+                    <a href="${fn:escapeXml(asignaturaId)}"><img src="..\resources\images\icons8-añadir-30.png"></a>
                     </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    
 </iteaching:layout>

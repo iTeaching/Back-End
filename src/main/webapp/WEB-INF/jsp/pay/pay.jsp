@@ -125,7 +125,7 @@ span.price {
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
                     <label for="price">Total</label>
-                    <input type="text" id="price" name="price" value="10" readonly="readonly">
+                    <input type="text" id="price" name="price" value="${orden.precio}" readonly="readonly">
                     <label for="currency">Currency</label>
                     <input type="text" id="currency" name="currency" placeholder="Enter Currency">
                     <label for="method">Metodo de pago</label>
@@ -143,7 +143,7 @@ span.price {
     </div>
     <div class="col-25">
         <div class="container">
-            <h4>Clases <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+            <h4>Clases <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b><c:out value="${orden.precio}"></b></span></h4>
         </div>
     </div>
 </div>
