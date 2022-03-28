@@ -51,7 +51,7 @@ public class Alumno extends Person {
 	private Set<Valoracion> valoraciones;
 		
 	@ManyToMany(mappedBy = "alumnos")
-	List<Sala> salas;
+	List<Asignatura> asignaturas;
 
 	@Override
 	public String toString() {

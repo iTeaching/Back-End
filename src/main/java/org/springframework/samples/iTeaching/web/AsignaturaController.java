@@ -98,7 +98,7 @@ public class AsignaturaController {
 		
 		try {
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			Set<Asignatura> asignaturas= (Set<Asignatura>) this.alumnoService.findAlumnoById(usuario.getId()).getSalas();
+			List<Asignatura> asignaturas= this.alumnoService.findAlumnoById(usuario.getId()).getAsignaturas();
 			model.put("asignaturas",asignaturas);
 			return "asignaturas/list";
 		} catch(Exception e) {
