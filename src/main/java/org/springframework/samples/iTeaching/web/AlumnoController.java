@@ -62,32 +62,7 @@ public class AlumnoController {
 		return "alumnos/findOwners";
 	}
 
-//	@GetMapping(value = "/alumnos")
-//	public String processFindForm(Alumno alumno, BindingResult result, Map<String, Object> model) {
-//
-//		// allow parameterless GET request for /alumnos to return all records
-//		if (alumno.getLastName() == null) {
-//			alumno.setLastName(""); // empty string signifies broadest possible search
-//		}
-//
-//		// find alumnos by last name
-//		Collection<Alumno> results = this.alumnoService.findOwnerByLastName(alumno.getLastName());
-//		if (results.isEmpty()) {
-//			// no alumnos found
-//			result.rejectValue("lastName", "notFound", "not found");
-//			return "alumnos/findOwners";
-//		}
-//		else if (results.size() == 1) {
-//			// 1 alumno found
-//			alumno = results.iterator().next();
-//			return "redirect:/alumnos/" + alumno.getId();
-//		}
-//		else {
-//			// multiple alumnos found
-//			model.put("selections", results);
-//			return "alumnos/alumnosList";
-//		}
-//	}
+
 
 	@GetMapping(value = "/alumnos/{alumnoId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("alumnoId") int alumnoId, Model model) {
@@ -152,5 +127,31 @@ public class AlumnoController {
 		}
 		
 	}
+//	
+//	@GetMapping(value = "users/profile/changeAvatar/{usernameProfile}")
+//	public String viewChangeAvatar(@PathVariable("usernameProfile") String usernameProfile, Map<String, Object> model) {
+//		Optional<User> userOptional = userService.findUser(usernameProfile);
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		if (userOptional.isEmpty() || !userOptional.get().getUsername().equals(userDetails.getUsername())) {
+//			return "exception";
+//		} else {
+//			model.put("user", userOptional.get());
+//			return "users/changeAvatar";
+//		}
+//	}
+//
+//	@PostMapping(value = "users/profile/changeAvatar")
+//	public String saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar, HttpSession http) {
+//		String fileName = storageService.store(avatar, "profile", http);
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		User user = userService.findUser(userDetails.getUsername()).get();
+//		user.setAvatar(fileName);
+//		userService.saveUser(user);
+//		return "redirect:/users/myprofile";
+//	}
+//	
+	
+	
+	
 	
 }

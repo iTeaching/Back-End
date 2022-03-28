@@ -52,6 +52,10 @@ public class Alumno extends Person {
 		
 	@ManyToMany(mappedBy = "alumnos")
 	List<Asignatura> asignaturas;
+	
+	
+	private String avatar;
+	
 
 	@Override
 	public String toString() {

@@ -42,6 +42,34 @@
     <h2>
     Editar Alumno
     </h2>
+    
+    <div class="row">
+    
+    
+    <div class="col-sm-4" style="display: flex; align-items: center; flex-direction: column">
+				
+			<c:choose>
+			    <c:when test="${alumno.avatar == null}">
+			        <img src="/resources/images/avatar_defecto.jpg"
+					style="width: 150px;" />
+			        <br />
+			    </c:when>    
+			    <c:otherwise>
+			        <img src="/resources/images/profile/${alumno.avatar}"
+					style="width: 150px;" />
+			        <br />
+			    </c:otherwise>
+			</c:choose>
+			<a class="btn btn-default"
+			href="<c:url value="/users/profile/changeAvatar/$alumno.username}" />">Actualiza tu avatar</a>
+			</div>
+    
+    
+    
+    <div class="col-sm-8" style="margin: 0 0 20px 0">
+				
+	
+ 
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">
         
@@ -57,4 +85,9 @@
             </div>
         </div>
     </form:form>
+    
+    </div>
+    
+    </div>
+    
 </iteaching:layout>
