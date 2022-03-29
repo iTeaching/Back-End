@@ -32,23 +32,23 @@ $(document).ready(function() {
       <sec:authorize access="hasAnyAuthority('profesor')">
     
 				<li class="nav-item dropdown">
-        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Asignaturas</a>
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Salas</a>
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #dab305;">
-          		<a class="dropdown-item" href="/asignaturas/new">Crear asignatura</a>
-          		<a class="dropdown-item" href="/asignaturas">Mis asignaturas</a>
+          		<a class="dropdown-item" href="/salas/new">Crear Salas</a>
+          		<a class="dropdown-item" href="/salas">Mis salas</a>
          		
        			 </div>
       			</li>
       			
       			
-      			<!-- <li class="nav-item dropdown">
+      			<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="background-color: #dab305;">
           		<a class="dropdown-item" href="/ofertas/new">Crear Anuncios</a>
           		<a class="dropdown-item" href="/ofertas/misOfertas">Mis ofertas</a>
          		
        			 </div>
-      			</li> -->
+      			</li>
       			
       			<li class="nav-item active">
 					<a class="nav-link" href="/profesores/miPerfil">Mi perfil</a>
@@ -64,19 +64,15 @@ $(document).ready(function() {
     	<sec:authorize access="hasAnyAuthority('alumno')">
 				
 				<li class="nav-item active">
-					<a class="nav-link" href="/asignaturas">Mis asignaturas</a>
-				</li>
-				
-				<li class="nav-item active">
-					<a class="nav-link" href="/ofertas/find">Ver ofertas</a>
+					<a class="nav-link" href="/salas">Ver salas</a>
 				</li>
 				
 				
-			<!-- <li class="nav-item dropdown">
+			<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Anuncios</a>
         		<div class="dropdown-menu" aria-labelledby="navbarDropdown2" style="background-color: #dab305;">
           		<a class="dropdown-item" href="/ofertas/find">Ver Ofertas</a>
-          		<a class="dropdown-item" href="/anuncios/anunciosAplicados">Anuncios aplicados</a> -->
+          		<a class="dropdown-item" href="/anuncios/anunciosAplicados">Anuncios aplicados</a>
 				
 				<li class="nav-item active">
 					<a class="nav-link" href="/alumnos/miPerfil">Mi perfil</a>

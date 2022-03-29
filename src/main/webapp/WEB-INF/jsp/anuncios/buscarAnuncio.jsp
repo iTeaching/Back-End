@@ -7,25 +7,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<iteaching:layout pageName="anuncios">
-    <h2>Anuncios</h2>
+
+<iteaching:layout pageName="buscarAnuncios">
+    <h2>Anuncios encontrados</h2>
     <head>
         <meta charset="UTF-8">
       </head>
 
-
-
-	<form  action="/ofertas/findAsignatura/" method="get">
-		<div class="form-group">
-			<label>Buscar por asignatura</label> <input
-				type="text" class="form-control" id="asignaturaBuscar" name="asignaturaBuscar"
-				placeholder="Introduce la asignatura">
-		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
-	</form>
-
-
-	<table id="anunciosTable" class="table table-striped">
+<table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>
             <th>Titulo</th>
@@ -66,5 +55,4 @@
         </c:forEach>
         </tbody>
     </table>
-    
 </iteaching:layout>

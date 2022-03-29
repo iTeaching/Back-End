@@ -11,6 +11,27 @@
     <head>
         <meta charset="UTF-8">
       </head>
+     
+      <div class=row>
+      <div class="col-sm-4" style="display: flex; align-items: center; flex-direction: column">
+      <form  action="/ofertas/findAsignatura/" method="get">
+      
+		<div class="form-group">
+			<label></label> 
+			 
+			
+			<input
+				type="text" class="form-control" id="asignaturaBuscar" name="asignaturaBuscar" style="width:300px"
+				placeholder="Introduce la asignatura">
+			</div>
+		</div>
+		<div class="col-sm-8" style="margin-top:23px; align-items: left; flex-direction: column">
+		<button type="submit" class="btn btn-primary" style="background-color:#dab305; border-color:#dab305">Submit</button>
+		</div>
+		
+	</form>
+	</div>
+     
     <table id="anunciosTable" class="table table-striped">
         <thead>
         <tr>

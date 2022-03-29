@@ -51,8 +51,6 @@ public class ProfesorController {
 		}
 		else {
 			//creating profesor, user and authorities
-			profesor.setDivision(0);
-			profesor.setPuntuacion(0.);
 			this.profesorService.saveProfesor(profesor);
 			
 			return "redirect:/login";

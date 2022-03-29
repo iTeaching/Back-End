@@ -7,29 +7,26 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
-<petclinic:layout pageName="asignaturas">
+<petclinic:layout pageName="sala nueva">
     <h2>
-        <c:if test="${asignatura['new']}">Nueva </c:if> Asignatura
+        <c:if test="${salas['new']}">New </c:if> Sala
     </h2>
-    <form:form modelAttribute="asignatura" class="form-horizontal" id="add-room-form">
-    	<input type="hidden" name="id" value="${asignatura.id}"/>
-        <%-- <input type="hidden" name="version" value="${asignatura.version}"/>
-        <input type="hidden" name="version" value="${asignatura.version}"/> --%>
+    <form:form modelAttribute="salas" class="form-horizontal" id="add-room-form">
+    	<input type="hidden" name="id" value="${sala.id}"/>
+        <input type="hidden" name="version" value="${sala.version}"/>
+        <input type="hidden" name="version" value="${sala.version}"/>
 
         <div class="form-group has-feedback">
             <petclinic:inputField label="Nombre" name="nombre"/>
-            <petclinic:inputField label="Título del anuncio" name="titulo_anuncio"/>
-            <petclinic:inputField label="Descripción" name="descripcion"/>
-            <petclinic:inputField label="Precio" name="precio"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${asignatura['new']}">
-                        <button class="btn btn-default" type="submit">¡Publicar Asignatura!</button>
+                    <c:when test="${salas ['new']}">
+                        <button class="btn btn-default" type="submit">Crear Sala</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Actualizar datos de la asignatura</button>
+                        <button class="btn btn-default" type="submit">Actualiza tu perfil</button>
                     </c:otherwise>
                 </c:choose>
             </div>

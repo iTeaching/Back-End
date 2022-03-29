@@ -47,13 +47,13 @@
 			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3 ">
 				<div class="col">
 					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
-						<a href="/asignaturas" class="btn btn-outline-link"> <img
+						<a href="/salas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title text-primary">Mis asignaturas</h5>
-								<p class="card-text text-dark">Visualiza las asignaturas creadas
+								<h5 class="card-title text-primary">Mis salas</h5>
+								<p class="card-text text-dark">Visualiza las salas creadas
 									por ti</p>
 
 							</div>
@@ -62,14 +62,14 @@
 				</div>
 				<div class="col">
 					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
-						<a href="/asignaturas/new" class="btn btn-outline-link"> <img
+						<a href="/ofertas/misOfertas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/181/181621.png"
 							alt="Card image cap">
 
 							<div class="card-body">
-								<h5 class="card-title text-primary">Crear asignatura</h5>
-								<p class="card-text text-dark">Crea una nueva asignatura</p>
+								<h5 class="card-title text-primary">Mis anuncios</h5>
+								<p class="card-text text-dark">Visualiza los anuncios creados por ti</p>
 
 							</div>
 						</a>
@@ -111,14 +111,13 @@
 			<div class="row justify-content-center row-cols-1 row-cols-md-5 g-3">
 				<div class="col">
 					<div class="card h-100" style="width: 18rem;background-color:#dab305;">
-						<a href="/asignaturas" class="btn btn-outline-link"> <img
+						<a href="/salas" class="btn btn-outline-link"> <img
 							class="card-img-top"
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title text-primary">Asignaturas</h5>
-								<p class="card-text text-dark">Visualiza las asignaturas a 
-								las que te has suscrito</p>
+								<h5 class="card-title text-primary">Salas</h5>
+								<p class="card-text text-dark">Visualiza las salas disponibles</p>
 
 							</div>
 						</a>
@@ -132,7 +131,7 @@
 							alt="Card image cap">
 
 							<div class="card-body">
-								<h5 class="card-title text-primary">Ver ofertas</h5>
+								<h5 class="card-title text-primary">Buscar ofertas</h5>
 								<p class="card-text text-dark">Visualiza las ofertas
 									disponibles</p>
 

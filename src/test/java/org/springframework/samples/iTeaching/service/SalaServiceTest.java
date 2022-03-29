@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.Sala;
 import org.springframework.stereotype.Service;
 
 
@@ -17,13 +17,13 @@ import org.springframework.stereotype.Service;
 public class SalaServiceTest {
 	
 	@Autowired
-	private AsignaturaService salaService;
+	private SalaService salaService;
 	@Autowired
 	private ProfesorService profesorService;
 
 	@Test
 	public void testFindById() {
-		Asignatura s = this.salaService.findById(1);
+		Sala s = this.salaService.findById(1);
 		
 		assertThat(s.getNombre().equals("sala1"));
 		assertThat(s.getUrl().equals("https://acme.whereby.com/a05d837d-2aaf-47a2-abf2-21dc8121f1c7"));
@@ -31,21 +31,21 @@ public class SalaServiceTest {
 	
 	@Test
 	public void testFindByProfesor() {
-		Collection<Asignatura> salas = this.salaService.findByProfesor(1);
+		Collection<Sala> salas = this.salaService.findByProfesor(1);
 		
 		assertThat(salas.size() == 2);
 	}
 	
 	@Test
 	public void testFindAll() {
-		List<Asignatura> salas = this.salaService.findAll();
+		List<Sala> salas = this.salaService.findAll();
 		
 		assertThat(salas.size() == 3);
 	}
 	
 	@Test
 	public void testInsertSala() {
-		Asignatura s = new Asignatura();
+		Sala s = new Sala();
 		s.setNombre("sala4");
 		s.setProfesor(this.profesorService.findProfesorById(1));
 		s.setUrl("https://acme.whereby.com/a05d837d-2aaf-47a2-abf2-33db342321g5");
