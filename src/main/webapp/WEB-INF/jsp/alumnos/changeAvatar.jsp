@@ -7,9 +7,9 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
 
 <petclinic:layout pageName="avatar">
-	<h2>Edit ${alumno.username}</h2>
+	<h2>Edit ${alumno.id}</h2>
 	<form:form enctype="multipart/form-data" class="form-horizontal"
-		action="/users/profile/changeAvatar" id="edit-avatar-form">
+		action="/alumnos/miPerfil" id="edit-avatar-form">
 		<div class="form-group">
 			<input type="file" name="avatar" />
 		</div>

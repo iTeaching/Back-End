@@ -16,7 +16,7 @@
 				
 			<c:choose>
 			    <c:when test="${alumno.avatar == null}">
-			        <img src="/resources/images/avatar_defecto.jpg"
+			        <img src="/resources/images/profile/avatar_defecto.jpg"
 					style="width: 150px;" />
 			        <br />
 			    </c:when>    
@@ -26,8 +26,6 @@
 			        <br />
 			    </c:otherwise>
 			</c:choose>
-			<a class="btn btn-default"
-			href="<c:url value="/users/profile/changeAvatar/$alumno.username}" />">Actualiza tu avatar</a>
 			</div>
 
 </div>
