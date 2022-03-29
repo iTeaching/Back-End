@@ -20,5 +20,7 @@
     		</ul>
     	</span>
     	<p><a href="/profesores/${profesor.id}/edit">Editar perfil</a></p>
+			
+			
     </div>
 </petclinic:layout>

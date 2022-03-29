@@ -8,9 +8,6 @@ import org.springframework.samples.iTeaching.model.Profesor;
 
 public interface ProfesorRepository extends CrudRepository<Profesor, Integer>{
 
-	@Query("SELECT profesor FROM Profesor profesor WHERE profesor.id =:id")
-	public Profesor findById(@Param("id") int id);
-
 	@Query("SELECT p FROM Profesor p WHERE p.user.username = :username")
 	public Profesor findByUsername(@Param("username") String username);
 
