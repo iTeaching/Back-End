@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.model.Sala;
 import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.User;
 import org.springframework.samples.iTeaching.service.AlumnoService;
@@ -24,8 +25,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AsignaturaController {
@@ -100,7 +99,7 @@ public class AsignaturaController {
 		
 		try {
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			List<Asignatura> asignaturas= this.alumnoService.findAlumnoById(usuario.getId()).getAsignaturas();
+			Set<Sala> asignaturas= this.alumnoService.findAlumnoById(usuario.getId()).getSalas().stream().collect(Collectors.toSet());
 			model.put("asignaturas",asignaturas);
 			return "asignaturas/list";
 		} catch(Exception e) {
@@ -159,8 +158,8 @@ public class AsignaturaController {
 		return "asignaturas/findOfertas";
 	}
 	
-	@RequestMapping(value="/ofertas/findAsignatura")
-	public String findAnunciosByAsignatura(@RequestParam("asignaturaBuscar") String asignatura, Map<String, Object> model) {
+	@GetMapping(value="/ofertas/find/{asignatura}")
+	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findByNombre(asignatura);
 		model.put("asignaturas", asignaturas);
 		return "asignaturas/findOfertas";
