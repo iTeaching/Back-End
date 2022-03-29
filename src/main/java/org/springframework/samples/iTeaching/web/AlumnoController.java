@@ -2,6 +2,7 @@ package org.springframework.samples.iTeaching.web;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -149,25 +150,47 @@ public class AlumnoController {
 		model.put("alumno", alumno);
 		return "alumnos/changeAvatar";
 	}
+//	
+//	
+//	
+//	
+//	@PostMapping(value = "/alumnos/miPerfil/changeAvatar")
+//	public RedirectView saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar) throws IOException {
+//		//String fileName = storageService.store(avatar, "profile", http);
+//		
+//		
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		Alumno alumno = alumnoService.findAlumnoByUsername(userDetails.getUsername());
+//		
+//		String fileName = StringUtils.cleanPath(avatar.getOriginalFilename());
+//        alumno.setAvatar(fileName);
+//        alumnoService.saveAlumno(alumno);
+//        String uploadDir = "/resources/images/profile/" + alumno.getId();
+//        storageService.saveFile(uploadDir, fileName, avatar);
+//		
+//		return new  RedirectView("/alumnos/miPerfil", true);
+//	}
 	
-	
-	
-	
-	@PostMapping(value = "/alumnos/miPerfil/changeAvatar")
-	public RedirectView saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar) throws IOException {
-		//String fileName = storageService.store(avatar, "profile", http);
-		
-		
+//	@GetMapping(value = "alumnos/miPerfil/changeAvatar/{usernameProfile}")
+//	public String viewChangeAvatar(@PathVariable("usernameProfile") String usernameProfile, Map<String, Object> model) {
+//		Alumno userOptional = alumnoService.findAlumnoByUsername(usernameProfile);
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		if (!userOptional.getUser().equals(userDetails.getUsername())) {
+//			return "exception";
+//		} else {
+//			model.put("user", userOptional);
+//			return "alumnos/changeAvatar";
+//		}
+//	}
+
+	@PostMapping(value = "alumnos/miPerfil/changeAvatar")
+	public String saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar, HttpSession http) {
+		String fileName = storageService.store(avatar, "profile", http);
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Alumno alumno = alumnoService.findAlumnoByUsername(userDetails.getUsername());
-		
-		String fileName = StringUtils.cleanPath(avatar.getOriginalFilename());
-        alumno.setAvatar(fileName);
-        alumnoService.saveAlumno(alumno);
-        String uploadDir = "/resources/images/profile/" + alumno.getId();
-        storageService.saveFile(uploadDir, fileName, avatar);
-		
-		return new  RedirectView("/alumnos/miPerfil", true);
+		alumno.setAvatar(fileName);
+		alumnoService.saveAlumno(alumno);
+		return "redirect:/alumnos/miPerfil";
 	}
 	
 	

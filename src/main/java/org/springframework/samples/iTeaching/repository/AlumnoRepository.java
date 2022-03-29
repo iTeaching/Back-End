@@ -15,6 +15,8 @@
  */
 package org.springframework.samples.iTeaching.repository;
 
+import java.util.Optional;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -41,6 +43,6 @@ public interface AlumnoRepository extends CrudRepository<Alumno, Integer> {
 	public Alumno findById(@Param("id") int id);
 
 	@Query("SELECT alumno FROM Alumno alumno WHERE alumno.user.username =:username")
-	Alumno findByUsername(String username);
+	public Alumno findByUsername(String username);
 
 }
