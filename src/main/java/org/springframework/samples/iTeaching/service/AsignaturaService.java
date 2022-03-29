@@ -32,7 +32,7 @@ public class AsignaturaService {
 		return asignaturaRepository.findByNombre(asignatura);
 	}
 	
-	public List<Asignatura> appliedAnuncio(Alumno alumno){
+	public List<Asignatura> appliedAsignatura(Alumno alumno){
 		return asignaturaRepository.findAll().stream().filter(a->a.getAlumnos().contains(alumno)).collect(Collectors.toList());
 	}
 	

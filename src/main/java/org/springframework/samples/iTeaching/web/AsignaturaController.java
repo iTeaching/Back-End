@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.User;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
@@ -24,6 +22,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AsignaturaController {
@@ -98,7 +98,7 @@ public class AsignaturaController {
 		
 		try {
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			Set<Asignatura> asignaturas= this.alumnoService.findAlumnoById(usuario.getId()).getSalas().stream().collect(Collectors.toSet());
+			List<Asignatura> asignaturas= this.asignaturaService.appliedAsignatura(usuario);
 			model.put("asignaturas",asignaturas);
 			return "asignaturas/list";
 		} catch(Exception e) {
@@ -149,7 +149,7 @@ public class AsignaturaController {
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
-		List<Asignatura> lista=this.asignaturaService.appliedAnuncio(alumno);
+		List<Asignatura> lista=this.asignaturaService.appliedAsignatura(alumno);
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findAll();
 		asignaturas.removeAll(lista);
 
@@ -157,8 +157,8 @@ public class AsignaturaController {
 		return "asignaturas/findOfertas";
 	}
 	
-	@GetMapping(value="/ofertas/find/{asignatura}")
-	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
+	@RequestMapping(value="/ofertas/findAsignatura")
+	public String findAnunciosByAsignatura(@RequestParam("asignaturaBuscar") String asignatura, Map<String, Object> model) {
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findByNombre(asignatura);
 		model.put("asignaturas", asignaturas);
 		return "asignaturas/findOfertas";
