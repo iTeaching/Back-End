@@ -18,9 +18,10 @@
 <body>
     <header>
         <nav>
-            <a href="/login">¡Aprende ya!</a>
-            <a href="mailto:iteaching.sa@gmail.com​">Contáctanos </a>
-            <h1 class="eslogan">Una nueva forma de conectar con el profesor</h1>
+        	<a href="/login"><button class="nav_button" data-hover="¡Bienvenido!"><div>Aprende ya</div></button></a>
+            
+            <a href="mailto:iteaching.sa@gmail.com​"><button class="nav_button" data-hover="¡Hola!"><div>Contáctanos</div></button> </a>
+            <h1 class="eslogan">UNA NUEVA FORMA DE CONECTAR CON EL PROFESOR</h1>
         </nav>
         <img src="resources/images/logo.png" class="logo">
 
@@ -73,29 +74,42 @@
         <section class="suscripciones">
             <div class="contenedor">
                 <h2 class="titulo">Plan de Suscripciones</h2>
-                <div class="serv-port1">
-                    <div class="imagen-port1">
-                        <img src="resources/images/plan-basico.png" alt="">
-                        <div class="hover-imagen1">
-                            <p class="textosS">Básico</p>
-                            <p class="textosS">GRATIS</p>
-                        </div>
-                    </div>
-                    <div class="imagen-port1">
-                        <img src="resources/images/plan-es.png" alt="">
-                        <div class="hover-imagen1">
-                            <p class="textosS">Estándar</p>
-                            <p class="textosS">14,99€</p>
-                        </div>
-                    </div>
-                    <div class="imagen-port1">
-                        <img src="resources/images/plan-ava.png" alt="">
-                        <div class="hover-imagen1">
-                            <p class="textosS">Avanzado</p>
-                            <p class="textosS">29,99€</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="columns">
+			  <ul class="price">
+			    <li class="header">Básico</li>
+			    <li class="grey">GRATIS</li>
+			    <li>Descarga de archivos</li>
+			    <li>Acceso al chat de profesores</li>
+			    <li class="hidden_text">#</li>
+			    <li class="hidden_text">#</li>
+			    <li class="hidden_little_text">#</li>
+			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
+			  </ul>
+			</div>
+			<div class="columns">
+			  <ul class="price">
+			    <li class="header">Estandar</li>
+			    <li class="grey">14,99€</li>
+			    <li>Descarga de archivos</li>
+			    <li>Acceso al chat de profesores</li>
+			    <li>Acceso a las clases virtuales</li>
+			    <li class="hidden_text">#</li>
+			    <li class="horas_mensuales">*10 horas mensuales</li>
+			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
+			  </ul>
+			</div>
+			<div class="columns">
+			  <ul class="price">
+			    <li class="header">Avanzado</li>
+			    <li class="grey">29,99€</li>
+			    <li>Descarga de archivos</li>
+			    <li>Acceso al chat de profesores</li>
+			    <li>Acceso a las clases virtuales</li>
+			    <li>Atención personalizada</li>
+			    <li class="horas_mensuales">*20 horas mensuales</li>
+			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
+			  </ul>
+			</div>
             </div>
         </section>
     <footer>
