@@ -228,21 +228,6 @@ public class AlumnoControllerTest {
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
 	}
 	
-	@WithMockUser(value = "alumno1")
-	@Test
-	void deleteAlumnoSuccess() throws Exception {
-		mockMvc.perform(post("/alumnos/2/delete").with(csrf()))
-				.andExpect(status().is2xxSuccessful())
-				.andExpect(view().name("welcome"));
-	}
-	
-	@WithMockUser(value = "alumnoTest")
-	@Test
-	void deleteAlumnoFail() throws Exception {
-		mockMvc.perform(post("/alumnos/1/delete").with(csrf()))
-			.andExpect(status().is2xxSuccessful())
-			.andExpect(view().name("exception"));
-	}
 	
 	@WithMockUser(value = "alumnoTest")
 	@Test
