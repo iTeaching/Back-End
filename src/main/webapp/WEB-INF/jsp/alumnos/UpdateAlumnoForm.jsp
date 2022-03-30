@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #FFDD33;
   border: none;
   color: white;
   text-align: center;

@@ -21,7 +21,7 @@
 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #FFDD33;
   border: none;
   color: white;
   text-align: center;
@@ -90,7 +90,7 @@
     
     </main>
     </body>
-    <footer>
+    <footer style = "background-color: #FFDD33;">
         <div class="contenedor-footer">
             <div class="footer-contact--email">
                 <img src="resources/images/gmail.svg" class="footer_img">
