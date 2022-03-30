@@ -72,7 +72,7 @@
                </tbody>
               
               </table>  
-              <input value="Editar" class="btn btn-default" type="button" onClick="/profesores/${profesor.id}/edit">
+              <input value="Editar" class="btn btn-default" type="button" onclick="window.location.href='/profesores/${profesor.id}/edit'">
                </form>
     
     
