@@ -2,11 +2,14 @@ package org.springframework.samples.iTeaching.web;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.ProfesorService;
+import org.springframework.samples.iTeaching.service.StorageService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -25,6 +30,9 @@ public class ProfesorController {
 
 	@Autowired
 	private ProfesorService profesorService;
+	
+	@Autowired
+	private StorageService storageService;
 
 	
 	@InitBinder("profesor")
@@ -106,6 +114,25 @@ public class ProfesorController {
 			return "redirect:/";
 		}
 		
+	}
+	
+	@GetMapping(value="/profesor/miPerfil/changeAvatar/{profesorId}")
+	public String viewChangeAvatar(@PathVariable("profesorId") int profesorId, 
+			Map<String,Object> model) {
+		Profesor profesor = this.profesorService.findProfesorById(profesorId);
+		model.put("profesor", profesor);
+		return "profesores/changeAvatar";
+	}
+
+
+	@PostMapping(value = "profesor/miPerfil/changeAvatar")
+	public String saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar, HttpSession http) {
+		String fileName = storageService.store(avatar, "profile", http);
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Profesor profesor = profesorService.findProfesorByUsername(userDetails.getUsername());
+		profesor.setAvatar(fileName);
+		profesorService.saveProfesor(profesor);
+		return "redirect:/profesores/miPerfil";
 	}
 	
 }

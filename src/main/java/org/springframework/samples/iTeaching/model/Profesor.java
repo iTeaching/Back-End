@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +39,18 @@ public class Profesor extends Person{
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Valoracion> valoraciones;
+	
+	@Column(nullable = true, length = 64)
+	private String avatar;
+	
+	
+	@Transient
+	public String getAvatarImagePath() {
+	        if (avatar == null || id == null) return null;
+	         
+	        return "/images/resources/profile/" + avatar;
+	    
+	}
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
