@@ -61,7 +61,8 @@
                     <c:out value="${asignatura.precio}"/>
                 </td>
                 <td>
-                    <c:out value="${asignatura.profesor.firstName} ${asignatura.profesor.lastName}"/>
+                <a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                    <c:out value="${asignatura.profesor.firstName} ${asignatura.profesor.lastName}"/></a>
                 </td>
 
                 <td>
