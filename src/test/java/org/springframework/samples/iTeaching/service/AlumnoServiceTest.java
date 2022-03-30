@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
-public class AlumnoSeviceTest {
+public class AlumnoServiceTest {
 	
 	@Autowired
 	private AlumnoService alumnoService;
