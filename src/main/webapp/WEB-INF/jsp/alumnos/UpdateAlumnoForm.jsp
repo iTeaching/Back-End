@@ -42,6 +42,8 @@
     <h2>
     Editar Alumno
     </h2>
+    	
+ 
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">
         
@@ -57,4 +59,7 @@
             </div>
         </div>
     </form:form>
+    
+    
+    
 </iteaching:layout>

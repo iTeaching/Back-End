@@ -52,7 +52,7 @@
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title text-primary">Mis asignaturas</h5>
+								<h5 class="card-title text-primary">Mis asignaturas</h5> 
 								<p class="card-text text-dark">Visualiza las asignaturas creadas
 									por ti</p>
 
@@ -60,21 +60,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="col">
-					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
-						<a href="/asignaturas/new" class="btn btn-outline-link"> <img
-							class="card-img-top"
-							src="https://cdn-icons-png.flaticon.com/512/181/181621.png"
-							alt="Card image cap">
-
-							<div class="card-body">
-								<h5 class="card-title text-primary">Crear asignatura</h5>
-								<p class="card-text text-dark">Crea una nueva asignatura</p>
-
-							</div>
-						</a>
-					</div>
-				</div>
+				
 				<div class="col">
 					<div class="card h-100" style="width: 18rem; background-color:#dab305;">
 						<a href="/profesores/miPerfil"
@@ -116,9 +102,8 @@
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title text-primary">Asignaturas</h5>
-								<p class="card-text text-dark">Visualiza las asignaturas a 
-								las que te has suscrito</p>
+								<h5 class="card-title text-primary">Asignaturas </h5>
+								<p class="card-text text-dark">Visualiza las asignaturas cursadas</p>
 
 							</div>
 						</a>
@@ -132,7 +117,7 @@
 							alt="Card image cap">
 
 							<div class="card-body">
-								<h5 class="card-title text-primary">Ver ofertas</h5>
+								<h5 class="card-title text-primary">Buscar ofertas</h5>
 								<p class="card-text text-dark">Visualiza las ofertas
 									disponibles</p>
 

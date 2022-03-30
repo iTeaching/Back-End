@@ -1,6 +1,8 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -77,4 +79,12 @@ public class ValoracionController {
 		}
 		
 		}
+	
+	@GetMapping(value = "/asignatura/{asignaturaId}/valoraciones/profesor/{profesor}")
+	public String ListValoración(Map<String, Object> model,@PathVariable("asignaturaId") int asignaturaId,@PathVariable("profesor") Profesor profesor) {
+		
+		List<Valoracion> valoraciones= valoracionService.findAllByProfesor(profesor);
+		model.put("valoraciones",valoraciones);
+		return "profesores/ListaValoraciones";
+	}
 }

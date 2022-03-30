@@ -40,6 +40,7 @@
                     <c:out value="${anuncio.precio}"/>
                 </td>
                 <td>
+                
                     <c:out value="${anuncio.profesor.firstName} ${anuncio.profesor.lastName}"/>
                 </td>
                 

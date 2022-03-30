@@ -31,7 +31,7 @@ public class ProfesorService {
 
 	@Transactional(readOnly = true)
 	public Profesor findProfesorById(int id) throws DataAccessException {
-		return profesorRepository.findById(id);
+		return profesorRepository.findById(id).get();
 	}
 
 	@Transactional
