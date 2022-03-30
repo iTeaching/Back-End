@@ -5,9 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Collection;
 import java.util.List;
 
+import org.graalvm.compiler.asm.sparc.SPARCAssembler.Asi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ public class AsignaturaServiceTest {
 	private AsignaturaService asignaturaService;
 	@Autowired
 	private ProfesorService proferoserService;
+	@Autowired
+	private AlumnoService alumnoService;
 	
 	public void testFindAsignaturaById() {
 		Asignatura a = this.asignaturaService.findById(1);
@@ -41,6 +45,12 @@ public class AsignaturaServiceTest {
 		Collection<Asignatura> as = this.asignaturaService.findByNombre("");
 		
 		assertThat(as.size() == 2);
+	}
+	
+	public void testAppliedAnuncio() {
+		List<Asignatura> as = this.asignaturaService.appliedAnuncio(this.alumnoService.findAlumnoById(1));
+		
+		assertThat(as.size() == 1);
 	}
 	
 	public void testInsertAsignatura() {
