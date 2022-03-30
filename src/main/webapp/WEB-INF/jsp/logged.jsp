@@ -52,7 +52,7 @@
 							src="https://cdn-icons-png.flaticon.com/512/157/157897.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<h5 class="card-title text-primary">Mis asignaturas</h5>
+								<h5 class="card-title text-primary">Mis asignaturas</h5> 
 								<p class="card-text text-dark">Visualiza las asignaturas creadas
 									por ti</p>
 
