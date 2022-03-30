@@ -37,6 +37,7 @@
             </td>
             <sec:authorize access="hasAuthority('alumno')">
             <td>
+            
                 <c:out value="${asignatura.profesor.firstName}"/><c:out value=" "/> <c:out value="${asignatura.profesor.lastName}"/>    
             </td>
             </sec:authorize>

@@ -1,12 +1,15 @@
 package org.springframework.samples.iTeaching.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.repository.ValoracionRepository;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,11 @@ public class ValoracionService {
 	@Transactional(readOnly = true)
 	public Collection<Valoracion> findValoracionByAsignatura(Asignatura asignatura) throws DataAccessException {
 		return valoracionRepository.findByAsignatura(asignatura);
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Valoracion> findAllByProfesor(Profesor profesor) throws DataAccessResourceFailureException{
+		return valoracionRepository.findAllByProfesor(profesor);
 	}
 
 	public void delete(Valoracion valoracion) {
