@@ -16,6 +16,26 @@
   <script src="/lib/jquery-1.12.2.min.js"></script>
   <script src="/lib/bootstrap.min.js"></script>
 
+ 
+  
+ 		<div class="col-sm-4" style="display: flex; flex-direction: column">
+				
+			<c:choose>
+			    <c:when test="${profesor.avatar == null}">
+			        <img src="/resources/images/profile/avatar_defecto.jpg"
+					style="width: 150px;" />
+			        <br />
+			    </c:when>    
+			    <c:otherwise>
+			        <img src="/resources/images/profile/${profesor.avatar}"
+					style="width: 150px;" />
+			        <br />
+			    </c:otherwise>
+			</c:choose>
+			</div>
+ 
+
+ 
  <form>
 
 <table class=   "table table-user-information">
@@ -36,9 +56,11 @@
                   
                   <tr>
                     <td>Anuncios</td>
-                    <td><c:forEach var="anuncio" items="${profesor.asignaturas}">
-    					${anuncio.titulo_anuncio}, &nbsp
-						</c:forEach>
+                    <td><ul>
+    				<c:forEach var="asignatura" items="${profesor.asignaturas}">
+    						<li>${asignatura.nombre}</li>
+					</c:forEach>
+    					</ul>
 					</td>
                   </tr>
                   
