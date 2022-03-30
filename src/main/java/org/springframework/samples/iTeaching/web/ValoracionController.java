@@ -81,7 +81,7 @@ public class ValoracionController {
 		}
 	
 	@GetMapping(value = "/asignatura/{asignaturaId}/valoraciones/profesor/{profesor}")
-	public String ListValoración(Map<String, Object> model,@PathVariable("asignaturaId") int asignaturaId,@PathVariable("profesor") Profesor profesor) {
+	public String ListValoracion(Map<String, Object> model,@PathVariable("asignaturaId") int asignaturaId,@PathVariable("profesor") Profesor profesor) {
 		
 		List<Valoracion> valoraciones= valoracionService.findAllByProfesor(profesor);
 		model.put("valoraciones",valoraciones);
