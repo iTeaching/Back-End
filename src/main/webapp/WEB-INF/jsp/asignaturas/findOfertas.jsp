@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="col-sm-8" style="margin-top:23px; align-items: left; flex-direction: column">
-		<button type="submit" class="btn btn-primary" style="background-color:#dab305; border-color:#dab305">Submit</button>
+		<button type="submit" class="btn btn-primary" style="background-color:#FFDD33; border-color:#FFDD33">Submit</button>
 		</div>
 
 	</form>

@@ -17,9 +17,9 @@
   <meta charset="UTF-8">
 </head>
 
-<footer>
-	<div class="contenedor-footer">
-		<div class="footer-contact--email">
+<footer style="background-color: #FFDD33;">
+	<div class="contenedor-footer" style="background-color: #FFDD33;">
+		<div class="footer-contact--email" >
 			<img src="../resources/images/gmail.svg" class="footer_img">
 		</div>
 	</div>
