@@ -36,3 +36,6 @@ INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (1,1);
 INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (1,2);
 INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (2,1);
 INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (3,2);
+
+--INSERTAR VALORACIONES
+INSERT INTO valoracion(id, puntuacion, comentario, profesor, asignatura, alumno) VALUES (1, 5.0, 'comentario', 1, 1, 1);
