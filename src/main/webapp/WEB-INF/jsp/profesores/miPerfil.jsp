@@ -8,6 +8,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <petclinic:layout pageName="Mi perfil">
+		<div class="col-sm-4" style="display: flex; flex-direction: column">
+				
+			<c:choose>
+			    <c:when test="${profesor.avatar == null}">
+			        <img src="/resources/images/profile/avatar_defecto.jpg"
+					style="width: 150px;" />
+			        <br />
+			    </c:when>    
+			    <c:otherwise>
+			        <img src="/resources/images/profile/${profesor.avatar}"
+					style="width: 150px;" />
+			        <br />
+			    </c:otherwise>
+			</c:choose>
+			</div>
     <div>
     	<p>Nombre: ${profesor.firstName} ${profesor.lastName }</p>
     	<p>Teléfono: ${profesor.telephone}</p>

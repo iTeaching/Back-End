@@ -12,7 +12,7 @@
 
 		
 		<div class="row">
-			<div class="col-sm-4" style="display: flex; align-items: center; flex-direction: column">
+			<div class="col-sm-4" style="display: flex; flex-direction: column">
 				
 			<c:choose>
 			    <c:when test="${alumno.avatar == null}">
