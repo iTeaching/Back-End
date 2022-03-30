@@ -25,7 +25,7 @@
         <c:forEach items="${valoraciones}" var="valoracion">
             <tr>
                 <td>${valoracion.alumno.firstName}</td>
-                <td>${valoracion.puntuacion}</td>
+                <td>${valoracion.puntuacion*2}</td>
                 <td style="text-align: center;">${valoracion.comentario}</td>
                 
                 

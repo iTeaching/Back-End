@@ -26,6 +26,7 @@ import lombok.Setter;
 @Table(name = "profesor")
 public class Profesor extends Person{
 
+	
 	@Column(name="puntuacion")
 	private Double puntuacion;
 	
