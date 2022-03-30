@@ -5,11 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Collection;
 import java.util.List;
 
-import org.graalvm.compiler.asm.sparc.SPARCAssembler.Asi;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.stereotype.Service;
 
@@ -29,30 +28,35 @@ public class AsignaturaServiceTest {
 		assertThat(a.getTitulo_anuncio().equals(""));
 	}
 	
+	@Test
 	public void testFindAsignaturaByProfesor() {
 		Collection<Asignatura> as = this.asignaturaService.findByProfesor(1);
 		
 		assertThat(as.size() == 2);
 	}
 	
+	@Test
 	public void testFindAsignaturas() {
 		List<Asignatura> as = this.asignaturaService.findAll();
 		
 		assertThat(as.size() == 4);
 	}
 	
+	@Test
 	public void testFindAsignaturaByNombre() {
 		Collection<Asignatura> as = this.asignaturaService.findByNombre("");
 		
 		assertThat(as.size() == 2);
 	}
 	
+	@Test
 	public void testAppliedAnuncio() {
 		List<Asignatura> as = this.asignaturaService.appliedAnuncio(this.alumnoService.findAlumnoById(1));
 		
 		assertThat(as.size() == 1);
 	}
 	
+	@Test
 	public void testInsertAsignatura() {
 		Asignatura a = new Asignatura();
 		a.setDescripcion("Clase de lengua castellana");
