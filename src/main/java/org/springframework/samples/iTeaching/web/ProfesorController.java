@@ -61,14 +61,15 @@ public class ProfesorController {
 
 	@GetMapping(value = "/profesores/{profesorId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("profesorId") int profesorId, Model model) {
-		Profesor profesor = this.profesorService.findProfesorById(profesorId);
-		model.addAttribute(profesor);
+		Profesor profesor = profesorService.findProfesorById(profesorId);
+		model.addAttribute("profesor", profesor);
 		return VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM;
 	}
 
 	@PostMapping(value = "/profesores/{profesorId}/edit")
 	public String processUpdateOwnerForm(@Valid Profesor profesor, BindingResult result,
 			@PathVariable("profesorId") int profesorId) {
+		profesor.setId(profesorId);
 		if (result.hasErrors()) {
 			return VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM;
 		}
@@ -76,7 +77,7 @@ public class ProfesorController {
 			profesor.setId(profesorId);
 			this.profesorService.saveProfesor(profesor);
 //			System.out.println(profesorId);
-			return "redirect:/profesores/{profesorId}/perfil";
+			return "redirect:/profesores/miPerfil";
 		}
 	}
 
