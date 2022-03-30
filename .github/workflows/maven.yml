@@ -45,6 +45,6 @@ jobs:
     - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
          heroku_api_key:  ${{secrets.HEROKU_API_KEY}}
-         heroku_app_name: "iteaching-production-sprint1"
+         heroku_app_name: "iteaching-production-sprint2"
          heroku_email: "iteaching.sa@gmail.com"
 
