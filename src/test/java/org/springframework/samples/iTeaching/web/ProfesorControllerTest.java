@@ -19,8 +19,8 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.iTeaching.configuration.SecurityConfiguration;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.User;
-import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
+import org.springframework.samples.iTeaching.service.StorageService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -30,8 +30,9 @@ public class ProfesorControllerTest {
 
 	@MockBean
 	private ProfesorService profesorService;
+	
 	@MockBean
-	private AsignaturaService asignaturaService;
+	private StorageService storageService;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -47,7 +48,8 @@ public class ProfesorControllerTest {
 		profesor.setId(10);
 		profesor.setEmail("perez@mail.com");
 		profesor.setTelephone("657585793");
-		profesor.setAsignaturas(new HashSet<>());
+		profesor.setDivision(0);
+		profesor.setPuntuacion(0.0);
 		profesor.setUser(user);
 	}
 
@@ -69,6 +71,8 @@ public class ProfesorControllerTest {
 			.param("lastName", "Viera")
 			.param("telephone", "633572849")
 			.param("email", "manuvierod@gmail.com")
+			.param("division", "0")
+			.param("puntuacion", "2.0")
 			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
 			.andExpect(status().is3xxRedirection())
@@ -85,6 +89,8 @@ public class ProfesorControllerTest {
 			.param("lastName", "Viera")
 			.param("telephone", "633572849")
 			.param("email", "manuvierod@gmail.com")
+			.param("division", "0")
+			.param("puntuacion", "2.0")
 			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
 			.andExpect(model().attributeHasErrors("profesor"))
@@ -110,6 +116,8 @@ public class ProfesorControllerTest {
 			.param("lastName", "Viera")
 			.param("telephone", "633572849")
 			.param("email", "manuvierod@gmail.com")
+			.param("division", "0")
+			.param("puntuacion", "2.0")
 			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
 			.andExpect(status().is3xxRedirection())
@@ -126,6 +134,8 @@ public class ProfesorControllerTest {
 			.param("lastName", "Viera")
 			.param("telephone", "666123123")
 			.param("email", "manuvierod@gmail.com")
+			.param("division", "0")
+			.param("puntuacion", "2.0")
 			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
 		.andExpect(model().attributeHasErrors("profesor"))
@@ -138,6 +148,23 @@ public class ProfesorControllerTest {
 	@Test
 	void miPerfilTest() throws Exception {
 		mockMvc.perform(get("/profesores/miPerfil")).andExpect(status().isOk());
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testViewChangeAvatar() throws Exception {
+		mockMvc.perform(get("/profesores/changeAvatar")).andExpect(status().isOk());
+	}
+	
+	@WithMockUser(value = "profesor1")
+	@Test
+	void testSaveChangeAvatar() throws Exception{
+		mockMvc.perform(post("profesor/miPerfil/changeAvatar")
+				.with(csrf())
+				.param("avatar", "/resources/images/profile/avatar/1648742755898.png"))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/profesores/miPerfil"));
+		
 	}
 
 }
