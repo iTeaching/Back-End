@@ -159,7 +159,7 @@ public class ProfesorControllerTest {
 	@WithMockUser(value = "profesor1")
 	@Test
 	void testSaveChangeAvatar() throws Exception{
-		mockMvc.perform(post("profesor/miPerfil/changeAvatar")
+		mockMvc.perform(post("/profesor/miPerfil/changeAvatar")
 				.with(csrf())
 				.param("avatar", "/resources/images/profile/avatar/1648742755898.png"))
 				.andExpect(status().is3xxRedirection())
