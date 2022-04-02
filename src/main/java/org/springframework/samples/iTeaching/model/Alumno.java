@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -28,6 +29,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.springframework.core.style.ToStringCreator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -52,6 +55,21 @@ public class Alumno extends Person {
 		
 	@ManyToMany(mappedBy = "alumnos")
 	List<Asignatura> asignaturas;
+	
+	@Column(nullable = true, length = 64)
+	private String avatar;
+	
+	
+	@Transient
+	public String getAvatarImagePath() {
+	        if (avatar == null || id == null) return null;
+	         
+	        return "/images/resources/profile/" + avatar;
+	    
+	}
+	
+	
+	
 
 	@Override
 	public String toString() {

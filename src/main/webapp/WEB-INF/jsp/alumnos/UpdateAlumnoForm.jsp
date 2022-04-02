@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #FFDD33;
   border: none;
   color: white;
   text-align: center;
@@ -42,6 +42,8 @@
     <h2>
     Editar Alumno
     </h2>
+    	
+ 
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">
         
@@ -57,4 +59,7 @@
             </div>
         </div>
     </form:form>
+    
+    
+    
 </iteaching:layout>

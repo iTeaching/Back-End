@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #FFDD33;
   border: none;
   color: white;
   text-align: center;
@@ -43,6 +43,24 @@
     <h2>
         <c:if test="${profesor['new']}">Nuevo </c:if> Profesor
     </h2>
+    <div class="col-sm-4" style="display: flex; align-items: center; flex-direction: column">
+				
+			<c:choose>
+			    <c:when test="${profesor.avatar == null}">
+			        <img src="/resources/images/profile/avatar_defecto.jpg"
+					style="width: 150px;" />
+			        <br />
+			    </c:when>    
+			    <c:otherwise>
+			        <img src="/resources/images/profile/${profesor.avatar}"
+					style="width: 150px;" />
+			        <br />
+			    </c:otherwise>
+			</c:choose>
+			<a class="btn btn-default"
+			href="<c:url value="/profesor/miPerfil/changeAvatar/${profesor.id}" />">Actualiza tu avatar</a>
+			</div>
+			 <div class="col-sm-8" style="margin: 0 0 20px 0">
     <form:form modelAttribute="profesor" class="form-horizontal" id="add-profesor-form">
         <div class="form-group has-feedback">
         
@@ -70,4 +88,5 @@
             </div>
         </div>
     </form:form>
+    </div>
 </iteaching:layout>
