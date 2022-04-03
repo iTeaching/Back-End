@@ -8,10 +8,8 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Collections;
 import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import lombok.Getter;
 import lombok.Setter;
-import lombok.var;
 
 
 @Getter
