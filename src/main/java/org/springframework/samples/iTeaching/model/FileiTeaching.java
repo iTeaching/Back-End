@@ -1,12 +1,12 @@
 package org.springframework.samples.iTeaching.model;
 
-public class File {
+public class FileiTeaching {
 
     private String name;
     private String url;
     
     
-    public File(String name, String url) {
+    public FileiTeaching(String name, String url) {
         super();
         this.name = name;
         this.url = url;
