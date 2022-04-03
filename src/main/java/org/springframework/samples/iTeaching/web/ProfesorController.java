@@ -6,10 +6,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.service.AuthoritiesService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
+import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -28,12 +29,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProfesorController {
 	private static final String VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM = "profesores/createOrUpdateProfesorForm";
 
-	@Autowired
-	private ProfesorService profesorService;
-	
-	@Autowired
-	private StorageService storageService;
 
+	private ProfesorService profesorService;
+	private StorageService storageService;
+	private AuthoritiesService authService;
+	private UserService userService;
+	@Autowired
+	public ProfesorController(StorageService storageService, ProfesorService profesorService, AuthoritiesService authService, UserService userService) {
+		this.profesorService = profesorService;
+		this.authService = authService;
+		this.userService = userService;
+		this.storageService = storageService;
+	}
 	
 	@InitBinder("profesor")
 	public void initVehiculoBinder(WebDataBinder dataBinder) {
@@ -61,7 +68,9 @@ public class ProfesorController {
 			//creating profesor, user and authorities
 			profesor.setDivision(0);
 			profesor.setPuntuacion(0.);
+			profesor.getUser().setEnabled(true);
 			this.profesorService.saveProfesor(profesor);
+			authService.saveAuthorities(profesor.getUser().getUsername(), "profesor");
 			
 			return "redirect:/login";
 		}
@@ -77,14 +86,13 @@ public class ProfesorController {
 	@PostMapping(value = "/profesores/{profesorId}/edit")
 	public String processUpdateOwnerForm(@Valid Profesor profesor, BindingResult result,
 			@PathVariable("profesorId") int profesorId) {
-		profesor.setId(profesorId);
 		if (result.hasErrors()) {
 			return VIEWS_PROFESOR_CREATE_OR_UPDATE_FORM;
 		}
 		else {
 			profesor.setId(profesorId);
+			profesor.getUser().setEnabled(true);
 			this.profesorService.saveProfesor(profesor);
-//			System.out.println(profesorId);
 			return "redirect:/profesores/miPerfil";
 		}
 	}

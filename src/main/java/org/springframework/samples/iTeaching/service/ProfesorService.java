@@ -1,6 +1,6 @@
 package org.springframework.samples.iTeaching.service;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -24,9 +24,8 @@ public class ProfesorService {
 		this.profesorRepository = profesorRepository;
 	}
 	
-	@Transactional(readOnly = true)
-	public Collection<Profesor> findProfesores() throws DataAccessException {
-		return (Collection<Profesor>) profesorRepository.findAll();
+	public List<Profesor> findAll(){
+		return profesorRepository.findAll();
 	}
 
 	@Transactional(readOnly = true)
@@ -37,8 +36,6 @@ public class ProfesorService {
 	@Transactional
 	public void saveProfesor(Profesor profesor) throws DataAccessException {
 		profesorRepository.save(profesor);		
-		userService.saveUser(profesor.getUser());
-		authoritiesService.saveAuthorities(profesor.getUser().getUsername(), "profesor");
 	}		
 	
 	@Transactional(readOnly = true)
