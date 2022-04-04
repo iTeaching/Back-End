@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -93,8 +94,41 @@ public class AsignaturaControllerTest {
 	@WithMockUser(value = "spring")
 	@Test
 	void testMySalas() throws Exception {
-		mockMvc.perform(get("/asignaturas/list")).andExpect(status().isOk());
+		mockMvc.perform(get("/asignaturas/list"))
+		.andExpect(status().isOk());
 	}
 	
+	@WithMockUser(value = "alumno1")
+	@Test
+	void testGetSalas() throws Exception {
+		mockMvc.perform(get("/asignaturas/{asignaturaId}",1))
+		.andExpect(status().isOk());
+	}
 	
+	@WithMockUser(value="alumno1")
+	@Test
+	void testFindAnuncios() throws Exception{
+		mockMvc.perform(get("/ofertas/find"))
+		.andExpect(status().isOk())
+		.andExpect(model().attributeExists("asignaturas"))
+		.andExpect(view().name("asignaturas/findOfertas"));
+	}
+	
+	 @WithMockUser(value = "spring")
+	 @Test
+	 void testFindAnunciosByAsignatura() throws Exception{
+		 mockMvc.perform(get("/ofertas/findAsignatura"))
+		 .andExpect(status().isOk())
+		 .andExpect(model().attributeExists("asignaturas"))
+		 .andExpect(view().name("asignaturas/findOfertas"));
+	}
+	
+	 @WithMockUser(value = "spring")
+	 @Test
+	 void testSuscribirAsignatura() throws Exception {
+		 mockMvc.perform(get("/asignaturas/{asignaturaId}/apply",5))
+	 	 .andExpect(status().is3xxRedirection())
+		 .andExpect(view().name("redirect:/asignaturas"));
+		}
+	 
 }

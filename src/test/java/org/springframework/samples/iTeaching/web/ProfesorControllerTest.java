@@ -19,8 +19,10 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.iTeaching.configuration.SecurityConfiguration;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.User;
+import org.springframework.samples.iTeaching.service.AuthoritiesService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
+import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,6 +35,10 @@ public class ProfesorControllerTest {
 	
 	@MockBean
 	private StorageService storageService;
+	@MockBean
+	private AuthoritiesService authService;
+	@MockBean
+	private UserService userService;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -41,7 +47,7 @@ public class ProfesorControllerTest {
 	void setup() {
 		Profesor profesor = new Profesor();
 		User user = new User();
-		user.setUsername("profesor1");
+		user.setUsername("profesor4");
 		user.setPassword("Profesor1!");
 		profesor.setFirstName("Perez");
 		profesor.setLastName("Perez");
@@ -71,9 +77,9 @@ public class ProfesorControllerTest {
 			.param("lastName", "Viera")
 			.param("telephone", "633572849")
 			.param("email", "manuvierod@gmail.com")
-			.param("division", "0")
-			.param("puntuacion", "2.0")
-			.param("user.username", "profesor1")
+//			.param("division", "0")
+//			.param("puntuacion", "0")
+			.param("user.username", "profesor7")
 			.param("user.password", "Profesor1!"))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name("redirect:/login"));
