@@ -1,12 +1,16 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.ProfesorService;
-import org.springframework.samples.iTeaching.service.ProfesorService;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -19,6 +23,21 @@ private ProfesorService profSer;
 		this.profSer = pS;
 	}
 	
+	public String nombreUsuarioLogeado() {
+		Authentication quePasa = SecurityContextHolder.getContext().getAuthentication();
+		
+		if(quePasa instanceof AnonymousAuthenticationToken) {
+			String result = "noLogin";
+			return result;
+		}else {
+			UserDetails alumnoDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String result = alumnoDetails.getUsername();
+			return result;
+		}	
+	}
+	
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return Profesor.class.isAssignableFrom(clazz);
@@ -26,9 +45,9 @@ private ProfesorService profSer;
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-
+		String nombreLogeado = nombreUsuarioLogeado();
 		Profesor profesor = (Profesor) obj;
-		Profesor profesorRegistered = this.profSer.findProfesorByUsername(profesor.getUser().getUsername());
+
 		if (profesor.getFirstName().isBlank()) {
 			errors.rejectValue("firstName", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
@@ -49,10 +68,34 @@ private ProfesorService profSer;
 			errors.rejectValue("email", " No puede dejar el campo vacio", "No puede dejar el campo vacio");
 
 		}
-		if (profesorRegistered != null) {
-			errors.rejectValue("user.username", "Este username ya esta en uso", "Este username ya esta en uso");
-
+		if(profesor.getTelephone().length()<9) {
+			errors.rejectValue("telephone", " El telefono tiene que tener 9 numeros", "El telefono tiene que tener 9 numeros");
 		}
+		
+		if(nombreLogeado=="noLogin") {
+			List<Profesor> listaProfesor = profSer.findAll();
+			for(Profesor profesorIndividual:listaProfesor) {
+				if(profesor.getUser().getUsername().equals(profesorIndividual.getUser().getUsername())) {
+					errors.rejectValue("user.username", " El nombre de usuario ya existe", "El nombre de usuario ya existe");
+				}
+			}
+		} else {
+			UserDetails profesorDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String profesorNombre = profesor.getUser().getUsername();
+			String profesorLogeado = profesorDetails.getUsername();
+			if(!profesorDetails.getUsername().equals(profesor.getUser().getUsername())) {
+				errors.rejectValue("user.username", " No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.", "No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.");
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		if (profesor.getUser().getUsername().isBlank()) {
 			errors.rejectValue("user.username", "No puede dejar este campo vacío", "No puede dejar este campo vacío");
 		}

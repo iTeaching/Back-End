@@ -63,16 +63,22 @@
 			 <div class="col-sm-8" style="margin: 0 0 20px 0">
     <form:form modelAttribute="profesor" class="form-horizontal" id="add-profesor-form">
         <div class="form-group has-feedback">
-        
+       
             <iteaching:inputField label="First Name" name="firstName"/>
             <iteaching:inputField label="Last Name" name="lastName"/>
             <iteaching:inputField label="Telephone" name="telephone"/>
             <iteaching:inputField label="Email" name="email"/>
-            <c:choose>
-            <c:when test="${profesor ['new']}">
-            <iteaching:inputField label="Username" name="user.username"/>
-            </c:when>
-            </c:choose>
+            <form:input type="hidden" path="puntuacion"/>
+            <form:input type="hidden" path="division"/>
+	        <c:choose>
+                    <c:when test="${profesor['new']}">
+                        <iteaching:inputField label="username" name="user.username"/>
+                    </c:when>
+                <c:otherwise>
+                        <form:input type="hidden" path="user.username"/>
+
+                </c:otherwise>
+			</c:choose>
             <iteaching:inputPassword label="Password" name="user.password"/>
         </div>
         <div class="form-group">

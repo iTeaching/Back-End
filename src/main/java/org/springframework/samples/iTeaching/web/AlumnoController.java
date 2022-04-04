@@ -1,21 +1,20 @@
 package org.springframework.samples.iTeaching.web;
 
-import java.io.IOException;
+
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.AuthoritiesService;
 import org.springframework.samples.iTeaching.service.StorageService;
+import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+
 
 
 
@@ -34,11 +33,17 @@ public class AlumnoController {
 
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "alumnos/createOrUpdateAlumnoForm";
 	
-	@Autowired
-	private StorageService storageService;
-	
-	@Autowired
+	private StorageService storageService;	
 	private AlumnoService alumnoService;
+	private AuthoritiesService authService;
+	private UserService userService;
+	@Autowired
+	public AlumnoController(StorageService storageService, AlumnoService alumnoService, AuthoritiesService authService, UserService userService) {
+		this.alumnoService = alumnoService;
+		this.authService = authService;
+		this.userService = userService;
+		this.storageService = storageService;
+	}
 
 	@InitBinder("alumno")
 	public void initVehiculoBinder(WebDataBinder dataBinder) {
@@ -64,7 +69,9 @@ public class AlumnoController {
 		}
 		else {
 			//creating alumno, user and authorities
+			alumno.getUser().setEnabled(true);
 			this.alumnoService.saveAlumno(alumno);
+			authService.saveAuthorities(alumno.getUser().getUsername(), "alumno");
 			
 			return "redirect:/login";
 		}
@@ -81,24 +88,23 @@ public class AlumnoController {
 	@GetMapping(value = "/alumnos/{alumnoId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("alumnoId") int alumnoId, Model model) {
 		Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
-		alumno.setId(alumnoId);
-		model.addAttribute(alumno);
+		model.addAttribute("alumno", alumno);
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
 
 	@PostMapping(value = "/alumnos/{alumnoId}/edit")
 	public String processUpdateOwnerForm(@Valid Alumno alumno, BindingResult result,
 			@PathVariable("alumnoId") int alumnoId) {
-				alumno.setId(alumnoId);
+
 		if (result.hasErrors()) {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-		}
-		else {
-			this.alumnoService.saveAlumno(alumno);
-			return "redirect:/alumnos/{alumnoId}";
+		} else {
+				alumno.setId(alumnoId);
+				alumno.getUser().setEnabled(true);
+				this.alumnoService.saveAlumno(alumno);
+				return "redirect:/alumnos/miPerfil";
 		}
 	}
-
 
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
