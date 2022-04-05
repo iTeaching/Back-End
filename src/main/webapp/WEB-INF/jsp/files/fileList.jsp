@@ -8,43 +8,37 @@
 
 <petclinic:layout pageName="avatar">
 
+	<div>
+		<h2>Documentos</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th width="60%">Nombre</th>
+					<th width="40%">Descargar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${docs}" var="doc">
+					<tr>
+
+						<td><c:out value="${doc.docName}" /></td>
+						<td><spring:url value="/downloadFile/{fileId}" var="fileId">
+								<spring:param name="fileId" value="${doc.id}" />
+							</spring:url> <a href="${fn:escapeXml(fileId)}"><img alt="Descargar"
+								src="resources/images/descargar.png" width="20px"> </a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
 	<form:form enctype="multipart/form-data" class="form-horizontal"
 		action="/uploadFiles" id="upload-file-form">
 		<div class="form-group">
-			<input type="file" name="files" multiple required/>
+			<input type="file" name="files" class="btn btn-warning" multiple required />
 		</div>
 		<div class="form-group">
 			<button class="btn btn-default" type="submit">Subir archivos</button>
 		</div>
 	</form:form>
-	
-	<div>
-     <h3>List of Documents</h3>
-     <table>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Download Link</th>
-         </tr>
-       </thead>
-       <tbody>
-       <c:forEach items="${docs}" var="doc">
-       <tr>
-              
-                <td>
-                <c:out value="${doc.docName}"/>                  
-                </td>
-                <td>
-                   <spring:url value="/downloadFile/{fileId}" var="fileId">
-                   <spring:param name="fileId" value="${doc.id}"/>
-                    </spring:url>
-                    <a href="${fn:escapeXml(fileId)}">Download
-                    </a>                       
-                </td>
-         </tr>
-         </c:forEach>
-       </tbody>
-     </table>
-   </div>
-	
 </petclinic:layout>
