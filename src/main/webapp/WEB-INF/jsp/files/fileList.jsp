@@ -33,7 +33,8 @@
 	</div>
 
 	<form:form enctype="multipart/form-data" class="form-horizontal"
-		action="/files" id="upload-file-form">
+		action="/asignatura/${asignatura.id}/files" id="upload-file-form">
+
 		<div class="form-group">
 			<input type="file" name="files" class="btn btn-warning" multiple required />
 		</div>
