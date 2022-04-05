@@ -33,12 +33,20 @@
 	</div>
 
 	<form:form enctype="multipart/form-data" class="form-horizontal"
-		action="/uploadFiles" id="upload-file-form">
+		action="/files" id="upload-file-form">
 		<div class="form-group">
 			<input type="file" name="files" class="btn btn-warning" multiple required />
 		</div>
+		
 		<div class="form-group">
 			<button class="btn btn-default" type="submit">Subir archivos</button>
 		</div>
+		<c:if test="${not empty errorMessage}">
+
+		<div class="alert alert-danger" role="alert">
+			${errorMessage}
+		</div>
+		</c:if>
 	</form:form>
+	
 </petclinic:layout>

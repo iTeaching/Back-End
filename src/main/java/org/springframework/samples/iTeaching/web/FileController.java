@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -30,13 +31,24 @@ public class FileController {
 		return "files/fileList";
 	}
 	
-	@PostMapping("/uploadFiles")
-	public String uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
+	@PostMapping("/files")
+	public String uploadMultipleFiles(@RequestParam("files") MultipartFile[] files, Model model) {
+		if(files.length!=0) {
 		for (MultipartFile file: files) {
-			fileiTeachingService.saveFile(file);
-			
+			if(file.getContentType().equals("application/pdf") 
+					|| file.getContentType().equals("image/jpeg") 
+					|| file.getContentType().equals("image/png")){
+
+				fileiTeachingService.saveFile(file);
+			}else {
+				model.addAttribute("errorMessage", "Solo se pueden subir archivos PDF, JPG o PNG");
+				
+			}
 		}
-		return "redirect:/files";
+		}
+		List<FileiTeaching> docs = fileiTeachingService.getFiles();
+		model.addAttribute("docs", docs);
+		return "files/fileList";
 	}
 	@GetMapping("/downloadFile/{fileId}")
 	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Integer fileId){
