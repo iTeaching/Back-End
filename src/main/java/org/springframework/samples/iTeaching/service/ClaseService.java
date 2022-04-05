@@ -44,6 +44,12 @@ public class ClaseService {
 		return claseRepository.findByUsername(username);
 	} 
 	
+	
+	@Transactional(readOnly = true)
+	public List<Clase> findProfesorByUsername(String username) throws DataAccessException {
+		return claseRepository.findByProfesor(username);
+	} 
+	
 	public List<Clase> findAll(){
 		return claseRepository.findAll();
 	}

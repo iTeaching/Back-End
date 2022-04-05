@@ -72,6 +72,47 @@
                </tbody>
               
               </table>  
+              
+                   <h1>Mis Clases</h1> 
+
+				    <table id="clasesTable" class="table table-striped">
+				        <thead>
+				        <tr>
+				            <th style="width: 150px;">Hora de Comienzo</th>
+				            <th style="width: 150px;">Hora de Fin</th>
+				            <th style="width: 200px;">Profesor</th>
+				            <th>Alumno</th>
+				            <th>Asignatura</th>
+				
+				         
+				        </tr>
+				        </thead>
+				        <tbody>
+				        <c:forEach items="${listaClase}" var="listaClase">
+				            
+				                <tr>
+				                    <td>
+				                        <c:out value="${listaClase.horaComienzo}"/>
+				                    </td>
+				                    <td>
+				                        <c:out value="${listaClase.horaFin}"/>
+				                    </td>
+				                    <td>
+				                        <c:out value="${listaClase.profesor.firstName}"/>
+				                    </td>
+				                    <td>
+				                   	 	<c:out value="${listaClase.alumno.firstName}&nbsp${listaClase.alumno.lastName }"/>
+				                        
+				                    </td>
+				                    <td>
+				                        <c:out value="${listaClase.asignatura.nombre}"/>
+				                    </td>
+				                </tr>
+				
+				        </c:forEach>
+				         
+        			</tbody>
+        	 </table>
               <a class="button" href="/profesor/${profesor.id}/nuevaClase">Solicitar nueva clase</a>
               <input value="Editar" class="btn btn-default" type="button" onclick="window.location.href='/profesores/${profesor.id}/edit'">
                </form>

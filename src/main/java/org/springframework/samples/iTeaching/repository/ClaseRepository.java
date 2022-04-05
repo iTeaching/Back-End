@@ -43,6 +43,10 @@ public interface ClaseRepository extends CrudRepository<Clase, Integer> {
 	@Query("SELECT clase FROM Clase clase WHERE clase.alumno.user.username =:username")
 	public List<Clase> findByUsername(String username);
 	
+	
+	@Query("SELECT clase FROM Clase clase WHERE clase.profesor.user.username =:username")
+	public List<Clase> findByProfesor(String username);
+	
 	List<Clase> findAll();
 
 }

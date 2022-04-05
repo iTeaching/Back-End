@@ -134,6 +134,14 @@ public class ProfesorController {
 			String username= clienteDetails.getUsername();
 			System.out.println(username);
 			Profesor usuario = profesorService.findProfesorByUsername(username);
+						
+			List<Clase> clase = claseService.findProfesorByUsername(username);
+			//model.addAttribute("listaClase", listaClase);
+			model.addAttribute("listaClase", clase);
+			
+			
+			
+			
 			model.addAttribute("profesor", usuario);
 			return "profesores/miPerfil";
 		}catch(Exception e) {	// si no está logueado
