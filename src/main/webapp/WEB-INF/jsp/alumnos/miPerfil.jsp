@@ -54,16 +54,59 @@
                   </tr>
                   <tr>
                     <td>Teléfono:</td>
-                    <td>${profesor.telephone}</td>
+                    <td>${alumno.telephone}</td>
                   </tr>
 
                    <tr>
                     <td>Email</td>
-                    <td>${profesor.email}</td>
+                    <td>${alumno.email}</td>
                   </tr>            
                </tbody>
               
               </table>  
+              
+     <h1>Mis Clases</h1> 
+
+    <table id="clasesTable" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Hora de Comienzo</th>
+            <th style="width: 150px;">Hora de Fin</th>
+            <th style="width: 200px;">Profesor</th>
+            <th>Alumno</th>
+            <th>Asignatura</th>
+
+         
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${listaClase}" var="listaClase">
+            
+                <tr>
+                    <td>
+                        <c:out value="${listaClase.horaComienzo}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.horaFin}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.profesor.firstName}"/>
+                    </td>
+                    <td>
+                   	 	<c:out value="${listaClase.alumno.firstName}&nbsp${listaClase.alumno.lastName }"/>
+                        
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.asignatura.nombre}"/>
+                    </td>
+                </tr>
+
+        </c:forEach>
+         
+        </tbody>
+            
+    </table>
+    		<a class="button" href="/alumnos/nuevaClase">Solicitar nueva clase</a>
               <input value="Editar" class="btn btn-default" type="button" onclick="window.location.href='/alumnos/${alumno.id}/edit'">
                </form>
     

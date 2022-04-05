@@ -36,3 +36,6 @@ INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (1,1);
 INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (1,2);
 INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (2,1);
 INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (3,2);
+INSERT INTO asignatura_alumno(sala_id, alumno_id) VALUES (3,1);
+
+INSERT INTO clase(id, hora_comienzo, hora_fin, alumno, profesor, asignatura) VALUES (1, '10', '11', 1, 1, 1);

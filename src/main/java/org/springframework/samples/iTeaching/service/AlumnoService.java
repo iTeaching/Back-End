@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.repository.AlumnoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,4 +56,8 @@ public class AlumnoService {
 		this.alumnoRepository.delete(alumno);
 	}
 
+	public List<String> findByIdAlumnosProfesores(int idProfesores, int idAlumnos){
+		return alumnoRepository.findByIdAlumnosProfesores(idProfesores, idAlumnos);	
+	}
+	
 }
