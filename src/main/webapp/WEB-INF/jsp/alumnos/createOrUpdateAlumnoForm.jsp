@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 	<style type="text/css">
 	.button {
-  background-color: #dab305;
+  background-color: #FFDD33;
   border: none;
   color: white;
   text-align: center;
@@ -44,18 +44,44 @@
     <h2>
         <c:if test="${alumno['new']}">Nuevo </c:if> Alumno
     </h2>
+    
+    <div class="row">
+    
+    <div class="col-sm-4" style="display: flex; align-items: center; flex-direction: column">
+				
+			<c:choose>
+			    <c:when test="${alumno.avatar == null}">
+			        <img src="/resources/images/profile/avatar_defecto.jpg"
+					style="width: 150px;" />
+			        <br />
+			    </c:when>    
+			    <c:otherwise>
+			        <img src="/resources/images/profile/${alumno.avatar}"
+					style="width: 150px;" />
+			        <br />
+			    </c:otherwise>
+			</c:choose>
+			<a class="btn btn-default"
+			href="<c:url value="/alumnos/miPerfil/changeAvatar/${alumno.id}" />">Actualiza tu avatar</a>
+			</div>
+    
+    
+    <div class="col-sm-8" style="margin: 0 0 20px 0">
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
-        <div class="form-group has-feedback">        
+        <div class="form-group has-feedback">     
             <iteaching:inputField label="First Name" name="firstName"/>
             <iteaching:inputField label="Last Name" name="lastName"/>
             <iteaching:inputField label="Telephone" name="telephone"/>
             <iteaching:inputField label="Email" name="email"/>
-            <c:choose>
-            <c:when test="${alumno ['new']}">
-            <iteaching:inputField label="Username" name="user.username"/>
-            </c:when>
-            </c:choose>
-            <iteaching:inputPassword label="Password" name="user.password"/>
+	        <c:choose>
+                    <c:when test="${alumno['new']}">
+                        <iteaching:inputField label="username" name="user.username"/>
+                    </c:when>
+                <c:otherwise>
+                        <form:input type="hidden" path="user.username"/>
+                </c:otherwise>
+			</c:choose>
+			<iteaching:inputPassword label="Password" name="user.password"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -70,4 +96,8 @@
             </div>
         </div>
     </form:form>
+    </div>
+    
+    </div>
+    
 </iteaching:layout>

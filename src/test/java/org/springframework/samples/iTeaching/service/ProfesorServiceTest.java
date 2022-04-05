@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNull;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ProfesorServiceTest {
 
 	@Test
 	public void testFindProfesores() {
-		Collection<Profesor> p = this.profesorService.findProfesores();
+		List<Profesor> p = this.profesorService.findAll();
 
 		assertThat(p.size() == 2);
 	}
@@ -55,7 +56,7 @@ public class ProfesorServiceTest {
 		p.setUser(u);
 
 		this.profesorService.saveProfesor(p);
-		assertThat(this.profesorService.findProfesores().size() == 3);
+		assertThat(this.profesorService.findAll().size() == 3);
 	}
 
 	@Test

@@ -7,18 +7,23 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <iteaching:layout pageName="asignaturas">
-	<header>
+	
 	<nav>
     </nav>
-    </header>
+    
+    
     <h2>Mis Asignaturas</h2>
+	
+		
 
+	
     <table id="asignaturaTable" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;">Nombre de la asignatura</th>
             <th style="width: 120px">Acción</th>
             <sec:authorize access="hasAnyAuthority('alumno')">
+            <th style="width: 120px">Profesor</th>
             <th style="width: 120px">Puntuación del profesor</th>
             <th style="width: 120px">Valorar</th>
             </sec:authorize>
@@ -30,9 +35,14 @@
                 <td>
                     <c:out value="${asignatura.nombre}"/>
                 </td>
+                
                  <td>
                      
 					<a href="/asignaturas/${asignatura.id }"><img src="resources/images/video.svg"></a>
+                </td>
+                <td>
+                <a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                    <c:out value="${asignatura.profesor.firstName} ${asignatura.profesor.lastName}"/></a>
                 </td>
                 <sec:authorize access="hasAnyAuthority('alumno')">
                 <td>

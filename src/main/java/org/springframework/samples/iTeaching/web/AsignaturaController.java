@@ -24,6 +24,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AsignaturaController {
@@ -156,10 +158,16 @@ public class AsignaturaController {
 		model.put("asignaturas", asignaturas);
 		return "asignaturas/findOfertas";
 	}
-	
-	@GetMapping(value="/ofertas/find/{asignatura}")
-	public String findAnunciosByAsignatura(@PathVariable("asignatura") String asignatura, Map<String, Object> model) {
+
+	@RequestMapping(value="/ofertas/findAsignatura")
+	public String findAnunciosByAsignatura(@RequestParam("asignaturaBuscar") String asignatura, Map<String, Object> model) {
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findByNombre(asignatura);
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		String username= clienteDetails.getUsername();
+		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
+		List<Asignatura> lista=this.asignaturaService.appliedAnuncio(alumno);
+		asignaturas.removeAll(lista);
 		model.put("asignaturas", asignaturas);
 		return "asignaturas/findOfertas";
 	}

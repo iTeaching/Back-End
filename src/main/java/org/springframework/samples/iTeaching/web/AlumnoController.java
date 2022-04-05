@@ -1,11 +1,16 @@
 package org.springframework.samples.iTeaching.web;
 
+
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
-import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.AuthoritiesService;
+import org.springframework.samples.iTeaching.service.StorageService;
+import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -16,15 +21,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+
+
 
 @Controller
 public class AlumnoController {
 
 	private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "alumnos/createOrUpdateAlumnoForm";
-
-	@Autowired
+	
+	private StorageService storageService;	
 	private AlumnoService alumnoService;
+	private AuthoritiesService authService;
+	private UserService userService;
+	@Autowired
+	public AlumnoController(StorageService storageService, AlumnoService alumnoService, AuthoritiesService authService, UserService userService) {
+		this.alumnoService = alumnoService;
+		this.authService = authService;
+		this.userService = userService;
+		this.storageService = storageService;
+	}
 
 	@InitBinder("alumno")
 	public void initVehiculoBinder(WebDataBinder dataBinder) {
@@ -50,7 +69,9 @@ public class AlumnoController {
 		}
 		else {
 			//creating alumno, user and authorities
+			alumno.getUser().setEnabled(true);
 			this.alumnoService.saveAlumno(alumno);
+			authService.saveAuthorities(alumno.getUser().getUsername(), "alumno");
 			
 			return "redirect:/login";
 		}
@@ -62,54 +83,28 @@ public class AlumnoController {
 		return "alumnos/findOwners";
 	}
 
-//	@GetMapping(value = "/alumnos")
-//	public String processFindForm(Alumno alumno, BindingResult result, Map<String, Object> model) {
-//
-//		// allow parameterless GET request for /alumnos to return all records
-//		if (alumno.getLastName() == null) {
-//			alumno.setLastName(""); // empty string signifies broadest possible search
-//		}
-//
-//		// find alumnos by last name
-//		Collection<Alumno> results = this.alumnoService.findOwnerByLastName(alumno.getLastName());
-//		if (results.isEmpty()) {
-//			// no alumnos found
-//			result.rejectValue("lastName", "notFound", "not found");
-//			return "alumnos/findOwners";
-//		}
-//		else if (results.size() == 1) {
-//			// 1 alumno found
-//			alumno = results.iterator().next();
-//			return "redirect:/alumnos/" + alumno.getId();
-//		}
-//		else {
-//			// multiple alumnos found
-//			model.put("selections", results);
-//			return "alumnos/alumnosList";
-//		}
-//	}
+
 
 	@GetMapping(value = "/alumnos/{alumnoId}/edit")
 	public String initUpdateOwnerForm(@PathVariable("alumnoId") int alumnoId, Model model) {
 		Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
-		alumno.setId(alumnoId);
-		model.addAttribute(alumno);
+		model.addAttribute("alumno", alumno);
 		return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 	}
 
 	@PostMapping(value = "/alumnos/{alumnoId}/edit")
 	public String processUpdateOwnerForm(@Valid Alumno alumno, BindingResult result,
 			@PathVariable("alumnoId") int alumnoId) {
-				alumno.setId(alumnoId);
+
 		if (result.hasErrors()) {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
-		}
-		else {
-			this.alumnoService.saveAlumno(alumno);
-			return "redirect:/alumnos/{alumnoId}";
+		} else {
+				alumno.setId(alumnoId);
+				alumno.getUser().setEnabled(true);
+				this.alumnoService.saveAlumno(alumno);
+				return "redirect:/alumnos/miPerfil";
 		}
 	}
-
 
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
@@ -152,5 +147,58 @@ public class AlumnoController {
 		}
 		
 	}
+
+	
+	@GetMapping(value="/alumnos/miPerfil/changeAvatar/{alumnoId}")
+	public String viewChangeAvatar(@PathVariable("alumnoId") int alumnoId, 
+			Map<String,Object> model) {
+		Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
+		model.put("alumno", alumno);
+		return "alumnos/changeAvatar";
+	}
+//	
+//	
+//	
+//	
+//	@PostMapping(value = "/alumnos/miPerfil/changeAvatar")
+//	public RedirectView saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar) throws IOException {
+//		//String fileName = storageService.store(avatar, "profile", http);
+//		
+//		
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		Alumno alumno = alumnoService.findAlumnoByUsername(userDetails.getUsername());
+//		
+//		String fileName = StringUtils.cleanPath(avatar.getOriginalFilename());
+//        alumno.setAvatar(fileName);
+//        alumnoService.saveAlumno(alumno);
+//        String uploadDir = "/resources/images/profile/" + alumno.getId();
+//        storageService.saveFile(uploadDir, fileName, avatar);
+//		
+//		return new  RedirectView("/alumnos/miPerfil", true);
+//	}
+	
+//	@GetMapping(value = "alumnos/miPerfil/changeAvatar/{usernameProfile}")
+//	public String viewChangeAvatar(@PathVariable("usernameProfile") String usernameProfile, Map<String, Object> model) {
+//		Alumno userOptional = alumnoService.findAlumnoByUsername(usernameProfile);
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		if (!userOptional.getUser().equals(userDetails.getUsername())) {
+//			return "exception";
+//		} else {
+//			model.put("user", userOptional);
+//			return "alumnos/changeAvatar";
+//		}
+//	}
+
+	@PostMapping(value = "alumnos/miPerfil/changeAvatar")
+	public String saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar, HttpSession http) {
+		String fileName = storageService.store(avatar, "profile", http);
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Alumno alumno = alumnoService.findAlumnoByUsername(userDetails.getUsername());
+		alumno.setAvatar(fileName);
+		alumnoService.saveAlumno(alumno);
+		return "redirect:/alumnos/miPerfil";
+	}
+	
+	
 	
 }
