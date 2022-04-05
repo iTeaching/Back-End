@@ -1,13 +1,24 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.Clase;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
+import org.springframework.samples.iTeaching.service.ClaseService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
 import org.springframework.samples.iTeaching.service.UserService;
@@ -34,12 +45,19 @@ public class ProfesorController {
 	private StorageService storageService;
 	private AuthoritiesService authService;
 	private UserService userService;
+	private AsignaturaService asignaturaService;
+	private AlumnoService alumnoService;
+	private ClaseService claseService;
 	@Autowired
-	public ProfesorController(StorageService storageService, ProfesorService profesorService, AuthoritiesService authService, UserService userService) {
+	public ProfesorController(StorageService storageService, ProfesorService profesorService, ClaseService claseService, 
+				AuthoritiesService authService, UserService userService, AsignaturaService asignaturaService, AlumnoService alumnoService) {
 		this.profesorService = profesorService;
 		this.authService = authService;
 		this.userService = userService;
 		this.storageService = storageService;
+		this.asignaturaService= asignaturaService;
+		this.alumnoService= alumnoService;
+		this.claseService= claseService;
 	}
 	
 	@InitBinder("profesor")
@@ -142,5 +160,142 @@ public class ProfesorController {
 		profesorService.saveProfesor(profesor);
 		return "redirect:/profesores/miPerfil";
 	}
+	
+	
+	@GetMapping(value="profesor/{profesorId}/nuevaClase")
+	public String crearClase(Map<String,Object> model, @PathVariable("profesorId") int profesorIdPagina) {
+		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String username= clienteDetails.getUsername();
+		Profesor usuario = profesorService.findProfesorByUsername(username);
+		model.put("alumno", usuario);
+		Clase clase = new Clase();
+		model.put("clase", clase);
+		List<Profesor> listaProfesores = profesorService.findAll();
+		model.put("listaProfesores", listaProfesores);
+		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
+		model.put("listaAsignaturas", listaAsignaturas);
+		
+		
+		//Lista de alumnos asignados a ti como profesor
+		//recorre la lista y hace lo siquiente iterando
+		
+		
+		Profesor profesorActual= profesorService.findProfesorById(profesorIdPagina);
+		Set<Asignatura> conjuntoAsignaturas= profesorActual.getAsignaturas();
+		Set<Alumno> setAlumnos= new HashSet<Alumno>();
+		for(Asignatura asing: conjuntoAsignaturas) {
+			setAlumnos.addAll(asing.getAlumnos());
+		}
+		
+		
+		Map<Alumno, List<Asignatura>> map = new HashMap<Alumno, List<Asignatura>>();
+		
+		for(Alumno niños: setAlumnos) {
+			
+			List<String> listaCosas = profesorService.findByIdAlumnosProfesores(profesorIdPagina, niños.getId());
+			System.out.println(listaCosas.size());
+			int tamanyo = listaCosas.size();
+			int i =0;
+			
+			while(i<tamanyo) { 
+				System.out.println(listaCosas.get(i));
+				String elemento[] = listaCosas.get(i).split(",");
+				int idAsignatura = Integer.valueOf(elemento[0]);
+				int idAlumno = Integer.valueOf(elemento[1]);
+				int idProfesor = Integer.valueOf(elemento[2]);
+				Alumno alumno = alumnoService.findAlumnoById(idAlumno);
+				
+				Asignatura asignatura = asignaturaService.findById(idAsignatura);
+				
+				if(map.containsKey(alumno)) {
+					map.get(alumno).add(asignatura);
+				} else {
+					map.put(alumno, new ArrayList<>());
+					map.get(alumno).add(asignatura);
+					}
+				
+				i++;
+				}
+		}
+		
+//		
+//		List<String> listaCosas2 = profesorService.findByIdAlumnosProfesores(2, 1);
+//		System.out.println(listaCosas.size());
+//		int tamanyo2 = listaCosas2.size();
+//		int i2 =0;
+//		while(i2<tamanyo2) { 
+//			System.out.println(listaCosas2.get(i2));
+//			String elemento[] = listaCosas2.get(i2).split(",");
+//			int idAsignatura2 = Integer.valueOf(elemento[0]);
+//			int idAlumno2 = Integer.valueOf(elemento[1]);
+//			int idProfesor2 = Integer.valueOf(elemento[2]);
+//			Profesor profesor2 = profesorService.findProfesorById(idAlumno2);
+//			Asignatura asignatura2 = asignaturaService.findById(idAsignatura2);
+//			
+//			if(map.containsKey(profesor2)) {
+//				map.get(profesor2).add(asignatura2);
+//			} else {
+//				map.put(profesor2, new ArrayList<>());
+//				map.get(profesor2).add(asignatura2);
+//				}
+//			
+//			i2++;
+//			}
+//		
+		
+		
+		
+		
+		model.put("diccionario", map);
+		System.out.println(map);
+		
+		return "profesores/nuevaClase";
+	}
+
+	
+	
+	
+	
+	@PostMapping(value="profesor/{profesorId}/nuevaClase")
+	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("profesorId") int profesorIdPagina) {
+		if (result.hasErrors()) {
+			return "profesor/{profesorId}/nuevaClase";
+		}
+		else {
+			//creating alumno, user and authorities
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor usuario = profesorService.findProfesorByUsername(username);
+			Asignatura asignatura = asignaturaService.findById(clase.getAsignatura().getId());
+			clase.setAceptacionAlumno(false);
+			clase.setAceptacionProfesor(true);
+			clase.setAsignatura(asignatura);
+			
+			
+			clase.setAlumno(clase.getAlumno());
+			clase.getAsignatura().getProfesor();
+			
+			clase.setProfesor(usuario);
+			this.claseService.saveClase(clase);
+
+			return "redirect:/profesores/miPerfil";
+		}
+	}
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

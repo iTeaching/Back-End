@@ -72,6 +72,7 @@
                </tbody>
               
               </table>  
+              <a class="button" href="/profesor/${profesor.id}/nuevaClase">Solicitar nueva clase</a>
               <input value="Editar" class="btn btn-default" type="button" onclick="window.location.href='/profesores/${profesor.id}/edit'">
                </form>
     

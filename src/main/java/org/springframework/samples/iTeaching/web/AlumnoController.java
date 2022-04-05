@@ -3,8 +3,10 @@ package org.springframework.samples.iTeaching.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -167,8 +169,8 @@ public class AlumnoController {
 		
 	}
 	
-	@GetMapping(value="alumnos/nuevaClase")
-	public String crearClase(Map<String,Object> model) {
+	@GetMapping(value="alumnos/{alumnoId}/nuevaClase")
+	public String crearClase(Map<String,Object> model, @PathVariable("alumnoId") int alumnoIdPagina) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno usuario = alumnoService.findAlumnoByUsername(username);
@@ -180,57 +182,46 @@ public class AlumnoController {
 		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
 		model.put("listaAsignaturas", listaAsignaturas);
 		
-		List<String> listaCosas = alumnoService.findByIdAlumnosProfesores(1, 1);
-		System.out.println(listaCosas.size());
-		int tamanyo = listaCosas.size();
-		int i =0;
+		
+		
+		
+		Alumno alumnoActual= alumnoService.findAlumnoById(alumnoIdPagina);
+		List<Asignatura> conjuntoAsignaturas= alumnoActual.getAsignaturas();
+		Set<Profesor> setProfesor= new HashSet<Profesor>();
+		for(Asignatura asing: conjuntoAsignaturas) {
+			setProfesor.add(asing.getProfesor());
+		}
+		
+		
 		Map<Profesor, List<Asignatura>> map = new HashMap<Profesor, List<Asignatura>>();
-		while(i<tamanyo) { 
-			System.out.println(listaCosas.get(i));
-			String elemento[] = listaCosas.get(i).split(",");
-			int idAsignatura = Integer.valueOf(elemento[0]);
-			int idAlumno = Integer.valueOf(elemento[1]);
-			int idProfesor = Integer.valueOf(elemento[2]);
-			Profesor profesor = profesorService.findProfesorById(idProfesor);
-			Asignatura asignatura = asignaturaService.findById(idAsignatura);
-			
-			if(map.containsKey(profesor)) {
-				map.get(profesor).add(asignatura);
-			} else {
-				map.put(profesor, new ArrayList<>());
-				map.get(profesor).add(asignatura);
+		
+		for(Profesor profes: setProfesor) {
+			List<String> listaCosas = alumnoService.findByIdAlumnosProfesores(profes.getId(), alumnoIdPagina);
+			System.out.println(listaCosas.size());
+			int tamanyo = listaCosas.size();
+			int i =0;
+			while(i<tamanyo) { 
+				System.out.println(listaCosas.get(i));
+				String elemento[] = listaCosas.get(i).split(",");
+				int idAsignatura = Integer.valueOf(elemento[0]);
+				int idAlumno = Integer.valueOf(elemento[1]);
+				int idProfesor = Integer.valueOf(elemento[2]);
+				Profesor profesor = profesorService.findProfesorById(idProfesor);
+				Asignatura asignatura = asignaturaService.findById(idAsignatura);
+				
+				if(map.containsKey(profesor)) {
+					map.get(profesor).add(asignatura);
+				} else {
+					map.put(profesor, new ArrayList<>());
+					map.get(profesor).add(asignatura);
+					}
+				
+				i++;
 				}
-			
-			i++;
-			}
 
 		
-		
-		List<String> listaCosas2 = alumnoService.findByIdAlumnosProfesores(2, 1);
-		System.out.println(listaCosas.size());
-		int tamanyo2 = listaCosas2.size();
-		int i2 =0;
-		while(i2<tamanyo2) { 
-			System.out.println(listaCosas2.get(i2));
-			String elemento[] = listaCosas2.get(i2).split(",");
-			int idAsignatura2 = Integer.valueOf(elemento[0]);
-			int idAlumno2 = Integer.valueOf(elemento[1]);
-			int idProfesor2 = Integer.valueOf(elemento[2]);
-			Profesor profesor2 = profesorService.findProfesorById(idProfesor2);
-			Asignatura asignatura2 = asignaturaService.findById(idAsignatura2);
-			
-			if(map.containsKey(profesor2)) {
-				map.get(profesor2).add(asignatura2);
-			} else {
-				map.put(profesor2, new ArrayList<>());
-				map.get(profesor2).add(asignatura2);
-				}
-			
-			i2++;
-			}
-		
-		
-		
+
+		}
 		
 		
 		model.put("diccionario", map);
@@ -239,10 +230,10 @@ public class AlumnoController {
 		return "alumnos/nuevaClase";
 	}
 	
-	@PostMapping(value="alumnos/nuevaClase")
-	public String crearClasePost(@Valid Clase clase, BindingResult result) {
+	@PostMapping(value="alumnos/{alumnoId}/nuevaClase")
+	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("alumnoId") int alumnoIdPagina) {
 		if (result.hasErrors()) {
-			return "alumnos/nuevaClase";
+			return "alumnos/{alumnoId}/nuevaClase";
 		}
 		else {
 			//creating alumno, user and authorities
