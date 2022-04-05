@@ -1,5 +1,7 @@
 package org.springframework.samples.iTeaching.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Alumno;
@@ -33,17 +35,19 @@ public class AlumnoService {
 	public Alumno findAlumnoById(int id) throws DataAccessException {
 		return alumnoRepository.findById(id);
 	}
-
+		
 	@Transactional
 	public void saveAlumno(Alumno alumno) throws DataAccessException {
 		alumnoRepository.save(alumno);		
-		userService.saveUser(alumno.getUser());
-		authoritiesService.saveAuthorities(alumno.getUser().getUsername(), "alumno");
 	}		
 	
 	@Transactional(readOnly = true)
 	public Alumno findAlumnoByUsername(String username) throws DataAccessException {
 		return alumnoRepository.findByUsername(username);
+	}
+	
+	public List<Alumno> findAll(){
+		return alumnoRepository.findAll();
 	}
 
 	public void delete(Alumno alumno) {
