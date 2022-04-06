@@ -1,51 +1,73 @@
 package org.springframework.samples.iTeaching.web;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.samples.iTeaching.model.File;
-import org.springframework.samples.iTeaching.model.Response;
-import org.springframework.samples.iTeaching.service.FileServiceAPI;
+import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.FileiTeaching;
+import org.springframework.samples.iTeaching.service.AsignaturaService;
+import org.springframework.samples.iTeaching.service.FileiTeachingService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
-@RequestMapping("/files")
+
+@Controller
 public class FileController {
 
-    @Autowired
-    private FileServiceAPI fileServiceAPI;
+	@Autowired 
+	private FileiTeachingService fileiTeachingService;
+	
+	@Autowired
+	private AsignaturaService asignaturaService;
+	
+	@GetMapping("/asignatura/{asignaturaId}/files")
+	public String get(Model model,@PathVariable("asignaturaId") int asignaturaId) {
+		Asignatura asignatura= asignaturaService.findById(asignaturaId);
+		Collection<FileiTeaching> docs = fileiTeachingService.findFileByAsignatura(asignatura);
+		model.addAttribute("docs", docs);
+		model.addAttribute("asignatura", asignatura);
+		return "files/fileList";
+	}
+	
+	@PostMapping("/asignatura/{asignaturaId}/files")
+	public String uploadMultipleFiles(@RequestParam("files") MultipartFile[] files, Model model,@PathVariable("asignaturaId") int asignaturaId) {
+		Asignatura asignatura= asignaturaService.findById(asignaturaId);
+		if(files.length!=0) {
+		for (MultipartFile file: files) {
+			if(file.getContentType().equals("application/pdf") 
+					|| file.getContentType().equals("image/jpeg") 
+					|| file.getContentType().equals("image/png")){
+				
+				fileiTeachingService.saveFile(file, asignatura);
 
-    @PostMapping("/upload")
-    public ResponseEntity<Response> uploadFiles(@RequestParam("files") List<MultipartFile> files) throws Exception{
-            fileServiceAPI.save(files);
-            return ResponseEntity.status(HttpStatus.OK).body(new Response("Los archivos fueron cargados correctamente"));
-        }
-
-    @GetMapping("/files/{filename:.+}")
-    public ResponseEntity<Resource> getFile(@PathVariable String filename) throws Exception{
-            Resource resource=fileServiceAPI.load(filename);
-            return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"").body(resource);
-        }
-
-    //Listar los elementos que se encuentran en el servidor
-    @GetMapping("/files")
-    public ResponseEntity<List<File>> getAllFiles() throws Exception{
-        List<File> files= fileServiceAPI.loadAll().map(path->{
-            String filename=path.getFileName().toString();
-            String url=MvcUriComponentsBuilder.fromMethodName(FileController.class, "getFile", path.getFileName().toString()).build().toString();
-            return new File(filename,url);
-        }).collect(Collectors.toList());
-        return ResponseEntity.status(HttpStatus.OK).body(files);
-    }
-    }
+			}else {
+				model.addAttribute("errorMessage", "Solo se pueden subir archivos PDF, JPG o PNG");
+				
+			}
+		}
+		}
+		Collection<FileiTeaching> docs = fileiTeachingService.findFileByAsignatura(asignatura);
+		model.addAttribute("asignatura", asignatura);
+		model.addAttribute("docs", docs);
+		return "files/fileList";
+	}
+	@GetMapping("/downloadFile/{fileId}")
+	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Integer fileId){
+		FileiTeaching doc = fileiTeachingService.getFile(fileId).get();
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(doc.getDocType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION,"attachment:filename=\""+doc.getDocName()+"\"")
+				.body(new ByteArrayResource(doc.getData()));
+	}
+	
+}

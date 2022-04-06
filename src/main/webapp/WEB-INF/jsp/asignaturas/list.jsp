@@ -27,6 +27,7 @@
             <th style="width: 120px">Puntuación del profesor</th>
             <th style="width: 120px">Valorar</th>
             </sec:authorize>
+            <th style="width: 120px">Ver archivos</th>
         </tr>
         </thead>
         <tbody>
@@ -40,11 +41,12 @@
                      
 					<a href="/asignaturas/${asignatura.id }"><img src="resources/images/video.svg"></a>
                 </td>
+                
+                <sec:authorize access="hasAnyAuthority('alumno')">
                 <td>
                 <a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
                     <c:out value="${asignatura.profesor.firstName} ${asignatura.profesor.lastName}"/></a>
                 </td>
-                <sec:authorize access="hasAnyAuthority('alumno')">
                 <td>
                     <c:if test="${asignatura.profesor.division==0}">
                 	<c:out value="Sin evaluar"/>
@@ -63,6 +65,16 @@
 						class="btn btn-outline-warning">Valorar</a>
 					</td>
 				</sec:authorize>
+				
+				 <td>
+				
+				<spring:url value="/asignatura/{asignaturaId}/files"
+							var="editUrl">
+							<spring:param name="asignaturaId" value="${asignatura.id}" />
+
+						</spring:url> <a href="${fn:escapeXml(editUrl)}"
+						class="btn btn-outline-warning">Archivos</a>
+					</td>
             </tr>
         </c:forEach>
         </tbody>
