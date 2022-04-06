@@ -20,30 +20,13 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-	<style type="text/css">
-	.button {
-  background-color: #FFDD33;
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 12px;
-  padding: 14px 40px;
-  align-self:center;
-}
-
-	</style>
 </head>
 
 <iteaching:layout pageName="alumnos">
-    <h2>
+<div style="min-height:85vh">
+    <h1>
         Nuevo Clase
-    </h2>
+    </h1>
     
    
     
@@ -62,11 +45,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button class="button" type="submit">Crear Clase</button>
+                <button type="submit" class="btn btn-warning" style="font-size:16px; color:white; border-color: #dab305; background-color: #dab305;">Crear Clase</button>
             </div>
         </div>
     </form:form>
     </div>
-
+</div>
     
 </iteaching:layout>

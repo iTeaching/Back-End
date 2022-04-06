@@ -19,7 +19,7 @@
 
  
   
- 		<div class="col-sm-4" style="display: flex; flex-direction: column">
+ 		<div class="col-sm-4" style="display: flex; flex-direction: column; margin-top: 20px">
 
 				
 			<c:choose>
@@ -41,7 +41,7 @@
  
  <form>
 
-<table class=   "table table-user-information">
+			<table class=   "table table-user-information">
                 <tbody>
                   <tr>
                     <td>Nombre:</td>
@@ -73,7 +73,7 @@
               
               </table>  
               
-                   <h1>Mis Clases</h1> 
+                   <h3 style="color: #dab305;">Mis Clases</h1> 
 
 				    <table id="clasesTable" class="table table-striped">
 				        <thead>
@@ -113,8 +113,8 @@
 				         
         			</tbody>
         	 </table>
-              <a class="button" href="/profesor/${profesor.id}/nuevaClase">Solicitar nueva clase</a>
-              <input value="Editar" class="btn btn-default" type="button" onclick="window.location.href='/profesores/${profesor.id}/edit'">
+                  <button type="button" class="btn btn-warning" style="border-color: #dab305; background-color: #dab305;"><a class="button" href="/profesor/${profesor.id}/nuevaClase" style="text-decoration:none; color: white">Solicitar nueva clase</a></button>
+              <button class="btn btn-warning" type="button" style="color: white; text-decoration:none; border-color: #dab305; background-color: #dab305;"  onclick="window.location.href='/profesores/${profesor.id}/edit'">Editar</button>
                </form>
     
     
