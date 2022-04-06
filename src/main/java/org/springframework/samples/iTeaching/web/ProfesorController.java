@@ -200,6 +200,7 @@ public class ProfesorController {
 		for(Asignatura asing: conjuntoAsignaturas) {
 			setAlumnos.addAll(asing.getAlumnos());
 		}
+		System.out.println(setAlumnos.size());
 		
 		
 		Map<Alumno, List<Asignatura>> map = new HashMap<Alumno, List<Asignatura>>();
