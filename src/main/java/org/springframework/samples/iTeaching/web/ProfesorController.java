@@ -16,6 +16,7 @@ import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.Clase;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.model.estadoClase;
 import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
 import org.springframework.samples.iTeaching.service.ClaseService;
@@ -136,12 +137,17 @@ public class ProfesorController {
 			Profesor usuario = profesorService.findProfesorByUsername(username);
 						
 			List<Clase> clase = claseService.findProfesorByUsername(username);
+			List<Clase> listaSolicitada = claseService.findEstadoClase(estadoClase.solicitada);
+			List<Clase> listaCancelada = claseService.findEstadoClase(estadoClase.cancelada);
+			List<Clase> listaConfirmada = claseService.findEstadoClase(estadoClase.confirmada);
+			List<Clase> listaFinalizada = claseService.findEstadoClase(estadoClase.finalizada);
+			System.out.println(listaSolicitada);
 			//model.addAttribute("listaClase", listaClase);
 			model.addAttribute("listaClase", clase);
-			
-			
-			
-			
+			model.addAttribute("listaSolicitada", listaSolicitada);
+			model.addAttribute("listaCancelada", listaCancelada);
+			model.addAttribute("listaConfirmada", listaConfirmada);
+			model.addAttribute("listaFinalizada", listaFinalizada);
 			model.addAttribute("profesor", usuario);
 			return "profesores/miPerfil";
 		}catch(Exception e) {	// si no está logueado
@@ -175,11 +181,11 @@ public class ProfesorController {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
-		model.put("alumno", usuario);
+		model.put("profesor", usuario);
 		Clase clase = new Clase();
 		model.put("clase", clase);
-		List<Profesor> listaProfesores = profesorService.findAll();
-		model.put("listaProfesores", listaProfesores);
+		List<Alumno> listaAlumnos = alumnoService.findAll();
+		model.put("listaAlumnos", listaAlumnos);
 		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
 		model.put("listaAsignaturas", listaAsignaturas);
 		
@@ -226,39 +232,39 @@ public class ProfesorController {
 				}
 		}
 		
-//		
-//		List<String> listaCosas2 = profesorService.findByIdAlumnosProfesores(2, 1);
-//		System.out.println(listaCosas.size());
-//		int tamanyo2 = listaCosas2.size();
-//		int i2 =0;
-//		while(i2<tamanyo2) { 
-//			System.out.println(listaCosas2.get(i2));
-//			String elemento[] = listaCosas2.get(i2).split(",");
-//			int idAsignatura2 = Integer.valueOf(elemento[0]);
-//			int idAlumno2 = Integer.valueOf(elemento[1]);
-//			int idProfesor2 = Integer.valueOf(elemento[2]);
-//			Profesor profesor2 = profesorService.findProfesorById(idAlumno2);
-//			Asignatura asignatura2 = asignaturaService.findById(idAsignatura2);
-//			
-//			if(map.containsKey(profesor2)) {
-//				map.get(profesor2).add(asignatura2);
-//			} else {
-//				map.put(profesor2, new ArrayList<>());
-//				map.get(profesor2).add(asignatura2);
-//				}
-//			
-//			i2++;
-//			}
-//		
-		
-		
-		
+			
 		
 		model.put("diccionario", map);
 		System.out.println(map);
 		
 		return "profesores/nuevaClase";
 	}
+	
+	@GetMapping(value="/profesores/aceptar/{claseId}")
+	public String aceptarClase(@PathVariable("claseId") int claseId, 
+			Map<String,Object> model) {
+		Clase clase = claseService.findById(claseId);
+		model.put("clase", clase);
+		return "profesores/aceptarClase";
+	}
+
+	@PostMapping(value="/profesores/aceptar/{claseId}")
+	public String aceptarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
+			Map<String,Object> model, BindingResult result) {
+		if (result.hasErrors()) {
+			return "profesores/{profesorId}/nuevaClase";
+		}
+		else {
+			//creating prof, user and authorities
+			clase.setId(claseId);
+			clase.setEstadoClase(estadoClase.confirmada);
+			this.claseService.saveClase(clase);
+;
+			return "redirect:/profesores/miPerfil";
+		}
+	}
+	
+	
 
 	
 	
@@ -284,6 +290,7 @@ public class ProfesorController {
 			clase.getAsignatura().getProfesor();
 			
 			clase.setProfesor(usuario);
+			
 			this.claseService.saveClase(clase);
 
 			return "redirect:/profesores/miPerfil";
