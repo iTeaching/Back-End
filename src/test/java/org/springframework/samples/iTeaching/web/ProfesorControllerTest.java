@@ -19,8 +19,10 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.iTeaching.configuration.SecurityConfiguration;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.User;
+import org.springframework.samples.iTeaching.service.AuthoritiesService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
+import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,6 +35,10 @@ public class ProfesorControllerTest {
 	
 	@MockBean
 	private StorageService storageService;
+	@MockBean
+	private AuthoritiesService authService;
+	@MockBean
+	private UserService userService;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -41,7 +47,7 @@ public class ProfesorControllerTest {
 	void setup() {
 		Profesor profesor = new Profesor();
 		User user = new User();
-		user.setUsername("profesor1");
+		user.setUsername("profesor4");
 		user.setPassword("Profesor1!");
 		profesor.setFirstName("Perez");
 		profesor.setLastName("Perez");
@@ -55,7 +61,7 @@ public class ProfesorControllerTest {
 
 	@WithMockUser(value = "spring")
 	@Test
-	void testInitCrationForm() throws Exception {
+	void testInitCreationForm() throws Exception {
 		mockMvc.perform(get("/profesores/new"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("profesores/createOrUpdateProfesorForm"))
@@ -64,15 +70,16 @@ public class ProfesorControllerTest {
 
 	@WithMockUser(value = "spring")
 	@Test
-	void testProcessCeationFormSuccess() throws Exception {
+	void testProcessCreationFormSuccess() throws Exception {
 		mockMvc.perform(post("/profesores/new")
 			.with(csrf())
-			.param("firstName", "Mario")
-			.param("lastName", "Viera")
-			.param("telephone", "633572849")
-			.param("email", "manuvierod@gmail.com")
+			.param("firstName", "Roberto")
+			.param("lastName", "Ruiz")
+			.param("telephone", "666111333")
+			.param("email", "profesormolon1@gmail.com")
 			.param("division", "0")
-			.param("puntuacion", "2.0")
+			.param("puntuacion", "0.")
+//			.param("avatar", "/resources/images/profile/avatar/1648742755898.png")
 			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
 			.andExpect(status().is3xxRedirection())
@@ -82,7 +89,7 @@ public class ProfesorControllerTest {
 
 	@WithMockUser(value = "spring")
 	@Test
-	void testProcessCeationFormHasErrors() throws Exception {
+	void testProcessCreationFormHasErrors() throws Exception {
 		mockMvc.perform(post("/profesores/new")
 			.with(csrf())
 			.param("firstName", "")
@@ -154,17 +161,6 @@ public class ProfesorControllerTest {
 	@Test
 	void testViewChangeAvatar() throws Exception {
 		mockMvc.perform(get("/profesores/changeAvatar")).andExpect(status().isOk());
-	}
-	
-	@WithMockUser(value = "profesor1")
-	@Test
-	void testSaveChangeAvatar() throws Exception{
-		mockMvc.perform(post("/profesor/miPerfil/changeAvatar")
-				.with(csrf())
-				.param("avatar", "/resources/images/profile/avatar/1648742755898.png"))
-				.andExpect(status().is3xxRedirection())
-				.andExpect(view().name("redirect:/profesores/miPerfil"));
-		
 	}
 
 }
