@@ -84,7 +84,7 @@
 					<tr>
 						<td><c:out value="${listaClase.horaComienzo}" /></td>
 						<td><c:out value="${listaClase.horaFin}" /></td>
-						<td><c:out value="${listaClase.profesor.firstName}" /></td>
+						<td><c:out value="${listaClase.alumno.firstName}" /></td>
 						<td><c:out value="${listaClase.asignatura.nombre}" /></td>
 						<td><c:out value="${listaClase.asignatura.precio}€" /></td>
 
