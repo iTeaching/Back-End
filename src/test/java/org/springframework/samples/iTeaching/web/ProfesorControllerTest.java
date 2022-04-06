@@ -61,7 +61,7 @@ public class ProfesorControllerTest {
 
 	@WithMockUser(value = "spring")
 	@Test
-	void testInitCrationForm() throws Exception {
+	void testInitCreationForm() throws Exception {
 		mockMvc.perform(get("/profesores/new"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("profesores/createOrUpdateProfesorForm"))
@@ -70,16 +70,17 @@ public class ProfesorControllerTest {
 
 	@WithMockUser(value = "spring")
 	@Test
-	void testProcessCeationFormSuccess() throws Exception {
+	void testProcessCreationFormSuccess() throws Exception {
 		mockMvc.perform(post("/profesores/new")
 			.with(csrf())
-			.param("firstName", "Mario")
-			.param("lastName", "Viera")
-			.param("telephone", "633572849")
-			.param("email", "manuvierod@gmail.com")
-//			.param("division", "0")
-//			.param("puntuacion", "0")
-			.param("user.username", "profesor7")
+			.param("firstName", "Roberto")
+			.param("lastName", "Ruiz")
+			.param("telephone", "666111333")
+			.param("email", "profesormolon1@gmail.com")
+			.param("division", "0")
+			.param("puntuacion", "0.")
+//			.param("avatar", "/resources/images/profile/avatar/1648742755898.png")
+			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
 			.andExpect(status().is3xxRedirection())
 			.andExpect(view().name("redirect:/login"));
@@ -88,7 +89,7 @@ public class ProfesorControllerTest {
 
 	@WithMockUser(value = "spring")
 	@Test
-	void testProcessCeationFormHasErrors() throws Exception {
+	void testProcessCreationFormHasErrors() throws Exception {
 		mockMvc.perform(post("/profesores/new")
 			.with(csrf())
 			.param("firstName", "")
@@ -160,17 +161,6 @@ public class ProfesorControllerTest {
 	@Test
 	void testViewChangeAvatar() throws Exception {
 		mockMvc.perform(get("/profesores/changeAvatar")).andExpect(status().isOk());
-	}
-	
-	@WithMockUser(value = "profesor1")
-	@Test
-	void testSaveChangeAvatar() throws Exception{
-		mockMvc.perform(post("/profesor/miPerfil/changeAvatar")
-				.with(csrf())
-				.param("avatar", "/resources/images/profile/avatar/1648742755898.png"))
-				.andExpect(status().is3xxRedirection())
-				.andExpect(view().name("redirect:/profesores/miPerfil"));
-		
 	}
 
 }

@@ -84,9 +84,9 @@ private ProfesorService profSer;
 					.getPrincipal();
 			String profesorNombre = profesor.getUser().getUsername();
 			String profesorLogeado = profesorDetails.getUsername();
-			if(!profesorDetails.getUsername().equals(profesor.getUser().getUsername())) {
-				errors.rejectValue("user.username", " No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.", "No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.");
-			}
+//			if(!profesorDetails.getUsername().equals(profesor.getUser().getUsername())) {
+//				errors.rejectValue("user.username", " No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.", "No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.");
+//			}
 		}
 		
 		
