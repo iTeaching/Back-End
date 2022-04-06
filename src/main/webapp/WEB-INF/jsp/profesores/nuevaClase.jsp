@@ -39,7 +39,6 @@
 			<form:input type="hidden" path="aceptacionAlumno"/>
 			<form:input type="hidden" path="aceptacionProfesor"/>
 			<c:forEach var="type" items="${diccionario}">
-   					<c:out value="${type.key.id}"/> 
    					<form:input type="hidden" path="alumno.user.username" value="${type.key.id}"/>
    					<iteaching:selectField label="Asignaturas de ${type.key.firstName}" name="asignatura.id" names="${type.value}" size="${fn:length(type.value)}"/>
 			</c:forEach>

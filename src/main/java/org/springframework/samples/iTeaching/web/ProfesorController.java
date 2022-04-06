@@ -133,17 +133,26 @@ public class ProfesorController {
 		try {	// si está logueado
 			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username= clienteDetails.getUsername();
-			System.out.println(username);
 			Profesor usuario = profesorService.findProfesorByUsername(username);
-						
-			List<Clase> clase = claseService.findProfesorByUsername(username);
-			List<Clase> listaSolicitada = claseService.findEstadoClase(estadoClase.solicitada);
-			List<Clase> listaCancelada = claseService.findEstadoClase(estadoClase.cancelada);
-			List<Clase> listaConfirmada = claseService.findEstadoClase(estadoClase.confirmada);
-			List<Clase> listaFinalizada = claseService.findEstadoClase(estadoClase.finalizada);
-			System.out.println(listaSolicitada);
-			//model.addAttribute("listaClase", listaClase);
-			model.addAttribute("listaClase", clase);
+			List<Clase> clase = claseService.findProfesorByUsername(username);	
+			
+			List<Clase> listaSolicitada = new ArrayList<>();
+			List<Clase> listaCancelada = new ArrayList<>();
+			List<Clase> listaConfirmada = new ArrayList<>();
+			List<Clase> listaFinalizada = new ArrayList<>();
+
+			for(Clase claseIndividual:clase) {
+				if(claseIndividual.getEstadoClase().equals(estadoClase.solicitada)) {
+					listaSolicitada.add(claseIndividual);
+				} else if(claseIndividual.getEstadoClase().equals(estadoClase.confirmada)) {
+					listaConfirmada.add(claseIndividual);
+				}else if(claseIndividual.getEstadoClase().equals(estadoClase.finalizada)) {
+					listaFinalizada.add(claseIndividual);
+				} else {
+					listaCancelada.add(claseIndividual);
+				}
+			}
+
 			model.addAttribute("listaSolicitada", listaSolicitada);
 			model.addAttribute("listaCancelada", listaCancelada);
 			model.addAttribute("listaConfirmada", listaConfirmada);
@@ -176,8 +185,8 @@ public class ProfesorController {
 	}
 	
 	
-	@GetMapping(value="profesor/{profesorId}/nuevaClase")
-	public String crearClase(Map<String,Object> model, @PathVariable("profesorId") int profesorIdPagina) {
+	@GetMapping(value="profesor/nuevaClase")
+	public String crearClase(Map<String,Object> model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		Profesor usuario = profesorService.findProfesorByUsername(username);
@@ -194,26 +203,23 @@ public class ProfesorController {
 		//recorre la lista y hace lo siquiente iterando
 		
 		
-		Profesor profesorActual= profesorService.findProfesorById(profesorIdPagina);
-		Set<Asignatura> conjuntoAsignaturas= profesorActual.getAsignaturas();
+		
+		Set<Asignatura> conjuntoAsignaturas= usuario.getAsignaturas();
 		Set<Alumno> setAlumnos= new HashSet<Alumno>();
 		for(Asignatura asing: conjuntoAsignaturas) {
 			setAlumnos.addAll(asing.getAlumnos());
 		}
-		System.out.println(setAlumnos.size());
 		
 		
 		Map<Alumno, List<Asignatura>> map = new HashMap<Alumno, List<Asignatura>>();
 		
 		for(Alumno niños: setAlumnos) {
 			
-			List<String> listaCosas = profesorService.findByIdAlumnosProfesores(profesorIdPagina, niños.getId());
-			System.out.println(listaCosas.size());
+			List<String> listaCosas = profesorService.findByIdAlumnosProfesores(usuario.getId(), niños.getId());
 			int tamanyo = listaCosas.size();
 			int i =0;
 			
 			while(i<tamanyo) { 
-				System.out.println(listaCosas.get(i));
 				String elemento[] = listaCosas.get(i).split(",");
 				int idAsignatura = Integer.valueOf(elemento[0]);
 				int idAlumno = Integer.valueOf(elemento[1]);
@@ -236,15 +242,14 @@ public class ProfesorController {
 			
 		
 		model.put("diccionario", map);
-		System.out.println(map);
 		
 		return "profesores/nuevaClase";
 	}
 	
-	@PostMapping(value="profesor/{profesorId}/nuevaClase")
-	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("profesorId") int profesorIdPagina) {
+	@PostMapping(value="profesor/nuevaClase")
+	public String crearClasePost(@Valid Clase clase, BindingResult result) {
 		if (result.hasErrors()) {
-			return "profesor/{profesorId}/nuevaClase";
+			return "profesor/nuevaClase";
 		}
 		else {
 			//creating alumno, user and authorities
@@ -269,7 +274,7 @@ public class ProfesorController {
 	}
 	
 	
-	@GetMapping(value="/profesores/aceptar/{claseId}")
+	@GetMapping(value="/profesor/aceptar/{claseId}")
 	public String aceptarClase(@PathVariable("claseId") int claseId, 
 			Map<String,Object> model) {
 		Clase clase = claseService.findById(claseId);
@@ -277,7 +282,7 @@ public class ProfesorController {
 		return "profesores/aceptarClase";
 	}
 
-	@PostMapping(value="/profesores/aceptar/{claseId}")
+	@PostMapping(value="/profesor/aceptar/{claseId}")
 	public String aceptarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
 			Map<String,Object> model, BindingResult result) {
 		if (result.hasErrors()) {
@@ -292,12 +297,32 @@ public class ProfesorController {
 		}
 	}
 	
+	@GetMapping(value="/profesor/cancelar/{claseId}")
+	public String cancelarClase(@PathVariable("claseId") int claseId, 
+			Map<String,Object> model) {
+		Clase clase = claseService.findById(claseId);
+		model.put("clase", clase);
+		return "profesores/cancelarClase";
+	}
+
+	@PostMapping(value="/profesor/cancelar/{claseId}")
+	public String cancelarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
+			Map<String,Object> model, BindingResult result) {
+		if (result.hasErrors()) {
+			return "profesores/cancelarClase";
+		}
+		else {
+			//creating alumno, user and authorities
+			clase.setId(claseId);
+			clase.setEstadoClase(estadoClase.cancelada);
+			this.claseService.saveClase(clase);
+			return "redirect:/profesores/miPerfil";
 	
 
 	
 	
 	
-	
+		}
 
 	
 	
@@ -305,14 +330,16 @@ public class ProfesorController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
 }
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+

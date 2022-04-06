@@ -154,7 +154,6 @@ public class AlumnoController {
 		try {	// si está logueado
 			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username= clienteDetails.getUsername();
-			System.out.println(username);
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
 			
 			List<Clase> clase = claseService.findAlumnoByUsername(username);
@@ -215,11 +214,9 @@ public class AlumnoController {
 		
 		for(Profesor profes: setProfesor) {
 			List<String> listaCosas = alumnoService.findByIdAlumnosProfesores(profes.getId(), usuario.getId());
-			System.out.println(listaCosas.size());
 			int tamanyo = listaCosas.size();
 			int i =0;
 			while(i<tamanyo) { 
-				System.out.println(listaCosas.get(i));
 				String elemento[] = listaCosas.get(i).split(",");
 				int idAsignatura = Integer.valueOf(elemento[0]);
 				int idAlumno = Integer.valueOf(elemento[1]);
@@ -239,9 +236,7 @@ public class AlumnoController {
 		}
 		
 		
-		model.put("diccionario", map);
-		System.out.println(map);
-		
+		model.put("diccionario", map);		
 		return "alumnos/nuevaClase";
 	}
 	
@@ -304,7 +299,7 @@ public class AlumnoController {
 	public String cancelarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
 			Map<String,Object> model, BindingResult result) {
 		if (result.hasErrors()) {
-			return "alumnos/cancelar/nuevaClase";
+			return "alumnos/cancelarClase";
 		}
 		else {
 			//creating alumno, user and authorities
