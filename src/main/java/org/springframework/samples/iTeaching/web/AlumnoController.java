@@ -156,16 +156,24 @@ public class AlumnoController {
 			String username= clienteDetails.getUsername();
 			System.out.println(username);
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			//List<Clase> listaClase = claseService.findAll();
 			
 			List<Clase> clase = claseService.findAlumnoByUsername(username);
-			List<Clase> listaSolicitada = claseService.findEstadoClase(estadoClase.solicitada);
-			List<Clase> listaCancelada = claseService.findEstadoClase(estadoClase.cancelada);
-			List<Clase> listaConfirmada = claseService.findEstadoClase(estadoClase.confirmada);
-			List<Clase> listaFinalizada = claseService.findEstadoClase(estadoClase.finalizada);
-			System.out.println(listaSolicitada);
-			//model.addAttribute("listaClase", listaClase);
-			model.addAttribute("listaClase", clase);
+			List<Clase> listaSolicitada = new ArrayList<>();
+			List<Clase> listaCancelada = new ArrayList<>();
+			List<Clase> listaConfirmada = new ArrayList<>();
+			List<Clase> listaFinalizada = new ArrayList<>();
+			
+			for(Clase claseIndividual:clase) {
+				if(claseIndividual.getEstadoClase().equals(estadoClase.solicitada)) {
+					listaSolicitada.add(claseIndividual);
+				} else if(claseIndividual.getEstadoClase().equals(estadoClase.confirmada)) {
+					listaConfirmada.add(claseIndividual);
+				}else if(claseIndividual.getEstadoClase().equals(estadoClase.finalizada)) {
+					listaFinalizada.add(claseIndividual);
+				} else {
+					listaCancelada.add(claseIndividual);
+				}
+			}
 			model.addAttribute("alumno", usuario);
 			model.addAttribute("listaSolicitada", listaSolicitada);
 			model.addAttribute("listaCancelada", listaCancelada);
@@ -182,8 +190,8 @@ public class AlumnoController {
 		
 	}
 	
-	@GetMapping(value="alumnos/{alumnoId}/nuevaClase")
-	public String crearClase(Map<String,Object> model, @PathVariable("alumnoId") int alumnoIdPagina) {
+	@GetMapping(value="alumnos/nuevaClase")
+	public String crearClase(Map<String,Object> model) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno usuario = alumnoService.findAlumnoByUsername(username);
@@ -196,10 +204,7 @@ public class AlumnoController {
 		model.put("listaAsignaturas", listaAsignaturas);
 		
 		
-		
-		
-		Alumno alumnoActual= alumnoService.findAlumnoById(alumnoIdPagina);
-		List<Asignatura> conjuntoAsignaturas= alumnoActual.getAsignaturas();
+		List<Asignatura> conjuntoAsignaturas= usuario.getAsignaturas();
 		Set<Profesor> setProfesor= new HashSet<Profesor>();
 		for(Asignatura asing: conjuntoAsignaturas) {
 			setProfesor.add(asing.getProfesor());
@@ -209,7 +214,7 @@ public class AlumnoController {
 		Map<Profesor, List<Asignatura>> map = new HashMap<Profesor, List<Asignatura>>();
 		
 		for(Profesor profes: setProfesor) {
-			List<String> listaCosas = alumnoService.findByIdAlumnosProfesores(profes.getId(), alumnoIdPagina);
+			List<String> listaCosas = alumnoService.findByIdAlumnosProfesores(profes.getId(), usuario.getId());
 			System.out.println(listaCosas.size());
 			int tamanyo = listaCosas.size();
 			int i =0;
@@ -240,10 +245,10 @@ public class AlumnoController {
 		return "alumnos/nuevaClase";
 	}
 	
-	@PostMapping(value="alumnos/{alumnoId}/nuevaClase")
-	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("alumnoId") int alumnoIdPagina) {
+	@PostMapping(value="alumnos/nuevaClase")
+	public String crearClasePost(@Valid Clase clase, BindingResult result) {
 		if (result.hasErrors()) {
-			return "alumnos/{alumnoId}/nuevaClase";
+			return "alumnos/nuevaClase";
 		}
 		else {
 			//creating alumno, user and authorities
@@ -283,7 +288,29 @@ public class AlumnoController {
 			clase.setId(claseId);
 			clase.setEstadoClase(estadoClase.confirmada);
 			this.claseService.saveClase(clase);
-;
+			return "redirect:/alumnos/miPerfil";
+		}
+	}
+	
+	@GetMapping(value="/alumnos/cancelar/{claseId}")
+	public String cancelarClase(@PathVariable("claseId") int claseId, 
+			Map<String,Object> model) {
+		Clase clase = claseService.findById(claseId);
+		model.put("clase", clase);
+		return "alumnos/cancelarClase";
+	}
+	
+	@PostMapping(value="/alumnos/cancelar/{claseId}")
+	public String cancelarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
+			Map<String,Object> model, BindingResult result) {
+		if (result.hasErrors()) {
+			return "alumnos/cancelar/nuevaClase";
+		}
+		else {
+			//creating alumno, user and authorities
+			clase.setId(claseId);
+			clase.setEstadoClase(estadoClase.cancelada);
+			this.claseService.saveClase(clase);
 			return "redirect:/alumnos/miPerfil";
 		}
 	}

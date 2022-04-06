@@ -41,30 +41,67 @@
 </head>
 
 <iteaching:layout pageName="alumnos">
-    <h2>
-        Nuevo Clase
-    </h2>
-    
-   
+       
     
     <div class="col-sm-8" style="margin: 0 0 20px 0">
+                <h1>Cancelar Clase</h1> 
+                
+
+        <table id="clasesTable" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Hora de Comienzo</th>
+            <th style="width: 150px;">Hora de Fin</th>
+            <th style="width: 200px;">Profesor</th>
+            <th>Asignatura</th>          
+            <th>Precio por hora</th>
+
+
+         
+        </tr>
+        </thead>
+        <tbody>            
+                <tr>
+                    <td>
+                        <c:out value="${clase.horaComienzo}"/>
+                    </td>
+                    <td>
+                        <c:out value="${clase.horaFin}"/>
+                    </td>
+                    <td>
+                        <c:out value="${clase.profesor.firstName}"/>
+                    </td>
+
+                    <td>
+                        <c:out value="${clase.asignatura.nombre}"/>
+                    </td>
+                    <td>
+                   	 	<c:out value="${clase.asignatura.precio}€"/> 
+                    </td>
+
+                </tr>
+
+        </tbody>
+            
+    </table>
+
+   
+    
     <form:form modelAttribute="clase" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">     
-            <iteaching:inputField label="Hora de comienzo" name="horaComienzo"/>
-            <iteaching:inputField label="Hora de Fin" name="horaFin"/>
 <%--             <form:input type="hidden" path="alumno.user.username"/> --%>
+			<form:input type="hidden" path="horaComienzo"/>
+			<form:input type="hidden" path="horaFin"/>
 			<form:input type="hidden" path="aceptacionAlumno"/>
 			<form:input type="hidden" path="aceptacionProfesor"/>
-			<c:forEach var="type" items="${diccionario}">
-   					<c:out value="${type.key.id}"/> 
-   					<form:input type="hidden" path="alumno.user.username" value="${type.key.id}"/>
-   					<iteaching:selectField label="Asignaturas de ${type.key.firstName}" name="asignatura.id" names="${type.value}" size="${fn:length(type.value)}"/>
-			</c:forEach>
-			<p>(Si se elige mas de una asignatura, se asignará la asignatura que se encuentre en una posicion superior)</p>
+			<form:input type="hidden" path="profesor"/>
+			<form:input type="hidden" path="asignatura"/>
+			<form:input type="hidden" path="alumno"/>
+			
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button class="button" type="submit">Crear Clase</button>
+                <button class="button" type="submit">Cancelar Clase</button>
             </div>
         </div>
     </form:form>
