@@ -1,3 +1,9 @@
+<%@ page session="false" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<petclinic:layout pageName="pay">
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -44,9 +50,8 @@ body {
 }
 
 .container {
-  background-color: #f2f2f2;
+  background-color: #ffff;
   padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
   border-radius: 3px;
 }
 
@@ -70,7 +75,7 @@ label {
 }
 
 .btn {
-  background-color: #4CAF50;
+  background-color: #000;
   color: white;
   padding: 12px;
   margin: 10px 0;
@@ -82,7 +87,7 @@ label {
 }
 
 .btn:hover {
-  background-color: #45a049;
+  background-color: #FFDD33;
 }
 
 a {
@@ -107,6 +112,25 @@ span.price {
     margin-bottom: 20px;
   }
 }
+input[type="radio"], input[type="checkbox"] {
+    display: none;
+  }
+  label {
+    padding-left: 1.25em;
+    background: url('https://s3-eu-west-1.amazonaws.com/static.oscargascon.es/wp-content/media/check-radio-sprites.png') no-repeat top left;
+  }
+  input[type="radio"] + label   {
+    background-position: 0 -42px; width: 24px; height: 24px;
+  }
+  input[type="radio"]:checked + label {
+    background-position: 0 -71px; width: 24px; height: 24px;
+  }
+  input[type="checkbox"] + label {
+    background-position: 0 0; width: 16px; height: 16px;
+  }
+  input[type="checkbox"]:checked + label {
+    background-position: 0 -21px; width: 16px; height: 16px;
+  }
 
     </style>
 </head>
@@ -116,36 +140,25 @@ span.price {
         <div class="container">
             <form method="post"  action="/pay">
                 <div class="col-50">
-                    <h3>Payment</h3>
-                    <label>Accepted Cards</label>
-                    <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                    </div>
-                    <label for="price">Total</label>
-                    <input type="text" id="price" name="price" value="10" readonly="readonly">
-                    <label for="currency">Currency</label>
-                    <input type="text" id="currency" name="currency" placeholder="Enter Currency">
-                    <label for="method">Metodo de pago</label>
-                    <input type="text" id="method" name="method" placeholder="Payment Method">
-                    <label for="intent">Intent</label>
-                    <input type="text" id="intent" name="intent" value="sale">
-                    <label for="description">Descripcion del pago</label>
-                    <input type="text" id="description" name="description" placeholder="Payment Description">
-
+                    <h1><b>FACTURACIÓN</b></h1>
+                    <br>
+                    <h3>Descripción del pago</h3>
+                    <input type="text" id="description" name="description" value="CLASES">
+                    <h3>Concepto del pago</h3>
+                    <input type="radio" id="intent" name="intent" value="sale" checked>
+                    <label for="radio1">Sale</label>
+                    <h3>Divisa</h3>
+                    <input type="radio" name="currency" value="EUR" id="radio1" checked /><label for="radio1">EUR</label>
+                    <h3>Método de pago</h3>
+                    <input type="radio" name="method" value="PAYPAL" id="radio1" checked /><label for="radio1">Paypal</label>
+                    <h3><b><i><u>TOTAL</u></i></b></h3>
+                    <input type="text" id="price" name="price" value="${orden.price}" readonly=True >
                 </div>
 
-                <input type="submit" value="Continue to checkout" class="btn" disabled>
+                <input type="submit" value="Confirmar" class="btn">
             </form>
         </div>
     </div>
-    <div class="col-25">
-        <div class="container">
-            <h4>Clases <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-        </div>
-    </div>
 </div>
-
 </body>
+</petclinic:layout>

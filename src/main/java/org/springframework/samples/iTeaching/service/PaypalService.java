@@ -19,8 +19,8 @@ import com.paypal.base.rest.PayPalRESTException;
 @Service
 public class PaypalService {
 
+	@Autowired
 	private APIContext apiContext;
-	
 	
 	public Payment createPayment(
 			Double total, 
@@ -33,7 +33,7 @@ public class PaypalService {
 		Amount amount = new Amount();
 		amount.setCurrency(currency);
 		total = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
-		amount.setTotal(String.format("%.2f", total));
+		amount.setTotal(String.format("%.3f", total));
 
 		Transaction transaction = new Transaction();
 		transaction.setDescription(description);
