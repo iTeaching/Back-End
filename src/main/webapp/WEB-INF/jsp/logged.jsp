@@ -44,12 +44,12 @@
 
 	<main>
 		<sec:authorize access="hasAnyAuthority('profesor')">
-			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3 ">
+			<div class="row justify-content-center row-cols-1 row-cols-md-4 g-3 " style="margin:-16px 100px 0px">
 				<div class="col">
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;">
 						<a href="/asignaturas" class="btn btn-outline-link"> <img
 							class="card-img-top" style="margin-top:10px;"
-							src="https://cdn-icons.flaticon.com/png/128/4430/premium/4430390.png?token=exp=1648661011~hmac=b9363d3fdaf43542cb82ed04924aba1f"
+							src="resources/images/libros.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Mis asignaturas</h5> 
@@ -61,11 +61,11 @@
 					</div>
 				</div>
 				
-				<div class="col">
+				<div class="col" >
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;">
 						<a href="/profesores/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px;"
-							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
+							src="resources/images/miperfil.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Mi perfil</h5>
@@ -80,7 +80,7 @@
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;">
 						<a name="logout" value="logout" href="/login"
 							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px;"
-							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"
+							src="resources/images/log-out.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Cerrar sesión</h5>
@@ -95,11 +95,11 @@
 
 		<sec:authorize access="hasAnyAuthority('alumno')">
 			<div class="row justify-content-center row-cols-1 row-cols-md-5 g-3">
-				<div class="col">
+				<div class="col" style="">
 					<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
 						<a href="/asignaturas" class="btn btn-outline-link"> <img
 							class="card-img-top"  style="margin-top:10px";
-							src="https://cdn-icons.flaticon.com/png/128/4430/premium/4430390.png?token=exp=1648661011~hmac=b9363d3fdaf43542cb82ed04924aba1f"
+							src="resources/images/libros.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Asignaturas </h5>
@@ -113,9 +113,8 @@
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;margin-left:20px">
 						<a href="/ofertas/find" class="btn btn-outline-link"> <img
 							class="card-img-top" style="margin-top:10px";
-							src="https://cdn-icons.flaticon.com/png/128/2952/premium/2952714.png?token=exp=1648660817~hmac=8d3a3de932780f8b72b1587fcf09e3bb"
+							src="resources/images/buscar.png"
 							alt="Card image cap">
-
 							<div class="card-body">
 								<h5 class="card-title text-primary">Buscar ofertas</h5>
 								<p class="card-text text-dark">Visualiza las ofertas
@@ -129,7 +128,7 @@
 					<div class="card h-100" style="width: 15rem;background-color:#FFDD33;margin-left:20px">
 						<a href="/alumnos/miPerfil"
 							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px";
-							src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png"
+							src="resources/images/miperfil.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Mi perfil</h5>
@@ -145,7 +144,7 @@
 					<div class="card h-100" style="width: 15rem;background-color:#FFDD33;margin-left:20px">
 						<a href="/pagar"
 							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px";
-							src="https://i.pinimg.com/originals/4c/be/11/4cbe116c2ba74636d40d14490d306903.png"
+							src="resources/images/pagar.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Pagar</h5>
@@ -160,7 +159,7 @@
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;margin-left:20px">
 						<a name="logout" value="logout" href="/login"
 							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px";
-							src="https://cdn-icons-png.flaticon.com/512/56/56805.png"
+							src="resources/images/log-out.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title text-primary">Cerrar sesión</h5>

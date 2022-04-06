@@ -39,6 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/users/new").permitAll()
 				.antMatchers("/ofertas/misOfertas").hasAuthority("profesor")
 				.antMatchers("/salas/new").hasAnyAuthority("profesor")
+				.antMatchers("/pay").hasAnyAuthority("alumno")
+				.antMatchers("/pagar").hasAnyAuthority("alumno")
 				.antMatchers("/salas").hasAnyAuthority("profesor", "alumno")
 				.antMatchers("/ofertas/find/**").hasAnyAuthority("alumno")
 				.antMatchers("/alumnos/new").permitAll()
@@ -49,6 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/payments/**").authenticated()
 				.antMatchers("/bills/**").authenticated()
 				.antMatchers("/logged").authenticated()
+				.antMatchers("/asignatura/**").authenticated()
+				.antMatchers("/asignaturas").authenticated()
 				.and()
 				 	.formLogin()
 				 	.loginPage("/login")
@@ -61,8 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // de la BD H2 (deshabilitar las cabeceras de protección contra
                 // ataques de tipo csrf y habilitar los framesets si su contenido
                 // se sirve desde esta misma página.
-                http.csrf().ignoringAntMatchers("/h2-console/**","/actuator/**");
-                http.headers().frameOptions().sameOrigin();
+                http.csrf().disable();
 	}
 
 	@Override

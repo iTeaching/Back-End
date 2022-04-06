@@ -84,9 +84,9 @@ public class AlumnoValidator implements Validator {
 					.getPrincipal();
 			String alumnoNombre = alumno.getUser().getUsername();
 			String alumnoLogeado = alumnoDetails.getUsername();
-			if(!alumnoDetails.getUsername().equals(alumno.getUser().getUsername())) {
-				errors.rejectValue("user.username", " No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.", "No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.");
-			}
+//			if(!alumnoDetails.getUsername().equals(alumno.getUser().getUsername())) {
+//				errors.rejectValue("user.username", " No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.", "No es posible cambiar el nombre de usuario. Introduzca el mismo nombre de usuario.");
+//			}
 		}
 
 		if (alumno.getUser().getUsername()!=null&&alumno.getUser().getUsername().isBlank()) {
