@@ -22,6 +22,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Clase;
+import org.springframework.samples.iTeaching.model.estadoClase;
 import org.springframework.samples.iTeaching.repository.ClaseRepository;
 /**
  * Spring Data JPA OwnerRepository interface
@@ -37,8 +38,8 @@ public interface ClaseRepository extends CrudRepository<Clase, Integer> {
 
 
 
-//	@Query("SELECT alumno FROM Alumno alumno WHERE alumno.id =:id")
-//	public Alumno findById(@Param("id") int id);
+	@Query("SELECT clase FROM Clase clase WHERE clase.id =:id")
+	public Clase findById(@Param("id") int id);
 
 	@Query("SELECT clase FROM Clase clase WHERE clase.alumno.user.username =:username")
 	public List<Clase> findByUsername(String username);
@@ -46,6 +47,9 @@ public interface ClaseRepository extends CrudRepository<Clase, Integer> {
 	
 	@Query("SELECT clase FROM Clase clase WHERE clase.profesor.user.username =:username")
 	public List<Clase> findByProfesor(String username);
+	
+	@Query("SELECT clase FROM Clase clase WHERE clase.estadoClase =:estadoclase")
+	public List<Clase> findByEstadoClase(estadoClase estadoclase);
 	
 	List<Clase> findAll();
 

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -37,6 +39,11 @@ public class Clase extends BaseEntity{
 	@Column(name="aceptacionProfesor", columnDefinition = "boolean default false")
 	//@DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
 	private Boolean aceptacionProfesor;
+	
+	//@NotNull
+	@Column(name="estadoclase")
+	@Enumerated(value = EnumType.STRING)
+	private estadoClase estadoClase;
 	
 	@ManyToOne
 	@JoinColumn(name = "alumno")

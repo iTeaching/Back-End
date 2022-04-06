@@ -15,6 +15,7 @@ import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.Clase;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.model.estadoClase;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
@@ -155,12 +156,24 @@ public class AlumnoController {
 			String username= clienteDetails.getUsername();
 			System.out.println(username);
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			List<Clase> listaClase = claseService.findAll();
+			//List<Clase> listaClase = claseService.findAll();
 			
 			List<Clase> clase = claseService.findAlumnoByUsername(username);
+			List<Clase> listaSolicitada = claseService.findEstadoClase(estadoClase.solicitada);
+			List<Clase> listaCancelada = claseService.findEstadoClase(estadoClase.cancelada);
+			List<Clase> listaConfirmada = claseService.findEstadoClase(estadoClase.confirmada);
+			List<Clase> listaFinalizada = claseService.findEstadoClase(estadoClase.finalizada);
+			System.out.println(listaSolicitada);
 			//model.addAttribute("listaClase", listaClase);
 			model.addAttribute("listaClase", clase);
 			model.addAttribute("alumno", usuario);
+			model.addAttribute("listaSolicitada", listaSolicitada);
+			model.addAttribute("listaCancelada", listaCancelada);
+			model.addAttribute("listaConfirmada", listaConfirmada);
+			model.addAttribute("listaFinalizada", listaFinalizada);
+
+			
+
 			return "alumnos/miPerfil";
 			
 		}catch(Exception e) {	// si no está logueado
@@ -218,9 +231,6 @@ public class AlumnoController {
 				
 				i++;
 				}
-
-		
-
 		}
 		
 		
@@ -247,11 +257,37 @@ public class AlumnoController {
 			clase.setAlumno(usuario);
 			clase.getAsignatura().getProfesor();
 			clase.setProfesor(clase.getAsignatura().getProfesor());
+			clase.setEstadoClase(estadoClase.solicitada);
 			this.claseService.saveClase(clase);
-
+;
 			return "redirect:/alumnos/miPerfil";
 		}
 	}
+	
+	@GetMapping(value="/alumnos/aceptar/{claseId}")
+	public String aceptarClase(@PathVariable("claseId") int claseId, 
+			Map<String,Object> model) {
+		Clase clase = claseService.findById(claseId);
+		model.put("clase", clase);
+		return "alumnos/aceptarClase";
+	}
+	
+	@PostMapping(value="/alumnos/aceptar/{claseId}")
+	public String aceptarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
+			Map<String,Object> model, BindingResult result) {
+		if (result.hasErrors()) {
+			return "alumnos/{alumnoId}/nuevaClase";
+		}
+		else {
+			//creating alumno, user and authorities
+			clase.setId(claseId);
+			clase.setEstadoClase(estadoClase.confirmada);
+			this.claseService.saveClase(clase);
+;
+			return "redirect:/alumnos/miPerfil";
+		}
+	}
+
 
 	
 	@GetMapping(value="/alumnos/miPerfil/changeAvatar/{alumnoId}")
