@@ -3644,6 +3644,7 @@ javax.el.PropertyNotFoundException: Property [username] not found on type [org.s
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+
 2022-03-29 17:26:31,539 ERROR org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration$StaticView [http-nio-8080-exec-8] Cannot render error page for request [/alumnos/miPerfil/changeAvatar/1] and exception [Property [username] not found on type [org.springframework.samples.iTeaching.model.Alumno]] as the response has already been committed. As a result, the response may have the wrong status code.
 2022-03-29 17:29:01,470 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [Thread-70] Shutting down ExecutorService 'applicationTaskExecutor'
 2022-03-29 17:29:01,473 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-70] Closing JPA EntityManagerFactory for persistence unit 'default'
@@ -3797,6 +3798,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
+
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
@@ -3818,6 +3820,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.samples.iTeaching.service.StorageService]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error on token "}", delete this token
 
@@ -3829,10 +3832,12 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 	Syntax error on token "}", delete this token
 
 	at org.springframework.samples.iTeaching.service.StorageService.<init>(StorageService.java:55)
+
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:203)
 	... 24 common frames omitted
 2022-03-29 17:48:59,195 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on PC-Juan with PID 6292 (C:\Users\alfon\git\Back-End\target\classes started by alfon in C:\Users\alfon\git\Back-End)
@@ -3882,6 +3887,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
+
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
@@ -3903,6 +3909,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.samples.iTeaching.service.StorageService]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error on token "}", delete this token
 
@@ -3967,6 +3974,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
+
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
@@ -3988,6 +3996,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.samples.iTeaching.service.StorageService]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error on token "}", delete this token
 
@@ -3999,10 +4008,12 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 	Syntax error on token "}", delete this token
 
 	at org.springframework.samples.iTeaching.service.StorageService.<init>(StorageService.java:55)
+
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:203)
 	... 24 common frames omitted
 2022-03-29 17:50:45,742 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on PC-Juan with PID 6292 (C:\Users\alfon\git\Back-End\target\classes started by alfon in C:\Users\alfon\git\Back-End)
@@ -4052,6 +4063,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
+
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
@@ -4073,6 +4085,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.samples.iTeaching.service.StorageService]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error on token "}", delete this token
 
@@ -4084,10 +4097,12 @@ Caused by: java.lang.Error: Unresolved compilation problem:
 	Syntax error on token "}", delete this token
 
 	at org.springframework.samples.iTeaching.service.StorageService.<init>(StorageService.java:55)
+
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:203)
 	... 24 common frames omitted
 2022-03-29 17:52:16,433 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ITeachingApplication on PC-Juan with PID 6292 (C:\Users\alfon\git\Back-End\target\classes started by alfon in C:\Users\alfon\git\Back-End)
@@ -4137,6 +4152,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
+
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
@@ -4158,6 +4174,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.samples.iTeaching.service.StorageService]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error on token "}", delete this token
 
@@ -4222,6 +4239,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1320)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1214)
+
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
@@ -4243,6 +4261,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.samples.iTeaching.service.StorageService]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
 	Syntax error on token "}", delete this token
 
@@ -4733,10 +4752,12 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215)
 	at org.springframework.samples.iTeaching.ITeachingApplication.main(ITeachingApplication.java:13)
+
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
 Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:403)
@@ -4769,10 +4790,12 @@ Caused by: org.hibernate.InstantiationException: could not instantiate test obje
 	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:96)
 	... 33 common frames omitted
 Caused by: java.lang.reflect.InvocationTargetException: null
+
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+
 	at org.hibernate.engine.internal.UnsavedValueFactory.instantiate(UnsavedValueFactory.java:40)
 	... 42 common frames omitted
 Caused by: java.lang.Error: Unresolved compilation problems: 
@@ -5044,3 +5067,4 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2022-03-29 18:50:50,706 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ITeachingApplication in 2.75 seconds (JVM running for 3000.834)
 2022-03-29 18:50:50,709 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
 2022-03-29 18:50:50,710 INFO org.springframework.samples.iTeaching.ITeachingApplication [restartedMain] Listo para la clase
+
