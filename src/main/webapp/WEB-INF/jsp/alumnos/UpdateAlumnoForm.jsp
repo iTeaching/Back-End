@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
+<%@page pageEncoding="UTF-8"%>
 
 <head>
     <meta charset="UTF-8">    
