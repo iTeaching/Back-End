@@ -15,7 +15,10 @@ import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Authorities;
 import org.springframework.samples.iTeaching.model.User;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
+import org.springframework.samples.iTeaching.service.ClaseService;
+import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
 import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
@@ -44,6 +47,13 @@ public class AlumnoControllerTest {
 	private AuthoritiesService authService;
 	@MockBean
 	private UserService userService;
+
+	@MockBean
+	private ClaseService claseService;
+	@MockBean
+	private ProfesorService profesorService;
+	@MockBean
+	private AsignaturaService asignaturaService;
 	
 	@Autowired
 	private MockMvc mockMvc;

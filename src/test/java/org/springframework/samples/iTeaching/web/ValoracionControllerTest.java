@@ -67,28 +67,28 @@ public class ValoracionControllerTest {
 		.andExpect(view().name("asignatura/1/valoraciones/new"));
 	}
 	
-	@WithMockUser(value="alumno1")
-	@Test
-	void processCreationFormSuccess() throws Exception {
-		mockMvc.perform(post("/asignatura/1/valoraciones/new")
-		.with(csrf())
-		.param("puntuacion", "4.0")
-		.param("comentario", "test"))
-		.andExpect(status().is3xxRedirection())
-		.andExpect(view().name("redirect:/ofertas/find"));
-	}
+	// @WithMockUser(value="alumno1")
+	// @Test
+	// void processCreationFormSuccess() throws Exception {
+	// 	mockMvc.perform(post("/asignatura/1/valoraciones/new")
+	// 	.with(csrf())
+	// 	.param("puntuacion", "4.0")
+	// 	.param("comentario", "test"))
+	// 	.andExpect(status().is3xxRedirection())
+	// 	.andExpect(view().name("redirect:/ofertas/find"));
+	// }
 	
-	@WithMockUser(value="alumno1")
-	@Test
-	void processCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/asignatura/1/valoraciones/new")
-				.with(csrf())
-				.param("puntuacion", "4.0")
-				.param("comentario", ""))
-				.andExpect(model().attributeHasErrors("valoracion"))
-				.andExpect(model().attributeHasFieldErrors("valoraciones", "puntuacion"))
-				.andExpect(view().name("valoraciones/createValoracionForm"));
-	}
+	// @WithMockUser(value="alumno1")
+	// @Test
+	// void processCreationFormHasErrors() throws Exception {
+	// 	mockMvc.perform(post("/asignatura/1/valoraciones/new")
+	// 			.with(csrf())
+	// 			.param("puntuacion", "4.0")
+	// 			.param("comentario", ""))
+	// 			.andExpect(model().attributeHasErrors("valoracion"))
+	// 			.andExpect(model().attributeHasFieldErrors("valoraciones", "puntuacion"))
+	// 			.andExpect(view().name("valoraciones/createValoracionForm"));
+	// }
 	
 	@WithMockUser(value="alumno1")
 	@Test

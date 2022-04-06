@@ -19,7 +19,10 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.iTeaching.configuration.SecurityConfiguration;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.User;
+import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
+import org.springframework.samples.iTeaching.service.ClaseService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
 import org.springframework.samples.iTeaching.service.UserService;
@@ -39,6 +42,14 @@ public class ProfesorControllerTest {
 	private AuthoritiesService authService;
 	@MockBean
 	private UserService userService;
+
+	@MockBean
+	private AsignaturaService asignaturaService;
+
+	@MockBean
+	private ClaseService claseService;
+	@MockBean
+	private AlumnoService alumnoService;
 
 	@Autowired
 	private MockMvc mockMvc;
