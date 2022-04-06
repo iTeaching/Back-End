@@ -63,7 +63,7 @@
 
 		</table>
 
-		<h1>Próximas Clases</h1>
+		<h3 style="color: #dab305;">Próximas Clases</h3>
 
 		<table id="clasesTable" class="table table-striped">
 			<thead>
@@ -93,7 +93,7 @@
 			</tbody>
 		</table>
 
-		<h1>Clases solicitadas</h1>
+		<h3 style="color: #dab305;">Clases solicitadas</h3>
 		<table id="clasesTable" class="table table-striped">
 			<thead>
 				<tr>
@@ -115,18 +115,22 @@
 						<td><c:out value="${listaClase.asignatura.precio}€" /></td>
 						<td><c:choose>
 								<c:when test="${listaClase.aceptacionProfesor==false}">
-									<a class="button" href="/profesor/aceptar/${listaClase.id}">Aceptar
-										Clase</a>
+									<button type="button" class="btn btn-secondary">
+										<a class="button" href="/profesor/aceptar/${listaClase.id}" style="text-decoration:none; color: white">Aceptar
+											Clase</a>
+									</button>
 								</c:when>
 							</c:choose>
 
-						<a class="button" href="/profesor/cancelar/${listaClase.id}">Cancelar Clase</a></td>
+						<button type="button" class="btn btn-secondary">
+							<a style="text-decoration:none; color: white" class="button" href="/profesor/cancelar/${listaClase.id}">Cancelar Clase</a></td>
+						</button>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 
-		<h1>Clases finalizadas</h1>
+		<h3 style="color: #dab305;">Clases finalizadas</h3>
 		<table id="clasesTable" class="table table-striped">
 			<thead>
 				<tr>
@@ -150,7 +154,7 @@
 			</tbody>
 		</table>
 
-		<h1>Clases canceladas</h1>
+		<h3 style="color: #dab305;">Clases canceladas</h3>
 		<table id="clasesTable" class="table table-striped">
 			<thead>
 				<tr>

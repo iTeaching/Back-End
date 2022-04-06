@@ -186,8 +186,8 @@
 			</tbody>
 
 		</table>
-		 <button type="button" class="btn btn-warning" style="border-color: #dab305; background-color: #dab305;" ><a class="button" href="/alumnos/nuevaClase" style="text-decoration:none; color: white">Solicitar
-			nueva clase</a> </button>
+	<!-- 	 <button type="button" class="btn btn-warning" style="border-color: #dab305; background-color: #dab305;" ><a class="button" href="/alumnos/nuevaClase" style="text-decoration:none; color: white">Solicitar
+			nueva clase</a> </button> -->
 			
 			<button class="btn btn-warning"
 			type="button" style="color: white; border-color: #dab305; background-color: #dab305;"
