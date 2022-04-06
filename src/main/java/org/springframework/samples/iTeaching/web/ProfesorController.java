@@ -240,36 +240,6 @@ public class ProfesorController {
 		return "profesores/nuevaClase";
 	}
 	
-	@GetMapping(value="/profesores/aceptar/{claseId}")
-	public String aceptarClase(@PathVariable("claseId") int claseId, 
-			Map<String,Object> model) {
-		Clase clase = claseService.findById(claseId);
-		model.put("clase", clase);
-		return "profesores/aceptarClase";
-	}
-
-	@PostMapping(value="/profesores/aceptar/{claseId}")
-	public String aceptarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
-			Map<String,Object> model, BindingResult result) {
-		if (result.hasErrors()) {
-			return "profesores/{profesorId}/nuevaClase";
-		}
-		else {
-			//creating prof, user and authorities
-			clase.setId(claseId);
-			clase.setEstadoClase(estadoClase.confirmada);
-			this.claseService.saveClase(clase);
-;
-			return "redirect:/profesores/miPerfil";
-		}
-	}
-	
-	
-
-	
-	
-	
-	
 	@PostMapping(value="profesor/{profesorId}/nuevaClase")
 	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("profesorId") int profesorIdPagina) {
 		if (result.hasErrors()) {
@@ -290,13 +260,44 @@ public class ProfesorController {
 			clase.getAsignatura().getProfesor();
 			
 			clase.setProfesor(usuario);
-			
+			clase.setEstadoClase(estadoClase.solicitada);
 			this.claseService.saveClase(clase);
 
 			return "redirect:/profesores/miPerfil";
 		}
 	}
 	
+	
+	@GetMapping(value="/profesores/aceptar/{claseId}")
+	public String aceptarClase(@PathVariable("claseId") int claseId, 
+			Map<String,Object> model) {
+		Clase clase = claseService.findById(claseId);
+		model.put("clase", clase);
+		return "profesores/aceptarClase";
+	}
+
+	@PostMapping(value="/profesores/aceptar/{claseId}")
+	public String aceptarClasePost(@Valid Clase clase,@PathVariable("claseId") int claseId, 
+			Map<String,Object> model, BindingResult result) {
+		if (result.hasErrors()) {
+			return "profesores/{profesorId}/nuevaClase";
+		}
+		else {
+			//creating prof, user and authorities
+			clase.setId(claseId);
+			clase.setEstadoClase(estadoClase.confirmada);
+			this.claseService.saveClase(clase);
+			return "redirect:/profesores/miPerfil";
+		}
+	}
+	
+	
+
+	
+	
+	
+	
+
 	
 	
 

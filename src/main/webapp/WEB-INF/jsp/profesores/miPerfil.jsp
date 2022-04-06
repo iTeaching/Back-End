@@ -80,7 +80,7 @@
 				        <tr>
 				            <th style="width: 150px;">Hora de Comienzo</th>
 				            <th style="width: 150px;">Hora de Fin</th>
-				            <th style="width: 200px;">Profesor</th>
+				            <th style="width: 200px;">Alumno</th>
 				            <th>Asignatura</th>
 				            <th>Precio por hora</th>
 				
