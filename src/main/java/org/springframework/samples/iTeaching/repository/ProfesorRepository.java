@@ -14,4 +14,9 @@ public interface ProfesorRepository extends CrudRepository<Profesor, Integer>{
 	
 	List<Profesor> findAll();
 
+	
+	@Query(value="SELECT SALA_ID, ALUMNO_ID, PROFESOR FROM ASIGNATURA_ALUMNO INNER JOIN ASIGNATURA WHERE ASIGNATURA.ID = ASIGNATURA_ALUMNO.SALA_ID AND PROFESOR=?1 AND ASIGNATURA_ALUMNO.ALUMNO_ID =?2", nativeQuery = true)
+	public List<String> findByIdAlumnosProfesores(int id, int id2);
+
+
 }

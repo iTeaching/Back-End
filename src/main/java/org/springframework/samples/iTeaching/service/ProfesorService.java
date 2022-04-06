@@ -47,4 +47,9 @@ public class ProfesorService {
 		this.profesorRepository.delete(profesor);
 	}
 
+	public List<String> findByIdAlumnosProfesores(int idProfesores, int idAlumnos){
+		return profesorRepository.findByIdAlumnosProfesores(idProfesores, idAlumnos);	
+	}
+	
+	
 }
