@@ -72,23 +72,22 @@
                </tbody>
               
               </table>  
-              
-                   <h3 style="color: #dab305;">Mis Clases</h1> 
+                   <h3 style="color: #dab305;">Próximas Clases</h3> 
 
 				    <table id="clasesTable" class="table table-striped">
 				        <thead>
 				        <tr>
 				            <th style="width: 150px;">Hora de Comienzo</th>
 				            <th style="width: 150px;">Hora de Fin</th>
-				            <th style="width: 200px;">Profesor</th>
-				            <th>Alumno</th>
+				            <th style="width: 200px;">Alumno</th>
 				            <th>Asignatura</th>
+				            <th>Precio por hora</th>
 				
 				         
 				        </tr>
 				        </thead>
 				        <tbody>
-				        <c:forEach items="${listaClase}" var="listaClase">
+				        <c:forEach items="${listaConfirmada}" var="listaClase">
 				            
 				                <tr>
 				                    <td>
@@ -98,23 +97,154 @@
 				                        <c:out value="${listaClase.horaFin}"/>
 				                    </td>
 				                    <td>
-				                        <c:out value="${listaClase.profesor.firstName}"/>
+				                        <c:out value="${listaClase.alumno.firstName}"/>
 				                    </td>
 				                    <td>
-				                   	 	<c:out value="${listaClase.alumno.firstName}&nbsp${listaClase.alumno.lastName }"/>
-				                        
-				                    </td>
+				                   	 	<c:out value="${listaClase.asignatura.nombre}"/>
+				                    </td>			               
 				                    <td>
-				                        <c:out value="${listaClase.asignatura.nombre}"/>
-				                    </td>
+				                    <c:out value="${listaClase.asignatura.precio}€"/> 
+				                     </td>
 				                </tr>
 				
 				        </c:forEach>
 				         
         			</tbody>
         	 </table>
-                  <button type="button" class="btn btn-warning" style="border-color: #dab305; background-color: #dab305;"><a class="button" href="/profesor/${profesor.id}/nuevaClase" style="text-decoration:none; color: white">Solicitar nueva clase</a></button>
-              <button class="btn btn-warning" type="button" style="color: white; text-decoration:none; border-color: #dab305; background-color: #dab305;"  onclick="window.location.href='/profesores/${profesor.id}/edit'">Editar</button>
+
+
+        <h3 style="color: #dab305;">Clases solicitadas</h3> 
+        <table id="clasesTable" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Hora de Comienzo</th>
+            <th style="width: 150px;">Hora de Fin</th>
+            <th style="width: 200px;">Alumno</th>
+            <th style="width: 340px;">Asignatura</th>          
+            <th>Precio por hora</th>
+            <th>Aceptar clase</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${listaSolicitada}" var="listaClase">
+
+                <tr>
+                    <td>
+                        <c:out value="${listaClase.horaComienzo}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.horaFin}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.alumno.firstName}"/>
+                    </td>
+
+                    <td>
+                        <c:out value="${listaClase.asignatura.nombre}"/>
+                    </td>
+                    <td>
+                   	 	<c:out value="${listaClase.asignatura.precio}€"/> 
+                    </td>
+                     <td>
+                     	<button type="button" class="btn btn-secondary">
+                   	    	<a class="button" href="/profesores/aceptar/${listaClase.id}" style="text-decoration:none; color: white">Aceptar Clase</a>
+                   	    </button>
+                    </td>
+                </tr>
+
+        </c:forEach>
+
+        </tbody>
+
+    </table>
+
+
+                     <h3 style="color: #dab305;">Clases finalizadas</h3> 
+        <table id="clasesTable" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Hora de Comienzo</th>
+            <th style="width: 150px;">Hora de Fin</th>
+            <th style="width: 200px;">Alumno</th>
+            <th>Asignatura</th>          
+            <th>Precio por hora</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${listaFinalizada}" var="listaClase">
+
+                <tr>
+                    <td>
+                        <c:out value="${listaClase.horaComienzo}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.horaFin}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.alumno.firstName}"/>
+                    </td>
+
+                    <td>
+                        <c:out value="${listaClase.asignatura.nombre}"/>
+                    </td>
+                    <td>
+                   	 	<c:out value="${listaClase.asignatura.precio}€"/> 
+                    </td>
+                </tr>
+
+        </c:forEach>
+
+        </tbody>
+
+    </table>
+
+                         <h3 style="color: #dab305;">Clases canceladas</h3> 
+        <table id="clasesTable" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Hora de Comienzo</th>
+            <th style="width: 150px;">Hora de Fin</th>
+            <th style="width: 200px;">Alumno</th>
+            <th>Asignatura</th>          
+            <th>Precio por hora</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${listaCancelada}" var="listaClase">
+
+                <tr>
+                    <td>
+                        <c:out value="${listaClase.horaComienzo}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.horaFin}"/>
+                    </td>
+                    <td>
+                        <c:out value="${listaClase.alumno.firstName}"/>
+                    </td>
+
+                    <td>
+                        <c:out value="${listaClase.asignatura.nombre}"/>
+                    </td>
+                    <td>
+                   	 	<c:out value="${listaClase.asignatura.precio}€"/> 
+                    </td>
+                </tr>
+
+        </c:forEach>
+
+        </tbody>
+
+    </table>
+              <button type="button" class="btn btn-warning" style="border-color: #dab305; background-color: #dab305;"><a class="button" href="/profesor/${profesor.id}/nuevaClase" style="text-decoration:none; color: white">Solicitar nueva clase</a></button>
+              <button class="btn btn-warning" type="button" style="color: white; border-color: #dab305; background-color: #dab305;" onclick="window.location.href='/profesores/${profesor.id}/edit'">Editar</button>
+
                </form>
     
     
