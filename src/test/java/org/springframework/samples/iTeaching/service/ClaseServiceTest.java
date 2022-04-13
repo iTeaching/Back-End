@@ -72,4 +72,11 @@ public class ClaseServiceTest {
 
 		assertEquals(1, c.size());
 	}
+
+	@Test
+	public void testFindByEstado() {
+		List<Clase> c = this.claseService.findEstadoClase(estadoClase.solicitada);
+
+		assertEquals(1, c.size());
+	}
 }
