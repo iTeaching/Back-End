@@ -67,7 +67,12 @@
  <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
   <label for="floatingPassword">Contrase&ntildea</label>
 </div>
-		<p style="color:red;">${error}</p>
+<input type = "checkbox" id = "remember" name="remember-me" >
+<label for = "remember">
+    Recu&eacute;rdame
+</label>
+</input>
+<p style="color:red;">${error}</p>
 		
 		<div class="d-grid gap-2">
 		<button class="button">Iniciar sesión</button>
