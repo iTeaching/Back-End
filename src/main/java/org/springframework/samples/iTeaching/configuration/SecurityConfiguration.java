@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.configuration;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,6 +30,8 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Resource
+	UserDetailsService userDetailsService;
 	@Autowired
 	DataSource dataSource;
 
@@ -53,6 +57,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/logged").authenticated()
 				.antMatchers("/asignatura/**").authenticated()
 				.antMatchers("/asignaturas/**").authenticated()
+				.and()
+				.rememberMe().userDetailsService(userDetailsService)
 				.and()
 				 	.formLogin()
 				 	.loginPage("/login")
