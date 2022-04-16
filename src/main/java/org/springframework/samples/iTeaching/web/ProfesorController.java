@@ -115,6 +115,49 @@ public class ProfesorController {
 			return "redirect:/profesores/miPerfil";
 		}
 	}
+	
+	@GetMapping(value="/profesores/{profesorId}/delete")
+	public String deleteProfesor(@PathVariable("profesorId") int profesorId, Model model) {
+		try {
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor profesor = this.profesorService.findProfesorById(profesorId);
+			if(!profesor.getUser().getUsername().equals(username))
+				return "redirect:/login";
+			model.addAttribute("profesor", profesor);
+			return "profesores/delete";
+		}catch(Exception e){
+			return "redirect:/login";
+		}
+	}
+	
+	@PostMapping(value="/profesores/{profesorId}/delete")
+	public String deleteProfesorPost(@PathVariable("profesorId") int profesorId) {
+		try {
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Profesor profesor = this.profesorService.findProfesorById(profesorId);
+			if(!profesor.getUser().getUsername().equals(username))
+				return "redirect:/login";
+			
+			profesor.setEmail("userdeleted@deleted.com");
+			profesor.setFirstName("firstnameuserdeleted");
+			profesor.setLastName("lastnameuserdeleted");
+			profesor.setTelephone("000000000");
+			profesor.getUser().setEnabled(false);
+			profesor.setId(profesorId);
+			this.profesorService.saveProfesor(profesor);
+			System.out.println("Profesor eliminado");
+			
+			return "redirect:/login";
+		}catch(Exception e){
+			System.out.println("Error al eliminar el profesor");
+			System.out.println(e);
+			return "redirect:/login";
+		}
+	}
 
 
 	@GetMapping("/profesores/{profesorId}")
@@ -134,7 +177,7 @@ public class ProfesorController {
 			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username= clienteDetails.getUsername();
 			Profesor usuario = profesorService.findProfesorByUsername(username);
-			List<Clase> clase = claseService.findProfesorByUsername(username);	
+			List<Clase> clase = claseService.findByProfesor(username);	
 			
 			List<Clase> listaSolicitada = new ArrayList<>();
 			List<Clase> listaCancelada = new ArrayList<>();
