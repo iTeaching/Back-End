@@ -74,6 +74,8 @@
                     </c:when>
                 <c:otherwise>
                         <button type="submit" class="btn btn-warning" style="font-size:16px; color:white; border-color: #dab305; background-color: #dab305;">Actualizar Usuario</button>
+                        <br><br>
+                        <a href="/alumnos/${alumno.id }/delete" class="btn btn-warning" style="font-size:16px; color:white; border-color: #dab305; background-color: #dab305;">Eliminar Usuario</a>
                 </c:otherwise>
                 </c:choose>
             </div>
