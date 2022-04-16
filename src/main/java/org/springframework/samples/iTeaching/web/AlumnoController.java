@@ -64,7 +64,7 @@ public class AlumnoController {
 
 	@InitBinder("alumno")
 	public void initVehiculoBinder(WebDataBinder dataBinder) {
-		dataBinder.setValidator(new AlumnoValidator(alumnoService));
+		dataBinder.setValidator(new AlumnoValidator(alumnoService, profesorService));
 	}
 
 	@InitBinder
