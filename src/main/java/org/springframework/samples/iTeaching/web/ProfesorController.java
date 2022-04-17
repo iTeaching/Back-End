@@ -70,7 +70,7 @@ public class ProfesorController {
 	public void setAllowedFields(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
-
+	
 	@GetMapping(value = "/profesores/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Profesor profesor = new Profesor();

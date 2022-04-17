@@ -21,8 +21,7 @@ public abstract class AbstractJPARepository< T extends Serializable > {
 	      return entityManager.find( clazz, id );
 	   }
 	   public List< T > findAll(){
-	      return entityManager.createQuery( "from " + clazz.getName() )
-	       .getResultList();
+	      return entityManager.createQuery( "from " + clazz.getName()).getResultList();
 	   }
 	 
 	   public void save( T entity ){
