@@ -40,16 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/ofertas/misOfertas").hasAuthority("profesor")
 				.antMatchers("/salas/new").hasAnyAuthority("profesor")
 				.antMatchers("/pay").hasAnyAuthority("alumno")
+				.antMatchers("/chat/**").hasAnyAuthority("alumno","profesor")
 				.antMatchers("/pagar").hasAnyAuthority("alumno")
 				.antMatchers("/salas").hasAnyAuthority("profesor", "alumno")
 				.antMatchers("/ofertas/find/**").hasAnyAuthority("alumno")
 				.antMatchers("/alumnos/new").permitAll()
 				.antMatchers("/logging", "/actuator/**").permitAll()
 				.antMatchers("/admin/**").hasAnyAuthority("admin")
-				.antMatchers("/owners/**").hasAnyAuthority("alumno","admin")
-				.antMatchers("/vets/**").authenticated()
-				.antMatchers("/payments/**").authenticated()
-				.antMatchers("/bills/**").authenticated()
 				.antMatchers("/logged").authenticated()
 				.antMatchers("/asignatura/**").authenticated()
 				.antMatchers("/asignaturas/**").authenticated()
@@ -66,6 +63,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // ataques de tipo csrf y habilitar los framesets si su contenido
                 // se sirve desde esta misma página.
                 http.csrf().disable();
+				// http.csrf().ignoringAntMatchers("/h2-console/**");
+				// http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override

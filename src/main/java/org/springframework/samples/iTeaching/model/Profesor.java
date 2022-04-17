@@ -10,13 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,8 +43,7 @@ public class Profesor extends Person{
 	public String getAvatarImagePath() {
 	        if (avatar == null || id == null) return null;
 	         
-	        return "/images/resources/profile/" + avatar;
-	    
+	        return "/images/resources/profile/" + avatar;    
 	}
 	
 	@JsonIgnore

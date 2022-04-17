@@ -19,7 +19,7 @@
     <header>
         <nav>
         	<a href="/login"><button class="nav_button" data-hover="¡Bienvenido!"><div>Aprende ya</div></button></a>
-            
+            <a href="/chat">Hola</a>
             <a href="mailto:iteaching.sa@gmail.com​"><button class="nav_button" data-hover="¡Hola!"><div>Contáctanos</div></button> </a>
             <h1 class="eslogan">UNA NUEVA FORMA DE CONECTAR CON EL PROFESOR</h1>
         </nav>

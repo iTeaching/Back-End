@@ -15,24 +15,18 @@
  */
 package org.springframework.samples.iTeaching.model;
 
-
-
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
 import org.springframework.core.style.ToStringCreator;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -67,9 +61,6 @@ public class Alumno extends Person {
 	        return "/images/resources/profile/" + avatar;
 	    
 	}
-	
-	
-	
 
 	@Override
 	public String toString() {
@@ -79,6 +70,5 @@ public class Alumno extends Person {
 				.append("firstName", this.getFirstName())
 				.toString();
 	}
-
 
 }
