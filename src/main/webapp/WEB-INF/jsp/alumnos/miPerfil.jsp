@@ -24,7 +24,7 @@
 
 
 
-	<div class="col-sm-4" style="display: flex; flex-direction: column; margin-top: 20px"">
+	<div class="col-sm-4" style="display: flex; flex-direction: column; margin-top: 20px">
 
 
 		<c:choose>
