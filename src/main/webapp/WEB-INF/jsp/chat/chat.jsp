@@ -1,18 +1,20 @@
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE>
-<html>
-<head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>iTeaching</title>
 <link rel="shortcut icon" href="resources/images/logo.ico">
-<link rel="stylesheet" href="css/main.css" />
+<html>
+<iteaching:menu name="chat"/>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>iTeaching</title>
+<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
+<link href="../resources/style/chat.css" rel="stylesheet" type="text/css">
 </head>
-<body background="18.jpg"
-style="background-position: center; background-repeat: no-repeat; background-size: cover;">
+
+<body>
 	<noscript>
 		<h2>Sorry! Your browser doesn't support Javascript</h2>
 	</noscript>
@@ -22,9 +24,8 @@ style="background-position: center; background-repeat: no-repeat; background-siz
 			<h1 class="title">Nombre de usuario</h1>
 			<form id="usernameForm" name="usernameForm">
 				<div class="form-group">
-					<!-- <input type="text" id="name" placeholder="Nombre" class="form-control" /> -->
 					<input type="text" id="name" value="${alumno.firstName}&nbsp;${alumno.lastName}"  
-					readonly= True placeholder="Nombre" class="form-control" />
+					readonly= True placeholder="Nombre" class="form-control" /> 
 				</div>
 				<div class="form-group">
 					<button type="submit" class="accent username-submit">Iniciar conversación</button>
@@ -51,12 +52,29 @@ style="background-position: center; background-repeat: no-repeat; background-siz
 				</div>
 			</form>
 		</div>
+		<footer>
+		<div class="contenedor-footer">
+			<div class="footer-contact--email">
+				<img src="resources/images/gmail.svg" class="footer_img">
+			</div>
+		</div>
+		<h2 class="titulo-final">&copy; 2022,iTeaching</h2>
+	</footer>
 	</div>
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../resources/js/main.js"></script>
+
 </body>
+<footer>
+	<div class="contenedor-footer">
+		<div class="footer-contact--email">
+			<img src="resources/images/gmail.svg" class="footer_img">
+		</div>
+	</div>
+	<h2 class="titulo-final">&copy; 2022,iTeaching</h2>
+</footer>
 </html>
