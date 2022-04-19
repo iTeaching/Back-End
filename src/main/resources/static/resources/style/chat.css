@@ -1,4 +1,4 @@
-* {
+*{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -127,12 +127,13 @@ button.accent {
     position: relative;
     padding: 35px 55px 35px;
     min-height: 250px;
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    margin-top: -160px;
+    margin-top: 160px;
+	margin-bottom: 335px;
 }
 
 .username-page-container .username-submit {
@@ -152,6 +153,7 @@ button.accent {
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     margin-top: 30px;
+	margin-bottom: 125px;
     height: calc(100% - 60px);
     max-height: 600px;
     position: relative;

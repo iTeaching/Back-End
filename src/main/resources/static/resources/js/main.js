@@ -79,7 +79,7 @@ function onMessageReceived(payload) {
         message.content = message.sender + ' conectado!';
     } else if (message.type === 'LEAVE') {
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' abandonado!';
+        message.content = message.sender + ' abandonó!';
     } else {
         messageElement.classList.add('chat-message');
 
