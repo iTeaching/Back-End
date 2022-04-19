@@ -66,6 +66,10 @@
                 </c:otherwise>
 			</c:choose>
 			<iteaching:inputPassword label="Password" name="user.password"/>
+			
+			<input type="checkbox" name="agree" required/>
+        <label for="agree">Como usuario acepto los <a href="/TerminosYCondiciones" target="_blank">
+        Términos y condiciones de la empresa</a></label>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -81,10 +85,11 @@
                 </c:choose>
             </div>
         </div>
+        
     </form:form>
     </div>
     
     </div>
   </div>
-    
+
 </iteaching:layout>
