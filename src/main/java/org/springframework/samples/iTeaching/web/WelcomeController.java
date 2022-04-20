@@ -53,4 +53,12 @@ public class WelcomeController {
 
 		return "terminoscondiciones";
 	}
+	
+	@GetMapping({ "/GarantiaDePrivacidad" })
+	public String garantiaPrivacidad(Map<String, Object> model) {
+
+		return "garantiaPrivacidad";
+	}
+	
+	
 }
