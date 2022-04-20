@@ -82,6 +82,13 @@
             <input type="checkbox" name="agree" required/>
         <label for="agree">Como usuario acepto los <a href="/TerminosYCondiciones" target="_blank">
         Términos y condiciones de la empresa</a></label>
+        
+       <br>
+       <input type="checkbox" name="agree" required/>
+        <label for="agree">He leído y acepto la <a href="/GarantiaDePrivacidad" target="_blank">
+        Garantía de privacidad de la empresa</a></label>
+        
+        
         </div>
         
         <div class="g-recaptcha" data-sitekey="6LdWpYAfAAAAAGMF6n_haMV6rBMP8Pbt1qyZKEkC">
