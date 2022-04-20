@@ -22,6 +22,21 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
+    
+    	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
+	<script>
+        	window.onload = function() {
+        		var $recaptcha = document.querySelector('#g-recaptcha-response');
+        		if($recaptcha) {
+        			$recaptcha.setAttribute("required", "required");
+        		}
+        		$recaptcha.oninvalid = function(e) {
+        			alert("Por favor, verifique que es una persona");
+        		}
+        	};
+    </script>
+    
 </head>
 
 	<div style="min-height:85vh">
@@ -71,6 +86,11 @@
         <label for="agree">Como usuario acepto los <a href="/TerminosYCondiciones" target="_blank">
         Términos y condiciones de la empresa</a></label>
         </div>
+
+		<div class="g-recaptcha" data-sitekey="6LdWpYAfAAAAAGMF6n_haMV6rBMP8Pbt1qyZKEkC">
+
+        </div>
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>

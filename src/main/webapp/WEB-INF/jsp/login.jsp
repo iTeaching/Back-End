@@ -38,6 +38,20 @@
 
 	</style>
 	
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
+	<script>
+        	window.onload = function() {
+        		var $recaptcha = document.querySelector('#g-recaptcha-response');
+        		if($recaptcha) {
+        			$recaptcha.setAttribute("required", "required");
+        		}
+        		$recaptcha.oninvalid = function(e) {
+        			alert("Por favor, verifique que es una persona");
+        		}
+        	};
+    </script>
+	
 </head>
 
 <body>
@@ -71,6 +85,9 @@
 <label for = "remember">
     Recu&eacute;rdame
 </label>
+        <div class="g-recaptcha" data-sitekey="6LdWpYAfAAAAAGMF6n_haMV6rBMP8Pbt1qyZKEkC">
+
+        </div>
 </input>
 <p style="color:red;">${error}</p>
 		
