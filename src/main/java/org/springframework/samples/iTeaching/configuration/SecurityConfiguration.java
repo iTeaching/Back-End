@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.samples.iTeaching.repository.UserRepository;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -55,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/asignatura/**").authenticated()
 				.antMatchers("/asignaturas/**").authenticated()
 				.and()
-				.rememberMe().userDetailsService(userDetailsService)
+				.rememberMe().key("ABCdefglo9010221234")
 				.and()
 				 	.formLogin()
 				 	.loginPage("/login")

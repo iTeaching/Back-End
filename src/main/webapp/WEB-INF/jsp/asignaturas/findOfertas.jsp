@@ -1,11 +1,11 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+
 <iteaching:layout pageName="findOfertas">
     <h2>Encontrar asignaturas</h2>
     <head>
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="col-sm-8" style="margin-top:23px; align-items: left; flex-direction: column">
-		<button type="submit" class="btn btn-primary" style="background-color:#FFDD33; border-color:#FFDD33">Submit</button>
+		<button type="submit" class="btn btn-primary" style="background-color:#FFDD33; border-color:#FFDD33">Buscar</button>
 		</div>
 
 	</form>

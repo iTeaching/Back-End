@@ -63,22 +63,22 @@
     <form:form modelAttribute="profesor" class="form-horizontal" id="add-profesor-form">
         <div class="form-group has-feedback">
        
-            <iteaching:inputField label="First Name" name="firstName"/>
-            <iteaching:inputField label="Last Name" name="lastName"/>
-            <iteaching:inputField label="Telephone" name="telephone"/>
-            <iteaching:inputField label="Email" name="email"/>
+            <iteaching:inputField label="Nombre" name="firstName"/>
+            <iteaching:inputField label="Apellidos" name="lastName"/>
+            <iteaching:inputField label="Teléfono" name="telephone"/>
+            <iteaching:inputField label="Correo electrónico" name="email"/>
             <form:input type="hidden" path="puntuacion"/>
             <form:input type="hidden" path="division"/>
 	        <c:choose>
                     <c:when test="${profesor['new']}">
-                        <iteaching:inputField label="username" name="user.username"/>
+                        <iteaching:inputField label="Usuario" name="user.username"/>
                     </c:when>
                 <c:otherwise>
                         <form:input type="hidden" path="user.username"/>
 
                 </c:otherwise>
 			</c:choose>
-            <iteaching:inputPassword label="Password" name="user.password"/>
+            <iteaching:inputPassword label="Contraseña" name="user.password"/>
             <input type="checkbox" name="agree" required/>
         <label for="agree">Como usuario acepto los <a href="/TerminosYCondiciones" target="_blank">
         Términos y condiciones de la empresa</a></label>
