@@ -46,8 +46,8 @@ public class PaypalController {
 	public String payment(@ModelAttribute("order") Orden order) {
 		try {
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-					"http://localhost:8080/" + SUCCESS_URL);
+					order.getIntent(), order.getDescription(), "https://iteaching-production-sprint3.herokuapp.com/"  + CANCEL_URL,
+					"https://iteaching-production-sprint3.herokuapp.com/" + SUCCESS_URL);  //"http://localhost:8080/"
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					return "redirect:"+link.getHref();
