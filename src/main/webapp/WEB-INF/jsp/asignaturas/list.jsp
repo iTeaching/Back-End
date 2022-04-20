@@ -73,15 +73,7 @@
 						<a class="button"href="${fn:escapeXml(editUrl)}" style="color: black">Nueva clase</a>
 					</td>
 					
-					<td>
-				
-				<spring:url value="/asignatura/{asignaturaId}/valoraciones/new"
-							var="editUrl">
-							<spring:param name="asignaturaId" value="${asignatura.id}" />
 
-						</spring:url> <a href="${fn:escapeXml(editUrl)}"
-						class="btn btn-outline-warning">Valorar</a>
-					</td>
 					
 					
 					
