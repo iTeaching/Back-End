@@ -18,7 +18,7 @@ import lombok.Setter;
 public class Clases {
 	
 	public static String url() throws IOException, InterruptedException {
-		var apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmFwcGVhci5pbiIsImF1ZCI6Imh0dHBzOi8vYXBpLmFwcGVhci5pbi92MSIsImV4cCI6OTAwNzE5OTI1NDc0MDk5MSwiaWF0IjoxNjQ5Mjc0NTcxLCJvcmdhbml6YXRpb25JZCI6MTU3Mzk1LCJqdGkiOiI3MDI2ZmY4MS01YjhkLTRiMTctYjg0MS0zOGNhOGJmMDljNzcifQ.ilr_XZFoXVy3E1g8x0MPz_SbVrTCR14uKfxmN0LHw2s";
+		var apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmFwcGVhci5pbiIsImF1ZCI6Imh0dHBzOi8vYXBpLmFwcGVhci5pbi92MSIsImV4cCI6OTAwNzE5OTI1NDc0MDk5MSwiaWF0IjoxNjUwNDk2ODAxLCJvcmdhbml6YXRpb25JZCI6MTU4NTQ1LCJqdGkiOiI0NGMyOWJhYS02YmRhLTQ3YzUtYjcyYi0wOTUwN2M5MzhjMjcifQ.sx4OpNPNG0-x2eFUMHBmYgv5to-zkPoZoEM_9MCXEnw";
 		var data = Map.of("endDate", "2022-10-28T11:57:00.000Z", "fields", Collections.singletonList("hostRoomUrl"));
 
 		var request = HttpRequest.newBuilder(URI.create("https://api.whereby.dev/v1/meetings"))
