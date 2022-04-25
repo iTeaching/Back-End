@@ -89,6 +89,16 @@
 						</spring:url> <a href="${fn:escapeXml(editUrl)}"
 						class="btn btn-outline-warning">Archivos</a>
 					</td>
+					
+								 <td>
+				
+				<spring:url value="/asignatura/{asignaturaId}/chat"
+							var="editUrl">
+							<spring:param name="asignaturaId" value="${asignatura.id}" />
+
+						</spring:url> <a href="${fn:escapeXml(editUrl)}"
+						class="btn btn-outline-warning">Chat</a>
+					</td>
             </tr>
         </c:forEach>
         </tbody>
