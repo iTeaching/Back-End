@@ -30,6 +30,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,7 +68,7 @@ public class UserService  implements UserDetailsService{
 		
 		List<GrantedAuthority> roles = new ArrayList<>(); 
 		
-		roles.add(new SimpleGrantedAuthority("admin"));
+		roles.add(new SimpleGrantedAuthority("ADMIN"));
 		
 		UserDetails userDet= new org.springframework.security.core.userdetails.User(u.getUsername(), u.getPassword(), roles);
 		

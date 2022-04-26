@@ -21,9 +21,9 @@ import org.springframework.samples.iTeaching.service.AuthoritiesService;
 import org.springframework.samples.iTeaching.service.ClaseService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
-import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,15 +47,16 @@ public class AlumnoController {
 	private StorageService storageService;	
 	private AlumnoService alumnoService;
 	private AuthoritiesService authService;
-	private UserService userService;
 	private ClaseService claseService;
 	private ProfesorService profesorService;
 	private AsignaturaService asignaturaService;
+	
 	@Autowired
-	public AlumnoController(StorageService storageService, AlumnoService alumnoService, AuthoritiesService authService, UserService userService, ClaseService claseService, ProfesorService profesorService, AsignaturaService asignaturaService) {
+	private BCryptPasswordEncoder encoder;
+	@Autowired
+	public AlumnoController(StorageService storageService, AlumnoService alumnoService, AuthoritiesService authService, ClaseService claseService, ProfesorService profesorService, AsignaturaService asignaturaService) {
 		this.alumnoService = alumnoService;
 		this.authService = authService;
-		this.userService = userService;
 		this.storageService = storageService;
 		this.claseService = claseService;
 		this.profesorService = profesorService;
@@ -87,6 +88,7 @@ public class AlumnoController {
 		else {
 			//creating alumno, user and authorities
 			alumno.getUser().setEnabled(true);
+			alumno.getUser().setPassword(encoder.encode(alumno.getUser().getPassword()));
 			this.alumnoService.saveAlumno(alumno);
 			authService.saveAuthorities(alumno.getUser().getUsername(), "alumno");
 			

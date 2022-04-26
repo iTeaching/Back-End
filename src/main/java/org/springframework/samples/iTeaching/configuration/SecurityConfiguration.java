@@ -36,9 +36,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	UserDetailsService userDetailsService;
 	@Autowired
 	DataSource dataSource;
-	
+	@Autowired
 	private BCryptPasswordEncoder bcrypt;
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		BCryptPasswordEncoder cryptPassword= new BCryptPasswordEncoder();
+		return cryptPassword;
+	}
 
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
+	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
@@ -91,25 +102,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //	        + "where username = ?")
 //	      .passwordEncoder(passwordEncoder());
 //	}
-	
-	@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
-	}
-	
-	
-
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		PasswordEncoder encoder =  NoOpPasswordEncoder.getInstance();
-//	    return encoder;
-//	}
-	
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		BCryptPasswordEncoder cryptPassword= new BCryptPasswordEncoder();
-		return cryptPassword;
-	}
-	
 
 }
