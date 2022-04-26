@@ -38,8 +38,8 @@ public class PaypalController {
 	@Autowired
     AlumnoService alumnoService;
 
-	public static final String SUCCESS_URL = "/pay/success";
-	public static final String CANCEL_URL = "/pay/cancel";
+	public static final String SUCCESS_URL = "http://iteaching-production-sprint3.herokuapp.com/pay/success";
+	public static final String CANCEL_URL = "http://iteaching-production-sprint3.herokuapp.com/pay/cancel";
 
 
 	@PostMapping("/pay")
