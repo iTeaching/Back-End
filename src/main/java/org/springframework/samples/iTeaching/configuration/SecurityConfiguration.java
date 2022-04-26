@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.configuration;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.samples.iTeaching.repository.UserRepository;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,6 +31,8 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Resource
+	UserDetailsService userDetailsService;
 	@Autowired
 	DataSource dataSource;
 
@@ -39,20 +44,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/users/new").permitAll()
 				.antMatchers("/ofertas/misOfertas").hasAuthority("profesor")
 				.antMatchers("/salas/new").hasAnyAuthority("profesor")
-				.antMatchers("/pay").hasAnyAuthority("alumno")
-				.antMatchers("/pagar").hasAnyAuthority("alumno")
+				.antMatchers("/pay/**").hasAnyAuthority("alumno")
+				.antMatchers("/chat/**").hasAnyAuthority("alumno","profesor")
+				.antMatchers("/pagar/**").hasAnyAuthority("alumno")
 				.antMatchers("/salas").hasAnyAuthority("profesor", "alumno")
 				.antMatchers("/ofertas/find/**").hasAnyAuthority("alumno")
 				.antMatchers("/alumnos/new").permitAll()
 				.antMatchers("/logging", "/actuator/**").permitAll()
 				.antMatchers("/admin/**").hasAnyAuthority("admin")
-				.antMatchers("/owners/**").hasAnyAuthority("alumno","admin")
-				.antMatchers("/vets/**").authenticated()
-				.antMatchers("/payments/**").authenticated()
-				.antMatchers("/bills/**").authenticated()
 				.antMatchers("/logged").authenticated()
 				.antMatchers("/asignatura/**").authenticated()
 				.antMatchers("/asignaturas/**").authenticated()
+				.and()
+				.rememberMe().key("ABCdefglo9010221234")
 				.and()
 				 	.formLogin()
 				 	.loginPage("/login")
@@ -66,6 +70,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // ataques de tipo csrf y habilitar los framesets si su contenido
                 // se sirve desde esta misma página.
                 http.csrf().disable();
+				// http.csrf().ignoringAntMatchers("/h2-console/**");
+				// http.headers().frameOptions().sameOrigin();
 	}
 
 	@Override

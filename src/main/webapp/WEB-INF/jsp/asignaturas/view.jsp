@@ -37,8 +37,14 @@
             </td>
             <sec:authorize access="hasAuthority('alumno')">
             <td>
-            
-                <c:out value="${asignatura.profesor.firstName}"/><c:out value=" "/> <c:out value="${asignatura.profesor.lastName}"/>    
+	            <c:choose>
+	            	<c:when test="${asignatura.profesor.user.enabled==true }">
+	            		<c:out value="${asignatura.profesor.firstName}"/><c:out value=" "/> <c:out value="${asignatura.profesor.lastName}"/>
+	            	</c:when>
+	            	<c:otherwise>
+	            		<c:out value="El profesor se ha dado de baja de la plataforma o está temporalmente no disponible"/>
+	            	</c:otherwise>
+	            </c:choose>
             </td>
             </sec:authorize>
             <sec:authorize access="hasAuthority('profesor')">
@@ -46,8 +52,10 @@
              <ul>
              	
             <c:forEach items="${asignatura.alumnos}" var="alumno">
-                 <li><c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/></li>
-                 <br>
+	            <c:if test="${alumno.user.enabled==true }">
+	                 <li><c:out value="${alumno.firstName} "/>  <c:out value="${alumno.lastName}"/></li>
+	                 <br>
+	            </c:if>
             </c:forEach>
              	
              </ul>

@@ -110,6 +110,7 @@ public class AsignaturaController {
 		try {
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
 			List<Asignatura> asignaturas= this.alumnoService.findAlumnoById(usuario.getId()).getAsignaturas();
+			asignaturas = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).collect(Collectors.toList());
 			model.put("asignaturas",asignaturas);
 			return "asignaturas/list";
 		} catch(Exception e) {
@@ -163,7 +164,7 @@ public class AsignaturaController {
 		List<Asignatura> lista=this.asignaturaService.appliedAnuncio(alumno);
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findAll();
 		asignaturas.removeAll(lista);
-
+		asignaturas = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).collect(Collectors.toList());
 		model.put("asignaturas", asignaturas);
 		return "asignaturas/findOfertas";
 	}
@@ -177,6 +178,7 @@ public class AsignaturaController {
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		List<Asignatura> lista=this.asignaturaService.appliedAnuncio(alumno);
 		asignaturas.removeAll(lista);
+		asignaturas = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).collect(Collectors.toList());
 		model.put("asignaturas", asignaturas);
 		return "asignaturas/findOfertas";
 	}

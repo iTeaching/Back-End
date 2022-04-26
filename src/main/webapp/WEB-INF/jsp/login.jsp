@@ -38,6 +38,20 @@
 
 	</style>
 	
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
+	<script>
+        	window.onload = function() {
+        		var $recaptcha = document.querySelector('#g-recaptcha-response');
+        		if($recaptcha) {
+        			$recaptcha.setAttribute("required", "required");
+        		}
+        		$recaptcha.oninvalid = function(e) {
+        			alert("Por favor, verifique que es una persona");
+        		}
+        	};
+    </script>
+	
 </head>
 
 <body>
@@ -67,7 +81,15 @@
  <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
   <label for="floatingPassword">Contrase&ntildea</label>
 </div>
-		<p style="color:red;">${error}</p>
+<input type = "checkbox" id = "remember" name="remember-me" >
+<label for = "remember">
+    Recu&eacute;rdame
+</label>
+        <div class="g-recaptcha" data-sitekey="6LdWpYAfAAAAAGMF6n_haMV6rBMP8Pbt1qyZKEkC">
+
+        </div>
+</input>
+<p style="color:red;">${error}</p>
 		
 		<div class="d-grid gap-2">
 		<button class="button">Iniciar sesión</button>
