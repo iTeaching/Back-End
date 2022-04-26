@@ -19,9 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.samples.iTeaching.util.URLUtils;
+import javax.servlet.http.HttpServletRequest;
+
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+
 @Controller
 public class PaypalController {
 
@@ -38,19 +42,20 @@ public class PaypalController {
 	@Autowired
     AlumnoService alumnoService;
 
-	public static final String SUCCESS_URL = "http://iteaching-production-sprint3.herokuapp.com/pay/success";
-	public static final String CANCEL_URL = "http://iteaching-production-sprint3.herokuapp.com/pay/cancel";
+	public static final String SUCCESS_URL = "pay/success";
+	public static final String CANCEL_URL = "pay/cancel";
 
 
 	@PostMapping("/pay")
-	public String payment(@ModelAttribute("order") Orden order) {
+	public String payment(@ModelAttribute("order") Orden order, HttpServletRequest request) {
+		String cancelUrl = URLUtils.getBaseURl(request) + "/" + CANCEL_URL;
+        String successUrl = URLUtils.getBaseURl(request) + "/" + SUCCESS_URL;
 		try {
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-			order.getIntent(), order.getDescription(), "http://iteaching-production-sprint3.herokuapp.com" + CANCEL_URL,  
-			"http://iteaching-production-sprint3.herokuapp.com" + SUCCESS_URL);
+			order.getIntent(), order.getDescription(), cancelUrl, successUrl);
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
-					return "redirect:"+link.getHref();
+					return "redirect:" + link.getHref();
 				}
 			}
 
