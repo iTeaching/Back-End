@@ -8,9 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Clase;
-import org.springframework.samples.iTeaching.model.User;
 import org.springframework.samples.iTeaching.model.estadoClase;
 import org.springframework.stereotype.Service;
 
@@ -61,7 +59,7 @@ public class ClaseServiceTest {
 
 	@Test
 	public void testFindByProfesor() {
-		List<Clase> c = this.claseService.findByProfesor("gonzalogomez");
+		List<Clase> c = this.claseService.findByProfesor("gonzalodiz");
 
 		assertEquals(1, c.size());
 	}
