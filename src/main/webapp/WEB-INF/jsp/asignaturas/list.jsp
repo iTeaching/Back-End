@@ -21,7 +21,7 @@
         <thead>
         <tr>
             <th style="width: 150px;">Nombre de la asignatura</th>
-            <th style="width: 120px">Acción</th>
+            <th style="width: 120px">Clase</th>
             <sec:authorize access="hasAnyAuthority('alumno')">
             <th style="width: 120px">Profesor</th>
             <th style="width: 120px">Puntuación del profesor</th>
