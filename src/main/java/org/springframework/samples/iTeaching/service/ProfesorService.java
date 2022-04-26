@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.repository.ProfesorRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 @Service
@@ -15,6 +16,9 @@ public class ProfesorService {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@Autowired
 	private AuthoritiesService authoritiesService;
@@ -35,6 +39,7 @@ public class ProfesorService {
 
 	@Transactional
 	public void saveProfesor(Profesor profesor) throws DataAccessException {
+		profesor.getUser().setPassword(encoder.encode(profesor.getUser().getPassword()));
 		profesorRepository.save(profesor);		
 	}		
 	
