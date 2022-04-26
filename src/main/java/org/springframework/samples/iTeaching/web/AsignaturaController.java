@@ -26,6 +26,7 @@ import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,11 +66,15 @@ public class AsignaturaController {
 	}
 	
 	@PostMapping(value = "/asignaturas/new")
-	public String processCreationForm(@Valid Asignatura asignatura, BindingResult result) throws IOException, InterruptedException {
+	public String processCreationForm(@Valid Asignatura asignatura, BindingResult result, Model model) throws IOException, InterruptedException {
 		if (result.hasErrors()) {
 			return "asignaturas/createAsignaturaForm";
 		}
 		else {
+			if(asignatura.getPrecio()<= 0) {
+				model.addAttribute("errorMessage", "No se puede introducir valores menores o iguales a 0");
+				return "asignaturas/createAsignaturaForm";
+			}
 			//creating profesor, user and authorities
 			UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User user = this.userService.findUser(userDetails.getUsername()).get();

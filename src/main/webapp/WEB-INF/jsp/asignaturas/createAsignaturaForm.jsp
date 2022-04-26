@@ -20,8 +20,12 @@
             <petclinic:inputField label="Nombre" name="nombre"/>
             <petclinic:inputField label="Título del anuncio" name="titulo_anuncio"/>
             <petclinic:inputField label="Descripción" name="descripcion"/>
-            <petclinic:inputField label="Precio" name="precio"/>
-        </div>
+            <div class="col-sm-10">Precio</div> <input type="number" name="precio"/>
+			
+		</div>
+		<c:if test="${not empty errorMessage}">
+				<div class="alert alert-danger" role="alert">${errorMessage}</div>
+		</c:if>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
