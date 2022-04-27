@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AlumnoService {
 
-	private AlumnoRepository alumnoRepository;	
+	private AlumnoRepository alumnoRepository;
 	
 	@Autowired
 	private UserService userService;

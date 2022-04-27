@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -5,8 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
 
 
 <petclinic:layout pageName="Mi perfil">
@@ -25,7 +24,7 @@
 
 
 
-	<div class="col-sm-4" style="display: flex; flex-direction: column; margin-top: 20px"">
+	<div class="col-sm-4" style="display: flex; flex-direction: column; margin-top: 20px">
 
 
 		<c:choose>
@@ -40,6 +39,10 @@
 				<br />
 			</c:otherwise>
 		</c:choose>
+		
+		<button class="btn btn-warning"
+			type="button" style="color: white;width: 150px; border-color: #dab305; background-color: #dab305;"
+			onclick="window.location.href='/alumnos/miPerfil/changeAvatar/${alumno.id}'">Editar Avatar</button>
 	</div>
 
 

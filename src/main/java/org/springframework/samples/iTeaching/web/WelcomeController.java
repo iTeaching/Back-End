@@ -47,4 +47,18 @@ public class WelcomeController {
 
 		return "logged";
 	}
+	
+	@GetMapping({ "/TerminosYCondiciones" })
+	public String terminosCondiciones(Map<String, Object> model) {
+
+		return "terminoscondiciones";
+	}
+	
+	@GetMapping({ "/GarantiaDePrivacidad" })
+	public String garantiaPrivacidad(Map<String, Object> model) {
+
+		return "garantiaPrivacidad";
+	}
+	
+	
 }

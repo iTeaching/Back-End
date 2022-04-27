@@ -85,7 +85,9 @@ $(document).ready(function() {
 				<li class="nav-item active">
 					<a class="nav-link" href="/pagar">Pagar</a>
 				</li>
-      			
+      			<li class="nav-item active">
+					<a class="nav-link" href="/GarantiaDePrivacidad">Garantia De Privacidad</a>
+				</li>
 				<li class="nav-item active">
 					<a name="logout" value="logout" class="nav-link" href="/login">Cerrar sesión</a>
 				</li>

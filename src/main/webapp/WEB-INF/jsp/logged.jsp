@@ -154,6 +154,21 @@
 						</a>
 					</div>
 				</div>
+
+				<div class="col">
+					<div class="card h-100" style="width: 15rem;background-color:#FFDD33;margin-left:20px">
+						<a href="/chat"
+							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px"
+							src="resources/images/chat.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Chat</h5>
+								<p class="card-text text-dark">Empezar conversación</p>
+
+							</div>
+						</a>
+					</div>
+				</div>
 			
 			<div class="col">
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;margin-left:20px">

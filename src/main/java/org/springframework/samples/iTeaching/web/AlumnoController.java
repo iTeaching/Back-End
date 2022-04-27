@@ -64,7 +64,7 @@ public class AlumnoController {
 
 	@InitBinder("alumno")
 	public void initVehiculoBinder(WebDataBinder dataBinder) {
-		dataBinder.setValidator(new AlumnoValidator(alumnoService));
+		dataBinder.setValidator(new AlumnoValidator(alumnoService, profesorService));
 	}
 
 	@InitBinder
@@ -122,6 +122,49 @@ public class AlumnoController {
 				return "redirect:/alumnos/miPerfil";
 		}
 	}
+	
+	@GetMapping(value="/alumnos/{alumnoId}/delete")
+	public String deleteAlumno(@PathVariable("alumnoId") int alumnoId, Model model) {
+		try {
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
+			if(!alumno.getUser().getUsername().equals(username))
+				return "redirect:/login";
+			model.addAttribute("alumno", alumno);
+			return "alumnos/delete";
+		}catch(Exception e){
+			return "redirect:/login";
+		}
+	}
+	
+	@PostMapping(value="/alumnos/{alumnoId}/delete")
+	public String deleteAlumnoPost(@PathVariable("alumnoId") int alumnoId) {
+		try {
+			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+			String username= clienteDetails.getUsername();
+			Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
+			if(!alumno.getUser().getUsername().equals(username))
+				return "redirect:/login";
+			
+			alumno.setEmail("userdeleted@deleted.com");
+			alumno.setFirstName("firstnameuserdeleted");
+			alumno.setLastName("lastnameuserdeleted");
+			alumno.setTelephone("000000000");
+			alumno.getUser().setEnabled(false);
+			alumno.setId(alumnoId);
+			this.alumnoService.saveAlumno(alumno);
+			System.out.println("Alumno eliminado");
+			
+			return "redirect:/login";
+		}catch(Exception e){
+			System.out.println("Error al eliminar el alumno");
+			System.out.println(e);
+			return "redirect:/login";
+		}
+	}
 
 	@GetMapping("/alumnos/{alumnoId}")
 	public ModelAndView showOwner(@PathVariable("alumnoId") int alumnoId) {
@@ -155,7 +198,7 @@ public class AlumnoController {
 			String username= clienteDetails.getUsername();
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
 			
-			List<Clase> clase = claseService.findAlumnoByUsername(username);
+			List<Clase> clase = claseService.findByAlumno(username);
 			List<Clase> listaSolicitada = new ArrayList<>();
 			List<Clase> listaCancelada = new ArrayList<>();
 			List<Clase> listaConfirmada = new ArrayList<>();
@@ -362,5 +405,24 @@ public class AlumnoController {
 	}
 	
 	
+//    static String getRandomString(int i) 
+//    { 
+//        String theAlphaNumericS;
+//        StringBuilder builder;
+//        theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//                                    + "0123456789"; 
+//        //create the StringBuffer
+//        builder = new StringBuilder(i); 
+//        for (int m = 0; m < i; m++) { 
+//            // generate numeric
+//            int myindex 
+//                = (int)(theAlphaNumericS.length() 
+//                        * Math.random()); 
+//            // add the characters
+//            builder.append(theAlphaNumericS 
+//                        .charAt(myindex)); 
+//        } 
+//        return builder.toString(); 
+//    }
 	
 }

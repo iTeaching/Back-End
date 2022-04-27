@@ -1,7 +1,7 @@
 package org.springframework.samples.iTeaching.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -10,27 +10,28 @@ import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.User;
 import org.springframework.stereotype.Service;
 
-
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 public class AlumnoSeviceTest {
 	
+
 	@Autowired
 	private AlumnoService alumnoService;
 	
+
 	@Test
 	public void testFindAlumnoById() {
 		Alumno a = this.alumnoService.findAlumnoById(1);
-	
-		assertThat(a.getFirstName().equals("alumno"));
-		assertThat(a.getLastName().equals("molon"));
-		assertThat(a.getTelephone().equals("666111334"));
+		
+		assertEquals("Pepe", a.getFirstName());
+		assertEquals("Moya", a.getLastName());
+		assertEquals("666111334", a.getTelephone());
 	}
 
 	@Test
 	public void testFindAlumnoByUsername() {
-		Alumno a = this.alumnoService.findAlumnoByUsername("alumno1");
+		Alumno a = this.alumnoService.findAlumnoByUsername("pepeperez");
 		
-		assertThat(a.getId().equals(1));
+		assertEquals(1, a.getId());
 	}
 
 	@Test
@@ -50,6 +51,6 @@ public class AlumnoSeviceTest {
 		
 		this.alumnoService.saveAlumno(a);
 		
-		assertThat(alumnoService.findAlumnoById(3).getFirstName().equals("Pedro"));
+		assertEquals("Pedro", alumnoService.findAlumnoById(3).getFirstName());
 	}
 }

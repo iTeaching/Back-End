@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
+import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.service.AlumnoService;
+import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,10 +21,12 @@ public class AlumnoValidator implements Validator {
 
 
 	private AlumnoService aluSer;
+	private ProfesorService profSer;
 	
 	@Autowired
-	public AlumnoValidator(AlumnoService aS) {
+	public AlumnoValidator(AlumnoService aS, ProfesorService pS) {
 		this.aluSer = aS;
+		this.profSer = pS;
 	}
 	public String nombreUsuarioLogeado() {
 		Authentication quePasa = SecurityContextHolder.getContext().getAuthentication();
@@ -73,9 +77,15 @@ public class AlumnoValidator implements Validator {
 		}
 		
 		if(nombreLogeado=="noLogin") {
+			List<Profesor> listaProfesor = profSer.findAll();
 			List<Alumno> listaAlumnos = aluSer.findAll();
 			for(Alumno alumnoIndividual:listaAlumnos) {
 				if(alumno.getUser().getUsername().equals(alumnoIndividual.getUser().getUsername())) {
+					errors.rejectValue("user.username", " El nombre de usuario ya existe", "El nombre de usuario ya existe");
+				}
+			}
+			for(Profesor profesorIndividual:listaProfesor) {
+				if(alumno.getUser().getUsername().equals(profesorIndividual.getUser().getUsername())) {
 					errors.rejectValue("user.username", " El nombre de usuario ya existe", "El nombre de usuario ya existe");
 				}
 			}

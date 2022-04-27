@@ -1,14 +1,10 @@
 package org.springframework.samples.iTeaching.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +25,6 @@ public class FileiTeaching extends BaseEntity{
 	private byte[] data;
 
 	public FileiTeaching() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public FileiTeaching(String docName, String docType, byte[] data, Asignatura asignatura) {

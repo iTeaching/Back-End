@@ -9,17 +9,30 @@
     <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WRJT44J');</script>
+    <!-- End Google Tag Manager -->
+
     <title>iTeaching</title>
     <link rel="shortcut icon" href="resources/images/logo.ico">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
-	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css">
-</head>
+	<link href="../resources/style/estilos.css" rel="stylesheet" type="text/css"> 
+    <link href="../resources/style/cookies.css" rel="stylesheet" type="text/css"> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4BDBJD0X0"></script>
 
-<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJT44J"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header>
         <nav>
         	<a href="/login"><button class="nav_button" data-hover="¡Bienvenido!"><div>Aprende ya</div></button></a>
-            
             <a href="mailto:iteaching.sa@gmail.com​"><button class="nav_button" data-hover="¡Hola!"><div>Contáctanos</div></button> </a>
             <h1 class="eslogan">UNA NUEVA FORMA DE CONECTAR CON EL PROFESOR</h1>
         </nav>
@@ -112,6 +125,18 @@
 			</div>
             </div>
         </section>
+
+        <div class="aviso-cookies" id="aviso-cookies">
+            <img class="galleta" src="resources/images/cookie.svg" alt="Cookie">
+            <h3 class="titulo">Cookies</h3>
+            <p class="parrafo">Utilizamos cookies propias y de terceros para mejorar nuestros servicios.</p>
+            <button class="boton" id="btn-aceptar-cookies">De acuerdo</button>
+            <a class="enlace" href="/GarantiaDePrivacidad">Aviso de Cookies</a>
+        </div>
+        <div class="fondo-aviso-cookies" id="fondo-aviso-cookies"></div>
+    
+        <script src="../resources/js/aviso-cookies.js"></script>
+  
     <footer>
         <div class="contenedor-footer">
             <div class="footer-contact--email">
@@ -120,4 +145,5 @@
         </div>
         <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
     </footer>
+
 </body>

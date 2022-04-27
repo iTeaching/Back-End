@@ -22,6 +22,7 @@ import java.util.List;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+
 @Controller
 public class PaypalController {
 
@@ -38,16 +39,16 @@ public class PaypalController {
 	@Autowired
     AlumnoService alumnoService;
 
-	public static final String SUCCESS_URL = "/pay/success";
-	public static final String CANCEL_URL = "/pay/cancel";
+	public static final String SUCCESS_URL = "pay/success";
+	public static final String CANCEL_URL = "pay/cancel";
 
 
 	@PostMapping("/pay")
 	public String payment(@ModelAttribute("order") Orden order) {
 		try {
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-					"http://localhost:8080/" + SUCCESS_URL);
+			order.getIntent(), order.getDescription(), "https://iteaching-production-sprint3.herokuapp.com/" + CANCEL_URL,  
+			"https://iteaching-production-sprint3.herokuapp.com/" + SUCCESS_URL);
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					return "redirect:"+link.getHref();
@@ -87,6 +88,7 @@ public class PaypalController {
             Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
             List<Asignatura> asignaturas= this.asignaturaService.appliedAnuncio(alumno);
             Double precio = asignaturas.stream().mapToDouble(a->a.getPrecio()).sum();
+			precio = precio *0.07 + precio;
             model.addAttribute("precio", precio);
             Orden order = new Orden();
             order.setPrice(precio);
