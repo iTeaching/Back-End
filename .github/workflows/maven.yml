@@ -27,8 +27,6 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Step 4 - Codacy Coverage Reporter
-    - uses: actions/checkout@v2
-    - name: Run codacy-coverage-reporter
       uses: ./
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
