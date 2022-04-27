@@ -1,5 +1,12 @@
 package org.springframework.samples.iTeaching.web;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +22,19 @@ import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.ProfesorService;
+import org.springframework.samples.iTeaching.service.UserService;
+import org.springframework.samples.iTeaching.service.ValoracionService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @WebMvcTest(value = ValoracionController.class, excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class), excludeAutoConfiguration = SecurityConfiguration.class)
 public class ValoracionControllerTest {
 	
 	@MockBean
-	private ValoracionController valoracionController;
-	
+	private ValoracionService valoracionService;
+	@MockBean
+	private UserService userService;
 	@MockBean
 	private ProfesorService profesorService;
 	@MockBean
@@ -62,40 +66,41 @@ public class ValoracionControllerTest {
 	@WithMockUser(value="alumno1")
 	@Test
 	void initCreationFormTest() throws Exception {
-		mockMvc.perform(get("/asignatura/1/valoraciones/new"))
+		mockMvc.perform(get("/asignatura/{asignaturaId}/valoraciones/new",1))
 		.andExpect(status().isOk())
-		.andExpect(view().name("asignatura/1/valoraciones/new"));
+		.andExpect(view().name("valoraciones/createValoracionForm"));
 	}
 	
-	// @WithMockUser(value="alumno1")
-	// @Test
-	// void processCreationFormSuccess() throws Exception {
-	// 	mockMvc.perform(post("/asignatura/1/valoraciones/new")
-	// 	.with(csrf())
-	// 	.param("puntuacion", "4.0")
-	// 	.param("comentario", "test"))
-	// 	.andExpect(status().is3xxRedirection())
-	// 	.andExpect(view().name("redirect:/ofertas/find"));
-	// }
+//	 @WithMockUser(value="alumno1")
+//	 @Test
+//	 void processCreationFormSuccess() throws Exception {
+//	 	mockMvc.perform(post("/asignatura/{asignaturaId}/valoraciones/new",1)
+//	 	.with(csrf())
+//	 	.param("puntuacion", "8.0")
+//	 	.param("comentario", "test")
+//	 	.param("profesor_id", "1")
+//	 	.param("asignatura_id", "1")
+//	 	.param("alumno_id", "1"))
+//	 	.andExpect(status().isOk())
+//	 	.andExpect(view().name("redirect:/ofertas/find"));
+//	 }
 	
-	// @WithMockUser(value="alumno1")
-	// @Test
-	// void processCreationFormHasErrors() throws Exception {
-	// 	mockMvc.perform(post("/asignatura/1/valoraciones/new")
-	// 			.with(csrf())
-	// 			.param("puntuacion", "4.0")
-	// 			.param("comentario", ""))
-	// 			.andExpect(model().attributeHasErrors("valoracion"))
-	// 			.andExpect(model().attributeHasFieldErrors("valoraciones", "puntuacion"))
-	// 			.andExpect(view().name("valoraciones/createValoracionForm"));
-	// }
+	 @WithMockUser(value="alumno1")
+	 @Test
+	 void processCreationFormHasErrors() throws Exception {
+	 	mockMvc.perform(post("/asignatura/1/valoraciones/new")
+	 			.with(csrf())
+	 			.param("puntuacion", "4.0")
+	 			.param("comentario", ""))
+	 			.andExpect(view().name("exception"));
+	 }
 	
 	@WithMockUser(value="alumno1")
 	@Test
 	void ListValoracionTest() throws Exception {
 		mockMvc.perform(get("/asignatura/1/valoraciones/profesor/1"))
 		.andExpect(status().isOk())
-		.andExpect(view().name("asignatura/1/valoraciones/profesor/1"));
+		.andExpect(view().name("profesores/ListaValoraciones"));
 	}
 
 }

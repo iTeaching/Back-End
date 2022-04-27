@@ -6,6 +6,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import java.io.IOException;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +20,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.iTeaching.configuration.SecurityConfiguration;
 import org.springframework.samples.iTeaching.model.Asignatura;
+import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.model.User;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
@@ -61,19 +66,19 @@ public class AsignaturaControllerTest {
 		.andExpect(model().attributeExists("asignatura"));
 	}
 	
-	// @WithMockUser(value = "prof1")
-	// @Test
-	// void testProcessCeationFormSuccess() throws Exception {
-	// 	mockMvc.perform(post("/asignaturas/new")
-	// 		.with(csrf())
-	// 		.param("nombre", "Fisica2")
-	// 		.param("titulo_anuncio", "Clases Fisica")
-	// 		.param("url", Clases.url())
-	// 		.param("descripcion", "Clases baratas de fisica2")
-	// 		.param("precio", "12.0"))
-	// 		.andExpect(status().is3xxRedirection())
-	// 		.andExpect(view().name("redirect:/asignaturas"));
-	// }
+	 @WithMockUser(value = "prof1")
+	 @Test
+	 void testProcessCeationFormSuccess() throws Exception {
+	 	mockMvc.perform(post("/asignaturas/new")
+	 		.with(csrf())
+	 		.param("profesor", "1")
+	 		.param("nombre", "Fisica2")
+	 		.param("titulo_anuncio", "Clases Fisica")
+	 		.param("url", "https://ispp1.whereby.com/4f32158f-ca85-4a72-9700-7c334b080f56")
+	 		.param("descripcion", "Clases baratas de fisica2")
+	 		.param("precio", "12"))
+	 		.andExpect(status().isOk());
+	 }
 	
 	@WithMockUser(value = "prof1")
 	@Test
@@ -93,8 +98,9 @@ public class AsignaturaControllerTest {
 	@WithMockUser(value = "spring")
 	@Test
 	void testMySalas() throws Exception {
-		mockMvc.perform(get("/asignaturas/list"))
-		.andExpect(status().isOk());
+		mockMvc.perform(get("/asignaturas"))
+		.andExpect(status().is3xxRedirection())
+		.andExpect(view().name("redirect:/"));
 	}
 	
 	@WithMockUser(value = "alumno1")
@@ -115,16 +121,18 @@ public class AsignaturaControllerTest {
 	
 	 @WithMockUser(value = "alumno1")
 	 @Test
-	 void testFindAnunciosByAsignatura() throws Exception{
-		 mockMvc.perform(get("/ofertas/findAsignatura"))
-		 .andExpect(status().isOk());
-	}
-	
-	 @WithMockUser(value = "alumno1")
-	 @Test
-	 void testSuscribirAsignatura() throws Exception {
-		 mockMvc.perform(get("/asignaturas/{asignaturaId}/apply",5))
-		 .andExpect(status().isOk());
+	 void testSuscribirAsignaturaException() throws Exception {
+		 mockMvc.perform(get("/asignaturas/{asignaturaId}/apply",10))
+		 .andExpect(status().isOk())
+		 .andExpect(view().name("exception"));
 		}
 	 
+	@WithMockUser(value="pepeperez")
+	@Test
+	void testCrearClaseException() throws Exception{
+		mockMvc.perform(get("/asignaturas/{asignaturaId}/nuevaClase",1))
+		.andExpect(status().isOk())
+		.andExpect(view().name("exception"));
+	}
+
 }
