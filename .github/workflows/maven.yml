@@ -30,11 +30,4 @@ jobs:
           project-token: ${{secrets.CODACY_PROJECT_TOKEN}}
           coverage-reports: cobertura.xml
           
-    - name : Step 5 - List the current directory
-      run : ls -a
-      
-    - name : Step 6
-      run: |
-        cd target
-        ls -a
 
