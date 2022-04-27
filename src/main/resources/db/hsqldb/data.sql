@@ -1,18 +1,18 @@
 --ADMIN
-INSERT INTO users(username,password,enabled) VALUES ('admin1','$2a$10$0ebb2EeLcRFtzpxekvdorORu50QAmFh71fzV0CocB2f2P.bJjE2g6',TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('admin1','clave',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
 --INSERTAR ALUMNOS
-INSERT INTO users(username,password,enabled) VALUES ('pepeperez','$2a$10$1qENZn9UI7g35b3OegcIy.kTS3hO8sqJuxJVprU2gcdMIFDsFLzb.',TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('pepeperez','clave',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (2,'pepeperez','alumno');
 
-INSERT INTO users(username,password,enabled) VALUES ('manolofuentes','$2a$10$NbBTwT.JeVuwU4qds0nmG.KH6Y.30Ly2xmCC2Iesr./FTNmcIKHA2',TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('manolofuentes','clave',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (4,'manolofuentes','alumno');
 
 --INSERTAR PROFESORES
-INSERT INTO users(username,password,enabled) VALUES ('gonzalodiz','$2a$10$TPLsJm2afa53LKjMeUR/p.JoWZIkC8bKlFoHjBJqEdKFCfO.7TEVm',TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('gonzalodiz','clave',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (3,'gonzalodiz','profesor');
 
-INSERT INTO users(username,password,enabled) VALUES ('javitorres','$2a$10$WcPfIrGQnMcNZxRF57kCfuIxM8J1kWypIOh4U3nlJBorIepLA/xrC',TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('javitorres','clave',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (5,'javitorres','profesor');
 
 --INSERTAR DATOS ALUMNOS Y PROFESORES

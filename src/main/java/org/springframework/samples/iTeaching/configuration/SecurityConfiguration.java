@@ -86,13 +86,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	      .authoritiesByUsernameQuery(
 	       "select username, authority "
 	        + "from authorities "
-	        + "where username = ?")
-	      .passwordEncoder(passwordEncoder());
+	        + "where username = ?");
+//	      .passwordEncoder(passwordEncoder());
 	}
 
+	// @Bean
+	// public BCryptPasswordEncoder passwordEncoder() {
+	// 	return new BCryptPasswordEncoder();
+	// }
+
 	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+	public PasswordEncoder passwordEncoder() {
+		PasswordEncoder encoder =  NoOpPasswordEncoder.getInstance();
+	    return encoder;
 	}
 
 }
