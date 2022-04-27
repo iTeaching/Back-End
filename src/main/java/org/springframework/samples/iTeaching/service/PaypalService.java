@@ -19,7 +19,7 @@ import com.paypal.base.rest.PayPalRESTException;
 @Service
 public class PaypalService {
 
-	@Autowired
+
 	private APIContext apiContext;
 	
 	public Payment createPayment(
