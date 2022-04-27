@@ -39,6 +39,10 @@
 				<br />
 			</c:otherwise>
 		</c:choose>
+		
+		<button class="btn btn-warning"
+			type="button" style="color: white;width: 150px; border-color: #dab305; background-color: #dab305;"
+			onclick="window.location.href='/alumnos/miPerfil/changeAvatar/${alumno.id}'">Editar Avatar</button>
 	</div>
 
 

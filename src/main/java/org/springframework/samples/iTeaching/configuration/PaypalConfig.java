@@ -1,4 +1,4 @@
-package org.springframework.samples.iTeaching.web;
+package org.springframework.samples.iTeaching.configuration;
 
 import java.util.HashMap;
 import java.util.Map;

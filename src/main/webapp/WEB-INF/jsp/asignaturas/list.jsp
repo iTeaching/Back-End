@@ -45,15 +45,17 @@
                 
                 <sec:authorize access="hasAnyAuthority('alumno')">
                 <td>
-                <a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                 <a href="/profesor/${asignatura.profesor.id}/perfil">
                     <c:out value="${asignatura.profesor.firstName} ${asignatura.profesor.lastName}"/></a>
                 </td>
                 <td>
                     <c:if test="${asignatura.profesor.division==0}">
-                	<c:out value="Sin evaluar"/>
+                	<a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                    <c:out value="Sin evaluar"/></a>
                 	</c:if>
                 	<c:if test="${asignatura.profesor.division!=0}">
-                	<c:out value="${(asignatura.profesor.puntuacion/asignatura.profesor.division)*2}"/>
+                	<a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                	<c:out value="${(asignatura.profesor.puntuacion/asignatura.profesor.division)*2}"/></a>
                 	</c:if>
                 </td>
                 <td>

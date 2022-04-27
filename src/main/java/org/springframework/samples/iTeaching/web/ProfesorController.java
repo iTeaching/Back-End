@@ -374,6 +374,14 @@ public class ProfesorController {
 	
 	
 	}
+	
+	@GetMapping(value = "/profesor/{profesorId}/perfil")
+	public String ListValoración(Map<String, Object> model,@PathVariable("profesorId") int profesorId) {
+
+		Profesor profesor=this.profesorService.findProfesorById(profesorId);
+		model.put("profesor",profesor);
+		return "users/perfilVisitas";
+		}
 }
 
 

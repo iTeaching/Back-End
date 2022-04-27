@@ -26,7 +26,7 @@
 
 
 		<c:choose>
-			<c:when test="${alumno.avatar == null}">
+			<c:when test="${profesor.avatar == null}">
 				<img src="/resources/images/profile/avatar_defecto.jpg"
 					style="width: 150px;" />
 			        <br />
@@ -37,6 +37,10 @@
 								<br />
 			</c:otherwise>
 		</c:choose>
+		
+		<button class="btn btn-warning"
+			type="button" style="color: white;width: 150px; border-color: #dab305; background-color: #dab305;"
+			onclick="window.location.href='/profesor/miPerfil/changeAvatar/${profesor.id}'">Editar Avatar</button>
 	</div>
 
 
