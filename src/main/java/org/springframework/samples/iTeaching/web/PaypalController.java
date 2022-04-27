@@ -22,6 +22,7 @@ import java.util.List;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+
 @Controller
 public class PaypalController {
 
@@ -87,9 +88,8 @@ public class PaypalController {
             Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
             List<Asignatura> asignaturas= this.asignaturaService.appliedAnuncio(alumno);
             Double precio = asignaturas.stream().mapToDouble(a->a.getPrecio()).sum();
-			precio = precio *1.07;
-			String precioParseado= String.format(".2f", precio);
-            model.addAttribute("precio", precioParseado);
+			precio = precio *0.07 + precio;
+            model.addAttribute("precio", precio);
             Orden order = new Orden();
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
