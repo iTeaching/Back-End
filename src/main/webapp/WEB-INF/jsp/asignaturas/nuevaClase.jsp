@@ -25,6 +25,14 @@
 
 <iteaching:layout pageName="alumnos">
 
+	<jsp:attribute name="customScript">
+        <script>
+            $(function () {
+                $("#horaComienzo").localdatepicker({dateFormat: 'yyyy-MM-dd :HH:mm'});
+            });
+        </script>
+    </jsp:attribute>
+	<jsp:body>
 <div style="min-height:85vh">
     <h1>
         Nuevo Clase
@@ -35,8 +43,9 @@
     <div class="col-sm-8" style="margin: 0 0 20px 0">
     <form:form modelAttribute="clase" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">     
-            <iteaching:inputField label="Hora de comienzo" name="horaComienzo"/>
-            <iteaching:inputField label="Hora de Fin" name="horaFin"/>
+			  
+            <iteaching:inputField label="Hora de comienzo (yyyy/MM/dd HH:mm:ss)" name="horaComienzo"/>
+            <iteaching:inputField label="Hora de Fin (yyyy/MM/dd HH:mm:ss)" name="horaFin"/>
 <%--             <form:input type="hidden" path="alumno.user.username"/> --%>
 			<form:input type="hidden" path="aceptacionAlumno"/>
 			<form:input type="hidden" path="aceptacionProfesor"/>
@@ -50,5 +59,5 @@
     </form:form>
     </div>
 </div>
-    
+     </jsp:body>  
 </iteaching:layout>
