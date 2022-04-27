@@ -6,8 +6,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
 <%@page pageEncoding="UTF-8"%>
-
-<petclinic:layout pageName="avatar">
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>	
+<petclinic:layout pageName="Descargar archivos">
 
 	<div>
 		<h2>Documentos</h2>
@@ -32,7 +32,7 @@
 			</tbody>
 		</table>
 	</div>
-
+	<sec:authorize access="hasAnyAuthority('profesor')">
 	<form:form enctype="multipart/form-data" class="form-horizontal"
 		action="/asignatura/${asignatura.id}/files" id="upload-file-form">
 
@@ -50,5 +50,6 @@
 		</div>
 		</c:if>
 	</form:form>
-	
+</sec:authorize>
+
 </petclinic:layout>

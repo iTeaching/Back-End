@@ -24,6 +24,7 @@ public class ValoracionServiceTest {
 	@Autowired
 	private ProfesorService profesorService;
 
+
 	@Test
 	public void testFindValoracionByAlumnoAsignatura() {
 		Optional<Valoracion> v = this.valoracionService.findValoracionByAlumnoAsignatura(

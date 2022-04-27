@@ -9,9 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.User;
-import org.springframework.samples.iTeaching.web.PaypalConfig;
 import org.springframework.stereotype.Service;
-
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 public class AlumnoSeviceTest {
@@ -24,7 +22,7 @@ public class AlumnoSeviceTest {
 		Alumno a = this.alumnoService.findAlumnoById(1);
 		
 		assertEquals("Pepe", a.getFirstName());
-		assertEquals("Pérez", a.getLastName());
+		assertEquals("Moya", a.getLastName());
 		assertEquals("666111334", a.getTelephone());
 	}
 
