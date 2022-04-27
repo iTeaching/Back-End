@@ -26,9 +26,5 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
-    - name: Step 4 - Codacy Coverage Reporter
-      uses: ./
-      with:
-        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           
     
