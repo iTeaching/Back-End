@@ -8,7 +8,7 @@
 <%@page pageEncoding="UTF-8"%>
 
 <petclinic:layout pageName="avatar">
-	<h2>Edit ${alumno.id}</h2>
+	<h2>Edit ${profesor.firstName}&nbsp${profesor.lastName}</h2>
 	<form:form enctype="multipart/form-data" class="form-horizontal"
 		action="/profesor/miPerfil/changeAvatar" id="edit-avatar-form">
 		<div class="form-group">
