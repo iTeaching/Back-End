@@ -55,7 +55,7 @@ public class ProfesorServiceTest {
 		p.setEmail("juanmagump@mail.com");
 		p.setUser(u);
 
-		this.profesorService.saveProfesor(p);
+		this.profesorService.saveProfesor(p,true);
 		assertThat(this.profesorService.findAll().size() == 3);
 	}
 

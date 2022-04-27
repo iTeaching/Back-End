@@ -38,8 +38,10 @@ public class ProfesorService {
 	}
 
 	@Transactional
-	public void saveProfesor(Profesor profesor) throws DataAccessException {
+	public void saveProfesor(Profesor profesor,boolean valor) throws DataAccessException {
+		if(valor==true) {
 		profesor.getUser().setPassword(encoder.encode(profesor.getUser().getPassword()));
+		}
 		profesorRepository.save(profesor);		
 	}		
 	

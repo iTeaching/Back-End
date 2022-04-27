@@ -43,8 +43,10 @@ public class AlumnoService {
 	}
 		
 	@Transactional
-	public void saveAlumno(Alumno alumno) throws DataAccessException {
+	public void saveAlumno(Alumno alumno,boolean valor) throws DataAccessException {
+		if(valor==true) {
 		alumno.getUser().setPassword(encoder.encode(alumno.getUser().getPassword()));
+		}
 		alumnoRepository.save(alumno);		
 	}		
 	

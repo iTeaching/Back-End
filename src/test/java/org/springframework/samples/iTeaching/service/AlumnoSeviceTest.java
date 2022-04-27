@@ -48,7 +48,7 @@ public class AlumnoSeviceTest {
 		a.setUser(u);
 		a.setId(3);
 		
-		this.alumnoService.saveAlumno(a);
+		this.alumnoService.saveAlumno(a,true);
 		
 		assertEquals("Pedro", alumnoService.findAlumnoById(3).getFirstName());
 	}

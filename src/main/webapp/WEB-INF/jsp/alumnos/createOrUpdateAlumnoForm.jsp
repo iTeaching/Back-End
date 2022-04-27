@@ -61,7 +61,11 @@
                         <form:input type="hidden" path="user.username"/>
                 </c:otherwise>
 			</c:choose>
+			
 			<iteaching:inputPassword label="Contraseña" name="user.password"/>
+			<c:if test="${!alumno['new']}">
+			<p>Por favor, introduzca su contraseña o una nueva</p>
+			</c:if>
 			
 			<input type="checkbox" name="agree" required/>
         <label for="agree">Como usuario acepto los <a href="/TerminosYCondiciones" target="_blank">

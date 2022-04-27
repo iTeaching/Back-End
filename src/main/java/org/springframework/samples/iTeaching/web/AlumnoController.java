@@ -87,7 +87,7 @@ public class AlumnoController {
 		else {
 			//creating alumno, user and authorities
 			alumno.getUser().setEnabled(true);
-			this.alumnoService.saveAlumno(alumno);
+			this.alumnoService.saveAlumno(alumno,true);
 			authService.saveAuthorities(alumno.getUser().getUsername(), "alumno");
 			
 			return "redirect:/login";
@@ -118,7 +118,7 @@ public class AlumnoController {
 		} else {
 				alumno.setId(alumnoId);
 				alumno.getUser().setEnabled(true);
-				this.alumnoService.saveAlumno(alumno);
+				this.alumnoService.saveAlumno(alumno, true);
 				return "redirect:/alumnos/miPerfil";
 		}
 	}
@@ -155,7 +155,7 @@ public class AlumnoController {
 			alumno.setTelephone("000000000");
 			alumno.getUser().setEnabled(false);
 			alumno.setId(alumnoId);
-			this.alumnoService.saveAlumno(alumno);
+			this.alumnoService.saveAlumno(alumno,false);
 			System.out.println("Alumno eliminado");
 			
 			return "redirect:/login";
@@ -400,7 +400,7 @@ public class AlumnoController {
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Alumno alumno = alumnoService.findAlumnoByUsername(userDetails.getUsername());
 		alumno.setAvatar(fileName);
-		alumnoService.saveAlumno(alumno);
+		alumnoService.saveAlumno(alumno,false);
 		return "redirect:/alumnos/miPerfil";
 	}
 	

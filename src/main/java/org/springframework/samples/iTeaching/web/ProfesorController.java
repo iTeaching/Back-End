@@ -88,7 +88,7 @@ public class ProfesorController {
 			profesor.setDivision(0);
 			profesor.setPuntuacion(0.);
 			profesor.getUser().setEnabled(true);
-			this.profesorService.saveProfesor(profesor);
+			this.profesorService.saveProfesor(profesor,true);
 			authService.saveAuthorities(profesor.getUser().getUsername(), "profesor");
 			
 			return "redirect:/login";
@@ -111,7 +111,7 @@ public class ProfesorController {
 		else {
 			profesor.setId(profesorId);
 			profesor.getUser().setEnabled(true);
-			this.profesorService.saveProfesor(profesor);
+			this.profesorService.saveProfesor(profesor,true);
 			return "redirect:/profesores/miPerfil";
 		}
 	}
@@ -148,7 +148,7 @@ public class ProfesorController {
 			profesor.setTelephone("000000000");
 			profesor.getUser().setEnabled(false);
 			profesor.setId(profesorId);
-			this.profesorService.saveProfesor(profesor);
+			this.profesorService.saveProfesor(profesor,false);
 			System.out.println("Profesor eliminado");
 			
 			return "redirect:/login";
@@ -223,7 +223,7 @@ public class ProfesorController {
 		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Profesor profesor = profesorService.findProfesorByUsername(userDetails.getUsername());
 		profesor.setAvatar(fileName);
-		profesorService.saveProfesor(profesor);
+		profesorService.saveProfesor(profesor,false);
 		return "redirect:/profesores/miPerfil";
 	}
 	
