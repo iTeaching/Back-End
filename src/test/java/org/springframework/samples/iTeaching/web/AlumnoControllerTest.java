@@ -260,4 +260,93 @@ public class AlumnoControllerTest {
 				.andExpect(view().name("alumnos/miPerfil"));
 	}
 	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void deleteAlumnoTest() throws Exception {
+		mockMvc.perform(get("/alumnos/{alumnoId}/delete",24))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/login"));
+	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void deleteAlumnoPostErrorTest() throws Exception {
+		mockMvc.perform(post("/alumnos/{alumnoId}/delete",24).with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "Prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.enable", "false")
+				.param("id", "24"))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/login"));
+	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void showOwnerTest() throws Exception {
+		mockMvc.perform(get("/alumnos/{alumnoId}",24))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/alumnoDetails"));
+	}
+	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void crearClaseTest() throws Exception {
+//		mockMvc.perform(get("alumnos/nuevaClase"))
+//				.andExpect(status().isOk())
+//				.andExpect(view().name("alumnos/nuevaClase"));
+//	}
+//	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void crearClasePostTest() throws Exception {
+//		mockMvc.perform(post("alumnos/nuevaClase"))
+//				.andExpect(status().isOk())
+//				.andExpect(view().name("alumnos/nuevaClase"));
+//	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void aceptarClaseTest() throws Exception {
+		mockMvc.perform(get("/alumnos/aceptar/{claseId}",1))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/aceptarClase"));
+	}
+	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void aceptarClasePostTest() throws Exception {
+//		mockMvc.perform(post("/alumnos/aceptar/{claseId}",1).with(csrf())
+//				.param("id", "1")
+//				.param("estadoClase", "estadoClase.confirmada"))
+//				.andExpect(status().is3xxRedirection())
+//				.andExpect(view().name("redirect:/alumnos/miPerfil"));
+//	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void cancelarClaseTest() throws Exception {
+		mockMvc.perform(get("/alumnos/cancelar/{claseId}",1))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/cancelarClase"));
+	}
+	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void aceptarClasePostTest() throws Exception {
+//		mockMvc.perform(post("/alumnos/cancelar/{claseId}",1).with(csrf())
+//				.param("id", "1")
+//				.param("estadoClase", "estadoClase.confirmada"))
+//				.andExpect(status().is3xxRedirection())
+//				.andExpect(view().name("redirect:/alumnos/miPerfil"));
+//	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void viewChangeAvatarTest() throws Exception {
+		mockMvc.perform(get("/alumnos/miPerfil/changeAvatar/{alumnoId}",1))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/changeAvatar"));
+	}
 }

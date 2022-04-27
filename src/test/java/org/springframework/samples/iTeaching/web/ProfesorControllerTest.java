@@ -19,6 +19,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.iTeaching.configuration.SecurityConfiguration;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.model.User;
+import org.springframework.samples.iTeaching.model.estadoClase;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.service.AsignaturaService;
 import org.springframework.samples.iTeaching.service.AuthoritiesService;
@@ -88,8 +89,8 @@ public class ProfesorControllerTest {
 			.param("lastName", "Ruiz")
 			.param("telephone", "666111333")
 			.param("email", "profesormolon1@gmail.com")
-			.param("division", "0")
-			.param("puntuacion", "0.")
+//			.param("division", "0")
+//			.param("puntuacion", "0.")
 //			.param("avatar", "/resources/images/profile/avatar/1648742755898.png")
 			.param("user.username", "profesor1")
 			.param("user.password", "Profesor1!"))
@@ -165,13 +166,74 @@ public class ProfesorControllerTest {
 	@WithMockUser(value = "spring")
 	@Test
 	void miPerfilTest() throws Exception {
-		mockMvc.perform(get("/profesores/miPerfil")).andExpect(status().isOk());
+		mockMvc.perform(get("/profesores/miPerfil")).andExpect(status().isOk())
+		.andExpect(view().name("profesores/miPerfil"));
 	}
 	
 	@WithMockUser(value = "spring")
 	@Test
 	void testViewChangeAvatar() throws Exception {
-		mockMvc.perform(get("/profesores/changeAvatar")).andExpect(status().isOk());
+		mockMvc.perform(get("/profesor/miPerfil/changeAvatar/{profesorId}",1))
+		.andExpect(status().isOk())
+		.andExpect(view().name("profesores/changeAvatar"));
+	}
+	
+//	@WithMockUser(value = "spring")
+//	@Test
+//	void testSaveChangeAvatar() throws Exception {
+//		mockMvc.perform(post("/profesor/miPerfil/changeAvatar").with(csrf())
+//				.param("avatar", "avatar1650970806192.png"))
+//		.andExpect(status().isOk())
+//		.andExpect(view().name("redirect:/profesores/miPerfil"));
+//	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testCrearClaseError() throws Exception {
+		mockMvc.perform(get("/profesor/nuevaClase"))
+		.andExpect(status().isOk())
+		.andExpect(view().name("exception"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testCrearClasePostError() throws Exception {
+		mockMvc.perform(post("/profesor/nuevaClase").with(csrf())
+				.param("estadoclase", "estadoClase.solicitada"))
+		.andExpect(status().isOk())
+		.andExpect(view().name("exception"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testAceptarClase() throws Exception {
+		mockMvc.perform(get("/profesor/aceptar/{claseId}",1))
+		.andExpect(status().isOk())
+		.andExpect(view().name("profesores/aceptarClase"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testAceptarClasePost() throws Exception {
+		mockMvc.perform(post("/profesor/aceptar/{claseId}",1).with(csrf()))
+		.andExpect(status().is3xxRedirection())
+		.andExpect(view().name("redirect:/profesores/miPerfil"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testCancelarClase() throws Exception {
+		mockMvc.perform(get("/profesor/cancelar/{claseId}",1))
+		.andExpect(status().isOk())
+		.andExpect(view().name("profesores/cancelarClase"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testCancelarClasePost() throws Exception {
+		mockMvc.perform(post("/profesor/cancelar/{claseId}",1).with(csrf()))
+		.andExpect(status().is3xxRedirection())
+		.andExpect(view().name("redirect:/profesores/miPerfil"));
 	}
 
 }

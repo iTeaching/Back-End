@@ -4,6 +4,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -40,7 +41,8 @@ public class FileControllerTest {
 	@Test
 	void getTest() throws Exception {
 		mockMvc.perform(get("/asignatura/{asignaturaId}/files",1))
-		.andExpect(status().isOk());
+		.andExpect(status().isOk())
+		.andExpect(view().name("files/fileList"));
 	}
 	
 	@WithMockUser(value="spring")
@@ -59,7 +61,6 @@ public class FileControllerTest {
 		mockMvc.perform(post("/asignatura/{asignaturaId}/files",1).with(csrf())
 				.requestAttr("files", list))
 				.andExpect(status().is2xxSuccessful());
-
 	}
 	
 	@WithMockUser(value="spring")
