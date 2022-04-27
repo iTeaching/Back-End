@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Profesor;
@@ -87,15 +85,6 @@ public class AsignaturaController {
 		
 		}
 	
-	
-//	@GetMapping(value = "/alumnos/{alumnoId}/salas")
-//	public String viewSalas(@PathVariable("alumnoId") int id, Map<String, Object> model) {
-//		List<Asignatura> asignaturas = this.asignaturaService.findAll();
-//		Alumno alumno = this.alumnoService.findAlumnoById(id);
-//		asignaturas.stream().filter(s -> s.getAlumnos().contains(alumno)).collect(Collectors.toList());
-//		model.put("asignaturas", asignaturas);
-//		return "salas/list";
-//	}
 	
 	@GetMapping (value ="/asignaturas")
 	public String mySalas(Map<String, Object> model) {
@@ -195,19 +184,9 @@ public class AsignaturaController {
 		String username= clienteDetails.getUsername();
 				
 		Asignatura a = this.asignaturaService.findById(id);
-//		model.put("asignatura", a);
-		
-//		Profesor profConPermiso = a.getProfesor();
+
 		Set<Alumno> alumsConPermiso = a.getAlumnos();
 		
-//		try {
-//			Profesor usuario = profesorService.findProfesorByUsername(username);
-//			if(usuario.equals(profConPermiso)) {
-//				return "redirect:/";
-//			}
-//		} catch(Exception e) {
-//			
-//		}
 		
 		try {
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);

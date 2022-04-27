@@ -1,11 +1,7 @@
 package org.springframework.samples.iTeaching.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -59,11 +55,4 @@ public class ProfesorServiceTest {
 		assertThat(this.profesorService.findAll().size() == 3);
 	}
 
-//	@Test
-//	public void testDeleteProfesor() {
-//		Profesor p = this.profesorService.findProfesorById(2);
-//		
-//		this.profesorService.deleteProfesor(p);
-//		assertEquals(1, this.profesorService.findAll().size());
-//	}
 }

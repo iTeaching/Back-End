@@ -1,6 +1,5 @@
 package org.springframework.samples.iTeaching.web;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,8 +34,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-
 
 
 @Controller
@@ -361,38 +358,6 @@ public class AlumnoController {
 		model.put("alumno", alumno);
 		return "alumnos/changeAvatar";
 	}
-//	
-//	
-//	
-//	
-//	@PostMapping(value = "/alumnos/miPerfil/changeAvatar")
-//	public RedirectView saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar) throws IOException {
-//		//String fileName = storageService.store(avatar, "profile", http);
-//		
-//		
-//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		Alumno alumno = alumnoService.findAlumnoByUsername(userDetails.getUsername());
-//		
-//		String fileName = StringUtils.cleanPath(avatar.getOriginalFilename());
-//        alumno.setAvatar(fileName);
-//        alumnoService.saveAlumno(alumno);
-//        String uploadDir = "/resources/images/profile/" + alumno.getId();
-//        storageService.saveFile(uploadDir, fileName, avatar);
-//		
-//		return new  RedirectView("/alumnos/miPerfil", true);
-//	}
-	
-//	@GetMapping(value = "alumnos/miPerfil/changeAvatar/{usernameProfile}")
-//	public String viewChangeAvatar(@PathVariable("usernameProfile") String usernameProfile, Map<String, Object> model) {
-//		Alumno userOptional = alumnoService.findAlumnoByUsername(usernameProfile);
-//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		if (!userOptional.getUser().equals(userDetails.getUsername())) {
-//			return "exception";
-//		} else {
-//			model.put("user", userOptional);
-//			return "alumnos/changeAvatar";
-//		}
-//	}
 
 	@PostMapping(value = "alumnos/miPerfil/changeAvatar")
 	public String saveChangeAvatar(@RequestParam("avatar") MultipartFile avatar, HttpSession http) {
@@ -404,25 +369,5 @@ public class AlumnoController {
 		return "redirect:/alumnos/miPerfil";
 	}
 	
-	
-//    static String getRandomString(int i) 
-//    { 
-//        String theAlphaNumericS;
-//        StringBuilder builder;
-//        theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-//                                    + "0123456789"; 
-//        //create the StringBuffer
-//        builder = new StringBuilder(i); 
-//        for (int m = 0; m < i; m++) { 
-//            // generate numeric
-//            int myindex 
-//                = (int)(theAlphaNumericS.length() 
-//                        * Math.random()); 
-//            // add the characters
-//            builder.append(theAlphaNumericS 
-//                        .charAt(myindex)); 
-//        } 
-//        return builder.toString(); 
-//    }
 	
 }
