@@ -92,7 +92,7 @@
 					
 								 <td>
 				
-				<spring:url value="/asignatura/{asignaturaId}/chat"
+				<spring:url value="/chatProf/{asignaturaId}"
 							var="editUrl">
 							<spring:param name="asignaturaId" value="${asignatura.id}" />
 
