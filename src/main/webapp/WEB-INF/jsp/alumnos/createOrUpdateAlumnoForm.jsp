@@ -44,9 +44,8 @@
         <c:if test="${alumno['new']}">Nuevo </c:if> Alumno
     </h2>
     
-    <div class="row">
     
- 
+    <div class="row">
     <div class="col-sm-8" style="margin: 0 0 20px 0">
     <form:form modelAttribute="alumno" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">     

@@ -8,6 +8,7 @@ import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.Profesor;
 import org.springframework.samples.iTeaching.repository.AlumnoRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AlumnoService {
 
-	private AlumnoRepository alumnoRepository;	
+	private AlumnoRepository alumnoRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@Autowired
 	private UserService userService;
@@ -40,6 +44,7 @@ public class AlumnoService {
 		
 	@Transactional
 	public void saveAlumno(Alumno alumno) throws DataAccessException {
+		alumno.getUser().setPassword(encoder.encode(alumno.getUser().getPassword()));
 		alumnoRepository.save(alumno);		
 	}		
 	
