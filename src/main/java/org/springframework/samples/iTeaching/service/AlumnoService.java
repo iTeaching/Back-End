@@ -40,7 +40,6 @@ public class AlumnoService {
 		
 	@Transactional
 	public void saveAlumno(Alumno alumno) throws DataAccessException {
-		alumno.getUser().setPassword((alumno.getUser().getPassword()));
 		alumnoRepository.save(alumno);		
 	}		
 	

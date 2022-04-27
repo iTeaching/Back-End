@@ -36,7 +36,6 @@ public class ProfesorService {
 
 	@Transactional
 	public void saveProfesor(Profesor profesor) throws DataAccessException {
-		profesor.getUser().setPassword((profesor.getUser().getPassword()));
 		profesorRepository.save(profesor);		
 	}		
 	
