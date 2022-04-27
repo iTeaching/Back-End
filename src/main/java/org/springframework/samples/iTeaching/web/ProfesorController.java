@@ -15,6 +15,7 @@ import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
 import org.springframework.samples.iTeaching.model.Clase;
 import org.springframework.samples.iTeaching.model.Profesor;
+import org.springframework.samples.iTeaching.model.Valoracion;
 import org.springframework.samples.iTeaching.service.AlumnoService;
 import org.springframework.samples.iTeaching.model.estadoClase;
 import org.springframework.samples.iTeaching.service.AsignaturaService;
@@ -373,6 +374,15 @@ public class ProfesorController {
 	
 	
 	
+	}
+	
+	
+	@GetMapping(value = "/profesor/{profesorId}/perfil")
+	public String ListValoración(Map<String, Object> model,@PathVariable("profesorId") int profesorId) {
+		
+		Profesor profesor=this.profesorService.findProfesorById(profesorId);
+		model.put("profesor",profesor);
+		return "users/perfilVisitas";
 	}
 }
 

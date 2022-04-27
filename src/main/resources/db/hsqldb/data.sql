@@ -16,7 +16,7 @@ INSERT INTO users(username,password,enabled) VALUES ('javitorres','$2a$10$WcPfIr
 INSERT INTO authorities(id,username,authority) VALUES (5,'javitorres','profesor');
 
 --INSERTAR DATOS ALUMNOS Y PROFESORES
-INSERT INTO profesor(id, email, first_name, last_name, telephone,division,puntuacion, username) VALUES (1,'gonzalodiz@gmail.com','Gonzalo', 'Diz','666111333', '0','0','gonzalodiz');
+INSERT INTO profesor(id, email, first_name, last_name, telephone,division,puntuacion, username) VALUES (1,'gonzalodiz@gmail.com','Gonzalo', 'Diz','666111333', '1','5.0','gonzalodiz');
 INSERT INTO profesor(id, email, first_name, last_name, telephone, division,puntuacion,username) VALUES (2,'javitorres@gmail.com','Javi', 'Torres','666111343','0','0', 'javitorres');
 
 INSERT INTO alumno(id, email, first_name, last_name, telephone, username) VALUES (1,'pepeperez@gmail.com','Pepe','Moya','666111334','pepeperez');
