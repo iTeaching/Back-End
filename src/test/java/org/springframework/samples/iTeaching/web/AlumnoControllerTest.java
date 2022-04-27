@@ -149,6 +149,36 @@ public class AlumnoControllerTest {
 	
 	@WithMockUser(value = "spring")
 	@Test
+	void processCreationFormFailUsername() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(model().attributeHasErrors("alumno"))
+				.andExpect(model().attributeHasFieldErrors("alumno","user.username"))
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void processCreationFormFailPasswordEmpty() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest1")
+				.param("user.password", ""))
+				.andExpect(model().attributeHasErrors("alumno"))
+				.andExpect(model().attributeHasFieldErrors("alumno","user.password"))
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
 	void processCreationFormFailPassword() throws Exception {
 		mockMvc.perform(post("/alumnos/new").with(csrf())
 				.param("firstName", "test")
@@ -159,6 +189,21 @@ public class AlumnoControllerTest {
 				.param("user.password", "contraseñamala"))
 				.andExpect(model().attributeHasErrors("alumno"))
 				.andExpect(model().attributeHasFieldErrors("alumno","user.password"))
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void processCreationFormFailTelephone() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "6123")
+				.param("email", "test@gmailcom")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(model().attributeHasErrors("alumno"))
+				.andExpect(model().attributeHasFieldErrors("alumno","telephone"))
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
 	}
 	
@@ -250,8 +295,7 @@ public class AlumnoControllerTest {
 				.andExpect(model().attributeHasErrors("alumno"))
 				.andExpect(model().attributeHasFieldErrors("alumno","lastName"))
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
-	}
-	
+	}	
 	
 	@WithMockUser(value = "alumnoTest")
 	@Test

@@ -1,14 +1,8 @@
 package org.springframework.samples.iTeaching.web;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +17,9 @@ import org.springframework.samples.iTeaching.service.FileiTeachingService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 @WebMvcTest(value = FileController.class, excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class), excludeAutoConfiguration = SecurityConfiguration.class)
 public class FileControllerTest {
@@ -52,22 +48,23 @@ public class FileControllerTest {
 		.andExpect(status().is4xxClientError());
 	}
 	
-	@WithMockUser(value="spring")
-	@Test
-	void uploadFilesTest() throws Exception{
-		MultipartFile test = new MockMultipartFile("img1.jpg", new FileInputStream(new File("..\\Back-End\\src\\main\\resources\\static\\resources\\images\\img1.jpg")));
-		List<MultipartFile> list = new ArrayList<MultipartFile>();
-		list.add(test);
-		mockMvc.perform(post("/asignatura/{asignaturaId}/files",1).with(csrf())
-				.requestAttr("files", list))
-				.andExpect(status().is2xxSuccessful());
-	}
+	@Autowired
+    private WebApplicationContext webApplicationContext;
 	
-	@WithMockUser(value="spring")
 	@Test
-	void downloadFileTest() throws Exception {
-		mockMvc.perform(get("/downloadFile/{fileId}",1))
-		.andExpect(status().isOk());
-	}
+    public void testUploadMultipleFiles() throws Exception {
+
+        MockMultipartFile firstFile = new MockMultipartFile("images", "image1", "image/png", "png".getBytes());
+        MockMultipartFile secondFile = new MockMultipartFile("data", "other-file-name.data", "text/plain", "some other type".getBytes());
+        MockMultipartFile jsonFile = new MockMultipartFile("json", "", "application/json", "{\"json\": \"someValue\"}".getBytes());
+
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/asignatura/{asignaturaId}/files",1)
+                        .file(firstFile)
+                        .file(secondFile)
+                        .file(jsonFile)
+                        .param("some-random", "4"))
+                    .andExpect(status().is(200));
+    }
 	
 }

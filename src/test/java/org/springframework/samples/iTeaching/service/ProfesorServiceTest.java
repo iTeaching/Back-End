@@ -59,11 +59,17 @@ public class ProfesorServiceTest {
 		assertThat(this.profesorService.findAll().size() == 3);
 	}
 
-//	@Test
-//	public void testDeleteProfesor() {
-//		Profesor p = this.profesorService.findProfesorById(2);
-//		
-//		this.profesorService.deleteProfesor(p);
-//		assertEquals(1, this.profesorService.findAll().size());
-//	}
+	@Test
+	public void testDeleteProfesor() {
+		Profesor p = this.profesorService.findProfesorById(2);
+		
+		this.profesorService.deleteProfesor(p);
+	}
+	
+	@Test
+	public void testfindByIdAlumnosProfesores() {
+		List<String> ls=this.profesorService.findByIdAlumnosProfesores(1, 1);
+		assertEquals(2,ls.size());
+	}
+	
 }

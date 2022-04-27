@@ -66,20 +66,19 @@ public class AsignaturaControllerTest {
 		.andExpect(model().attributeExists("asignatura"));
 	}
 	
-//	 @WithMockUser(value = "prof1")
-//	 @Test
-//	 void testProcessCeationFormSuccess() throws Exception {
-//	 	mockMvc.perform(post("/asignaturas/new")
-//	 		.with(csrf())
-//	 		.param("profesor", "1")
-//	 		.param("nombre", "Fisica2")
-//	 		.param("titulo_anuncio", "Clases Fisica")
-//	 		.param("url", "https://ispp1.whereby.com/4f32158f-ca85-4a72-9700-7c334b080f56")
-//	 		.param("descripcion", "Clases baratas de fisica2")
-//	 		.param("precio", "12"))
-//	 		.andExpect(status().is3xxRedirection())
-//	 		.andExpect(view().name("redirect:/asignaturas"));
-//	 }
+	 @WithMockUser(value = "prof1")
+	 @Test
+	 void testProcessCeationFormSuccess() throws Exception {
+	 	mockMvc.perform(post("/asignaturas/new")
+	 		.with(csrf())
+	 		.param("profesor", "1")
+	 		.param("nombre", "Fisica2")
+	 		.param("titulo_anuncio", "Clases Fisica")
+	 		.param("url", "https://ispp1.whereby.com/4f32158f-ca85-4a72-9700-7c334b080f56")
+	 		.param("descripcion", "Clases baratas de fisica2")
+	 		.param("precio", "12"))
+	 		.andExpect(status().isOk());
+	 }
 	
 	@WithMockUser(value = "prof1")
 	@Test
@@ -104,13 +103,12 @@ public class AsignaturaControllerTest {
 		.andExpect(view().name("redirect:/"));
 	}
 	
-//	@WithMockUser(value = "alumno1")
-//	@Test
-//	void testGetSalas() throws Exception {
-//		mockMvc.perform(get("/asignaturas/{asignaturaId}",1))
-//		.andExpect(status().isOk())
-//		.andExpect(view().name("asignaturas/view"));
-//	}
+	@WithMockUser(value = "alumno1")
+	@Test
+	void testGetSalas() throws Exception {
+		mockMvc.perform(get("/asignaturas/{asignaturaId}",1))
+		.andExpect(status().isOk());
+	}
 	
 	@WithMockUser(value="alumno1")
 	@Test
@@ -121,36 +119,20 @@ public class AsignaturaControllerTest {
 		.andExpect(view().name("asignaturas/findOfertas"));
 	}
 	
-//	 @WithMockUser(value = "alumno1")
-//	 @Test
-//	 void testFindAnunciosByAsignatura() throws Exception{
-//		 mockMvc.perform(post("/ofertas/findAsignatura").with(csrf()))
-//		 .andExpect(status().isOk())
-//		 .andExpect(view().name("asignaturas/findOfertas"));
-//	}
-	
-//	 @WithMockUser(value = "alumno1")
-//	 @Test
-//	 void testSuscribirAsignatura() throws Exception {
-//		 mockMvc.perform(get("/asignaturas/{asignaturaId}/apply",10))
-//		 .andExpect(status().isOk())
-//		 .andExpect(view().name("redirect:/asignaturas"));
-//		}
+	 @WithMockUser(value = "alumno1")
+	 @Test
+	 void testSuscribirAsignaturaException() throws Exception {
+		 mockMvc.perform(get("/asignaturas/{asignaturaId}/apply",10))
+		 .andExpect(status().isOk())
+		 .andExpect(view().name("exception"));
+		}
 	 
-//	@WithMockUser(value="pepeperez")
-//	@Test
-//	void testCrearClase() throws Exception{
-//		mockMvc.perform(get("/asignaturas/{asignaturaId}/nuevaClase",1))
-//		.andExpect(status().isOk())
-//		.andExpect(model().attributeExists("diccionario"))
-//		.andExpect(view().name("asignaturas/1/nuevaClase"));
-//	}
-	
-//	@WithMockUser(value="pepeperez")
-//	@Test
-//	void testCrearClasePost() throws Exception{
-//		mockMvc.perform(post("/asignaturas/{asignaturaId}/nuevaClase",1))
-//		.andExpect(status().isOk())
-//		.andExpect(view().name("redirect:/alumnos/miPerfil"));
-//	}
+	@WithMockUser(value="pepeperez")
+	@Test
+	void testCrearClaseException() throws Exception{
+		mockMvc.perform(get("/asignaturas/{asignaturaId}/nuevaClase",1))
+		.andExpect(status().isOk())
+		.andExpect(view().name("exception"));
+	}
+
 }

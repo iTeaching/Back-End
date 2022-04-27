@@ -1,6 +1,7 @@
 package org.springframework.samples.iTeaching.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +23,7 @@ public class AsignaturaServiceTest {
 	@Autowired
 	private AlumnoService alumnoService;
 	
+	@Test
 	public void testFindAsignaturaById() {
 		Asignatura a = this.asignaturaService.findById(1);
 		
@@ -68,5 +70,11 @@ public class AsignaturaServiceTest {
 		a.setUrl("https://acme.whereby.com/008509eb-3d6a-43ce-bd86-2712cc02c40b");
 		
 		this.asignaturaService.saveAsignatura(a);
+	}
+	
+	@Test
+	public void testDelete() {
+		this.asignaturaService.delete(this.asignaturaService.findById(1));
+		
 	}
 }

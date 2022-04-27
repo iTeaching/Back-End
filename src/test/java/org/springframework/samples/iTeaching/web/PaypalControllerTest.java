@@ -53,25 +53,24 @@ public class PaypalControllerTest {
 	public static final String SUCCESS_URL = "/pay/success";
 	public static final String CANCEL_URL = "/pay/cancel";
 	
-//	@WithMockUser(value = "spring")
-//	@Test
-//	void paymentTest() throws Exception {
-//		Orden orden=new Orden();
-//		orden.setCurrency("EUR");
-//		orden.setIntent("Sale");
-//		orden.setDescription("decripcon");
-//		orden.setMethod("PAYPAL");
-//		orden.setPrice(21.0);
-//		Payment payment = paypalService.createPayment(orden.getPrice(), orden.getCurrency(), orden.getMethod(),
-//				orden.getIntent(), orden.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-//				"http://localhost:8080/" + SUCCESS_URL);
-////		Links link=payment.getLinks().get(0);
-//		mockMvc.perform(post("/pay")
-//			.with(csrf()))
-//			.andExpect(status().isOk())
-//			.andExpect(view().name("redirect:/"));
-//
-//		}
+	@WithMockUser(value = "spring")
+	@Test
+	void paymentTest() throws Exception {
+		Orden orden=new Orden();
+		orden.setCurrency("EUR");
+		orden.setIntent("Sale");
+		orden.setDescription("decripcon");
+		orden.setMethod("PAYPAL");
+		orden.setPrice(21.0);
+		Payment payment = paypalService.createPayment(orden.getPrice(), orden.getCurrency(), orden.getMethod(),
+				orden.getIntent(), orden.getDescription(), "http://localhost:8080/" + CANCEL_URL,
+				"http://localhost:8080/" + SUCCESS_URL);
+//		Links link=payment.getLinks().get(0);
+		mockMvc.perform(post("/pay")
+			.with(csrf()))
+			.andExpect(status().isOk());
+
+		}
 	
 	@WithMockUser(value = "spring")
 	@Test
@@ -81,29 +80,21 @@ public class PaypalControllerTest {
 			.andExpect(view().name("cancel"));
 	}
 	
-//	@WithMockUser(value = "spring")
-//	@Test
-//	void successPayTest() throws Exception {
-//		mockMvc.perform(get("/pay/success"))
-//			.andExpect(status().isOk())
-//			.andExpect(view().name("success"));
-//	}
-//	
-//	@WithMockUser(value = "spring")
-//	@Test
-//	void pagarTest() throws Exception {
-//		Orden orden=new Orden();
-//		orden.setCurrency("EUR");
-//		orden.setIntent("Sale");
-//		orden.setDescription("decripcon");
-//		orden.setMethod("PAYPAL");
-//		orden.setPrice(21.0);
-//		paypalService.createPayment(orden.getPrice(), orden.getCurrency(), orden.getMethod(),
-//				orden.getIntent(), orden.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-//				"http://localhost:8080/" + SUCCESS_URL);
-//		mockMvc.perform(get("/pagar"))
-//			.andExpect(status().isOk())
-//			.andExpect(view().name("/pay/pay"));
-//	}
+	@WithMockUser(value = "spring")
+	@Test
+	void pagarTestException() throws Exception {
+		Orden orden=new Orden();
+		orden.setCurrency("EUR");
+		orden.setIntent("Sale");
+		orden.setDescription("decripcon");
+		orden.setMethod("PAYPAL");
+		orden.setPrice(21.0);
+		paypalService.createPayment(orden.getPrice(), orden.getCurrency(), orden.getMethod(),
+				orden.getIntent(), orden.getDescription(), "http://localhost:8080/" + CANCEL_URL,
+				"http://localhost:8080/" + SUCCESS_URL);
+		mockMvc.perform(get("/pagar"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("exception"));
+	}
 
 }
