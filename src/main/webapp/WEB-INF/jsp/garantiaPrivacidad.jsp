@@ -84,6 +84,9 @@
 		
 		</main>
 		
+		<h2 style="text-align:center;color:#FFDD33;">5. Derecho al olvido</h2>
+
+		<p style="margin-left: 3em; color:Snow;"> iTeaching garantiza la total y completa eliminación de los datos personales del usuario que así lo solicite. Para ello tenfrá que ponerse en contacto con iTeaching a través de su cuenta de <a href="mailto:iteaching.sa@gmail.com​">correo</a> con el asunto <i>Eliminacion de mis datos</i> adjuntando sus datos identificativos (nombre de usuario y correo electrónico). Este proceso no se puede deshacer y no podrá regenerar su cuenta por lo que la tendrá que volver a crear.</p>
 		
 		<footer style="padding-top: 15px; background-text-align:center;color:#FFDD33; margin-top:40px; ">
         <h2 class="titulo-final">&copy; 2022,iTeaching</h2>
