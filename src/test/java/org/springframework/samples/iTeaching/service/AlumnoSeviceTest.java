@@ -2,7 +2,6 @@ package org.springframework.samples.iTeaching.service;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,9 +13,11 @@ import org.springframework.stereotype.Service;
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 public class AlumnoSeviceTest {
 	
+
 	@Autowired
 	private AlumnoService alumnoService;
 	
+
 	@Test
 	public void testFindAlumnoById() {
 		Alumno a = this.alumnoService.findAlumnoById(1);
