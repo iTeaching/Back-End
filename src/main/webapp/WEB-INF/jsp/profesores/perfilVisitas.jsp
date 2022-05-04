@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -5,10 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<petclinic:layout pageName="Mi perfil">
-
+<petclinic:layout pageName="Perfil Visitas">
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 		rel="stylesheet"
@@ -20,10 +19,7 @@
 	<script src="/lib/jquery-1.12.2.min.js"></script>
 	<script src="/lib/bootstrap.min.js"></script>
 
-
-
 	<div class="col-sm-4" style="display: flex; flex-direction: column; margin-top: 20px">
-
 
 		<c:choose>
 			<c:when test="${profesor.avatar == null}">
@@ -38,13 +34,7 @@
 			</c:otherwise>
 		</c:choose>
 
-
 	</div>
-
-
-
-
-
 
 		<table class="table table-user-information">
 			<tbody>
@@ -82,5 +72,4 @@
 			</tbody>
 
 		</table>
-
 </petclinic:layout> 

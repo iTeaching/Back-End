@@ -7,16 +7,9 @@
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <iteaching:layout pageName="asignaturas">
-	
 	<nav>
     </nav>
-    
-    
     <h2>Mis Asignaturas</h2>
-	
-		
-
-	
     <table id="asignaturaTable" class="table table-striped">
         <thead>
         <tr>
@@ -29,6 +22,7 @@
             <th style="width: 120px">Clase</th>
             </sec:authorize>
             <th style="width: 120px">Ver archivos</th>
+            <th style="width: 120px">Chat</th>
         </tr>
         </thead>
         <tbody>
@@ -38,11 +32,9 @@
                     <c:out value="${asignatura.nombre}"/>
                 </td>
                 
-                 <td>
-                     
+                 <td>  
 					<a href="/asignaturas/${asignatura.id }"><img src="resources/images/video.svg"></a>
                 </td>
-                
                 <sec:authorize access="hasAnyAuthority('alumno')">
                 <td>
                  <a href="/profesor/${asignatura.profesor.id}/perfil">
@@ -59,7 +51,6 @@
                 	</c:if>
                 </td>
                 <td>
-				
 				<spring:url value="/asignatura/{asignaturaId}/valoraciones/new"
 							var="editUrl">
 							<spring:param name="asignaturaId" value="${asignatura.id}" />
@@ -72,18 +63,10 @@
 							var="editUrl">
 							<spring:param name="asignaturaId" value="${asignatura.id}" />
 						</spring:url> 
-						<a class="button"href="${fn:escapeXml(editUrl)}" style="color: black">Nueva clase</a>
-					</td>
-					
-
-					
-					
-					
-					
+						<a href="${fn:escapeXml(editUrl)}" class="btn btn-outline-warning">Crear clase</a>
+					</td>				
 				</sec:authorize>
-				
 				 <td>
-				
 				<spring:url value="/asignatura/{asignaturaId}/files"
 							var="editUrl">
 							<spring:param name="asignaturaId" value="${asignatura.id}" />
@@ -91,9 +74,7 @@
 						</spring:url> <a href="${fn:escapeXml(editUrl)}"
 						class="btn btn-outline-warning">Archivos</a>
 					</td>
-					
-								 <td>
-				
+					 <td>
 				<spring:url value="/chatProf/{asignaturaId}"
 							var="editUrl">
 							<spring:param name="asignaturaId" value="${asignatura.id}" />
@@ -105,6 +86,5 @@
         </c:forEach>
         </tbody>
     </table>
- 
 
 </iteaching:layout>

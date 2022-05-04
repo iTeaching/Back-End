@@ -9,7 +9,8 @@
 <html>
 <iteaching:htmlHeader/>
 <head>
-  <meta charset="UTF-8">
+<link rel="icon" href="/resources/images/logo.ico" type="image/x-icon">
+<meta charset="UTF-8">
 </head>
 <body>
 <iteaching:bodyHeader menuName="${pageName}"/>

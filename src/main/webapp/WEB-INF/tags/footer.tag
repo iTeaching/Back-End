@@ -17,10 +17,12 @@
   <meta charset="UTF-8">
 </head>
 
-<footer style="background-color: #FFDD33; margin-bottom:0px;margin-top:290px;">
-	<div class="contenedor-footer" style="background-color: #FFDD33;margin-bottom:0px;margin-top:156px;">
+<link href="/resources/style/estilos.css" rel="stylesheet" type="text/css">
+
+<footer style="background-color: #FFDD33; margin-bottom:0px;margin-top:503px;">
+	<div class="contenedor-footer" style="background-color: #FFDD33;margin-bottom:0px;margin-top:100px;">
 		<div class="footer-contact--email" >
-			<img src="../resources/images/gmail.svg" class="footer_img">
+			<img src="/resources/images/gmail.svg" class="footer_img">
 		</div>
 	</div>
 	<h2 class="titulo-final">&copy; 2022,iTeaching</h2>
