@@ -1,0 +1,68 @@
+.container {
+  background-color: #ffff;
+  padding: 5px 20px 15px 20px;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #000;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #FFDD33;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    display: none;
+  }
+  label {
+    padding-left: 1.25em;
+    background: url('https://s3-eu-west-1.amazonaws.com/static.oscargascon.es/wp-content/media/check-radio-sprites.png') no-repeat top left;
+  }
+  input[type="radio"] + label   {
+    background-position: 0 -42px; width: 24px; height: 24px;
+  }
+  input[type="radio"]:checked + label {
+    background-position: 0 -71px; width: 24px; height: 24px;
+  }
+  input[type="checkbox"] + label {
+    background-position: 0 0; width: 16px; height: 16px;
+  }
+  input[type="checkbox"]:checked + label {
+    background-position: 0 -21px; width: 16px; height: 16px;
+  }

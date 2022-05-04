@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="iteaching" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE>
-<link rel="shortcut icon" href="resources/images/logo.ico">
+<link rel="icon" href="/resources/images/logo.ico" type="image/x-icon">
 <html>
 <iteaching:menu name="chat"/>
 <head>
