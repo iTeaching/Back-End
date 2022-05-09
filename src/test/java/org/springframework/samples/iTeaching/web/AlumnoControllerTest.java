@@ -1,9 +1,7 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +20,6 @@ import org.springframework.samples.iTeaching.service.ProfesorService;
 import org.springframework.samples.iTeaching.service.StorageService;
 import org.springframework.samples.iTeaching.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

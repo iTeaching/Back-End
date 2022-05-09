@@ -360,19 +360,8 @@ public class ProfesorController {
 			clase.setEstadoClase(estadoClase.cancelada);
 			this.claseService.saveClase(clase);
 			return "redirect:/profesores/miPerfil";
-	
-
-	
-	
-	
 		}
 
-	
-	
-
-	
-	
-	
 	}
 	
 	@GetMapping(value = "/profesor/{profesorId}/perfil")
@@ -380,17 +369,8 @@ public class ProfesorController {
 
 		Profesor profesor=this.profesorService.findProfesorById(profesorId);
 		model.put("profesor",profesor);
-		return "users/perfilVisitas";
+		return "profesores/perfilVisitas";
 		}
 }
-
-
-	
-	
-	
-	
-	
-	
-	
 	
 

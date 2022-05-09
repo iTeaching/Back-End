@@ -1,12 +1,9 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.iTeaching.model.Alumno;
 import org.springframework.samples.iTeaching.model.Asignatura;
