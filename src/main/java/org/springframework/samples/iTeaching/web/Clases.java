@@ -18,7 +18,7 @@ import lombok.Setter;
 public class Clases {
 	
 	public static String url() throws IOException, InterruptedException {
-		var apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmFwcGVhci5pbiIsImF1ZCI6Imh0dHBzOi8vYXBpLmFwcGVhci5pbi92MSIsImV4cCI6OTAwNzE5OTI1NDc0MDk5MSwiaWF0IjoxNjUwNDk2ODAxLCJvcmdhbml6YXRpb25JZCI6MTU4NTQ1LCJqdGkiOiI0NGMyOWJhYS02YmRhLTQ3YzUtYjcyYi0wOTUwN2M5MzhjMjcifQ.sx4OpNPNG0-x2eFUMHBmYgv5to-zkPoZoEM_9MCXEnw";
+		var apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmFwcGVhci5pbiIsImF1ZCI6Imh0dHBzOi8vYXBpLmFwcGVhci5pbi92MSIsImV4cCI6OTAwNzE5OTI1NDc0MDk5MSwiaWF0IjoxNjUyMjE0MjQ1LCJvcmdhbml6YXRpb25JZCI6MTYwMDY1LCJqdGkiOiJhZmRmODI3Yy0yNWUzLTQ1MGEtOTU4ZS1kMjc1ZTk2NjUxMjQifQ.E5WoePTZE24nFAjMFmBRxnlhAIRd8wjhC1Wu0XA0yMs";
 		var data = Map.of("endDate", "2022-10-28T11:57:00.000Z", "fields", Collections.singletonList("hostRoomUrl"));
 
 		var request = HttpRequest.newBuilder(URI.create("https://api.whereby.dev/v1/meetings"))
@@ -31,8 +31,8 @@ public class Clases {
 		
 		System.out.println("Status code: " + response.statusCode());
 		System.out.println("Body: " + response.body());
-		System.out.println("RoomURL: " + response.body().substring(88, 150));
-		return response.body().substring(88, 150);
+		System.out.println("RoomURL: " + response.body().substring(88, 153));
+		return response.body().substring(88, 153);
 	}
 
 }
