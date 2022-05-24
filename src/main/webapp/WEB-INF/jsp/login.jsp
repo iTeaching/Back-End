@@ -38,10 +38,10 @@
 
 	</style>
 	
-	/* <script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	
-	<script> */
-        	/* window.onload = function() {
+	<script>
+        	window.onload = function() {
         		var $recaptcha = document.querySelector('#g-recaptcha-response');
         		if($recaptcha) {
         			$recaptcha.setAttribute("required", "required");
@@ -49,8 +49,8 @@
         		$recaptcha.oninvalid = function(e) {
         			alert("Por favor, verifique que es una persona");
         		}
-        	}; */
-    /* </script> */
+        	};
+    </script>
 	
 </head>
 
