@@ -68,8 +68,6 @@ input[type="radio"]:checked ~ label {
   </div>
   
   
-
-  
    <div class="form-group has-feedback">
             <iteaching:inputField label="Comentario" name="comentario"/>
             </div>
@@ -80,7 +78,7 @@ input[type="radio"]:checked ~ label {
                 <c:choose>
                     <c:when test="${valoracion['new']}">
                     
-                        <button class="btn btn-default" type="submit">¡Valorar!</button>
+                        <button class="btn btn-outline-warning" type="submit">¡Valorar!</button>
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-default" type="submit">Actualizar</button>

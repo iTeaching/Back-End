@@ -145,6 +145,36 @@ public class AlumnoControllerTest {
 	
 	@WithMockUser(value = "spring")
 	@Test
+	void processCreationFormFailUsername() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(model().attributeHasErrors("alumno"))
+				.andExpect(model().attributeHasFieldErrors("alumno","user.username"))
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void processCreationFormFailPasswordEmpty() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.username", "alumnoTest1")
+				.param("user.password", ""))
+				.andExpect(model().attributeHasErrors("alumno"))
+				.andExpect(model().attributeHasFieldErrors("alumno","user.password"))
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
 	void processCreationFormFailPassword() throws Exception {
 		mockMvc.perform(post("/alumnos/new").with(csrf())
 				.param("firstName", "test")
@@ -155,6 +185,21 @@ public class AlumnoControllerTest {
 				.param("user.password", "contraseñamala"))
 				.andExpect(model().attributeHasErrors("alumno"))
 				.andExpect(model().attributeHasFieldErrors("alumno","user.password"))
+				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void processCreationFormFailTelephone() throws Exception {
+		mockMvc.perform(post("/alumnos/new").with(csrf())
+				.param("firstName", "test")
+				.param("lastName", "prueba")
+				.param("telephone", "6123")
+				.param("email", "test@gmailcom")
+				.param("user.username", "alumnoTest")
+				.param("user.password", "Pa$$w0rd1"))
+				.andExpect(model().attributeHasErrors("alumno"))
+				.andExpect(model().attributeHasFieldErrors("alumno","telephone"))
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
 	}
 	
@@ -246,8 +291,7 @@ public class AlumnoControllerTest {
 				.andExpect(model().attributeHasErrors("alumno"))
 				.andExpect(model().attributeHasFieldErrors("alumno","lastName"))
 				.andExpect(view().name("alumnos/createOrUpdateAlumnoForm"));
-	}
-	
+	}	
 	
 	@WithMockUser(value = "alumnoTest")
 	@Test
@@ -256,4 +300,93 @@ public class AlumnoControllerTest {
 				.andExpect(view().name("alumnos/miPerfil"));
 	}
 	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void deleteAlumnoTest() throws Exception {
+		mockMvc.perform(get("/alumnos/{alumnoId}/delete",24))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/login"));
+	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void deleteAlumnoPostErrorTest() throws Exception {
+		mockMvc.perform(post("/alumnos/{alumnoId}/delete",24).with(csrf())
+				.param("firstName", "Test")
+				.param("lastName", "Prueba")
+				.param("telephone", "612345678")
+				.param("email", "test@gmail.com")
+				.param("user.enable", "false")
+				.param("id", "24"))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/login"));
+	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void showOwnerTest() throws Exception {
+		mockMvc.perform(get("/alumnos/{alumnoId}",24))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/alumnoDetails"));
+	}
+	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void crearClaseTest() throws Exception {
+//		mockMvc.perform(get("alumnos/nuevaClase"))
+//				.andExpect(status().isOk())
+//				.andExpect(view().name("alumnos/nuevaClase"));
+//	}
+//	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void crearClasePostTest() throws Exception {
+//		mockMvc.perform(post("alumnos/nuevaClase"))
+//				.andExpect(status().isOk())
+//				.andExpect(view().name("alumnos/nuevaClase"));
+//	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void aceptarClaseTest() throws Exception {
+		mockMvc.perform(get("/alumnos/aceptar/{claseId}",1))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/aceptarClase"));
+	}
+	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void aceptarClasePostTest() throws Exception {
+//		mockMvc.perform(post("/alumnos/aceptar/{claseId}",1).with(csrf())
+//				.param("id", "1")
+//				.param("estadoClase", "estadoClase.confirmada"))
+//				.andExpect(status().is3xxRedirection())
+//				.andExpect(view().name("redirect:/alumnos/miPerfil"));
+//	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void cancelarClaseTest() throws Exception {
+		mockMvc.perform(get("/alumnos/cancelar/{claseId}",1))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/cancelarClase"));
+	}
+	
+//	@WithMockUser(value = "alumnoTest")
+//	@Test
+//	void aceptarClasePostTest() throws Exception {
+//		mockMvc.perform(post("/alumnos/cancelar/{claseId}",1).with(csrf())
+//				.param("id", "1")
+//				.param("estadoClase", "estadoClase.confirmada"))
+//				.andExpect(status().is3xxRedirection())
+//				.andExpect(view().name("redirect:/alumnos/miPerfil"));
+//	}
+	
+	@WithMockUser(value = "alumnoTest")
+	@Test
+	void viewChangeAvatarTest() throws Exception {
+		mockMvc.perform(get("/alumnos/miPerfil/changeAvatar/{alumnoId}",1))
+				.andExpect(status().isOk())
+				.andExpect(view().name("alumnos/changeAvatar"));
+	}
 }

@@ -21,7 +21,6 @@
             <petclinic:inputField label="Título del anuncio" name="titulo_anuncio"/>
             <petclinic:inputField label="Descripción" name="descripcion"/>
             <div class="col-sm-10">Precio</div> <input type="number" name="precio"/>
-			
 		</div>
 		<c:if test="${not empty errorMessage}">
 				<div class="alert alert-danger" role="alert">${errorMessage}</div>
@@ -30,7 +29,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${asignatura['new']}">
-                        <button class="btn btn-default" type="submit">¡Publicar Asignatura!</button>
+                        <br>
+                        <button class="btn btn-outline-warning" type="submit">¡Publicar Asignatura!</button>
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-default" type="submit">Actualizar datos de la asignatura</button>

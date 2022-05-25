@@ -1,5 +1,7 @@
 package org.springframework.samples.iTeaching.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,12 +22,12 @@ import lombok.Setter;
 public class Clase extends BaseEntity {
 
 	@Column(name = "horaComienzo")
-	// @DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
-	private String horaComienzo;
+	//@DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
+	private String  horaComienzo;
 
 	@Column(name = "horaFin")
-	// @DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
-	private String horaFin;
+	//@DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
+	private String  horaFin;
 
 	@Column(name = "aceptacionAlumno", columnDefinition = "boolean default false")
 	// @DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")

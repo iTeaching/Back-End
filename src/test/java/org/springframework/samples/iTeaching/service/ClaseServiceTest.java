@@ -36,8 +36,8 @@ public class ClaseServiceTest {
 	public void testInsertAlumno() {
 		Clase c = new Clase();
 		c.setProfesor(profesorService.findProfesorById(1));
-		c.setHoraComienzo("10");
-		c.setHoraFin("11");
+		//c.setHoraComienzo("10");
+		//c.setHoraFin("11");
 		c.setEstadoClase(estadoClase.confirmada);
 		c.setAsignatura(asignaturaService.findById(1));
 		c.setAceptacionAlumno(true);

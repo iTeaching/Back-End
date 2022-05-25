@@ -1,12 +1,16 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -273,6 +277,21 @@ public class AsignaturaController {
 			clase.getAsignatura().getProfesor();
 			clase.setProfesor(profesor);
 			clase.setEstadoClase(estadoClase.solicitada);
+			Pattern patron = Pattern.compile("\\d{4}/([1][0-2]|[0][0-9])/([3][0-1]|[1-2][0-9]|[0][1-9]|[1-9]) ([2][0-3]|[0-1][0-9]|[1-9]):[0-5][0-9]:([0-5][0-9]|[6][0])");
+			Matcher m = patron.matcher(clase.getHoraComienzo());
+			Matcher m2 = patron.matcher(clase.getHoraFin()); 
+			if(!m.find()&&!m2.find()) {
+				return "asignaturas/nuevaClase";	
+			}
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+			LocalDateTime dateTime = LocalDateTime.parse(clase.getHoraComienzo(), formatter);
+			LocalDateTime dateTime2 = LocalDateTime.parse(clase.getHoraFin(), formatter);
+			
+
+			if(dateTime.isAfter(dateTime2)) {
+				return "asignaturas/nuevaClase";
+			}
 			this.claseService.saveClase(clase);
 ;
 			return "redirect:/alumnos/miPerfil";
