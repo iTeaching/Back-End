@@ -209,7 +209,6 @@ public class AsignaturaController {
 
 	@GetMapping(value="/asignaturas/{asignaturaId}/nuevaClase")
 	public String crearClase(Map<String,Object> model, @PathVariable("asignaturaId") int id) {
-		System.out.println("hola");
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno usuario = alumnoService.findAlumnoByUsername(username);
@@ -221,13 +220,11 @@ public class AsignaturaController {
 		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
 		model.put("listaAsignaturas", listaAsignaturas);
 		
-		
 		List<Asignatura> conjuntoAsignaturas= usuario.getAsignaturas();
 		Set<Profesor> setProfesor= new HashSet<Profesor>();
 		for(Asignatura asing: conjuntoAsignaturas) {
 			setProfesor.add(asing.getProfesor());
 		}
-		
 		
 		Map<Profesor, List<Asignatura>> map = new HashMap<Profesor, List<Asignatura>>();
 		
@@ -249,14 +246,12 @@ public class AsignaturaController {
 					map.put(profesor, new ArrayList<>());
 					map.get(profesor).add(asignatura);
 					}
-				
 				i++;
 				}
-		}
-		
+		}	
 		
 		model.put("diccionario", map);		
-		return "asignaturas/nuevaClase";
+		return "welcome";
 	}
 	@PostMapping(value="/asignaturas/{asignaturaId}/nuevaClase")
 	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("asignaturaId") int id) {
