@@ -85,6 +85,7 @@ public class ProfesorController {
 		}
 		else {
 			//creating profesor, user and authorities
+			profesor.getTelephone().trim();
 			profesor.setDivision(0);
 			profesor.setPuntuacion(0.);
 			profesor.getUser().setEnabled(true);

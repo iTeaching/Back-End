@@ -83,6 +83,7 @@ public class AlumnoController {
 		}
 		else {
 			//creating alumno, user and authorities
+			alumno.getTelephone().trim();
 			alumno.getUser().setEnabled(true);
 			this.alumnoService.saveAlumno(alumno);
 			authService.saveAuthorities(alumno.getUser().getUsername(), "alumno");
