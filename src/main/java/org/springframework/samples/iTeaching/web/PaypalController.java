@@ -177,4 +177,22 @@ public class PaypalController {
 			model.addAttribute("orden",order);
             return "/pay/pay";
 		}
+
+		@GetMapping(value="/promocionarmeAnual")
+	    public String suscripcionProfesorAnual(Model model) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();
+            Profesor profesor = this.profesorService.findProfesorByUsername(user.getUsername());
+			profesor.setPremium("anual");
+            Double precio = 5.00;
+            model.addAttribute("precio", precio);
+            Orden order = new Orden();
+            order.setPrice(precio);
+			List<String>tipoPago=new ArrayList<>();
+			tipoPago.add("paypal");
+			tipoPago.add("visa");
+			model.addAttribute("tipos",tipoPago);
+			model.addAttribute("orden",order);
+            return "/pay/pay";
+		}
 }
