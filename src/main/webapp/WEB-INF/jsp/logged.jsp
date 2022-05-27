@@ -76,6 +76,17 @@
 						</a>
 					</div>
 				</div>
+				<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
+				<center><img
+							class="card-img-top"  style="margin-top:10px";
+							src="resources/images/libros.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<a href="/promocionarme"><button>Mensual</button></a> <a href="/promocionarmeAnual"><button >Anual</button></a>
+								<h5 class="card-title text-primary">Mejora tu cuenta </h5>
+								<p class="card-text text-dark">Mejora tu cuenta al servicio premium</p>
+							</center>
+							</div>
 				<div class="col">
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;">
 						<a name="logout" value="logout" href="/login"
@@ -184,8 +195,23 @@
 						</a>
 					</div>
 				</div>
-				</div>
+				<div class="col" style="">
+					<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
+<center><img
+							class="card-img-top"  style="margin-top:10px";
+							src="resources/images/libros.png"
+							alt="Card image cap">							
 
+							<div class="card-body">
+								
+								<a href="/suscribirme"><button>Mensual</button></a> <a href="/suscribirmeAnual"><button >Anual</button></a>
+								<h5 class="card-title text-primary">Mejora tu cuenta </h5>
+								<p class="card-text text-dark">Mejora tu cuenta al servicio premium</p>
+
+							</div>
+						</center>
+					</div>
+				</div>
 		</sec:authorize>
 	</main>
 
