@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.web;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,12 +38,30 @@ public class WelcomeController {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		String authority= clienteDetails.getAuthorities().iterator().next().getAuthority();
+
 		if(authority.equals("profesor")) {
 		Profesor profesor=this.profesorservice.findProfesorByUsername(username);
-		model.addAttribute(profesor);}
+		model.addAttribute(profesor);
+		if(profesor.getPremium()=="mensual"&&profesor.getPago().isAfter(LocalDate.now().minusMonths(1))){
+			profesor.setPremium(null);
+			profesor.setPago(null);
+		}
+		else if(profesor.getPremium()=="anual"&&profesor.getPago().isAfter(LocalDate.now().minusYears(1))){
+			profesor.setPremium(null);
+			profesor.setPago(null);
+		}
+	}
 		else{
 		Alumno alumno=this.alumnoservice.findAlumnoByUsername(username);
 		model.addAttribute(alumno);
+		if(alumno.getPremium()=="mensual"&&alumno.getPago().isAfter(LocalDate.now().minusMonths(1))){
+			alumno.setPremium(null);
+			alumno.setPago(null);
+		}
+		else if(alumno.getPremium()=="mensual"&&alumno.getPago().isAfter(LocalDate.now().minusYears(1))){
+			alumno.setPremium(null);
+			alumno.setPago(null);
+		}
 		}
 
 		return "logged";

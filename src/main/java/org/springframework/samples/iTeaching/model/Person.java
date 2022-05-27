@@ -1,5 +1,7 @@
 package org.springframework.samples.iTeaching.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
@@ -32,12 +34,17 @@ public class Person extends BaseEntity {
 	@NotEmpty
 	@Pattern(regexp = "\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b")
 	private String email;
+	
+	@Column (name= "premium")
+	@NotEmpty
+	private String premium;
+
+	@Column(name="fecha_inscripción")
+	private LocalDate pago;
+	
 	public String getFirstName() {
 		return this.firstName;
 	}
-	@Column (name= "premium")
-	@NotEmpty
-	private boolean premium;
 
 	@Transient
 	public String getFullName() {

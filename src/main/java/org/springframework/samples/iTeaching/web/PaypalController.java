@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import net.bytebuddy.asm.Advice.Local;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import com.paypal.api.payments.Links;
@@ -105,4 +109,60 @@ public class PaypalController {
 			model.addAttribute("orden",order);
             return "/pay/pay";
 		}
+		@GetMapping(value="/suscribirme")
+	    public String suscripcion(Model model) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();
+            Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
+			alumno.setPremium("mensual");
+			alumno.setPago(LocalDate.now());
+            Double precio = 7.00;
+            model.addAttribute("precio", precio);
+            Orden order = new Orden();
+            order.setPrice(precio);
+			List<String>tipoPago=new ArrayList<>();
+			tipoPago.add("paypal");
+			tipoPago.add("visa");
+			model.addAttribute("tipos",tipoPago);
+			model.addAttribute("orden",order);
+            return "/pay/pay";
+		}
+
+		@GetMapping(value="/suscribirmeAnual")
+	    public String suscripcionAnual(Model model) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();
+            Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
+			alumno.setPremium("anual");
+			alumno.setPago(LocalDate.now());
+            Double precio = 40.00;
+            model.addAttribute("precio", precio);
+            Orden order = new Orden();
+            order.setPrice(precio);
+			List<String>tipoPago=new ArrayList<>();
+			tipoPago.add("paypal");
+			tipoPago.add("visa");
+			model.addAttribute("tipos",tipoPago);
+			model.addAttribute("orden",order);
+            return "/pay/pay";
+		}
+
+		@GetMapping(value="/promocionarme")
+	    public String suscripcionProfesor(Model model) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();
+            Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
+			alumno.setPremium("mensual");
+            Double precio = 5.00;
+            model.addAttribute("precio", precio);
+            Orden order = new Orden();
+            order.setPrice(precio);
+			List<String>tipoPago=new ArrayList<>();
+			tipoPago.add("paypal");
+			tipoPago.add("visa");
+			model.addAttribute("tipos",tipoPago);
+			model.addAttribute("orden",order);
+            return "/pay/pay";
+		}
+
 }
