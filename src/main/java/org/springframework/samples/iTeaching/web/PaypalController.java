@@ -88,7 +88,13 @@ public class PaypalController {
             Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
             List<Asignatura> asignaturas= this.asignaturaService.appliedAnuncio(alumno);
             Double precio = asignaturas.stream().mapToDouble(a->a.getPrecio()).sum();
+			if(alumno.isPremium()){
+				precio = precio;
+			}
+			else{
 			precio = precio *0.07 + precio;
+			}
+			
             model.addAttribute("precio", precio);
             Orden order = new Orden();
             order.setPrice(precio);

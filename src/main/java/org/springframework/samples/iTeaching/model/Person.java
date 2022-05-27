@@ -35,7 +35,9 @@ public class Person extends BaseEntity {
 	public String getFirstName() {
 		return this.firstName;
 	}
-
+	@Column (name= "premium")
+	@NotEmpty
+	private boolean premium;
 
 	@Transient
 	public String getFullName() {
