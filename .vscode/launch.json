@@ -9,6 +9,13 @@
             "name": "Launch ITeachingApplication",
             "request": "launch",
             "mainClass": "org.springframework.samples.iTeaching.ITeachingApplication",
+            "projectName": "iTeaching"
+        },
+        {
+            "type": "java",
+            "name": "Launch ITeachingApplication",
+            "request": "launch",
+            "mainClass": "org.springframework.samples.iTeaching.ITeachingApplication",
             "projectName": "spring-iTeaching"
         },
         {
