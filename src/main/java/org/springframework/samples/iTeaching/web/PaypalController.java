@@ -184,7 +184,7 @@ public class PaypalController {
             User user = this.userService.findUser(userDetails.getUsername()).get();
             Profesor profesor = this.profesorService.findProfesorByUsername(user.getUsername());
 			profesor.setPremium("anual");
-            Double precio = 5.00;
+            Double precio = 40.00;
             model.addAttribute("precio", precio);
             Orden order = new Orden();
             order.setPrice(precio);
