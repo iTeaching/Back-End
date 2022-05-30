@@ -35,14 +35,11 @@
     <div class="col-sm-8" style="margin: 0 0 20px 0">
     <form:form modelAttribute="clase" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">     
-            <iteaching:inputField label="Hora de comienzo" name="horaComienzo"/>
-            <iteaching:inputField label="Hora de Fin" name="horaFin"/>
+            <iteaching:inputCalendar label="Hora de comienzo" name="horaComienzo"/>
+            <iteaching:inputCalendar label="Hora de Fin" name="horaFin"/>
 <%--             <form:input type="hidden" path="alumno.user.username"/> --%>
 			<form:input type="hidden" path="aceptacionAlumno"/>
 			<form:input type="hidden" path="aceptacionProfesor"/>
-			<c:forEach var="type" items="${diccionario}">
-   					<iteaching:selectField label="Asignaturas de ${type.key.firstName}" name="asignatura.id" names="${type.value}" size="${fn:length(type.value)}"/>
-			</c:forEach>
 			<p>(Si se elige mas de una asignatura, se asignará la asignatura que se encuentre en una posicion superior)</p>
         </div>
         <div class="form-group">

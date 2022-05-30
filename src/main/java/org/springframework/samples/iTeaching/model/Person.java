@@ -36,11 +36,10 @@ public class Person extends BaseEntity {
 	private String email;
 
 	@Column (name= "premium")
-	@NotEmpty
-	private String premium;
+	private String premium = null;
 
 	@Column(name="fecha_inscripción")
-	private LocalDate pago;
+	private LocalDate pago = null;
 	
 	public String getFirstName() {
 		return this.firstName;

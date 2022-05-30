@@ -229,59 +229,27 @@ public class AlumnoController {
 		
 	}
 	
-	@GetMapping(value="alumnos/nuevaClase")
-	public String crearClase(Map<String,Object> model) {
+	@GetMapping(value="alumnos/nuevaClase/{claseId}")
+	public String crearClase(Map<String,Object> model,@PathVariable("claseId") int claseId) {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno usuario = alumnoService.findAlumnoByUsername(username);
+		Asignatura asignatura =asignaturaService.findById(claseId);
+		if(!asignatura.getAlumnos().contains(usuario)){
+			return "welcome";
+		}
+		model.put("asignatura", asignatura);
 		model.put("alumno", usuario);
 		Clase clase = new Clase();
 		model.put("clase", clase);
-		List<Profesor> listaProfesores = profesorService.findAll();
-		model.put("listaProfesores", listaProfesores);
-		List<Asignatura> listaAsignaturas = asignaturaService.findAll();
-		model.put("listaAsignaturas", listaAsignaturas);
-		
-		
-		List<Asignatura> conjuntoAsignaturas= usuario.getAsignaturas();
-		Set<Profesor> setProfesor= new HashSet<Profesor>();
-		for(Asignatura asing: conjuntoAsignaturas) {
-			setProfesor.add(asing.getProfesor());
-		}
-		
-		
-		Map<Profesor, List<Asignatura>> map = new HashMap<Profesor, List<Asignatura>>();
-		
-		for(Profesor profes: setProfesor) {
-			List<String> listaCosas = alumnoService.findByIdAlumnosProfesores(profes.getId(), usuario.getId());
-			int tamanyo = listaCosas.size();
-			int i =0;
-			while(i<tamanyo) { 
-				String elemento[] = listaCosas.get(i).split(",");
-				int idAsignatura = Integer.valueOf(elemento[0]);
-				int idAlumno = Integer.valueOf(elemento[1]);
-				int idProfesor = Integer.valueOf(elemento[2]);
-				Profesor profesor = profesorService.findProfesorById(idProfesor);
-				Asignatura asignatura = asignaturaService.findById(idAsignatura);
-				
-				if(map.containsKey(profesor)) {
-					map.get(profesor).add(asignatura);
-				} else {
-					map.put(profesor, new ArrayList<>());
-					map.get(profesor).add(asignatura);
-					}
-				
-				i++;
-				}
-		}
-		
-		
-		model.put("diccionario", map);		
+		clase.setAlumno(usuario);
+		clase.setAsignatura(asignatura);
+		clase.setProfesor(asignatura.getProfesor());				
 		return "alumnos/nuevaClase";
 	}
 	
-	@PostMapping(value="alumnos/nuevaClase")
-	public String crearClasePost(@Valid Clase clase, BindingResult result) {
+	@PostMapping(value="alumnos/nuevaClase/{claseId}")
+	public String crearClasePost(@Valid Clase clase, BindingResult result, @PathVariable("claseId") int claseId) {
 		if (result.hasErrors()) {
 			return "alumnos/nuevaClase";
 		}
@@ -290,16 +258,27 @@ public class AlumnoController {
 			UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username= clienteDetails.getUsername();
 			Alumno usuario = alumnoService.findAlumnoByUsername(username);
-			Asignatura asignatura = asignaturaService.findById(clase.getAsignatura().getId());
+			System.out.println("Funciona pero mucho mucho");
+			Asignatura asignatura = asignaturaService.findById(claseId);
 			clase.setAceptacionAlumno(true);
+			System.out.println("Funciona pero mucho mucho");
+
 			clase.setAceptacionProfesor(false);
 			clase.setAsignatura(asignatura);
+			System.out.println("Funciona pero mucho mucho");
+
 			clase.setAlumno(usuario);
-			clase.getAsignatura().getProfesor();
+			System.out.println("Funciona pero mucho mucho");
+
 			clase.setProfesor(clase.getAsignatura().getProfesor());
+			System.out.println("Funciona pero mucho mucho");
+
 			clase.setEstadoClase(estadoClase.solicitada);
+			System.out.println("Funciona pero mucho mucho");
+
 			this.claseService.saveClase(clase);
-;
+;			System.out.println("Funciona pero mucho mucho");
+
 			return "redirect:/alumnos/miPerfil";
 		}
 	}

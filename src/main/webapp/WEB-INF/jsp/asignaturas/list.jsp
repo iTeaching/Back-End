@@ -19,6 +19,7 @@
             <th style="width: 120px">Profesor</th>
             <th style="width: 120px">Puntuación del profesor</th>
             <th style="width: 120px">Valorar</th>
+            <th style="width: 120px">Tutoría</th>
             </sec:authorize>
             <th style="width: 120px">Ver archivos</th>
             <th style="width: 120px">Chat</th>
@@ -57,6 +58,14 @@
 						</spring:url> <a href="${fn:escapeXml(editUrl)}"
 						class="btn btn-outline-warning">Valorar</a>
 					</td>
+                    <td>
+                        <spring:url value="alumnos/nuevaClase/{asignaturaId}"
+                                    var="editUrl">
+                                    <spring:param name="asignaturaId" value="${asignatura.id}" />
+        
+                                </spring:url> <a href="${fn:escapeXml(editUrl)}"
+                                class="btn btn-outline-warning">Solicitar</a>
+                            </td>
 				</sec:authorize>
 				 <td>
 				<spring:url value="/asignatura/{asignaturaId}/files"

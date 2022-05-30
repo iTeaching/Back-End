@@ -44,12 +44,8 @@
     <form:form modelAttribute="clase" class="form-horizontal" id="add-alumno-form">
         <div class="form-group has-feedback">     
 			  
-            <iteaching:inputField label="Hora de comienzo (yyyy/MM/dd HH:mm:ss)" name="horaComienzo"/>
-            <iteaching:inputField label="Hora de Fin (yyyy/MM/dd HH:mm:ss)" name="horaFin"/>
-<%--             <form:input type="hidden" path="alumno.user.username"/> --%>
-			<form:input type="hidden" path="aceptacionAlumno"/>
-			<form:input type="hidden" path="aceptacionProfesor"/>
-			<form:input type="hidden" path="asignatura.id" value="${asignaturaId}"/>
+            <input type="datetime-local" name="horaComienzo" min="2015-02-20 10:00" max="2015-04-24 10:00" step="3600">
+          
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

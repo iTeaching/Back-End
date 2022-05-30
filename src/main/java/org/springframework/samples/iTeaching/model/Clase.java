@@ -22,11 +22,11 @@ import lombok.Setter;
 public class Clase extends BaseEntity {
 
 	@Column(name = "horaComienzo")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
+	//@DateTimeFormat(pattern = "dd-MM-yyyy :HH:mm")
 	private String  horaComienzo;
 
 	@Column(name = "horaFin")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd :HH:mm:ss")
+	//@DateTimeFormat(pattern = "dd-MM-yyyy :HH:mm")
 	private String  horaFin;
 
 	@Column(name = "aceptacionAlumno", columnDefinition = "boolean default false")
