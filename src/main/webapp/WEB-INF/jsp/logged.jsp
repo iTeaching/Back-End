@@ -79,7 +79,7 @@
 				<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
 				<center><img
 							class="card-img-top"  style="margin-top:10px";
-							src="resources/images/libros.png"
+							src="resources/images/pngegg.png"
 							alt="Card image cap">
 							<div class="card-body">
 								<a href="/promocionarme"><button>Mensual</button></a> <a href="/promocionarmeAnual"><button >Anual</button></a>
@@ -199,7 +199,7 @@
 					<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
 <center><img
 							class="card-img-top"  style="margin-top:10px";
-							src="resources/images/libros.png"
+							src="resources/images/pngegg.png"
 							alt="Card image cap">							
 
 							<div class="card-body">
