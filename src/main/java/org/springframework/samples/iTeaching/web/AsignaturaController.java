@@ -164,8 +164,8 @@ public class AsignaturaController {
 		asignaturas.removeAll(lista);
 		List<Asignatura> asignaturasNormal = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->a.getProfesor().getPremium().isEmpty()).collect(Collectors.toList());
 		model.put("asignaturas", asignaturasNormal);
-		List<Asignatura> asignaturasPromocionadas= asignaturas;
-		asignaturasPromocionadas.remove(asignaturasNormal);
+		List<Asignatura> asignaturasPromocionadas= asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->!a.getProfesor().getPremium().isEmpty()).collect(Collectors.toList());
+		System.out.println(asignaturas);
 		model.put("asignaturasPromo", asignaturasPromocionadas);
 		Integer longitud= asignaturasPromocionadas.size();
 		model.put("longitud", longitud);

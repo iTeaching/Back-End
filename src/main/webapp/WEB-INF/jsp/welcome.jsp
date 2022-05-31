@@ -96,8 +96,8 @@
                 <li><b>Alumnos</b></li>
                 <li>Pago de clases particulares con un 7% de comisión</li>
                 <li><b>Profesor</b></li>
-                <li>Publica anuncios</li>
-			    <li class="hidden_text">#</li>
+                <li>Publica anuncios<br></li>
+			    <li class="hidden_text" style="height: 73.5px;">#</li>
 
 			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
 			  </ul>
@@ -111,7 +111,7 @@
                 <li><b>Alumnos</b></li>
                 <li>Pago de clases particulares con un 0% de comisión</li>
                 <li><b>Profesor</b></li>
-                <li>Publica anuncios</li>
+                <li>Publica anuncios de manera favorecida</li>
 			    <li class="horas_mensuales">*Ventajas durante un mes
                 </li>
 			    <li class="grey"><a href="/login" class="empieza_button">Empieza ya!</a></li>
@@ -126,7 +126,7 @@
                 <li><b>Alumnos</b></li>
                 <li>Pago de clases particulares con un 0% de comisión</li>
                 <li><b>Profesor</b></li>
-                <li>Publica anuncios</li>
+                <li>Publica anuncios de manera favorecida</li>
 			    <li class="horas_mensuales">*Ventajas durante un año</li>
 			    <li class="grey"><a href="/login" class="empieza_button">Empieza ya!</a></li>
 			  </ul>

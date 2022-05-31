@@ -89,7 +89,7 @@ public class ProfesorController {
 			profesor.setDivision(0);
 			profesor.setPuntuacion(0.);
 			profesor.getUser().setEnabled(true);
-			profesor.setPremium(null);
+			profesor.setPremium(" ");
 			profesor.setPago(null);
 			this.profesorService.saveProfesor(profesor);
 			authService.saveAuthorities(profesor.getUser().getUsername(), "profesor");
