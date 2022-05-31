@@ -35,7 +35,7 @@
 	<jsp:body>
 <div style="min-height:85vh">
     <h1>
-        Nuevo Clase
+        Concertar Tutoría
     </h1>
     
    
