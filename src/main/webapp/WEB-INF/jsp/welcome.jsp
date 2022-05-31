@@ -99,7 +99,7 @@
                 <li>Publica anuncios<br></li>
 			    <li class="hidden_text" style="height: 73.5px;">#</li>
 
-			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
+			    <li class="grey"><a href="/login" class="empieza_button">Empieza ya!</a></li>
 			  </ul>
 			</div>
 			<div class="columns">
