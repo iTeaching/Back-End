@@ -115,13 +115,13 @@ private AlumnoService alumnSer;
 		}
 		if (!isValid(profesor.getUser().getPassword())) {
 			errors.rejectValue("user.password",
-					" La contraseña debe contener una minúscula, una mayúscula, un número y un caracter especial como mínimo. También tiene que tener una longitud de 8 a 20 caracteres",
-					"La contraseña debe contener una minúscula, una mayúscula, un número y un caracter especial como mínimo. También tiene que tener una longitud de 8 a 20 caracteres");
+					" La contraseña debe contener una minúscula, una mayúscula, un número y un caracter especial como mínimo estos pueden ser: *[!@#&()–_[{}]:;',?/*~$^+=<>] . También tiene que tener una longitud de 8 a 20 caracteres",
+					"La contraseña debe contener una minúscula, una mayúscula, un número y un caracter especial como mínimo estos pueden ser: *[!@#&()–_[{}]:;',?/*~$^+=<>] . También tiene que tener una longitud de 8 a 20 caracteres");
 		}
 
 	}
 	
-	private static final String pass_pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+	private static final String pass_pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–_[{}]:;',?/*~$^+=<>]).{8,20}$";
 
 	private static final Pattern pattern = Pattern.compile(pass_pattern);
 
