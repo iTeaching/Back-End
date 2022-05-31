@@ -21,7 +21,7 @@
                       <h1><b><u>FACTURACIÓN</u></b></h1>
                       <br>
                       <h3>Descripción del pago</h3>
-                      <input type="text" id="description" name="description" value="{orden.description}">
+                      <input type="text" id="description" name="description" value="${orden.description}">
                       <br>
                       <h3>Concepto del pago</h3>
                       <input type="radio" id="intent" name="intent" value="sale" checked>
