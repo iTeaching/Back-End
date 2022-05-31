@@ -135,8 +135,9 @@ public class AsignaturaController {
 		Profesor profConPermiso = a.getProfesor();
 		Set<Alumno> alumsConPermiso = a.getAlumnos();
 		
-		if(a.getHora().equals(LocalDateTime.now().minusDays(2))){
+		if(a.getHora().isBefore(LocalDateTime.now().minusDays(2).minusHours(1))){
 		a.setUrl(Clases.url());
+		a.setHora(LocalDateTime.now());
 		asignaturaService.saveAsignatura(a);
 		}
 		try {
