@@ -113,6 +113,7 @@ public class PaypalController {
 			}
             model.addAttribute("precio", precio);
             Orden order = new Orden();
+			order.setDescription("Clases particulares");
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
 			tipoPago.add("paypal");
@@ -132,6 +133,7 @@ public class PaypalController {
             Double precio = 5.00;
             model.addAttribute("precio", precio);
             Orden order = new Orden();
+			order.setDescription("Suscripción mensual");
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
 			tipoPago.add("paypal");
@@ -151,6 +153,7 @@ public class PaypalController {
             Double precio = 40.00;
             model.addAttribute("precio", precio);
             Orden order = new Orden();
+			order.setDescription("Suscripción anual");
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
 			tipoPago.add("paypal");
@@ -169,6 +172,7 @@ public class PaypalController {
             Double precio = 5.00;
             model.addAttribute("precio", precio);
             Orden order = new Orden();
+			order.setDescription("Suscripción mensual");
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
 			tipoPago.add("paypal");
@@ -187,6 +191,7 @@ public class PaypalController {
             Double precio = 40.00;
             model.addAttribute("precio", precio);
             Orden order = new Orden();
+			order.setDescription("Suscripción anual");
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
 			tipoPago.add("paypal");

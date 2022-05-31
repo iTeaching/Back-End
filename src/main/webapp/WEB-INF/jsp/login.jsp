@@ -85,7 +85,7 @@
 <label for = "remember">
     Recu&eacute;rdame
 </label>
-        <div class="g-recaptcha" data-sitekey="6LdWpYAfAAAAAGMF6n_haMV6rBMP8Pbt1qyZKEkC">
+        <div class="g-recaptcha" data-sitekey="6LceyzIgAAAAAHF4_WSdrUaXgpNHk2s3OK3FVmRi">
 
         </div>
 </input>
