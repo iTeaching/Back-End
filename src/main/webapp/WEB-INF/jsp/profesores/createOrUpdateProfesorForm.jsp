@@ -75,7 +75,7 @@
         
         </div>
         
-        <div class="g-recaptcha" data-sitekey="6LdWpYAfAAAAAGMF6n_haMV6rBMP8Pbt1qyZKEkC">
+        <div class="g-recaptcha" data-sitekey="6LcFXzMgAAAAAN9xjgKYGWgKGWIiPItTTKR2thHa">
 
         </div>
         
