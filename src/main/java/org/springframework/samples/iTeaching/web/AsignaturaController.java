@@ -1,6 +1,7 @@
 package org.springframework.samples.iTeaching.web;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import net.bytebuddy.asm.Advice.Local;
 
 @Controller
 public class AsignaturaController {
@@ -83,6 +86,7 @@ public class AsignaturaController {
             Profesor profesor = this.profesorService.findProfesorByUsername(user.getUsername());
             asignatura.setProfesor(profesor);
             asignatura.setUrl(Clases.url());
+			asignatura.setHora(LocalDateTime.now());
 			this.asignaturaService.saveAsignatura(asignatura);
 			return "redirect:/asignaturas";
 		}
@@ -120,7 +124,7 @@ public class AsignaturaController {
 	}
 	
 	@GetMapping(value = "/asignaturas/{asignaturaId}")
-	public String getSala(@PathVariable("asignaturaId") int id, Map<String, Object> model) {
+	public String getSala(@PathVariable("asignaturaId") int id, Map<String, Object> model) throws IOException, InterruptedException {
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
@@ -131,6 +135,10 @@ public class AsignaturaController {
 		Profesor profConPermiso = a.getProfesor();
 		Set<Alumno> alumsConPermiso = a.getAlumnos();
 		
+		if(a.getHora().equals(LocalDateTime.now().minusDays(2))){
+		a.setUrl(Clases.url());
+		asignaturaService.saveAsignatura(a);
+		}
 		try {
 			Profesor usuario = profesorService.findProfesorByUsername(username);
 			if(usuario.equals(profConPermiso)) {
