@@ -27,7 +27,7 @@
 
 <div style="min-height:85vh">
     <h1>
-        Nuevo Clase
+        Solicitar tutoría
     </h1>
     
    
@@ -40,11 +40,10 @@
 <%--             <form:input type="hidden" path="alumno.user.username"/> --%>
 			<form:input type="hidden" path="aceptacionAlumno"/>
 			<form:input type="hidden" path="aceptacionProfesor"/>
-			<p>(Si se elige mas de una asignatura, se asignará la asignatura que se encuentre en una posicion superior)</p>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-warning" style="font-size:16px; color:white; border-color: #dab305; background-color: #dab305;">Crear Clase</button>
+                <button type="submit" class="btn btn-warning" style="font-size:16px; color:white; border-color: #dab305; background-color: #dab305;">Solicitar reserva</button>
             </div>
         </div>
     </form:form>
