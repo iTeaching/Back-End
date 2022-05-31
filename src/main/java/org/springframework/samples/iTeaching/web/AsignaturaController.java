@@ -175,14 +175,25 @@ public class AsignaturaController {
 	@RequestMapping(value="/ofertas/findAsignatura")
 	public String findAnunciosByAsignatura(@RequestParam("asignaturaBuscar") String asignatura, Map<String, Object> model) {
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findByNombre(asignatura);
+		if(asignatura.isBlank()){
+			asignaturas = (List<Asignatura>) this.asignaturaService.findAll();
+		}
+		else{
+			asignaturas = (List<Asignatura>) this.asignaturaService.findByNombre(asignatura);
+		}
 		UserDetails clienteDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal();
 		String username= clienteDetails.getUsername();
 		Alumno alumno = this.alumnoService.findAlumnoByUsername(username);
 		List<Asignatura> lista=this.asignaturaService.appliedAnuncio(alumno);
 		asignaturas.removeAll(lista);
-		asignaturas = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).collect(Collectors.toList());
-		model.put("asignaturas", asignaturas);
+		List<Asignatura> asignaturasNormal = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->a.getProfesor().getPremium().isEmpty()).collect(Collectors.toList());
+		model.put("asignaturas", asignaturasNormal);
+		List<Asignatura> asignaturasPromocionadas= asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->!a.getProfesor().getPremium().isEmpty()).collect(Collectors.toList());
+		System.out.println(asignaturas);
+		model.put("asignaturasPromo", asignaturasPromocionadas);
+		Integer longitud= asignaturasPromocionadas.size();
+		model.put("longitud", longitud);
 		return "asignaturas/findOfertas";
 	}
 	
