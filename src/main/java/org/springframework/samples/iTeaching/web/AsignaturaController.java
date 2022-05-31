@@ -162,9 +162,9 @@ public class AsignaturaController {
 		List<Asignatura> lista=this.asignaturaService.appliedAnuncio(alumno);
 		List<Asignatura> asignaturas = (List<Asignatura>) this.asignaturaService.findAll();
 		asignaturas.removeAll(lista);
-		List<Asignatura> asignaturasNormal = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->a.getProfesor().getPremium().isEmpty()).collect(Collectors.toList());
+		List<Asignatura> asignaturasNormal = asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->a.getProfesor().getPremium().isBlank()).collect(Collectors.toList());
 		model.put("asignaturas", asignaturasNormal);
-		List<Asignatura> asignaturasPromocionadas= asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->!a.getProfesor().getPremium().isEmpty()).collect(Collectors.toList());
+		List<Asignatura> asignaturasPromocionadas= asignaturas.stream().filter(a->a.getProfesor().getUser().isEnabled()==true).filter(a->!a.getProfesor().getPremium().isBlank()).collect(Collectors.toList());
 		System.out.println(asignaturas);
 		model.put("asignaturasPromo", asignaturasPromocionadas);
 		Integer longitud= asignaturasPromocionadas.size();
