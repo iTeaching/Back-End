@@ -31,6 +31,67 @@
 
 	</form>
 	</div>
+    <c:if test="${longitud!=0}">    
+    <br>
+    <h1>Mejores clases</h1>
+    <table id="" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Asignatura</th>
+            <th>Precio/Hora</th>
+            <th>Profesor</th>
+            <th>Puntuación del profesor</th>
+            <th>Apuntarme</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${asignaturasPromo}" var="asignaturasPromo">
+            <tr>
+
+                <td>
+                <c:out value="${asignaturasPromo.titulo_anuncio}"/>                  
+                </td>
+                <td>
+                    <c:out value="${asignaturasPromo.descripcion}"/>
+                </td>
+                <td>
+                    <c:out value="${asignaturasPromo.nombre}"/>
+                </td>
+                <td>
+                    <c:out value="${asignaturasPromo.precio}"/>
+                </td>
+                <td>
+                <a href="/profesor/${asignatura.profesor.id}/perfil">
+                    <c:out value="${asignaturasPromo.profesor.firstName} ${asignatura.profesor.lastName}"/></a>
+                </td>
+
+                <td>
+                	<c:if test="${asignaturasPromo.profesor.division==0}">
+                	<a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                    <c:out value="Sin evaluar"/></a>
+                	</c:if>
+                	<c:if test="${asignaturasPromo.profesor.division!=0}">
+                	<a href="/asignatura/${asignatura.id}/valoraciones/profesor/${asignatura.profesor.id}">
+                	<c:out value="${(asignatura.profesor.puntuacion/asignatura.profesor.division)*2}"/></a>
+                	</c:if>
+
+                </td>
+                <td>
+                    <spring:url value="/asignaturas/{asignaturaId}/apply" var="asignaturaId">
+                    <spring:param name="asignaturaId" value="${asignatura.id}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(asignaturaId)}"><img src="..\resources\images\icons8-añadir-30.png"></a>
+                    </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</c:if>
+    <br>
+    <h1>Todos los anuncios</h1>
+    <br>
 
     <table id="anunciosTable" class="table table-striped">
         <thead>

@@ -38,7 +38,7 @@ public class Person extends BaseEntity {
 	@Column (name= "premium")
 	private String premium = null;
 
-	@Column(name="fecha_inscripción")
+	@Column(name="fecha_inscripcion")
 	private LocalDate pago = null;
 	
 	public String getFirstName() {
