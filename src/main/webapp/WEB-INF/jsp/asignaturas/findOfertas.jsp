@@ -80,7 +80,7 @@
                 </td>
                 <td>
                     <spring:url value="/asignaturas/{asignaturaId}/apply" var="asignaturaId">
-                    <spring:param name="asignaturaId" value="${asignatura.id}"/>
+                    <spring:param name="asignaturaId" value="${asignaturasPromo.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(asignaturaId)}"><img src="..\resources\images\icons8-añadir-30.png" alt="+"></a>
                     </td>
