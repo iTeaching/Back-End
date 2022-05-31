@@ -1,5 +1,6 @@
 package org.springframework.samples.iTeaching.model;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,6 +41,9 @@ public class Asignatura extends BaseEntity{
 	@Column(name="precio")
 	@NotNull(message="El precio no puede estar vacío")
 	Double precio;
+	
+	@Column(name="hora")
+	LocalDateTime hora;
 	
 	@ManyToMany(cascade = {
             CascadeType.ALL
