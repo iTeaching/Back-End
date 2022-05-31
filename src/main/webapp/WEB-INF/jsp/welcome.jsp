@@ -93,34 +93,42 @@
 			    <li class="grey">GRATIS</li>
 			    <li>Descarga de archivos</li>
 			    <li>Acceso al chat de profesores</li>
+                <li><b>Alumnos</b></li>
+                <li>Pago de clases particulares con un 7% de comisión</li>
+                <li><b>Profesor</b></li>
+                <li>Publica anuncios</li>
 			    <li class="hidden_text">#</li>
-			    <li class="hidden_text">#</li>
-			    <li class="hidden_little_text">#</li>
+
 			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
 			  </ul>
 			</div>
 			<div class="columns">
 			  <ul class="price">
-			    <li class="header">Estandar</li>
-			    <li class="grey">14,99€</li>
+			    <li class="header">Mensual</li>
+			    <li class="grey">5,00€</li>
 			    <li>Descarga de archivos</li>
 			    <li>Acceso al chat de profesores</li>
-			    <li>Acceso a las clases virtuales</li>
-			    <li class="hidden_text">#</li>
-			    <li class="horas_mensuales">*10 horas mensuales</li>
-			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
+                <li><b>Alumnos</b></li>
+                <li>Pago de clases particulares con un 0% de comisión</li>
+                <li><b>Profesor</b></li>
+                <li>Publica anuncios</li>
+			    <li class="horas_mensuales">*Ventajas durante un mes
+                </li>
+			    <li class="grey"><a href="/login" class="empieza_button">Empieza ya!</a></li>
 			  </ul>
 			</div>
 			<div class="columns">
 			  <ul class="price">
-			    <li class="header">Avanzado</li>
-			    <li class="grey">29,99€</li>
+			    <li class="header">Anual</li>
+			    <li class="grey">40,00€</li>
 			    <li>Descarga de archivos</li>
 			    <li>Acceso al chat de profesores</li>
-			    <li>Acceso a las clases virtuales</li>
-			    <li>Atención personalizada</li>
-			    <li class="horas_mensuales">*20 horas mensuales</li>
-			    <li class="grey"><a href="#" class="empieza_button">Empieza ya!</a></li>
+                <li><b>Alumnos</b></li>
+                <li>Pago de clases particulares con un 0% de comisión</li>
+                <li><b>Profesor</b></li>
+                <li>Publica anuncios</li>
+			    <li class="horas_mensuales">*Ventajas durante un año</li>
+			    <li class="grey"><a href="/login" class="empieza_button">Empieza ya!</a></li>
 			  </ul>
 			</div>
             </div>
