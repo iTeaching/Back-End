@@ -89,7 +89,7 @@ public class PaypalController {
 				if(order.getDescription().contains("mensual")){
 					alumno.setPremium("mensual");
 					alumno.setPago(LocalDate.now());
-					alumnoService.saveAlumno(alumno);
+					alumnoService.saveAlumno(alumno);(alumno);
 				}
 				else if(order.getDescription().contains("anual")){
 					alumno.setPremium("anual");
@@ -103,8 +103,8 @@ public class PaypalController {
 				}
 			}
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-			order.getIntent(), order.getDescription(), "https://iteaching-a.herokuapp.com/" + CANCEL_URL,  
-			"https://iteaching-a.herokuapp.com/" + SUCCESS_URL);
+			order.getIntent(), order.getDescription(), "https://iteaching-production-sprint3.herokuapp.com/" + CANCEL_URL,  
+			"https://iteaching-production-sprint3.herokuapp.com/" + SUCCESS_URL);
 			
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
