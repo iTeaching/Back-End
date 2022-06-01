@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.bytebuddy.asm.Advice.Local;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -61,9 +63,49 @@ public class PaypalController {
 	@PostMapping("/pay")
 	public String payment(@ModelAttribute("order") Orden order) {
 		try {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();	
+			String authority= userDetails.getAuthorities().iterator().next().getAuthority();		
+			if (authority.equals("profesor")){
+				Profesor profesor=this.profesorService.findProfesorByUsername(user.getUsername());
+				if(order.getDescription().contains("mensual")){
+					profesor.setPremium("mensual");
+					profesor.setPago(LocalDate.now());
+					profesorService.saveProfesor(profesor);
+				}
+				else if(order.getDescription().contains("anual")){
+					profesor.setPremium("anual");
+					profesor.setPago(LocalDate.now());
+					profesorService.saveProfesor(profesor);
+				}
+				else if(order.getDescription().contains("cuatrimestral")){
+					profesor.setPremium("cuatrimestral");
+					profesor.setPago(LocalDate.now());
+					profesorService.saveProfesor(profesor);
+				}
+			}
+			else if(authority.equals("alumno")){
+				Alumno alumno=this.alumnoService.findAlumnoByUsername(user.getUsername());
+				if(order.getDescription().contains("mensual")){
+					alumno.setPremium("mensual");
+					alumno.setPago(LocalDate.now());
+					alumnoService.saveAlumno(alumno);(alumno);
+				}
+				else if(order.getDescription().contains("anual")){
+					alumno.setPremium("anual");
+					alumno.setPago(LocalDate.now());
+					alumnoService.saveAlumno(alumno);
+				}
+				else if(order.getDescription().contains("cuatrimestral")){
+					alumno.setPremium("cuatrimestral");
+					alumno.setPago(LocalDate.now());
+					alumnoService.saveAlumno(alumno);
+				}
+			}
 			Payment payment = paypalService.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
 			order.getIntent(), order.getDescription(), "https://iteaching-production-sprint3.herokuapp.com/" + CANCEL_URL,  
 			"https://iteaching-production-sprint3.herokuapp.com/" + SUCCESS_URL);
+			
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					return "redirect:"+link.getHref();

@@ -43,6 +43,10 @@ public class WelcomeController {
 			profesor.setPremium(null);
 			profesor.setPago(null);
 		}
+		else if(profesor.getPremium()=="cuatrimestral"&&profesor.getPago().isAfter(LocalDate.now().minusMonths(4))){
+			profesor.setPremium(null);
+			profesor.setPago(null);
+		}
 	}
 		else{
 		Alumno alumno=this.alumnoservice.findAlumnoByUsername(username);
@@ -52,6 +56,10 @@ public class WelcomeController {
 			alumno.setPago(null);
 		}
 		else if(alumno.getPremium()=="mensual"&&alumno.getPago().isAfter(LocalDate.now().minusYears(1))){
+			alumno.setPremium(null);
+			alumno.setPago(null);
+		}
+		else if(alumno.getPremium()=="cuatrimestral"&&alumno.getPago().isAfter(LocalDate.now().minusMonths(4))){
 			alumno.setPremium(null);
 			alumno.setPago(null);
 		}
