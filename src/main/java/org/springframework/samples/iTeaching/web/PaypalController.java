@@ -163,6 +163,26 @@ public class PaypalController {
             return "/pay/pay";
 		}
 
+		@GetMapping(value="/suscribirmeCuatrimestral")
+	    public String suscripcionCuatrimestral(Model model) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();
+            Alumno alumno = this.alumnoService.findAlumnoByUsername(user.getUsername());
+			alumno.setPremium("cuatrimestral");
+			alumno.setPago(LocalDate.now());
+            Double precio = 15.00;
+            model.addAttribute("precio", precio);
+            Orden order = new Orden();
+			order.setDescription("Suscripción cuatrimestral");
+            order.setPrice(precio);
+			List<String>tipoPago=new ArrayList<>();
+			tipoPago.add("paypal");
+			tipoPago.add("visa");
+			model.addAttribute("tipos",tipoPago);
+			model.addAttribute("orden",order);
+            return "/pay/pay";
+		}
+
 		@GetMapping(value="/promocionarme")
 	    public String suscripcionProfesor(Model model) {
             UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -192,6 +212,25 @@ public class PaypalController {
             model.addAttribute("precio", precio);
             Orden order = new Orden();
 			order.setDescription("Suscripción anual");
+            order.setPrice(precio);
+			List<String>tipoPago=new ArrayList<>();
+			tipoPago.add("paypal");
+			tipoPago.add("visa");
+			model.addAttribute("tipos",tipoPago);
+			model.addAttribute("orden",order);
+            return "/pay/pay";
+		}
+
+		@GetMapping(value="/promocionarmeCuatrimestral")
+	    public String suscripcionProfesorCuatrimestral(Model model) {
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User user = this.userService.findUser(userDetails.getUsername()).get();
+            Profesor profesor = this.profesorService.findProfesorByUsername(user.getUsername());
+			profesor.setPremium("cuatrimestral");
+            Double precio = 15.00;
+            model.addAttribute("precio", precio);
+            Orden order = new Orden();
+			order.setDescription("Suscripción cuatrimestral");
             order.setPrice(precio);
 			List<String>tipoPago=new ArrayList<>();
 			tipoPago.add("paypal");

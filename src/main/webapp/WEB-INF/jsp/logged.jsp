@@ -82,7 +82,7 @@
 							src="resources/images/pngegg.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<a href="/promocionarme"><button>Mensual</button></a> <a href="/promocionarmeAnual"><button >Anual</button></a>
+								<a href="/promocionarme"><button>Mensual</button></a> <a href="/promocionarmeAnual"><button >Anual</button></a> <a href="/promocionarmeCuatrimestral"><button >Cuatrimestral</button></a>
 								<h5 class="card-title text-primary">Mejora tu cuenta </h5>
 								<p class="card-text text-dark">Mejora tu cuenta al servicio premium</p>
 							</center>
@@ -204,7 +204,7 @@
 
 							<div class="card-body">
 								
-								<a href="/suscribirme"><button>Mensual</button></a> <a href="/suscribirmeAnual"><button >Anual</button></a>
+								<a href="/suscribirme"><button>Mensual</button></a> <a href="/suscribirmeAnual"><button >Anual</button></a><a href="/suscribirmeCuatrimestral"><button >Cuatrimestral</button></a>
 								<h5 class="card-title text-primary">Mejora tu cuenta </h5>
 								<p class="card-text text-dark">Mejora tu cuenta al servicio premium</p>
 
