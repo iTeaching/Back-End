@@ -76,17 +76,22 @@
 						</a>
 					</div>
 				</div>
+				<div class="col" >
 				<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
 				<center><img
 							class="card-img-top"  style="margin-top:10px";
 							src="resources/images/pngegg.png"
 							alt="Card image cap">
 							<div class="card-body">
-								<a href="/promocionarme"><button>Mensual</button></a> <a href="/promocionarmeAnual"><button >Anual</button></a> <a href="/promocionarmeCuatrimestral"><button >Cuatrimestral</button></a>
 								<h5 class="card-title text-primary">Mejora tu cuenta </h5>
-								<p class="card-text text-dark">Mejora tu cuenta al servicio premium</p>
+								<div class="btn-group-vertical">
+									<a href="/promocionarme" class="btn btn-outline-dark">Mensual</a>
+									<a href="/promocionarmeCuatrimestral" class="btn btn-outline-dark">Cuatrimestral</a>
+									<a href="/promocionarmeAnual" class="btn btn-outline-dark">Anual</a>
+									</div>
 							</center>
 							</div>
+						</div>
 				<div class="col">
 					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;">
 						<a name="logout" value="logout" href="/login"
@@ -181,23 +186,9 @@
 					</div>
 				</div>
 			
-			<div class="col">
-					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;margin-left:20px">
-						<a name="logout" value="logout" href="/login"
-							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px";
-							src="resources/images/log-out.png"
-							alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title text-primary">Cerrar sesión</h5>
-								<p class="card-text text-dark">Cierra la sesión del usuario</p>
-
-							</div>
-						</a>
-					</div>
-				</div>
 				<div class="col" style="">
 					<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
-						<center><img
+					<center><img
 							class="card-img-top"  style="margin-top:10px";
 							src="resources/images/pngegg.png"
 							alt="Card image cap">							
@@ -214,6 +205,21 @@
 									</div>
 							</div>
 						</center>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100" style="width: 15rem; background-color:#FFDD33;margin-left:20px">
+						<a name="logout" value="logout" href="/login"
+							class="btn btn-outline-link"> <img class="card-img-top" style="margin-top:10px";
+							src="resources/images/log-out.png"
+							alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title text-primary">Cerrar sesión</h5>
+								<p class="card-text text-dark">Cierra la sesión del usuario</p>
+
+							</div>
+						</a>
 					</div>
 				</div>
 		</sec:authorize>
