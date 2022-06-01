@@ -89,7 +89,7 @@ public class PaypalController {
 				if(order.getDescription().contains("mensual")){
 					alumno.setPremium("mensual");
 					alumno.setPago(LocalDate.now());
-					alumnoService.saveAlumno(alumno);(alumno);
+					alumnoService.saveAlumno(alumno);
 				}
 				else if(order.getDescription().contains("anual")){
 					alumno.setPremium("anual");
