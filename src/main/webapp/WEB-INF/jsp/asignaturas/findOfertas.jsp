@@ -63,7 +63,7 @@
                     <c:out value="${asignaturasPromo.precio}"/>
                 </td>
                 <td>
-                <a href="/profesor/${asignatura.profesor.id}/perfil">
+                <a href="/profesor/${asignaturasPromo.profesor.id}/perfil">
                     <c:out value="${asignaturasPromo.profesor.firstName} ${asignatura.profesor.lastName}"/></a>
                 </td>
 
