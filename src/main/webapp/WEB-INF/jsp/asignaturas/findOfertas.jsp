@@ -82,7 +82,7 @@
                     <spring:url value="/asignaturas/{asignaturaId}/apply" var="asignaturaId">
                     <spring:param name="asignaturaId" value="${asignaturasPromo.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(asignaturaId)}"><img src="..\resources\images\icons8-añadir-30.png" alt="+"></a>
+                    <a href="${fn:escapeXml(asignaturaId)}" class="btn btn-outline-warning">+</a>
                     </td>
             </tr>
         </c:forEach>
@@ -141,7 +141,7 @@
                     <spring:url value="/asignaturas/{asignaturaId}/apply" var="asignaturaId">
                     <spring:param name="asignaturaId" value="${asignatura.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(asignaturaId)}"><img src="..\resources\images\icons8-añadir-30.png" alt="+"></a>
+                    <a href="${fn:escapeXml(asignaturaId)}" class="btn btn-outline-warning">+</a>
                     </td>
             </tr>
         </c:forEach>

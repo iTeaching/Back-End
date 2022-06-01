@@ -197,17 +197,21 @@
 				</div>
 				<div class="col" style="">
 					<div class="card h-100" style="width: 15rem;background-color:#FFDD33; margin-left:30px;">
-<center><img
+						<center><img
 							class="card-img-top"  style="margin-top:10px";
 							src="resources/images/pngegg.png"
 							alt="Card image cap">							
 
 							<div class="card-body">
 								
-								<a href="/suscribirme"><button>Mensual</button></a> <a href="/suscribirmeAnual"><button >Anual</button></a><a href="/suscribirmeCuatrimestral"><button >Cuatrimestral</button></a>
 								<h5 class="card-title text-primary">Mejora tu cuenta </h5>
 								<p class="card-text text-dark">Mejora tu cuenta al servicio premium</p>
-
+								
+									<div class="btn-group-vertical">
+									<a href="/suscribirme" class="btn btn-outline-dark">Mensual</a>
+									<a href="/suscribirmeCuatrimestral" class="btn btn-outline-dark">Cuatrimestral</a>
+									<a href="/suscribirmeAnual" class="btn btn-outline-dark">Anual</a>
+									</div>
 							</div>
 						</center>
 					</div>
